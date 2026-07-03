@@ -467,60 +467,34 @@ section > h2 {
   background: #f7f9fb;
 }
 
-/* Fiducia & FAQ */
-.trust-badge {
-  display: inline-block;
-  padding: 0.4rem 1rem;
-  border-radius: 999px;
-  background: var(--color-primary);
-  color: #fff;
-  font-size: 0.85rem;
-  font-weight: 600;
+/* AI Act & GDPR */
+.light-divider {
+  border-top: 1px solid var(--color-border);
 }
 
-.faq-list {
-  margin-top: 1.5rem;
-  max-width: 780px;
-  margin-left: auto;
-  margin-right: auto;
+.conclusion-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  max-width: var(--max-width);
+  margin: 1rem auto 0;
+  padding: 1.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: #f7f9fb;
 }
 
-.faq-item {
-  border-bottom: 1px solid var(--color-border);
-}
-
-.faq-item summary {
-  list-style: none;
-  cursor: pointer;
-  padding: 1.25rem 2rem 1.25rem 0;
-  position: relative;
-  font-weight: 700;
+.conclusion-box .alert-icon {
+  background: rgba(1, 67, 116, 0.08);
   color: var(--color-primary);
 }
 
-.faq-item summary::-webkit-details-marker {
-  display: none;
+.conclusion-box .alert-content strong {
+  color: var(--color-primary);
 }
 
-.faq-item summary::after {
-  content: "+";
-  position: absolute;
-  right: 0;
-  top: 1.25rem;
-  font-size: 1.3rem;
-  font-weight: 400;
-  color: var(--color-secondary);
-  transition: transform 0.2s ease;
-}
-
-.faq-item[open] summary::after {
-  content: "−";
-}
-
-.faq-item p {
-  margin: 0 0 1.25rem;
+.conclusion-box .alert-content p {
   color: var(--color-text);
-  line-height: 1.6;
 }
 
 /* Footer */
