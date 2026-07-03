@@ -146,9 +146,105 @@ h1, h2, h3 {
 
 .stat-callout {
   font-size: 1.1rem;
-  padding: 1.5rem;
+  padding: 2rem 1.5rem;
   border: 1px solid var(--color-border);
-  border-radius: 6px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f7f9fb 0%, #eef3f8 100%);
+  text-align: center;
+}
+
+.stat-callout p {
+  max-width: 640px;
+  margin: 0 auto;
+  color: var(--color-secondary);
+}
+
+/* Box problema — griglia 3 colonne con icona/titolo/intro */
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 900px) {
+  .problem-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .problem-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.problem-card {
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1.75rem 1.5rem;
+  background: #fff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.problem-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(1, 67, 116, 0.08);
+}
+
+.problem-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(1, 67, 116, 0.08);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.problem-card h3 {
+  font-size: 1.15rem;
+  margin: 0 0 0.5rem;
+}
+
+.problem-card p {
+  color: var(--color-secondary);
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Statistica evidenziata */
+.stat-strip {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+  max-width: 160px;
+  text-align: center;
+  margin-top: 0.35rem;
 }
 
 /* Piani */
