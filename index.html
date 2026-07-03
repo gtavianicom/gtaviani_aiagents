@@ -10,8 +10,18 @@
   <link rel="icon" type="image/png" href="assets/images/gtaviani-marca.png">
   <link rel="apple-touch-icon" href="assets/images/gtaviani-marca.png">
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- GTM: ID placeholder, unico punto da aggiornare quando Gabriele fornisce il container reale -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+
+  <!-- GA4: ID placeholder -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX');</script>
 </head>
 <body>
+  <!-- GTM (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
 
   <header class="site-header">
     <div class="container header-inner">
@@ -23,7 +33,7 @@
   <section id="hero" class="hero">
     <div class="hero-badge">Powered by Gtaviani AI Space</div>
     <h1>C'è una cosa che le PMI retail più veloci hanno già capito sugli agenti AI. Le altre lo scopriranno quando sarà tardi.</h1>
-    <a href="#problema" class="scroll-cue" aria-label="Scopri di più">Scopri perché ↓</a>
+    <a href="#problema" id="cta-hero-scroll" class="scroll-cue" aria-label="Scopri di più">Scopri perché ↓</a>
   </section>
 
   <!-- [2] IL PROBLEMA — GTA-CONTENT-002 -->
