@@ -454,6 +454,51 @@ section > h2 {
   border-top: 1px solid var(--color-border);
 }
 
+/* FAQ (accordion nativo) */
+.faq-list {
+  margin-top: 1.5rem;
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.25rem 2rem 1.25rem 0;
+  position: relative;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 1.25rem;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--color-secondary);
+}
+
+.faq-item[open] summary::after {
+  content: "−";
+}
+
+.faq-item p {
+  margin: 0 0 1.25rem;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
 .conclusion-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
