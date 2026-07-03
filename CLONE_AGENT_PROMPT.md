@@ -49,21 +49,21 @@ Dati del nuovo consulente:
 Compiti:
 1. Sostituisci logo, palette colori (assets/css/style.css :root), title/meta/canonical,
    link footer con i dati del nuovo consulente.
-2. Riscrivi INTEGRALMENTE i contenuti testuali delle sezioni 2 (Il Problema), 3 (La Posta
-   in Gioco), 4 (Perché il Consulente Esterno) sul verticale di mercato indicato — NON
-   copiare i testi originali, il contenuto duplicato penalizza la SEO/GEO di tutta la rete.
-   Mantieni la stessa struttura narrativa (pain recognition → urgenza → positioning) e lo
-   stesso tono assertivo/diretto in seconda persona.
-3. Aggiorna sezione 5 (piattaforma) con il nome whitelabel del nuovo consulente, mantenendo
+2. Riscrivi INTEGRALMENTE i contenuti testuali delle sezioni 2 (Il Problema) e 4 (Perché
+   il Consulente Esterno) sul verticale di mercato indicato — NON copiare i testi
+   originali, il contenuto duplicato penalizza la SEO di tutta la rete. Mantieni la
+   stessa struttura narrativa (pain recognition → positioning) e lo stesso tono
+   assertivo/diretto in seconda persona.
+3. La sezione 3 (AI Act & GDPR) è generica su normativa UE: puoi lasciarla invariata,
+   aggiornando solo eventuali riferimenti diretti al verticale originale se presenti.
+4. Aggiorna sezione 5 (piattaforma) con il nome whitelabel del nuovo consulente, mantenendo
    il claim di compliance GDPR/AI Act.
-4. Aggiorna sezione 6 (Piani) con i nuovi pacchetti/prezzi. Mantieni: prezzi arrotondati per
+5. Aggiorna sezione 6 (Piani) con i nuovi pacchetti/prezzi. Mantieni: prezzi arrotondati per
    eccesso senza decimali, nessun valore annuale visibile, CTA tipo "Richiedi informazioni"
    (mai "Acquista ora"), naming id `cta-plans-*`.
-5. Riscrivi la FAQ (sezione 7) con obiezioni tipiche del nuovo verticale — mantieni lo
-   schema JSON-LD FAQPage, contenuto delle domande unico (non copiato da questo template).
 6. Aggiorna ID tracking GTM/GA4 in head, iframe del form in sezione 6.
 7. Aggiorna README.md di conseguenza (brand, dominio nel testo di esempio).
-8. NON modificare: ordine/numero delle 8 sezioni, naming convention id CTA, pattern
+8. NON modificare: ordine/numero delle 7 sezioni, naming convention id CTA, pattern
    tecnico del tracking, struttura schema JSON-LD, architettura delle variabili CSS.
 
 Verifica finale prima di commit: nessun riferimento al brand/verticale originale
