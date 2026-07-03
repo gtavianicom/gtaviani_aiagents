@@ -364,7 +364,15 @@ section > h2 {
   padding: 2rem 1.5rem;
   text-align: center;
   background: #ffffff;
+  color: var(--color-text);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.plan-desc {
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0 0 1rem;
 }
 
 .plan-card--highlight {
@@ -410,6 +418,16 @@ section > h2 {
 .plan-card li {
   padding: 0.4rem 0;
   border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.plans-note {
+  max-width: var(--max-width);
+  margin: 1.5rem auto 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+  font-style: italic;
 }
 
 .contact-form-container {
