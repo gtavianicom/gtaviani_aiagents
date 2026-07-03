@@ -392,7 +392,8 @@ h1, h2, h3 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.5rem;
-  margin-top: 2rem;
+  margin: 2rem auto 0;
+  max-width: var(--max-width);
 }
 
 .plan-card {
@@ -400,11 +401,28 @@ h1, h2, h3 {
   border-radius: 8px;
   padding: 2rem 1.5rem;
   text-align: center;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
 .plan-card--highlight {
   border-color: var(--color-primary);
   border-width: 2px;
+}
+
+.dark-section .section-intro {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.dark-section .contact-form-container {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-section .contact-form-container a {
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 .plan-price {
@@ -433,7 +451,8 @@ h1, h2, h3 {
 }
 
 .contact-form-container {
-  margin-top: 3rem;
+  margin: 3rem auto 0;
+  max-width: var(--max-width);
   padding: 2rem;
   border: 1px dashed var(--color-border);
   border-radius: 8px;
