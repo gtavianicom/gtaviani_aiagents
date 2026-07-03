@@ -159,6 +159,12 @@ h1, h2, h3 {
   color: var(--color-secondary);
 }
 
+.result-intro {
+  margin-bottom: 1.5rem !important;
+  font-weight: 600;
+  color: var(--color-text) !important;
+}
+
 /* Box problema — griglia 3 colonne con icona/titolo/intro */
 .problem-grid {
   display: grid;
