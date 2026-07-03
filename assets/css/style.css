@@ -121,3 +121,25 @@ h1, h2, h3 {
   text-decoration: none;
   font-weight: 600;
 }
+
+/* Sezioni contenuto generiche */
+.pain-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.pain-list li {
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--color-primary);
+  background: #f7f9fb;
+}
+
+.stat-callout {
+  font-size: 1.1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+}
