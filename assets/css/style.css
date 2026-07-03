@@ -158,6 +158,8 @@ section > h2 {
   border-radius: 8px;
   background: linear-gradient(135deg, #f7f9fb 0%, #eef3f8 100%);
   text-align: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 .stat-callout p {
@@ -216,7 +218,8 @@ section > h2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  margin-bottom: 2.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto 2.5rem;
 }
 
 @media (max-width: 900px) {
@@ -287,6 +290,12 @@ section > h2 {
 .stat-number {
   font-size: 2.5rem;
   font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.1;
+}
+
+.stat-icon {
+  font-size: 2.25rem;
   color: var(--color-primary);
   line-height: 1.1;
 }
