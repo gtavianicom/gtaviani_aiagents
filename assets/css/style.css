@@ -197,3 +197,34 @@ h1, h2, h3 {
   text-align: center;
   background: #f7f9fb;
 }
+
+/* Fiducia & FAQ */
+.trust-badge {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.faq-list {
+  margin-top: 1.5rem;
+}
+
+.faq-item {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq-item dt {
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.faq-item dd {
+  margin: 0;
+  color: var(--color-text);
+}
