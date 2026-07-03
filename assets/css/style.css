@@ -68,3 +68,56 @@ h1, h2, h3 {
   color: var(--color-primary);
   border: 1px solid var(--color-primary);
 }
+
+/* Header */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+
+.site-header .logo {
+  height: 40px;
+  width: auto;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 6rem 1.5rem;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  max-width: 780px;
+  margin: 0 auto 2rem;
+}
+
+.hero .scroll-cue {
+  display: inline-block;
+  color: var(--color-secondary);
+  text-decoration: none;
+  font-weight: 600;
+}
