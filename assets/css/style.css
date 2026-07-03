@@ -314,60 +314,6 @@ section > h2 {
   margin: 0 auto 3rem;
 }
 
-.stakes-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  max-width: var(--max-width);
-  margin: 0 auto 2.5rem;
-}
-
-@media (max-width: 700px) {
-  .stakes-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.stakes-col {
-  text-align: center;
-  padding: 2rem 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.stakes-number {
-  display: block;
-  font-size: 2.75rem;
-  font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 1rem;
-}
-
-.stakes-unit {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.stakes-label {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.5;
-}
-
-.alert-box {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.25rem;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 1.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.1);
-}
-
 .alert-icon {
   flex-shrink: 0;
   width: 44px;
