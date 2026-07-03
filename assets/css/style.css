@@ -122,6 +122,12 @@ section > h2 {
   margin: 0 auto 1rem;
 }
 
+.hero-subline {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.75em;
+}
+
 .hero-subtitle {
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   color: var(--color-secondary);
