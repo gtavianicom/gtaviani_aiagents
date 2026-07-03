@@ -165,6 +165,45 @@ h1, h2, h3 {
   color: var(--color-text) !important;
 }
 
+.section-intro {
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+  color: var(--color-secondary);
+  font-size: 1.1rem;
+}
+
+/* Placeholder immagine dashboard, in attesa dell'asset reale */
+.dashboard-preview {
+  margin-bottom: 2.5rem;
+}
+
+.dashboard-placeholder {
+  aspect-ratio: 16 / 9;
+  max-width: 900px;
+  margin: 0 auto;
+  border: 2px dashed var(--color-border);
+  border-radius: 12px;
+  background: #f7f9fb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--color-secondary);
+}
+
+.dashboard-placeholder i {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  opacity: 0.4;
+}
+
+.dashboard-placeholder p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
 /* Box problema — griglia 3 colonne con icona/titolo/intro */
 .problem-grid {
   display: grid;
