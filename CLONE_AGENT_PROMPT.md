@@ -14,7 +14,7 @@ Prima di lanciare l'agente, raccogli queste informazioni dal nuovo consulente/ag
 2. **Verticale di mercato**: settore/nicchia target (es. "PMI manifatturiere", "studi legali",
    "hotel & hospitality" — non generico)
 3. **Nome piattaforma whitelabel**: come viene chiamata la piattaforma AI agent verso il cliente
-   finale (equivalente di "Gtaviani AI Space" in questo template), e dominio di login clienti
+   finale (equivalente di "GTaviani AI Space" in questo template), e dominio di login clienti
 4. **Pacchetti/pricing**: nomi piani, ore di consulenza/mese, crediti piattaforma/mese, prezzo/
    mese per ciascun piano, sconto su acquisti extra fuori piano
 5. **Dominio** del nuovo sito e repo GitHub di destinazione

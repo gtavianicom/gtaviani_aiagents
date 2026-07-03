@@ -2,7 +2,7 @@
 
 Landing page per l'offerta di consulenza AI Agent di **GTAVIANI — Retail E-Commerce Growth**,
 rivolta a PMI italiane del settore retail/e-commerce. Piattaforma erogata in whitelabel come
-**Gtaviani AI Space**.
+**GTaviani AI Space**.
 
 Questo repository è **pubblico di proposito**: è il template ufficiale distribuito a tutti i
 consulenti/agency della rete AWA come modello da clonare e personalizzare per il proprio brand
