@@ -108,7 +108,7 @@ section > h2 {
 }
 
 .site-header .logo {
-  height: 40px;
+  height: 60px;
   width: auto;
 }
 
@@ -664,7 +664,7 @@ section > h2 {
 }
 
 .footer-logo {
-  height: 32px;
+  height: 48px;
   width: auto;
   filter: brightness(0) invert(1);
 }
@@ -688,4 +688,86 @@ section > h2 {
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.85rem;
   text-align: center;
+}
+
+/* Pagine legali (privacy) */
+.legal-page {
+  max-width: 760px;
+  padding: 4rem 1.5rem;
+}
+
+.legal-page h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.legal-updated {
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 2.5rem;
+}
+
+.legal-h2 {
+  font-size: 1.25rem;
+  margin-top: 2rem;
+}
+
+.legal-list {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+}
+
+.legal-list li {
+  margin-bottom: 0.5rem;
+}
+
+/* Cookie banner informativo (non bloccante) */
+.cookie-banner {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  max-width: 640px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  z-index: 1000;
+  transform: translateY(150%);
+  transition: transform 0.4s ease;
+}
+
+.cookie-banner.show {
+  transform: translateY(0);
+}
+
+.cookie-banner p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--color-text);
+  flex: 1;
+}
+
+.cookie-banner a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.cookie-banner button {
+  flex-shrink: 0;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 600px) {
+  .cookie-banner {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
 }

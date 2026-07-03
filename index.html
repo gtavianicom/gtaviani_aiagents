@@ -23,16 +23,23 @@
   }
   </script>
 
-  <!-- GTM: ID placeholder, unico punto da aggiornare quando Gabriele fornisce il container reale -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+  <!-- Google Tag Manager (container reale fornito da Gabriele) -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TS75TN3S');</script>
+  <!-- End Google Tag Manager -->
 
   <!-- GA4: ID placeholder -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX');</script>
 </head>
 <body>
-  <!-- GTM (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TS75TN3S"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
 
   <header class="site-header">
@@ -381,7 +388,7 @@
         <img src="assets/images/gtaviani-logo-orizzontale.png" alt="GTAVIANI — Retail E-Commerce Growth" class="footer-logo">
         <div class="footer-links">
           <a href="https://www.gtaviani.com" id="cta-footer-home">gtaviani.com</a>
-          <a href="https://aispace.gtaviani.com" id="cta-footer-login">Accedi a GTaviani AI Space</a>
+          <a href="https://aispace.gtaviani.com" id="cta-footer-login">Accesso Cliente</a>
           <a href="/sitemap.xml" id="cta-footer-sitemap">Sitemap</a>
           <a href="/privacy.html" id="cta-footer-privacy">Privacy</a>
         </div>
@@ -390,5 +397,24 @@
     </footer>
   </section>
 
+  <!-- Cookie banner informativo GDPR: non bloccante, sola presa visione -->
+  <div id="cookie-banner" class="cookie-banner">
+    <p>Usiamo cookie tecnici e di terze parti (Google Analytics, Google Ads, LinkedIn Ads, Meta
+      Ads) per statistiche e pubblicità. Continuando la navigazione acconsenti al loro utilizzo.
+      <a href="/privacy.html">Scopri di più</a>.</p>
+    <button type="button" id="cookie-banner-dismiss" class="btn btn-primary">Ho capito</button>
+  </div>
+  <script>
+    (function () {
+      var KEY = 'gtaviani_cookie_notice_seen';
+      var banner = document.getElementById('cookie-banner');
+      if (!banner || localStorage.getItem(KEY)) return;
+      setTimeout(function () { banner.classList.add('show'); }, 600);
+      document.getElementById('cookie-banner-dismiss').addEventListener('click', function () {
+        banner.classList.remove('show');
+        localStorage.setItem(KEY, '1');
+      });
+    })();
+  </script>
 </body>
 </html>
