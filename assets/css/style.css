@@ -418,28 +418,49 @@ section > h2 {
   border-top: 1px solid var(--color-border);
 }
 
-.conclusion-box {
+.conclusion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: var(--max-width);
+  margin: 1rem auto 0;
+}
+
+@media (max-width: 700px) {
+  .conclusion-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.conclusion-box,
+.ready-box {
   display: flex;
   align-items: flex-start;
   gap: 1.25rem;
-  max-width: var(--max-width);
-  margin: 1rem auto 0;
   padding: 1.75rem;
   border: 1px solid var(--color-border);
   border-radius: 10px;
   background: #f7f9fb;
 }
 
-.conclusion-box .alert-icon {
+.ready-box {
+  background: rgba(1, 67, 116, 0.04);
+  border-color: rgba(1, 67, 116, 0.2);
+}
+
+.conclusion-box .alert-icon,
+.ready-box .alert-icon {
   background: rgba(1, 67, 116, 0.08);
   color: var(--color-primary);
 }
 
-.conclusion-box .alert-content strong {
+.conclusion-box .alert-content strong,
+.ready-box .alert-content strong {
   color: var(--color-primary);
 }
 
-.conclusion-box .alert-content p {
+.conclusion-box .alert-content p,
+.ready-box .alert-content p {
   color: var(--color-text);
 }
 
