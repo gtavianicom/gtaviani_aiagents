@@ -143,3 +143,48 @@ h1, h2, h3 {
   border: 1px solid var(--color-border);
   border-radius: 6px;
 }
+
+/* Piani */
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.plan-card {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.plan-card--highlight {
+  border-color: var(--color-primary);
+  border-width: 2px;
+}
+
+.plan-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0.5rem 0 1.5rem;
+}
+
+.plan-price span {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-secondary);
+}
+
+.plan-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  text-align: left;
+}
+
+.plan-card li {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
