@@ -4,6 +4,7 @@
 
 :root {
   --color-primary: #014374;
+  --color-primary-light: #025a9c;
   --color-secondary: #545454;
   --color-bg: #ffffff;
   --color-text: #1a1a1a;
@@ -72,6 +73,11 @@ section > h2 {
   color: #ffffff;
 }
 
+.btn-primary-light {
+  background-color: var(--color-primary-light);
+  color: #ffffff;
+}
+
 .btn-secondary {
   background-color: transparent;
   color: var(--color-primary);
@@ -130,6 +136,7 @@ section > h2 {
   color: var(--color-primary);
 }
 
+.nav-contact,
 .nav-login {
   flex-shrink: 0;
   padding: 0.6rem 1.5rem;
@@ -171,8 +178,15 @@ section > h2 {
     order: 2;
   }
 
+  .header-inner {
+    flex-wrap: wrap;
+    row-gap: 0.75rem;
+  }
+
+  .nav-contact,
   .nav-login {
     order: 3;
+    padding: 0.5rem 1rem;
   }
 }
 
