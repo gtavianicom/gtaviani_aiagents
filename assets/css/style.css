@@ -706,6 +706,159 @@ section > h2 {
   text-align: center;
 }
 
+/* Landing page Ads (funnel Annuncio -> Landing -> Form): blocchi a piena
+   altezza viewport, uno sotto l'altro, nessuno scroll interno al blocco.
+   Navigazione ridotta al minimo per non distrarre dalla CTA (best practice
+   PPC: single column, one CTA, minimal nav). */
+.lp-header {
+  border-bottom: 1px solid var(--color-border);
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+}
+
+.lp-header .logo {
+  height: 44px;
+  width: auto;
+  margin: 0 auto;
+}
+
+.lp-section {
+  min-height: 100vh;
+  min-height: 100svh;
+  max-width: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.lp-section .lp-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.lp-hero h1 {
+  font-size: clamp(1.6rem, 4.2vw, 2.75rem);
+  max-width: 800px;
+  margin: 0 auto 1.25rem;
+}
+
+.lp-hero .lp-subtitle {
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  color: var(--color-secondary);
+  max-width: 620px;
+  margin: 0 auto 2rem;
+}
+
+.dark-section .lp-hero .lp-subtitle {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.btn-lg {
+  padding: 1rem 2.25rem;
+  font-size: 1.05rem;
+  border-radius: 6px;
+}
+
+.lp-risk-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 680px;
+  display: grid;
+  gap: 1.25rem;
+  text-align: left;
+}
+
+.lp-risk-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid var(--color-primary);
+  background: #f7f9fb;
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+.dark-section .lp-risk-list li {
+  background: rgba(255, 255, 255, 0.08);
+  border-left-color: #ffffff;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.lp-risk-list i {
+  color: var(--color-primary);
+  font-size: 1.3rem;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.dark-section .lp-risk-list i {
+  color: #ffffff;
+}
+
+.lp-solution {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: left;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.lp-solution-row {
+  padding: 1.5rem 1.75rem;
+  border-radius: 10px;
+  background: #f7f9fb;
+  border: 1px solid var(--color-border);
+}
+
+.lp-solution-row.lp-diff {
+  background: rgba(1, 67, 116, 0.05);
+  border-color: rgba(1, 67, 116, 0.25);
+}
+
+.lp-solution-row .lp-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.lp-solution-row p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.lp-final .lp-reinforce {
+  color: var(--color-secondary);
+  font-size: 1rem;
+  margin: 1.5rem 0 0;
+}
+
+.lp-footer-minimal {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  color: var(--color-secondary);
+  font-size: 0.85rem;
+}
+
+.lp-footer-minimal a {
+  color: var(--color-secondary);
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .lp-section {
+    padding: 2.5rem 1.25rem;
+  }
+}
+
 /* Pagine legali (privacy) */
 .legal-page {
   max-width: 760px;
