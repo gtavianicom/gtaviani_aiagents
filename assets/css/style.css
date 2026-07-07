@@ -703,21 +703,25 @@ section > h2 {
 .footer-landing-links {
   display: flex;
   justify-content: center;
+  align-items: center;
+  text-align: center;
   flex-wrap: wrap;
-  gap: 1.5rem 2rem;
+  width: 100%;
+  gap: 1.5rem 3.5rem;
   padding: 1.25rem 0;
   margin-bottom: 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .footer-landing-links a {
-  color: rgba(255, 255, 255, 0.75);
+  color: #ffffff !important;
   font-size: 0.9rem;
   font-weight: 600;
 }
 
 .footer-landing-links a:hover {
   color: #ffffff;
+  text-decoration: underline;
 }
 
 .footer-copy {
