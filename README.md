@@ -32,6 +32,37 @@ problem to conversion:
 
 ---
 
+## Landing page campagne Ads (optional add-on)
+
+Oltre alla home, il repo include landing page dedicate al funnel **Annuncio → Landing con form
+integrato**, una per ogni angolo di campagna Google Ads/Meta Ads (`lp-*.html`, es.
+`lp-consulente-ai.html`, `lp-ai-act-gdpr.html`, `lp-chatbot-aziendale.html` in questo clone).
+Pattern tecnico, comune a tutte:
+
+- **Header minimo**: solo logo + un link testuale verso la home ("← Scopri di più") — nessun
+  menu di navigazione, per non distrarre dalla conversione (best practice PPC)
+- **Layout a 2 colonne**: colonna sx con contenuto di convincimento (hero, 3 bullet
+  problema/rischio, box "La soluzione"/"La differenza"), colonna dx con il **form Tally integrato
+  direttamente in pagina** (`position: sticky`), nessun click-through verso una pagina di
+  contatto separata — il lead si lascia senza uscire dalla landing
+- **Responsive**: sotto i 900px il layout collassa a colonna singola, il form scende sotto il
+  contenuto (ordine DOM, nessun CSS `order` necessario)
+- **Un solo form per pagina**, titolo uniforme "Richiedi un Contatto" + una riga che spiega il
+  prossimo passo (analisi dell'azienda, non un impegno) — evita di promettere un servizio
+  specifico ("audit", "analisi") diverso da quello reale offerto in call
+- CSS in `assets/css/style.css`, classi `.lp-*` (`.lp-header`, `.lp-main`, `.lp-layout`,
+  `.lp-content`, `.lp-hero-block`, `.lp-risk-list`, `.lp-solution`, `.lp-form-col`,
+  `.lp-form-card`, `.lp-footer-minimal`) — condivise da tutte le landing, non duplicare CSS
+  per-pagina
+- Ogni landing ha il proprio `Organization` JSON-LD (stesso contenuto di quello in home) e meta
+  Open Graph/Twitter con **la stessa immagine social della home** (`og-image.png`) ma
+  title/description adattati all'angolo di quella landing
+
+Se il tuo clone non ha ancora campagne Ads attive, puoi ignorare questi file o rimuoverli (e i
+relativi link in footer + `sitemap.xml`) finché non ti servono.
+
+---
+
 ## Quick start: fork and customize
 
 This is a zero-dependency static site — no build step, no framework.
@@ -105,6 +136,9 @@ changing them breaks tracking aggregation or the validated conversion flow:
   only, not the content
 - **CSS variable architecture** (`:root { --color-primary; --color-secondary; ... }`) — change
   the values, not the pattern
+- **Landing page pattern** (`lp-*.html`): layout 2 colonne con form integrato a destra, header
+  minimo (solo logo + link home), un solo form per pagina — vedi sezione "Landing page campagne
+  Ads" sopra. Non trasformarle in pagine con click-through a un form esterno
 
 ## What MUST change in every clone
 
@@ -116,6 +150,9 @@ changing them breaks tracking aggregation or the validated conversion flow:
 - Pricing (section 6) and platform/login links
 - FAQ content (section 7) — keep the category structure (min. 3 Q&A per category), rewrite the
   actual questions/answers for your vertical, and update the `FAQPage` JSON-LD to match
+- **Landing page copy** (`lp-*.html`, if you use them): rewrite hero/bullets/solution/difference
+  for your own vertical and real ad campaign angles — don't reuse the angles or copy shipped in
+  this template verbatim, they were written for retail/e-commerce SMEs specifically
 
 ---
 
@@ -142,6 +179,9 @@ changing them breaks tracking aggregation or the validated conversion flow:
    mismatched schema vs. visible content can get flagged by search engines
 6. Rewrite section 2/4 copy (see "What MUST change") to avoid duplicate-content penalties across
    the network
+7. If you use the `lp-*.html` landing pages: update their `<link rel="canonical">`, Open Graph/
+   Twitter meta (reuse the same `og-image.png`, just adapt title/description per landing) and
+   `Organization` JSON-LD, and add each one to `sitemap.xml`
 
 ---
 
