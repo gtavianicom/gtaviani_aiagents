@@ -884,6 +884,13 @@ section > h2 {
 .lp-form-card h2 {
   font-size: 1.25rem;
   text-align: center;
+  margin: 0 0 0.5rem;
+}
+
+.lp-form-intro {
+  font-size: 0.9rem;
+  color: var(--color-secondary);
+  text-align: center;
   margin: 0 0 1.25rem;
 }
 
