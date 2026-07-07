@@ -25,6 +25,7 @@
   <link rel="apple-touch-icon" href="assets/images/gtaviani-marca.png">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://tally.so/widgets/embed.js"></script>
 
   <!-- Google Tag Manager (container reale fornito da Gabriele) -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -46,54 +47,53 @@
   <!-- Landing page campagna Google Ads "AI_Consultant_Retail_PMI" — Gruppo 4
        (GTA-LP-004). Hero scritto per reggere sia il traffico "chatbot" sia
        gli annunci-ponte "gestionale/ERP" (vedi brief, non renderlo più
-       specifico a uno dei due profili). Nav ridotta al minimo (solo logo). -->
+       specifico a uno dei due profili). Template 2 colonne (richiesta
+       Gabriele 2026-07-07): contenuto di convincimento a sx, form Tally
+       integrato a dx, form sotto su mobile. Nav ridotta al minimo (solo
+       logo). -->
   <header class="lp-header">
     <a href="/" class="logo-link">
       <img src="assets/images/gtaviani-logo-orizzontale.png" alt="GTAVIANI — Retail E-Commerce Growth" class="logo">
     </a>
   </header>
 
-  <!-- Blocco 1 — Hero -->
-  <section id="hero" class="lp-section lp-hero">
-    <div class="lp-inner">
-      <h1>Il Tuo Assistente AI Aziendale, Addestrato sui Tuoi Dati</h1>
-      <p class="lp-subtitle">Che tu usi un gestionale, dei fogli Excel o niente di strutturato: un chatbot interno sicuro può rispondere al posto tuo, senza esporre i dati della tua azienda.</p>
-      <a href="contact.html" id="cta-lp4-hero" class="btn btn-primary btn-lg">Scopri il Tuo Chatbot Aziendale</a>
-    </div>
-  </section>
+  <section class="lp-main">
+    <div class="lp-layout">
+      <div class="lp-content">
+        <div class="lp-hero-block">
+          <h1>Il Tuo Assistente AI Aziendale, Addestrato sui Tuoi Dati</h1>
+          <p class="lp-subtitle">Che tu usi un gestionale, dei fogli Excel o niente di strutturato: un chatbot interno sicuro può rispondere al posto tuo, senza esporre i dati della tua azienda.</p>
+          <a href="#lp-form" id="cta-lp4-hero" class="btn btn-primary btn-lg">Scopri il Tuo Chatbot Aziendale</a>
+        </div>
 
-  <!-- Blocco 2 — Il rischio concreto -->
-  <section class="lp-section light-divider">
-    <div class="lp-inner">
-      <ul class="lp-risk-list">
-        <li><i class="fas fa-comment-dots"></i><span>I tuoi dipendenti usano già ChatGPT con dati aziendali e dei clienti, senza controllo.</span></li>
-        <li><i class="fas fa-database"></i><span>Il gestionale tiene i dati al sicuro, ma non risponde alle domande del team in linguaggio naturale.</span></li>
-        <li><i class="fas fa-eye-slash"></i><span>Nessuna visibilità su cosa esce dall'azienda verso servizi AI pubblici.</span></li>
-      </ul>
-    </div>
-  </section>
+        <ul class="lp-risk-list">
+          <li><i class="fas fa-comment-dots"></i><span>I tuoi dipendenti usano già ChatGPT con dati aziendali e dei clienti, senza controllo.</span></li>
+          <li><i class="fas fa-database"></i><span>Il gestionale tiene i dati al sicuro, ma non risponde alle domande del team in linguaggio naturale.</span></li>
+          <li><i class="fas fa-eye-slash"></i><span>Nessuna visibilità su cosa esce dall'azienda verso servizi AI pubblici.</span></li>
+        </ul>
 
-  <!-- Blocco 3 — Soluzione e differenziazione -->
-  <section class="lp-section dark-section">
-    <div class="lp-inner lp-solution">
-      <div class="lp-solution-row">
-        <span class="lp-label">La soluzione</span>
-        <p>Un chatbot interno addestrato sui documenti della tua azienda: risponde solo sui contenuti autorizzati, i dati restano dentro l'azienda.</p>
+        <div class="lp-solution">
+          <div class="lp-solution-row">
+            <span class="lp-label">La soluzione</span>
+            <p>Un chatbot interno addestrato sui documenti della tua azienda: risponde solo sui contenuti autorizzati, i dati restano dentro l'azienda.</p>
+          </div>
+          <div class="lp-solution-row lp-diff">
+            <span class="lp-label">La differenza</span>
+            <p>Non è ChatGPT: è un assistente dedicato alla tua azienda, non un'alternativa generica.</p>
+          </div>
+        </div>
       </div>
-      <div class="lp-solution-row lp-diff">
-        <span class="lp-label">La differenza</span>
-        <p>Non è ChatGPT: è un assistente dedicato alla tua azienda, non un'alternativa generica.</p>
+
+      <div class="lp-form-col" id="lp-form">
+        <div class="lp-form-card">
+          <h2>Scopri il Tuo Chatbot Aziendale</h2>
+          <iframe data-tally-src="https://tally.so/embed/Y5yR96?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1" loading="lazy" width="100%" height="516" frameborder="0" marginheight="0" marginwidth="0" title="GTAVIANI aiagent contact"></iframe>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Blocco 4 — CTA finale -->
-  <section class="lp-section light-divider lp-final">
-    <div class="lp-inner">
-      <a href="contact.html" id="cta-lp4-final" class="btn btn-primary btn-lg">Scopri il Tuo Chatbot Aziendale</a>
-      <p class="lp-reinforce">Nessun impegno: scopri come funzionerebbe per la tua azienda.</p>
-    </div>
-  </section>
+  <script>Tally.loadEmbeds();</script>
 
   <footer class="lp-footer-minimal">
     <p>&copy; 2026 GTAVIANI — Retail E-Commerce Growth. <a href="/privacy.html">Privacy</a></p>

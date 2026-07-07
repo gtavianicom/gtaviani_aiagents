@@ -25,6 +25,7 @@
   <link rel="apple-touch-icon" href="assets/images/gtaviani-marca.png">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://tally.so/widgets/embed.js"></script>
 
   <!-- Google Tag Manager (container reale fornito da Gabriele) -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -44,54 +45,52 @@
   <!-- End Google Tag Manager (noscript) -->
 
   <!-- Landing page campagna Google Ads "AI_Consultant_Retail_PMI" — Gruppo 2
-       (GTA-LP-002). Nav ridotta al minimo (solo logo). -->
+       (GTA-LP-002). Template 2 colonne (richiesta Gabriele 2026-07-07):
+       contenuto di convincimento a sx, form Tally integrato a dx, form sotto
+       su mobile. Nav ridotta al minimo (solo logo). -->
   <header class="lp-header">
     <a href="/" class="logo-link">
       <img src="assets/images/gtaviani-logo-orizzontale.png" alt="GTAVIANI — Retail E-Commerce Growth" class="logo">
     </a>
   </header>
 
-  <!-- Blocco 1 — Hero -->
-  <section id="hero" class="lp-section lp-hero">
-    <div class="lp-inner">
-      <h1>Sei Pronto al 2 Agosto?</h1>
-      <p class="lp-subtitle">Dal 2 agosto 2026 scattano gli obblighi per i sistemi AI ad alto rischio.</p>
-      <a href="contact.html" id="cta-lp2-hero" class="btn btn-primary btn-lg">Richiedi l'Analisi di Conformità</a>
-    </div>
-  </section>
+  <section class="lp-main">
+    <div class="lp-layout">
+      <div class="lp-content">
+        <div class="lp-hero-block">
+          <h1>Sei Pronto al 2 Agosto?</h1>
+          <p class="lp-subtitle">Dal 2 agosto 2026 scattano gli obblighi per i sistemi AI ad alto rischio.</p>
+          <a href="#lp-form" id="cta-lp2-hero" class="btn btn-primary btn-lg">Richiedi l'Analisi di Conformità</a>
+        </div>
 
-  <!-- Blocco 2 — Il rischio concreto -->
-  <section class="lp-section light-divider">
-    <div class="lp-inner">
-      <ul class="lp-risk-list">
-        <li><i class="fas fa-scale-balanced"></i><span>Sanzioni fino a 35 milioni di euro o il 7% del fatturato globale per le violazioni più gravi.</span></li>
-        <li><i class="fas fa-store"></i><span>Nel retail, le aree più esposte sono credit scoring e pricing dinamico/assicurativo.</span></li>
-        <li><i class="fas fa-landmark"></i><span>Vigilanza affidata in Italia ad Agenzia per la Cybersicurezza Nazionale e AgID.</span></li>
-      </ul>
-    </div>
-  </section>
+        <ul class="lp-risk-list">
+          <li><i class="fas fa-scale-balanced"></i><span>Sanzioni fino a 35 milioni di euro o il 7% del fatturato globale per le violazioni più gravi.</span></li>
+          <li><i class="fas fa-store"></i><span>Nel retail, le aree più esposte sono credit scoring e pricing dinamico/assicurativo.</span></li>
+          <li><i class="fas fa-landmark"></i><span>Vigilanza affidata in Italia ad Agenzia per la Cybersicurezza Nazionale e AgID.</span></li>
+        </ul>
 
-  <!-- Blocco 3 — Soluzione e differenziazione -->
-  <section class="lp-section dark-section">
-    <div class="lp-inner lp-solution">
-      <div class="lp-solution-row">
-        <span class="lp-label">La soluzione</span>
-        <p>Audit di Blindatura Legale: verifichiamo la tua esposizione reale e mettiamo a norma i tuoi processi AI.</p>
+        <div class="lp-solution">
+          <div class="lp-solution-row">
+            <span class="lp-label">La soluzione</span>
+            <p>Audit di Blindatura Legale: verifichiamo la tua esposizione reale e mettiamo a norma i tuoi processi AI.</p>
+          </div>
+          <div class="lp-solution-row lp-diff">
+            <span class="lp-label">La differenza</span>
+            <p>I competitor offrono un audit una tantum da 5-15mila euro in 6-10 settimane. Noi lo includiamo in un abbonamento continuativo, aggiornato con l'evoluzione della normativa.</p>
+          </div>
+        </div>
       </div>
-      <div class="lp-solution-row lp-diff">
-        <span class="lp-label">La differenza</span>
-        <p>I competitor offrono un audit una tantum da 5-15mila euro in 6-10 settimane. Noi lo includiamo in un abbonamento continuativo, aggiornato con l'evoluzione della normativa.</p>
+
+      <div class="lp-form-col" id="lp-form">
+        <div class="lp-form-card">
+          <h2>Richiedi l'Analisi di Conformità</h2>
+          <iframe data-tally-src="https://tally.so/embed/Y5yR96?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1" loading="lazy" width="100%" height="516" frameborder="0" marginheight="0" marginwidth="0" title="GTAVIANI aiagent contact"></iframe>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Blocco 4 — CTA finale -->
-  <section class="lp-section light-divider lp-final">
-    <div class="lp-inner">
-      <a href="contact.html" id="cta-lp2-final" class="btn btn-primary btn-lg">Richiedi l'Analisi di Conformità</a>
-      <p class="lp-reinforce">Nessun impegno: verifichiamo insieme la tua situazione reale.</p>
-    </div>
-  </section>
+  <script>Tally.loadEmbeds();</script>
 
   <footer class="lp-footer-minimal">
     <p>&copy; 2026 GTAVIANI — Retail E-Commerce Growth. <a href="/privacy.html">Privacy</a></p>
