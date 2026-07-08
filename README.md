@@ -160,21 +160,39 @@ changing them breaks tracking aggregation or the validated conversion flow:
 
 - Semantic HTML with per-section keyword targeting (headings match the search/GEO intent of
   that funnel stage)
-- `Organization` JSON-LD in `<head>` (name, url, logo, `sameAs`)
+- `Organization` JSON-LD in `<head>` on every page (`name`, `url`, `logo`, `description`,
+  `areaServed`, `knowsAbout`, `sameAs`) — the `description`/`knowsAbout` fields are what help AI
+  answer engines match your entity to a topic/query, not just search engines
 - `FAQPage` JSON-LD before the footer, generated from the visible FAQ accordion — this is what
   lets AI answer engines (ChatGPT, Perplexity, Google AI Overviews) cite your FAQ content
   directly (Generative Engine Optimization / GEO)
-- `sitemap.xml` and `robots.txt` at the repo root
+- `llms.txt` at the repo root — a plain-text summary of what the business offers, aimed
+  specifically at LLM-based crawlers/agents (not search engines); see below, this is the file
+  most directly tied to "get recommended by AI models" as a goal, more than any meta tag
+- `sitemap.xml` (with `lastmod`) and `robots.txt` at the repo root
 - Open Graph + Twitter Card meta tags with a dedicated 1200×630 social share image
   (`assets/images/og-image.png`)
+
+### GEO uniqueness — non negoziabile per ogni clone
+
+**Il rischio più concreto per il GEO in questa rete di cloni è il contenuto duplicato**: se due
+siti della rete AWA hanno testi identici o quasi (stessa home, stesse landing, stesso FAQ, stesso
+`llms.txt`), i motori AI tendono a citarne uno solo o nessuno, e la SEO classica penalizza
+entrambi. Non è sufficiente cambiare nome/logo/colori: **ogni sezione testuale, ogni landing page
+e il file `llms.txt` vanno riscritti da zero nel merito** (angolo, esempi, dati citati, FAQ, area
+"knowsAbout") per il verticale e il mercato specifico del nuovo consulente — non è un lavoro di
+trova-e-sostituisci sul brand, è una riscrittura di contenuto. Stessa area geografica (`areaServed:
+"IT"`) va invece lasciata se il nuovo consulente opera in Italia, o adattata se opera altrove.
 
 ### What to do after cloning
 
 1. Update `<link rel="canonical">`, `og:url`, `og:image`, `twitter:image` to your domain
 2. Regenerate `assets/images/og-image.png` at **1200×630px** with your own brand/copy
-3. Update `sitemap.xml` (`<loc>`) and the `Sitemap:` line in `robots.txt` to your domain, then
-   submit the sitemap in Google Search Console (and Bing Webmaster Tools)
-4. Update the `Organization` JSON-LD (`name`, `url`, `logo`, `sameAs`)
+3. Update `sitemap.xml` (`<loc>`, `<lastmod>`) and the `Sitemap:` line in `robots.txt` to your
+   domain, then submit the sitemap in Google Search Console (and Bing Webmaster Tools)
+4. Update the `Organization` JSON-LD on every page (`name`, `url`, `logo`, `description`,
+   `knowsAbout`, `sameAs`) — rewrite `description`/`knowsAbout` for your own vertical, don't just
+   swap the brand name into the original template's wording
 5. Rewrite the `FAQPage` JSON-LD `mainEntity` array to match your rewritten FAQ text exactly —
    mismatched schema vs. visible content can get flagged by search engines
 6. Rewrite section 2/4 copy (see "What MUST change") to avoid duplicate-content penalties across
@@ -182,6 +200,7 @@ changing them breaks tracking aggregation or the validated conversion flow:
 7. If you use the `lp-*.html` landing pages: update their `<link rel="canonical">`, Open Graph/
    Twitter meta (reuse the same `og-image.png`, just adapt title/description per landing) and
    `Organization` JSON-LD, and add each one to `sitemap.xml`
+8. Rewrite `llms.txt` entirely for your business/vertical/target — see "GEO uniqueness" above
 
 ---
 

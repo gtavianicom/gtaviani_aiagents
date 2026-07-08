@@ -71,7 +71,13 @@ Compiti:
 7. Aggiorna README.md di conseguenza (brand, dominio nel testo di esempio).
 8. NON modificare: ordine/numero delle 7 sezioni, naming convention id CTA, pattern
    tecnico del tracking, struttura schema JSON-LD, architettura delle variabili CSS.
-9. Se il nuovo consulente ha (o avrà) campagne Google Ads: adatta le 3 landing page
+9. Riscrivi per intero (non solo il brand) il JSON-LD `Organization` presente in ogni
+   pagina — in particolare i campi `description` e `knowsAbout` — e il file `llms.txt` alla
+   radice del repo, sul verticale/target del nuovo consulente. Questi due elementi sono ciò
+   che permette ai motori/agenti AI (ChatGPT, Perplexity, ecc.) di riconoscere e citare il
+   sito quando un utente chiede informazioni sul tema: se restano quelli originali (retail/
+   e-commerce italiano), il nuovo sito non verrà mai associato al suo vero verticale.
+10. Se il nuovo consulente ha (o avrà) campagne Google Ads: adatta le 3 landing page
    `lp-*.html` (template Annuncio → Landing con form integrato) al suo verticale e ai suoi
    angoli di campagna reali — NON riusare gli angoli originali (consulente AI generico,
    compliance normativa, sostituzione chatbot pubblici) se non pertinenti al nuovo mercato,
@@ -87,5 +93,8 @@ Compiti:
    non servono.
 
 Verifica finale prima di commit: nessun riferimento al brand/verticale originale
-(gtaviani/AWA/retail-ecommerce) è rimasto nel codice o nei contenuti pubblici.
+(gtaviani/AWA/retail-ecommerce) è rimasto nel codice o nei contenuti pubblici, e nessun
+paragrafo di sezioni 2/4/FAQ/landing/`llms.txt`/`knowsAbout` è identico o quasi identico al
+testo originale di questo template — se lo è, riscrivilo di nuovo: è la causa più comune di
+un clone che gli AI answer engine non riescono a distinguere dagli altri siti della rete.
 ```
