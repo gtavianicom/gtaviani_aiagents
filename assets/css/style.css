@@ -828,6 +828,14 @@ section > h2 {
   line-height: 1.45;
 }
 
+.lp-source {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--color-secondary);
+}
+
 .lp-risk-list i {
   color: var(--color-primary);
   font-size: 1.2rem;
