@@ -32,7 +32,7 @@ consulenza, formazione del team e accesso alla piattaforma whitelabel
   mensili (Startup/Business/Corporate), FAQ.
 - [Consulente AI per il Retail & E-Commerce](https://aiagents.gtaviani.com/lp-consulente-ai.html)
 - [AI Act & GDPR](https://aiagents.gtaviani.com/lp-ai-act-gdpr.html)
-- [Il Tuo AI Workspace Aziendale](https://aiagents.gtaviani.com/lp-chatbot-aziendale.html)
+- [AI Chatbot Aziendali](https://aiagents.gtaviani.com/lp-chatbot-aziendale.html)
 - [Fondi e Finanziamenti per l'AI](https://aiagents.gtaviani.com/lp-fondi-pmi.html)
 
 ## Target
