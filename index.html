@@ -557,7 +557,7 @@
       });
 
       var savedUtm = sessionStorage.getItem('gta_lead_utm') || '';
-      var savedParams = new URLSearchParams(savedUtm);
+      var savedParams = new URLSearchParams(savedUtm || window.location.search);
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: 'gta_lead_completed',
@@ -568,9 +568,11 @@
         utm_marketing_tactic: savedParams.get('utm_marketing_tactic') || '',
         gclid: savedParams.get('gclid') || ''
       });
-      if (window.history && window.history.replaceState) {
-        var restoredSearch = (savedUtm ? savedUtm + '&' : '?') + 'lead_completed=1';
-        window.history.replaceState({}, document.title, window.location.pathname + restoredSearch);
+      // Se non c'e' nulla di salvato (es. URL aperto direttamente, non tramite
+      // il funnel landing->form), NON toccare l'URL: meglio lasciare quello
+      // che e' arrivato (marker Tally incluso) che azzerarlo/sostituirlo.
+      if (savedUtm && window.history && window.history.replaceState) {
+        window.history.replaceState({}, document.title, window.location.pathname + savedUtm + '&lead_completed=1');
       }
       sessionStorage.removeItem('gta_lead_utm');
     })();
