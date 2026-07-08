@@ -35,6 +35,9 @@
     "name": "GTAVIANI — Retail E-Commerce Growth",
     "url": "https://aiagents.gtaviani.com/",
     "logo": "https://aiagents.gtaviani.com/assets/images/gtaviani-marca.png",
+    "description": "Consulenza AI Agent per PMI retail ed e-commerce italiane: adozione controllata dell'intelligenza artificiale, formazione del personale, compliance AI Act e GDPR, piattaforma whitelabel AI Workspace.",
+    "areaServed": "IT",
+    "knowsAbout": ["Consulenza AI per PMI", "AI Act", "GDPR", "AI Workspace", "Automazione con AI Agent", "Fondi e finanziamenti per intelligenza artificiale"],
     "sameAs": ["https://www.gtaviani.com"]
   }
   </script>
@@ -509,6 +512,34 @@
         banner.classList.remove('show');
         localStorage.setItem(KEY, '1');
       });
+    })();
+  </script>
+
+  <!-- Popup conferma completamento form: attivato solo quando Tally reindirizza
+       alla home con ?...&utm_source=FormCompleted tra i parametri (GTA-WEB-001) -->
+  <div id="success-modal-overlay" class="success-modal-overlay">
+    <div class="success-modal">
+      <div class="success-modal-icon"><i class="fas fa-circle-check"></i></div>
+      <h3>Richiesta inviata con successo!</h3>
+      <p>Grazie, abbiamo ricevuto i tuoi dati. Ti ricontatteremo al più presto per parlare del tuo progetto.</p>
+      <button type="button" id="success-modal-dismiss" class="btn btn-primary">Ho capito</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      if (window.location.search.indexOf('utm_source=FormCompleted') === -1) return;
+      var overlay = document.getElementById('success-modal-overlay');
+      if (!overlay) return;
+      overlay.classList.add('show');
+      document.getElementById('success-modal-dismiss').addEventListener('click', function () {
+        overlay.classList.remove('show');
+      });
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) overlay.classList.remove('show');
+      });
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
     })();
   </script>
 </body>

@@ -1015,3 +1015,56 @@ section > h2 {
     text-align: center;
   }
 }
+
+/* Popup conferma completamento form (attivato da ?utm_source=FormCompleted
+   nel redirect di Tally verso la home) */
+.success-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.success-modal-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.success-modal {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.success-modal-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(1, 67, 116, 0.1);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto 1.25rem;
+}
+
+.success-modal h3 {
+  margin: 0 0 0.75rem;
+}
+
+.success-modal p {
+  color: var(--color-secondary);
+  margin: 0 0 1.5rem;
+}
