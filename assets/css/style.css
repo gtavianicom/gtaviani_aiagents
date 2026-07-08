@@ -834,6 +834,7 @@ section > h2 {
   font-size: 0.78rem;
   font-style: italic;
   color: var(--color-secondary);
+  text-align: right;
 }
 
 .lp-risk-list i {
