@@ -50,6 +50,17 @@
   })(window,document,'script','dataLayer','GTM-TS75TN3S');</script>
   <!-- End Google Tag Manager -->
 
+  <!-- Cattura utm/ad params in ingresso: il redirect di Tally al completamento
+       form punta a un URL fisso senza attribuzione, altrimenti si perde la
+       campagna di provenienza (GTA-WEB-002) -->
+  <script>
+    (function () {
+      if (window.location.search && window.location.search.indexOf('utm_source=FormCompleted') === -1) {
+        sessionStorage.setItem('gta_lead_utm', window.location.search);
+      }
+    })();
+  </script>
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX');</script>
 </head>

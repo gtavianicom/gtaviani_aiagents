@@ -50,6 +50,17 @@
   })(window,document,'script','dataLayer','GTM-TS75TN3S');</script>
   <!-- End Google Tag Manager -->
 
+  <!-- Cattura utm/ad params in ingresso: il redirect di Tally al completamento
+       form punta a un URL fisso senza attribuzione, altrimenti si perde la
+       campagna di provenienza (GTA-WEB-002) -->
+  <script>
+    (function () {
+      if (window.location.search && window.location.search.indexOf('utm_source=FormCompleted') === -1) {
+        sessionStorage.setItem('gta_lead_utm', window.location.search);
+      }
+    })();
+  </script>
+
   <!-- GA4: ID placeholder -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX');</script>
@@ -516,7 +527,14 @@
   </script>
 
   <!-- Popup conferma completamento form: attivato solo quando Tally reindirizza
-       alla home con ?...&utm_source=FormCompleted tra i parametri (GTA-WEB-001) -->
+       alla home con ?...&utm_source=FormCompleted tra i parametri (GTA-WEB-001).
+       GTA-WEB-002 (2026-07-08): il redirect di Tally punta a un URL fisso che
+       NON porta con sé gli utm della campagna di atterraggio (persi con
+       history.replaceState alla pathname nuda) — questo rompeva l'attribuzione
+       nei sistemi di tracciamento. Ora ripristiniamo gli utm originali salvati
+       in sessionStorage dalla pagina di atterraggio (vedi script dopo il tag
+       GTM in <head>) prima di ripulire l'URL, e li pubblichiamo anche su
+       dataLayer perché GTM non dipenda dal solo parsing dell'URL. -->
   <div id="success-modal-overlay" class="success-modal-overlay">
     <div class="success-modal">
       <div class="success-modal-icon"><i class="fas fa-circle-check"></i></div>
@@ -537,9 +555,24 @@
       overlay.addEventListener('click', function (e) {
         if (e.target === overlay) overlay.classList.remove('show');
       });
+
+      var savedUtm = sessionStorage.getItem('gta_lead_utm') || '';
+      var savedParams = new URLSearchParams(savedUtm);
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'gta_lead_completed',
+        utm_source: savedParams.get('utm_source') || '',
+        utm_medium: savedParams.get('utm_medium') || '',
+        utm_campaign: savedParams.get('utm_campaign') || '',
+        utm_content: savedParams.get('utm_content') || '',
+        utm_marketing_tactic: savedParams.get('utm_marketing_tactic') || '',
+        gclid: savedParams.get('gclid') || ''
+      });
       if (window.history && window.history.replaceState) {
-        window.history.replaceState({}, document.title, window.location.pathname);
+        var restoredSearch = (savedUtm ? savedUtm + '&' : '?') + 'lead_completed=1';
+        window.history.replaceState({}, document.title, window.location.pathname + restoredSearch);
       }
+      sessionStorage.removeItem('gta_lead_utm');
     })();
   </script>
 </body>
