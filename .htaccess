@@ -1,0 +1,5 @@
+# Blocca l'accesso pubblico a .git/ — il deploy (update.sh) fa "git pull"
+# direttamente nel webroot, quindi .git/ esiste fisicamente qui accanto ai
+# file pubblici. Senza questa regola è scaricabile via browser/curl.
+RewriteEngine On
+RewriteRule "(^|/)\.git" - [F,L]
