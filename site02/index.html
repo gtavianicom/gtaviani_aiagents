@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenti AI per PMI Retail &amp; E-commerce | GTaviani Consulting</title>
+  <meta name="description" content="Consulenza AI Agent per PMI retail ed e-commerce italiane: marketing, sales e customer service automatizzati con GTaviani AI Space. Monitora costi e performance agente per agente.">
+  <link rel="canonical" href="https://aiagents.gtaviani.com/">
+  <meta name="theme-color" content="#014374">
+
+  <!-- Open Graph / social share -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aiagents.gtaviani.com/">
+  <meta property="og:site_name" content="GTaviani Consulting">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:title" content="Consulente AI per Retail & E-Commerce | GTaviani Consulting">
+  <meta property="og:description" content="Consulenza AI Agent per PMI retail ed e-commerce italiane: marketing, sales e customer service automatizzati con GTaviani AI Space. Monitora costi e performance agente per agente.">
+  <meta property="og:image" content="https://aiagents.gtaviani.com/assets/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="GTaviani Consulting — Consulente AI per Retail &amp; E-Commerce">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Consulente AI per Retail & E-Commerce | GTaviani Consulting">
+  <meta name="twitter:description" content="Consulenza AI Agent per PMI retail ed e-commerce italiane: marketing, sales e customer service automatizzati con GTaviani AI Space.">
+  <meta name="twitter:image" content="https://aiagents.gtaviani.com/assets/images/og-image.png">
+  <link rel="icon" type="image/png" href="assets/images/gtaviani-marca.png">
+  <link rel="apple-touch-icon" href="assets/images/gtaviani-marca.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "GTAVIANI — Retail E-Commerce Growth",
+    "url": "https://aiagents.gtaviani.com/",
+    "logo": "https://aiagents.gtaviani.com/assets/images/gtaviani-marca.png",
+    "description": "Consulenza AI Agent per PMI retail ed e-commerce italiane: adozione controllata dell'intelligenza artificiale, formazione del personale, compliance AI Act e GDPR, piattaforma whitelabel AI Workspace.",
+    "areaServed": "IT",
+    "knowsAbout": ["Consulenza AI per PMI", "AI Act", "GDPR", "AI Workspace", "Automazione con AI Agent", "Fondi e finanziamenti per intelligenza artificiale"],
+    "sameAs": ["https://www.gtaviani.com"]
+  }
+  </script>
+
+  <!-- Consent Mode v2 (default negato) -- GTA-LEGAL-001, conforme Linee Guida Cookie Garante Privacy -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 500
+    });
+    (function () {
+      var stored = localStorage.getItem('gta_cookie_consent');
+      if (stored === 'granted') {
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted',
+          'analytics_storage': 'granted'
+        });
+      }
+    })();
+  </script>
+
+  <!-- Google Tag Manager (container reale fornito da Gabriele) -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TS75TN3S');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Cattura utm/ad params in ingresso: il redirect di Tally al completamento
+       form punta a un URL fisso senza attribuzione, altrimenti si perde la
+       campagna di provenienza (GTA-WEB-002) -->
+  <script>
+    (function () {
+      if (window.location.search && window.location.search.indexOf('utm_source=FormCompleted') === -1) {
+        sessionStorage.setItem('gta_lead_utm', window.location.search);
+      }
+    })();
+  </script>
+
+  <!-- GA4: ID placeholder -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX');</script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TS75TN3S"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#hero" class="logo-link">
+        <img src="assets/images/gtaviani-logo-orizzontale.png" alt="GTAVIANI — Retail E-Commerce Growth" class="logo">
+      </a>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Apri il menu">
+        <i class="fas fa-bars"></i>
+      </label>
+
+      <nav class="site-nav">
+        <a href="#fiducia-faq">AI Act &amp; GDPR</a>
+        <a href="#consulente-esterno">Consulenza AI</a>
+        <a href="#piattaforma">AI Workspace</a>
+      </nav>
+
+      <a href="contact.html" id="cta-nav-contact" class="btn btn-primary nav-contact">CONTATTO</a>
+      <a href="https://aispace.gtaviani.com" class="btn btn-primary-light nav-login">LOGIN</a>
+    </div>
+  </header>
+
+  <!-- [1] HERO — GTA-CONTENT-001 -->
+  <section id="hero" class="hero">
+    <h1>Consulente AI in Affitto<br><span class="hero-subline">Per Retail &amp; E-Commerce</span></h1>
+    <p class="hero-subtitle">Recupera ore di lavoro ed elimina le attività ripetitive con agenti AI su misura.<br>Nessun investimento iniziale, nessun team da assumere.</p>
+    <a href="#problema" id="cta-hero-scroll" class="scroll-cue" aria-label="Scopri di più">Scopri come ↓</a>
+  </section>
+
+  <!-- [2] IL PROBLEMA — GTA-CONTENT-002 -->
+  <section id="problema">
+    <h2>PMI &amp; AI</h2>
+    <p class="section-intro">Non è un problema di tecnologia. È un problema di competenze e fiducia — quelle che la tua PMI non deve costruire da sola.</p>
+
+    <div class="stat-callout">
+      <div class="stat-strip">
+        <div class="stat-item">
+          <span class="stat-number">8,2%</span>
+          <span class="stat-label">PMI Italiane con AI</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">13,5%</span>
+          <span class="stat-label">Media Europea</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">70,2%</span>
+          <span class="stat-label">PMI Pronte per AI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-circle-question"></i></div>
+        <h3>Perché investire in AI, per cosa</h3>
+        <p>Sai che devi portarla in azienda, ma manca chiarezza sul perché e su cosa farci davvero.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-people-arrows"></i></div>
+        <h3>Resistenza del personale interno</h3>
+        <p>Il team teme di essere sostituito o non sa come integrare l'AI nel proprio lavoro quotidiano.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-compass"></i></div>
+        <h3>Confusione su cosa far fare all'AI</h3>
+        <p>Troppe possibilità, nessuna priorità chiara su dove far partire l'adozione.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-chart-pie"></i></div>
+        <h3>Ritorno dell'investimento poco chiaro</h3>
+        <p>Difficile stimare cosa guadagni davvero rispetto a quanto investi.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-receipt"></i></div>
+        <h3>Costo reale dell'AI incerto</h3>
+        <p>Non è chiaro come i costi vengano coperti né come diventino un acceleratore di ricavi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- [3] AI ACT & GDPR — GTA-CONTENT-003 -->
+  <section id="fiducia-faq" class="light-divider">
+    <h2>AI Act &amp; GDPR</h2>
+    <p class="section-intro">
+      Ogni PMI che usa un agente AI — anche solo un chatbot — è già <strong>deployer</strong>
+      secondo l'AI Act europeo: l'obbligo di <strong>alfabetizzazione AI del personale (Art. 4)</strong>
+      è già in vigore, e dal <strong>2 dicembre 2026</strong> scattano gli obblighi di
+      <strong>trasparenza verso i clienti (Art. 50)</strong> — scadenze già fissate, sanzioni
+      concrete per chi non si adegua.
+    </p>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h3>Alfabetizzazione AI del personale</h3>
+        <p>Chi in azienda usa sistemi AI deve avere un livello adeguato di competenza, documentato — obbligo già in vigore.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-comment-dots"></i></div>
+        <h3>Trasparenza verso i clienti</h3>
+        <p>Chi interagisce con un tuo chatbot o agente AI deve saperlo: la disclosure non è opzionale.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-file-signature"></i></div>
+        <h3>DPA con i fornitori AI</h3>
+        <p>Ogni fornitore che tratta dati della tua azienda per conto tuo richiede un accordo di trattamento dati in regola.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-shield-halved"></i></div>
+        <h3>Informativa privacy aggiornata</h3>
+        <p>I trattamenti che passano da sistemi AI vanno riportati in informativa, con basi giuridiche corrette.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-clipboard-check"></i></div>
+        <h3>Registro e audit trail</h3>
+        <p>Serve traccia documentata di quali agenti usi, su quali dati, e con quale supervisione umana.</p>
+      </div>
+    </div>
+
+    <div class="conclusion-grid">
+      <div class="conclusion-box">
+        <div class="alert-icon"><i class="fas fa-triangle-exclamation"></i></div>
+        <div class="alert-content">
+          <strong>Rischi e Sanzioni</strong>
+          <p>Sanzioni fino al <strong>7% del fatturato globale</strong> per i sistemi ad alto
+            rischio non conformi, esclusione da bandi e forniture pubbliche o aziendali, oltre
+            all'esposizione legale diretta per danni causati da sistemi AI non controllati.</p>
+        </div>
+      </div>
+      <div class="ready-box">
+        <div class="alert-icon"><i class="fas fa-circle-check"></i></div>
+        <div class="alert-content">
+          <strong>Cosa significa essere AI-Act Ready</strong>
+          <p>Agenti AI trasparenti e documentati, dati trattati in regola, obblighi di
+            disclosure rispettati: la conformità diventa un requisito che sempre più bandi e
+            forniture ti chiederanno per lavorare con te.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- [4] CONSULENTE AI — GTA-CONTENT-004 -->
+  <section id="consulente-esterno" class="dark-section">
+    <div class="section-icon"><i class="fas fa-user-tie"></i></div>
+    <h2>Consulente AI</h2>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-arrows-to-circle"></i></div>
+        <h3>Integrazione AI in azienda</h3>
+        <p>Portiamo l'AI dentro i tuoi processi reali, non un tool isolato da qualcun altro.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-comments"></i></div>
+        <h3>Parla lingua Imprenditore</h3>
+        <p>Comunicazione diretta, senza gergo tecnico: capisci sempre cosa stai decidendo.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-diagram-project"></i></div>
+        <h3>Business Process Support</h3>
+        <p>Non un tecnico AI: un consulente di business e processo, competente in intelligenza artificiale.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-shield-halved"></i></div>
+        <h3>GDPR &amp; AI Act Esperto</h3>
+        <p>Sempre aggiornato sulle evoluzioni normative europee in materia di compliance AI.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-people-group"></i></div>
+        <h3>Community &amp; Network</h3>
+        <p>Supporto formativo e collaborativo, insieme a una rete di esperti verticali.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Performance Oriented</h3>
+        <p>Monitoraggio costante di costi e performance dei tuoi agenti AI.</p>
+      </div>
+    </div>
+
+    <div class="stat-callout">
+      <p class="result-intro">Risultato indicativo per le PMI che adottano questo modello:</p>
+      <div class="stat-strip">
+        <div class="stat-item">
+          <span class="stat-number">-40/60%</span>
+          <span class="stat-label">tempi di supporto</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">+20/35%</span>
+          <span class="stat-label">conversioni</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon"><i class="fas fa-check-circle"></i></span>
+          <span class="stat-label">compliance garantita</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon"><i class="fas fa-check-circle"></i></span>
+          <span class="stat-label">ROI Agenti AI positivo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- [ROADMAP] Percorso Mese 1 -> 4+ — GTA-ROADMAP-001 (repositioning 2026-07-16) -->
+  <section id="roadmap" class="light-divider">
+    <h2>Il Percorso in 4 Mesi</h2>
+    <p class="section-intro">Dal primo audit alla crescita continua: il percorso che seguiamo insieme, passo dopo passo.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+        <span class="roadmap-month">Mese 1</span>
+        <h3>Audit delle Ore Perse</h3>
+        <p>Mappiamo i processi che oggi assorbono più tempo del team, per capire dove l'AI può liberare ore reali.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-rocket"></i></div>
+        <span class="roadmap-month">Mese 2</span>
+        <h3>Primo Pilota</h3>
+        <p>Attiviamo un primo agente AI su un processo mirato, per validare risultati concreti prima di scalare.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-graduation-cap"></i></div>
+        <span class="roadmap-month">Mese 3</span>
+        <h3>Onboarding e Formazione</h3>
+        <p>Formiamo il team all'uso corretto degli agenti AI, in linea con gli obblighi di alfabetizzazione dell'AI Act (Art. 4).</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-arrow-trend-up"></i></div>
+        <span class="roadmap-month">Mese 4+</span>
+        <h3>Ottimizzazione e Crescita</h3>
+        <p>Monitoriamo costi e performance, ampliando gradualmente gli agenti AI ad altri processi aziendali.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- [5] AI WORKSPACE WHITELABEL (piattaforma) — GTA-CONTENT-005 -->
+  <section id="piattaforma">
+    <h2>AI Workspace Whitelabel</h2>
+    <p class="section-intro">
+      La piattaforma aziendale per i dipendenti dove gestire le risorse AI.
+    </p>
+
+    <!-- Screenshot dashboard reale, ripulito da riferimenti aiworkspace.agency (footer + email utente) -->
+    <div class="dashboard-preview">
+      <img src="assets/images/dashboard-preview.png" alt="Dashboard GTaviani AI Space: progetti e risorse AI, andamento mensile" class="dashboard-img">
+    </div>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-file-shield"></i></div>
+        <h3>Compliance &amp; Contratti</h3>
+        <p>Ogni utente che accede alla piattaforma e alle risorse AI è coperto da compliance GDPR e AI Act.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-diagram-project"></i></div>
+        <h3>AI Project</h3>
+        <p>Gestione dei progetti AI dall'idea alla messa online.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-robot"></i></div>
+        <h3>AI Resources</h3>
+        <p>Configurazione di tool, dati e frontend delle risorse AI (agenti).</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-plug"></i></div>
+        <h3>AI Plugin</h3>
+        <p>Frontend web, mobile e integrazione via API, con disclosure AI conforme all'AI Act: i tuoi clienti sanno sempre quando stanno interagendo con un agente.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-gauge-high"></i></div>
+        <h3>Costi &amp; Performance</h3>
+        <p>Dashboard con dati e grafici delle performance e costi chiari di ogni singolo agente.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-users"></i></div>
+        <h3>AI Team</h3>
+        <p>Gestione della relazione tra il personale aziendale e le risorse AI.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- [6] I PIANI — GTA-CONTENT-006 -->
+  <section id="piani" class="dark-section">
+    <h2>Piani Mensili</h2>
+    <p class="section-intro">
+      Consulente e Uso AI tutto in un piano mensile continuativo e scalabile.
+    </p>
+    <div class="plans-grid">
+      <article class="plan-card">
+        <h3>Startup</h3>
+        <p class="plan-price">€866<span>/mese</span></p>
+        <ul>
+          <li><strong>12</strong> Ore consulenza/mese</li>
+          <li><strong>5.000</strong> Crediti (Servizi e Token AI)</li>
+          <li><strong>10%</strong> Sconto Pacchetti Extra Ore/Crediti</li>
+          <li>AI Workspace (Whitelabel)</li>
+        </ul>
+        <a href="contact.html" id="cta-plans-startup" class="btn btn-secondary">Richiedi informazioni</a>
+      </article>
+      <article class="plan-card plan-card--highlight">
+        <h3>Business</h3>
+        <p class="plan-price">€1.268<span>/mese</span></p>
+        <ul>
+          <li><strong>20</strong> Ore consulenza/mese</li>
+          <li><strong>10.000</strong> Crediti (Servizi e Token AI)</li>
+          <li><strong>15%</strong> Sconto Pacchetti Extra Ore/Crediti</li>
+          <li>AI Workspace (Whitelabel)</li>
+        </ul>
+        <a href="contact.html" id="cta-plans-business" class="btn btn-primary">Richiedi informazioni</a>
+      </article>
+      <article class="plan-card">
+        <h3>Corporate</h3>
+        <p class="plan-price">€2.425<span>/mese</span></p>
+        <ul>
+          <li><strong>45</strong> Ore consulenza/mese</li>
+          <li><strong>25.000</strong> Crediti (Servizi e Token AI)</li>
+          <li><strong>25%</strong> Sconto Pacchetti Extra Ore/Crediti</li>
+          <li>AI Workspace (Whitelabel)</li>
+          <li>AI Resource Dashboard</li>
+        </ul>
+        <a href="contact.html" id="cta-plans-corporate" class="btn btn-secondary">Richiedi informazioni</a>
+      </article>
+    </div>
+    <p class="plans-note">Le ore di consulenza non utilizzate non scadono: restano cumulabili nei mesi successivi.</p>
+  </section>
+
+  <!-- [DASHBOARD] AI Resource Dashboard — GTA-DASHSECTION-001 (feature futura, non ancora live) -->
+  <section id="ai-resource-dashboard" class="light-divider">
+    <div class="section-badge-row"><span class="section-badge">In arrivo</span></div>
+    <h2>AI Resource Dashboard</h2>
+    <p class="section-intro">
+      L'area riservata dove il cliente Corporate monitora in tempo reale il lavoro delle
+      risorse AI dedicate al proprio progetto: avanzamento, output prodotti, costi e
+      performance, tutto in un'unica vista.
+    </p>
+    <div class="dashboard-preview">
+      <img src="assets/images/ai-resources-mockup.png" alt="Mockup AI Resource Dashboard: monitoraggio in tempo reale delle risorse AI dedicate al progetto" class="dashboard-img">
+    </div>
+    <p class="section-intro">Funzione in sviluppo, inclusa nel Piano Corporate — non ancora attiva.</p>
+  </section>
+
+  <!-- [7] FAQ — da popolare: domande e risposte da definire con Gabriele -->
+  <section id="faq" class="light-divider">
+    <h2>FAQ</h2>
+
+    <div class="faq-category">
+      <h3 class="faq-category-title">AI Act &amp; GDPR</h3>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>AI Act e GDPR per le PMI: come si interpretano e quali sono i rischi?</summary>
+          <p>Ogni PMI che usa un agente AI — anche solo un chatbot — diventa deployer secondo
+            l'AI Act, con obblighi di trasparenza, documentazione e gestione dati che si sommano
+            a quelli già previsti dal GDPR. I rischi principali per chi non si adegua sono
+            sanzioni fino al 7% del fatturato globale, l'esclusione da bandi e forniture che
+            richiedono fornitori AI Act-ready, ed esposizione legale diretta per danni causati da
+            sistemi AI non controllati.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Da quando l'AI Act si applica anche ai chatbot?</summary>
+          <p>L'obbligo di formare il personale che usa sistemi AI (art. 4) è già in vigore. Dal
+            2 dicembre 2026 scattano anche gli obblighi di trasparenza (art. 50): se il tuo
+            chatbot interagisce con clienti, sei un deployer con obblighi di disclosure da
+            rispettare, indipendentemente dalle dimensioni della tua PMI.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Cosa succede se non sono conforme all'AI Act?</summary>
+          <p>Rischi sanzioni fino al 7% del fatturato globale, l'esclusione da bandi e forniture
+            pubbliche o aziendali che richiedono fornitori AI Act-ready, ed esposizione legale
+            diretta per danni causati da sistemi AI non controllati.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <h3 class="faq-category-title">Consulente AI</h3>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Chi sono i consulenti AI e perché sono importanti per le PMI?</summary>
+          <p>I consulenti AI sono professionisti che affiancano la tua PMI nell'adozione
+            dell'intelligenza artificiale: non vendono un tool, ma progettano, implementano e
+            monitorano gli agenti AI nel tempo, parlano la lingua del business e garantiscono la
+            conformità GDPR e AI Act. Per una PMI sono importanti perché permettono di adottare
+            l'AI senza dover costruire competenze interne da zero, riducendo rischi legali e
+            tempi di attivazione.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Che differenza c'è tra un consulente AI e un'agenzia di sviluppo software?</summary>
+          <p>Un'agenzia sviluppa software su specifica e poi si ferma. Un consulente AI
+            progetta, implementa e monitora gli agenti nel tempo, parla la lingua del business,
+            gestisce la relazione con la piattaforma e garantisce la conformità normativa — un
+            accompagnamento continuativo, non un progetto una tantum.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Come scelgo un consulente AI qualificato?</summary>
+          <p>Cerca chi è certificato dalla community di consulenti AI, ha esperienza reale nel
+            tuo verticale di mercato, e offre un modello di accompagnamento continuativo con
+            monitoraggio di costi e performance — non solo l'installazione di un tool.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <h3 class="faq-category-title">Piattaforma Whitelabel</h3>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Cos'è la piattaforma whitelabel GTaviani AI Space?</summary>
+          <p>È il tuo AI Workspace aziendale: un portale dove gestisci progetti AI, risorse
+            (agenti), team interno e compliance, con il tuo brand — senza dover costruire
+            un'infrastruttura da zero.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Posso integrare gli agenti AI nel mio sito o app esistente?</summary>
+          <p>Sì: il frontend degli agenti è integrabile in qualsiasi piattaforma web, mobile o
+            tramite API, senza vincolarti all'interfaccia standard.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Come monitoro costi e performance degli agenti?</summary>
+          <p>Dalla dashboard della piattaforma: dati e grafici chiari sui costi e le performance
+            di ogni singolo agente, in tempo reale.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <h3 class="faq-category-title">Costi e Piani</h3>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Quanto costa attivare un consulente AI?</summary>
+          <p>A partire da €866/mese (piano Startup), con 12 ore di consulenza incluse e 5.000
+            crediti piattaforma al mese. I piani superiori (Business, Corporate) scalano ore,
+            crediti e sconti sugli extra.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Posso disdire il piano quando voglio?</summary>
+          <p>Il piano ha una durata di 12 mesi, scalabile direttamente in piattaforma, con
+            recesso possibile su richiesta.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Cosa succede se supero le ore o i crediti inclusi nel piano?</summary>
+          <p>Puoi acquistare pacchetti extra di ore di consulenza e crediti piattaforma, con uno
+            sconto dedicato (10/15/25% a seconda del piano) rispetto al prezzo standard.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "AI Act e GDPR per le PMI: come si interpretano e quali sono i rischi?", "acceptedAnswer": {"@type": "Answer", "text": "Ogni PMI che usa un agente AI diventa deployer secondo l'AI Act, con obblighi di trasparenza e gestione dati. I rischi includono sanzioni fino al 7% del fatturato globale ed esclusione da bandi e forniture che richiedono fornitori AI Act-ready."}},
+      {"@type": "Question", "name": "Da quando l'AI Act si applica anche ai chatbot?", "acceptedAnswer": {"@type": "Answer", "text": "L'obbligo di formare il personale che usa sistemi AI (art. 4) e' gia' in vigore. Dal 2 dicembre 2026 scattano anche gli obblighi di trasparenza (art. 50) per i sistemi conversazionali che interagiscono con i clienti."}},
+      {"@type": "Question", "name": "Cosa succede se non sono conforme all'AI Act?", "acceptedAnswer": {"@type": "Answer", "text": "Sanzioni fino al 7% del fatturato globale, esclusione da bandi e forniture pubbliche o aziendali, esposizione legale diretta per danni causati da sistemi AI non controllati."}},
+      {"@type": "Question", "name": "Chi sono i consulenti AI e perché sono importanti per le PMI?", "acceptedAnswer": {"@type": "Answer", "text": "I consulenti AI progettano, implementano e monitorano gli agenti AI nel tempo, parlano la lingua del business e garantiscono la conformità GDPR e AI Act, permettendo alla PMI di adottare l'AI senza costruire competenze interne da zero."}},
+      {"@type": "Question", "name": "Che differenza c'è tra un consulente AI e un'agenzia di sviluppo software?", "acceptedAnswer": {"@type": "Answer", "text": "Un'agenzia sviluppa software su specifica. Un consulente AI progetta, implementa e monitora gli agenti nel tempo con un accompagnamento continuativo, non un progetto una tantum."}},
+      {"@type": "Question", "name": "Come scelgo un consulente AI qualificato?", "acceptedAnswer": {"@type": "Answer", "text": "Cerca chi e' certificato dalla community di consulenti AI, ha esperienza nel tuo verticale, e offre monitoraggio continuativo di costi e performance."}},
+      {"@type": "Question", "name": "Cos'è la piattaforma whitelabel GTaviani AI Space?", "acceptedAnswer": {"@type": "Answer", "text": "Un AI Workspace aziendale per gestire progetti AI, risorse, team interno e compliance, con il tuo brand."}},
+      {"@type": "Question", "name": "Posso integrare gli agenti AI nel mio sito o app esistente?", "acceptedAnswer": {"@type": "Answer", "text": "Si', il frontend degli agenti e' integrabile in qualsiasi piattaforma web, mobile o tramite API."}},
+      {"@type": "Question", "name": "Come monitoro costi e performance degli agenti?", "acceptedAnswer": {"@type": "Answer", "text": "Dalla dashboard della piattaforma, con dati e grafici su costi e performance di ogni agente in tempo reale."}},
+      {"@type": "Question", "name": "Quanto costa attivare un consulente AI?", "acceptedAnswer": {"@type": "Answer", "text": "A partire da 866EUR/mese (piano Startup), con 12 ore di consulenza e 5.000 crediti piattaforma inclusi."}},
+      {"@type": "Question", "name": "Posso disdire il piano quando voglio?", "acceptedAnswer": {"@type": "Answer", "text": "Il piano ha durata 12 mesi, scalabile in piattaforma, con recesso possibile su richiesta."}},
+      {"@type": "Question", "name": "Cosa succede se supero le ore o i crediti inclusi nel piano?", "acceptedAnswer": {"@type": "Answer", "text": "Puoi acquistare pacchetti extra di ore e crediti con uno sconto dedicato (10/15/25% a seconda del piano)."}}
+    ]
+  }
+  </script>
+
+  <!-- [8] FOOTER — GTA-CONTENT-008 -->
+  <section id="cta-footer" class="dark-section">
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <img src="assets/images/gtaviani-logo-orizzontale.png" alt="GTAVIANI — Retail E-Commerce Growth" class="footer-logo">
+        <div class="footer-links">
+          <a href="https://www.gtaviani.com" id="cta-footer-home">gtaviani.com</a>
+          <a href="https://aispace.gtaviani.com" id="cta-footer-login">Accesso Cliente</a>
+          <a href="/sitemap.xml" id="cta-footer-sitemap">Sitemap</a>
+          <a href="/privacy.html" id="cta-footer-privacy">Privacy</a>
+        </div>
+      </div>
+      <nav class="footer-landing-links" aria-label="Soluzioni AI per la tua PMI">
+        <a href="/lp-consulente-ai.html">Consulente AI per il Retail</a>
+        <a href="/lp-ai-act-gdpr.html">AI Act e GDPR per PMI</a>
+        <a href="/lp-chatbot-aziendale.html">AI Chatbot Aziendali</a>
+        <a href="/lp-fondi-pmi.html">Fondi e Finanziamenti per AI</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 GTAVIANI — Retail E-Commerce Growth. Tutti i diritti riservati.</p>
+    </footer>
+  </section>
+
+  <!-- Cookie banner conforme Linee Guida Garante Privacy: nessun tracker di profilazione
+       fino a consenso esplicito (Consent Mode v2 in <head>) -- GTA-LEGAL-001 -->
+  <div id="cookie-banner" class="cookie-banner">
+    <p>Usiamo cookie tecnici (sempre attivi) e, solo previo consenso, cookie di terze parti
+      (Google Analytics, Google Ads, LinkedIn Ads, Meta Ads) per statistiche e pubblicità.
+      <a href="/privacy.html">Scopri di più</a>.</p>
+    <div class="cookie-banner-actions">
+      <button type="button" id="cookie-banner-reject" class="btn btn-secondary">Rifiuta</button>
+      <button type="button" id="cookie-banner-accept" class="btn btn-primary">Accetta</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var KEY = 'gta_cookie_consent';
+      var banner = document.getElementById('cookie-banner');
+      if (!banner || localStorage.getItem(KEY)) return;
+      setTimeout(function () { banner.classList.add('show'); }, 600);
+      function setConsent(value) {
+        localStorage.setItem(KEY, value);
+        banner.classList.remove('show');
+        if (window.gtag) {
+          gtag('consent', 'update', {
+            'ad_storage': value,
+            'ad_user_data': value,
+            'ad_personalization': value,
+            'analytics_storage': value
+          });
+        }
+      }
+      document.getElementById('cookie-banner-accept').addEventListener('click', function () { setConsent('granted'); });
+      document.getElementById('cookie-banner-reject').addEventListener('click', function () { setConsent('denied'); });
+    })();
+  </script>
+
+  <!-- Popup conferma completamento form: attivato solo quando Tally reindirizza
+       alla home con ?...&utm_source=FormCompleted tra i parametri (GTA-WEB-001).
+       GTA-WEB-002 (2026-07-08): il redirect di Tally punta a un URL fisso che
+       NON porta con sé gli utm della campagna di atterraggio (persi con
+       history.replaceState alla pathname nuda) — questo rompeva l'attribuzione
+       nei sistemi di tracciamento. Ora ripristiniamo gli utm originali salvati
+       in sessionStorage dalla pagina di atterraggio (vedi script dopo il tag
+       GTM in <head>) prima di ripulire l'URL, e li pubblichiamo anche su
+       dataLayer perché GTM non dipenda dal solo parsing dell'URL. -->
+  <div id="success-modal-overlay" class="success-modal-overlay">
+    <div class="success-modal">
+      <div class="success-modal-icon"><i class="fas fa-circle-check"></i></div>
+      <h3>Richiesta inviata con successo!</h3>
+      <p>Grazie, abbiamo ricevuto i tuoi dati. Ti ricontatteremo al più presto per parlare del tuo progetto.</p>
+      <button type="button" id="success-modal-dismiss" class="btn btn-primary">Ho capito</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      if (window.location.search.indexOf('utm_source=FormCompleted') === -1) return;
+      var overlay = document.getElementById('success-modal-overlay');
+      if (!overlay) return;
+      overlay.classList.add('show');
+      document.getElementById('success-modal-dismiss').addEventListener('click', function () {
+        overlay.classList.remove('show');
+      });
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) overlay.classList.remove('show');
+      });
+
+      var savedUtm = sessionStorage.getItem('gta_lead_utm') || '';
+      var savedParams = new URLSearchParams(savedUtm || window.location.search);
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'gta_lead_completed',
+        utm_source: savedParams.get('utm_source') || '',
+        utm_medium: savedParams.get('utm_medium') || '',
+        utm_campaign: savedParams.get('utm_campaign') || '',
+        utm_content: savedParams.get('utm_content') || '',
+        utm_marketing_tactic: savedParams.get('utm_marketing_tactic') || '',
+        gclid: savedParams.get('gclid') || ''
+      });
+      // Se non c'e' nulla di salvato (es. URL aperto direttamente, non tramite
+      // il funnel landing->form), NON toccare l'URL: meglio lasciare quello
+      // che e' arrivato (marker Tally incluso) che azzerarlo/sostituirlo.
+      if (savedUtm && window.history && window.history.replaceState) {
+        window.history.replaceState({}, document.title, window.location.pathname + savedUtm + '&lead_completed=1');
+      }
+      sessionStorage.removeItem('gta_lead_utm');
+    })();
+  </script>
+</body>
+</html>

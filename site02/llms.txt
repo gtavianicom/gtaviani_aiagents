@@ -1,0 +1,42 @@
+# GTAVIANI — Retail E-Commerce Growth
+
+> Consulenza AI Agent per PMI italiane del retail e dell'e-commerce: adozione
+> controllata dell'intelligenza artificiale, formazione del personale,
+> compliance AI Act e GDPR, piattaforma whitelabel AI Workspace.
+
+GTAVIANI Consulting affianca le PMI italiane (5-30 dipendenti) del settore
+retail ed e-commerce nell'adozione dell'intelligenza artificiale, con un
+modello di abbonamento mensile continuativo (non un progetto una tantum):
+consulenza, formazione del team e accesso alla piattaforma whitelabel
+"AI Workspace" per gestire agenti AI aziendali in sicurezza.
+
+## Cosa offre
+
+- **Consulente AI esterno**: affianca l'azienda senza essere coinvolto nei
+  modelli organizzativi interni, orientato alle performance di business.
+- **AI Workspace aziendale**: un team di AI Agent che sostituisce l'uso non
+  controllato di ChatGPT/Claude da parte dei dipendenti, con regole, limiti
+  e integrazione con i dati aziendali decisi dall'azienda stessa.
+- **Compliance AI Act & GDPR**: audit e piattaforma per gestire consensi e
+  contratti AI Act, con il coinvolgimento del Responsabile del Trattamento
+  Dati — non consulenza legale, ma supporto tecnologico.
+- **Fondi e finanziamenti**: supporto nella costruzione di piani annuali o
+  pacchetti di ore/crediti su misura, dimensionati sui fondi e bandi a cui
+  l'azienda italiana ha accesso (es. Transizione 5.0, Fondo Nuove Competenze,
+  voucher regionali per la digitalizzazione).
+
+## Pagine
+
+- [Home](https://aiagents.gtaviani.com/): panoramica completa — problema,
+  compliance AI Act/GDPR, consulente AI, piattaforma AI Workspace, piani
+  mensili (Startup/Business/Corporate), FAQ.
+- [Consulente AI per il Retail & E-Commerce](https://aiagents.gtaviani.com/lp-consulente-ai.html)
+- [AI Act & GDPR](https://aiagents.gtaviani.com/lp-ai-act-gdpr.html)
+- [AI Chatbot Aziendali](https://aiagents.gtaviani.com/lp-chatbot-aziendale.html)
+- [Fondi e Finanziamenti per l'AI](https://aiagents.gtaviani.com/lp-fondi-pmi.html)
+
+## Target
+
+PMI italiane del settore retail ed e-commerce, 5-30 dipendenti, guidate da un
+decision maker che vuole adottare l'AI senza disorganizzare il team né
+assumere personale specializzato.
