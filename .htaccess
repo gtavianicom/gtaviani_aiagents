@@ -3,3 +3,14 @@
 # file pubblici. Senza questa regola è scaricabile via browser/curl.
 RewriteEngine On
 RewriteRule "(^|/)\.git" - [F,L]
+
+# Canonicalizza host+scheme su https://aiagents.gtaviani.com (coerente col
+# canonical tag già presente in ogni pagina) — prima di questa regola
+# http/https e www/non-www rispondevano tutti 200 senza redirect (anche
+# www.aiagents.gtaviani.com, probabile wildcard hosting), creando copie
+# duplicate crawlabili della stessa pagina. GSC segnalava "Pagina
+# alternativa con tag canonical appropriato" su parte delle pagine per
+# questo motivo (GTA-SEO-003, 2026-07-19).
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\.aiagents\.gtaviani\.com$ [NC]
+RewriteRule ^(.*)$ https://aiagents.gtaviani.com/$1 [L,R=301]
