@@ -30,6 +30,19 @@ consulenza, formazione del team e accesso alla piattaforma whitelabel
 - [Home](https://aiagents.gtaviani.com/): panoramica completa — problema,
   compliance AI Act/GDPR, consulente AI, piattaforma AI Workspace, piani
   mensili (Startup/Business/Corporate), FAQ.
+- [Team AI per E-Commerce Retail](https://aiagents.gtaviani.com/retail-ecommerce-ai-team.html):
+  verticalizzazione per PMI retail ed e-commerce italiane — un team di agenti
+  AI guidato da un Chief E-Commerce AI (CEC) e organizzato in 3 Direttori
+  (Tecnico, Marketing, Business Analytics), ciascuno con risorse operative
+  dedicate (CMS/catalogo, performance sito, integrazioni dati, media
+  Google/Meta/TikTok, creative/contenuti, CRM/marketing automation, analisi
+  storica, modellazione/proiezioni, reporting). Alternativa AI ad agenzia
+  esterna e team interno e-commerce, al 30% del costo, operativa 24/7.
+  Programma limitato a 10 aziende retail italiane, con audit e setup
+  gratuiti (valore €4.500).
+- [Prenota l'Analisi Gratuita — AI E-Commerce Team](https://aiagents.gtaviani.com/prenota-ecommerce-ai-team.html):
+  pagina di contatto dedicata al programma AI E-Commerce Team — audit e setup
+  gratuiti (valore €4.500), priority list per ordine di ricezione della richiesta.
 - [Consulente AI per il Retail & E-Commerce](https://aiagents.gtaviani.com/lp-consulente-ai.html)
 - [AI Act & GDPR](https://aiagents.gtaviani.com/lp-ai-act-gdpr.html)
 - [AI Chatbot Aziendali](https://aiagents.gtaviani.com/lp-chatbot-aziendale.html)
