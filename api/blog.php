@@ -51,11 +51,60 @@ if (!is_array($data)) {
 }
 
 $action = $data['action'] ?? 'publish';
-if (!in_array($action, ['publish', 'delete'], true)) {
-    gta_blog_respond(400, ['error' => 'action deve essere "publish" o "delete"']);
+if (!in_array($action, ['publish', 'delete', 'list', 'get'], true)) {
+    gta_blog_respond(400, ['error' => 'action deve essere "publish", "delete", "list" o "get"']);
 }
 
 $pdo = gta_blog_db($config);
+
+// GTA-BLOG-002 — action:list: tutti gli articoli (pubblicati e bozze), campi
+// sintetici per un agente editor che deve vedere il colpo d'occhio prima di
+// decidere cosa aprire con action:get.
+if ($action === 'list') {
+    $articles = gta_blog_fetch_all($pdo);
+    $items = array_map(static function (array $a): array {
+        return [
+            'slug' => $a['slug'],
+            'title' => $a['title'],
+            'intro' => $a['intro'],
+            'published' => (bool) $a['published'],
+            'created_at' => $a['created_at'],
+            'updated_at' => $a['updated_at'],
+        ];
+    }, $articles);
+    gta_blog_respond(200, ['ok' => true, 'articles' => $items]);
+}
+
+// GTA-BLOG-002 — action:get: record completo di un articolo (tutti i campi
+// che action:publish accetta), per un agente che deve editarlo/rileggerlo.
+if ($action === 'get') {
+    $slug = is_string($data['slug'] ?? null) ? gta_blog_slugify($data['slug']) : '';
+    if ($slug === '') {
+        gta_blog_respond(400, ['error' => 'slug obbligatorio per action get']);
+    }
+
+    $article = gta_blog_fetch_one($pdo, $slug);
+    if ($article === null) {
+        gta_blog_respond(404, ['error' => 'Articolo non trovato: ' . $slug]);
+    }
+
+    gta_blog_respond(200, [
+        'ok' => true,
+        'article' => [
+            'slug' => $article['slug'],
+            'title' => $article['title'],
+            'intro' => $article['intro'],
+            'body_html' => $article['body_html'],
+            'primary_image' => $article['primary_image'],
+            'meta_description' => $article['meta_description'],
+            'og_image' => $article['og_image'],
+            'keywords' => $article['keywords'],
+            'published' => (bool) $article['published'],
+            'created_at' => $article['created_at'],
+            'updated_at' => $article['updated_at'],
+        ],
+    ]);
+}
 
 if ($action === 'delete') {
     $slug = is_string($data['slug'] ?? null) ? gta_blog_slugify($data['slug']) : '';

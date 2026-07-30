@@ -71,6 +71,15 @@ function gta_blog_fetch_published(PDO $pdo): array
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+// GTA-BLOG-002: usata da action:list — TUTTI gli articoli, pubblicati e non
+// (le bozze devono essere visibili a un agente editor), ordinati per
+// updated_at più recente prima.
+function gta_blog_fetch_all(PDO $pdo): array
+{
+    $stmt = $pdo->query('SELECT * FROM articles ORDER BY updated_at DESC');
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 function gta_blog_upsert(PDO $pdo, array $data): array
 {
     $now = gmdate('c');

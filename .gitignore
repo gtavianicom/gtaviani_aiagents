@@ -7,3 +7,17 @@
 /blog/
 /blog.html
 /sitemap-blog.xml
+
+# GTA-BLOG-003 — endpoint MCP (api/mcp.php) e le sue dipendenze Composer.
+# Motivo diverso dal blocco sopra: questo repo e' PUBBLICO (template clonato
+# da consulenti/agenzia AWA) e non deve rivelare l'integrazione con un
+# agente Paperclip (nome/contratto/esistenza stessa dell'endpoint). Stesso
+# pattern di blog-config.php: il file deve esistere fisicamente sul server
+# per funzionare, ma non e' mai tracciato/committato. Deploy di questi file
+# in produzione va fatto a parte (FTP/SSH manuale), non via "git pull".
+/api/mcp.php
+/api/mcp-config.php
+/api/mcp-sessions/
+/api/composer.json
+/api/composer.lock
+/api/vendor/
