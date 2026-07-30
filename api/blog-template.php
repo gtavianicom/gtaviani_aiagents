@@ -468,6 +468,28 @@ function gta_blog_update_sitemap(array $articles, array $config): void
     $dom->save($path);
 }
 
+// GTA-BLOG-007: notifica automatica a Google quando la sitemap del blog
+// cambia per un articolo che va live — sostituisce il resubmit manuale che
+// Gabriele faceva a mano su Search Console (insostenibile con articoli
+// generati/pubblicati più di frequente). Solo un "hint" al crawler, non
+// garantisce indicizzazione immediata; fallisce in silenzio (mai bloccare
+// una publish/regenerate per un problema di rete verso Google).
+function gta_blog_ping_search_engines(array $config): void
+{
+    $sitemapUrl = rtrim($config['site_url'], '/') . '/sitemap-blog.xml';
+    $pingUrl = 'https://www.google.com/ping?sitemap=' . urlencode($sitemapUrl);
+
+    $context = stream_context_create([
+        'http' => ['method' => 'GET', 'timeout' => 3, 'ignore_errors' => true],
+    ]);
+
+    try {
+        @file_get_contents($pingUrl, false, $context);
+    } catch (\Throwable $e) {
+        // Silenzioso di proposito — vedi commento sopra.
+    }
+}
+
 function gta_blog_regenerate(PDO $pdo, array $config, ?array $affectedArticle = null): void
 {
     $published = gta_blog_fetch_published($pdo);
@@ -488,4 +510,11 @@ function gta_blog_regenerate(PDO $pdo, array $config, ?array $affectedArticle = 
     gta_blog_update_sitemap($published, $config);
     // NB: niente aggiornamento di llms.txt qui — deliberatamente fuori scope
     // GTA-BLOG-001 (nessun contenuto blog reale da riportare oggi).
+
+    // GTA-BLOG-007: ping automatico a Google solo quando l'articolo toccato
+    // da questa chiamata è effettivamente pubblicato (non su ogni rigenerazione
+    // generica, non su delete/restore-a-bozza).
+    if ($affectedArticle !== null && !empty($affectedArticle['published'])) {
+        gta_blog_ping_search_engines($config);
+    }
 }
