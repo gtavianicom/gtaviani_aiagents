@@ -51,8 +51,8 @@ if (!is_array($data)) {
 }
 
 $action = $data['action'] ?? 'publish';
-if (!in_array($action, ['publish', 'delete', 'list', 'get'], true)) {
-    gta_blog_respond(400, ['error' => 'action deve essere "publish", "delete", "list" o "get"']);
+if (!in_array($action, ['publish', 'delete', 'list', 'get', 'restore'], true)) {
+    gta_blog_respond(400, ['error' => 'action deve essere "publish", "delete", "list", "get" o "restore"']);
 }
 
 $pdo = gta_blog_db($config);
@@ -124,6 +124,30 @@ if ($action === 'delete') {
 
     gta_blog_regenerate($pdo, $config);
     gta_blog_respond(200, ['ok' => true, 'slug' => $slug, 'deleted' => true]);
+}
+
+// GTA-BLOG-005 (punto 1) — action:restore: SOLO via blog.php diretto (token
+// umano), MAI esposta come tool MCP. Rimette deleted_at a NULL ma torna
+// sempre come bozza (published:0, scelta prudente — vedi commento su
+// gta_blog_restore in blog-template.php), non ripubblica automaticamente.
+if ($action === 'restore') {
+    $slug = is_string($data['slug'] ?? null) ? gta_blog_slugify($data['slug']) : '';
+    if ($slug === '') {
+        gta_blog_respond(400, ['error' => 'slug obbligatorio per action restore']);
+    }
+
+    $existing = gta_blog_fetch_one_including_deleted($pdo, $slug);
+    if ($existing === null || empty($existing['deleted_at'])) {
+        gta_blog_respond(404, ['error' => 'Nessun articolo cancellato con questo slug: ' . $slug]);
+    }
+
+    $restored = gta_blog_restore($pdo, $slug);
+    if (!$restored) {
+        gta_blog_respond(404, ['error' => 'Nessun articolo cancellato con questo slug: ' . $slug]);
+    }
+
+    gta_blog_regenerate($pdo, $config);
+    gta_blog_respond(200, ['ok' => true, 'slug' => $slug, 'restored' => true, 'published' => false]);
 }
 
 // action === publish

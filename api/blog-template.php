@@ -54,12 +54,33 @@ function gta_blog_db(array $config): PDO
         created_at TEXT NOT NULL,
         updated_at TEXT NOT NULL
     )");
+
+    // GTA-BLOG-005 (punto 1) — soft-delete: colonna aggiunta con migrazione
+    // idempotente, cosi' funziona sia su DB nuovi (creati dopo questa
+    // modifica, dove CREATE TABLE sopra non la include ancora di proposito
+    // — vedi nota) sia su DB esistenti creati prima. SQLite non supporta
+    // "ADD COLUMN IF NOT EXISTS", quindi il check passa da PRAGMA table_info.
+    $hasDeletedAt = false;
+    foreach ($pdo->query('PRAGMA table_info(articles)') as $col) {
+        if ($col['name'] === 'deleted_at') {
+            $hasDeletedAt = true;
+            break;
+        }
+    }
+    if (!$hasDeletedAt) {
+        $pdo->exec('ALTER TABLE articles ADD COLUMN deleted_at TEXT NULL');
+    }
+
     return $pdo;
 }
 
 function gta_blog_fetch_one(PDO $pdo, string $slug): ?array
 {
-    $stmt = $pdo->prepare('SELECT * FROM articles WHERE slug = :slug');
+    // GTA-BLOG-005: esclude di default le righe soft-deleted — per un
+    // agente/consumer normale, un articolo cancellato e' sparito. Nessun
+    // parametro "includiCancellati" oggi: non serve un consumer che li veda
+    // (restore/verifiche dirette si fanno via query SQL diretta, vedi task).
+    $stmt = $pdo->prepare('SELECT * FROM articles WHERE slug = :slug AND deleted_at IS NULL');
     $stmt->execute([':slug' => $slug]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     return $row ?: null;
@@ -67,17 +88,29 @@ function gta_blog_fetch_one(PDO $pdo, string $slug): ?array
 
 function gta_blog_fetch_published(PDO $pdo): array
 {
-    $stmt = $pdo->query('SELECT * FROM articles WHERE published = 1 ORDER BY created_at DESC');
+    $stmt = $pdo->query("SELECT * FROM articles WHERE published = 1 AND deleted_at IS NULL ORDER BY created_at DESC");
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 // GTA-BLOG-002: usata da action:list — TUTTI gli articoli, pubblicati e non
 // (le bozze devono essere visibili a un agente editor), ordinati per
 // updated_at più recente prima.
+// GTA-BLOG-005: esclude comunque le righe soft-deleted (deleted_at valorizzato)
+// — "tutti" qui significa "tutti i non cancellati", non un vero storico.
 function gta_blog_fetch_all(PDO $pdo): array
 {
-    $stmt = $pdo->query('SELECT * FROM articles ORDER BY updated_at DESC');
+    $stmt = $pdo->query("SELECT * FROM articles WHERE deleted_at IS NULL ORDER BY updated_at DESC");
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// GTA-BLOG-005: lettura diretta di una riga soft-deleted, usata solo da
+// gta_blog_restore() — non esposta ne' come action REST ne' come tool MCP.
+function gta_blog_fetch_one_including_deleted(PDO $pdo, string $slug): ?array
+{
+    $stmt = $pdo->prepare('SELECT * FROM articles WHERE slug = :slug');
+    $stmt->execute([':slug' => $slug]);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $row ?: null;
 }
 
 function gta_blog_upsert(PDO $pdo, array $data): array
@@ -117,10 +150,35 @@ function gta_blog_upsert(PDO $pdo, array $data): array
     return gta_blog_fetch_one($pdo, $data['slug']);
 }
 
+// GTA-BLOG-005 (punto 1) — soft-delete: un agente Paperclip lavora senza
+// supervisione umana in tempo reale, uno slug sbagliato (allucinazione/
+// errore) non deve poter cancellare in modo irreversibile. La riga resta nel
+// DB con deleted_at valorizzato e published forzato a 0 — la rigenerazione
+// del sito statico (chiamata dal caller dopo questa funzione, invariata)
+// rimuove comunque l'articolo dal sito pubblico esattamente come prima.
 function gta_blog_delete(PDO $pdo, string $slug): bool
 {
-    $stmt = $pdo->prepare('DELETE FROM articles WHERE slug = :slug');
-    $stmt->execute([':slug' => $slug]);
+    $stmt = $pdo->prepare("UPDATE articles SET deleted_at = :deleted_at, published = 0, updated_at = :updated_at
+        WHERE slug = :slug AND deleted_at IS NULL");
+    $now = gmdate('c');
+    $stmt->execute([':slug' => $slug, ':deleted_at' => $now, ':updated_at' => $now]);
+    return $stmt->rowCount() > 0;
+}
+
+// GTA-BLOG-005 (punto 1) — azione "restore", raggiungibile SOLO via blog.php
+// diretto (token blog-config.php), MAI esposta come tool MCP (l'agente
+// Paperclip non deve poter reincludere un articolo cancellato).
+// Scelta prudente: rimette deleted_at a NULL ma NON ripristina lo stato
+// "published" che l'articolo aveva prima della cancellazione — torna sempre
+// come bozza (published:0). Motivo: chi esegue il restore sta verificando
+// un recupero da errore, non necessariamente rimettendo l'articolo live
+// all'istante; forzare una revisione umana esplicita (publish separato) prima
+// che torni visibile pubblicamente e' piu' sicuro che ripubblicarlo di scatto.
+function gta_blog_restore(PDO $pdo, string $slug): bool
+{
+    $stmt = $pdo->prepare("UPDATE articles SET deleted_at = NULL, published = 0, updated_at = :updated_at
+        WHERE slug = :slug AND deleted_at IS NOT NULL");
+    $stmt->execute([':slug' => $slug, ':updated_at' => gmdate('c')]);
     return $stmt->rowCount() > 0;
 }
 
