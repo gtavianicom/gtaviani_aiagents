@@ -14,3 +14,13 @@ RewriteRule "(^|/)\.git" - [F,L]
 RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\.aiagents\.gtaviani\.com$ [NC]
 RewriteRule ^(.*)$ https://aiagents.gtaviani.com/$1 [L,R=301]
+
+# GTA-BLOG-001: alcuni setup Apache/PHP-FPM non passano l'header Authorization
+# a PHP di default — senza questa regola api/blog.php risponde sempre 401
+# "Token mancante o non valido" anche con un token corretto (problema noto,
+# già riscontrato identico sull'hosting AWC, stessa infra condivisa — vedi
+# awc_website/api/.htaccess). Attiva di default qui (non commentata): non ha
+# effetto su richieste che non passano già un header Authorization, quindi
+# è sicura da tenere sempre accesa.
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%1]

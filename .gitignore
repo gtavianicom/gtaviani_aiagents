@@ -1,0 +1,9 @@
+# GTA-BLOG-001 — output/dati runtime del motore blog (api/blog.php).
+# Il deploy (update.sh) fa "git pull" diretto nel webroot: qualunque file
+# generato/scritto a runtime deve restare fuori da git, altrimenti ogni
+# publish/delete andrebbe in conflitto al pull successivo.
+/api/blog-config.php
+/api/blog-data/
+/blog/
+/blog.html
+/sitemap-blog.xml

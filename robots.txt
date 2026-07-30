@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://aiagents.gtaviani.com/sitemap.xml
+Sitemap: https://aiagents.gtaviani.com/sitemap-blog.xml
