@@ -24,10 +24,12 @@
 
 # GTA-ADMIN-001 — pannello admin del blog: il codice resta TRACCIATO e
 # deployato via "git pull" come il resto del sito (richiesta esplicita di
-# Gabriele, 31/7 — niente upload manuale ad ogni aggiornamento). Stesso
-# pattern di blog-config.php sopra: solo il file di config con le
-# credenziali reali resta fuori da git, mai il codice. Le immagini caricate
-# dal pannello sono contenuto generato a runtime, non codice — restano
-# fuori da git come blog-data/ sopra.
-/api/admin/admin-config.php
+# Gabriele, 31/7 — niente upload manuale ad ogni aggiornamento). Cartella
+# /admin/ tenuta FUORI da /api/ (richiesta esplicita di Gabriele, 31/7) per
+# non ereditare i vincoli/pattern di quella cartella. Stesso pattern di
+# blog-config.php sopra: solo il file di config con le credenziali reali
+# resta fuori da git, mai il codice. Le immagini caricate dal pannello sono
+# contenuto generato a runtime, non codice — restano fuori da git come
+# blog-data/ sopra.
+/admin/admin-config.php
 /assets/images/blog/uploads/

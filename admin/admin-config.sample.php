@@ -12,7 +12,7 @@ return [
     // — fornisce db_path/site_root/site_url, riusati anche da questo pannello.
     // La tabella admin_users vive nello STESSO file SQLite degli articoli
     // (un solo file da backuppare, niente sincronizzazione tra due DB).
-    'blog_config_path' => __DIR__ . '/../blog-config.php',
+    'blog_config_path' => __DIR__ . '/../api/blog-config.php',
 
     // Bootstrap: se la tabella admin_users è vuota, viene creato UN utente
     // con queste credenziali al primo accesso a una pagina admin. Cambiale
@@ -22,6 +22,6 @@ return [
     'seed_password' => 'CHANGE_ME_TOKEN',
 
     // Cartella dove salvare le immagini caricate dal pannello.
-    'upload_dir' => dirname(__DIR__, 2) . '/assets/images/blog/uploads',
+    'upload_dir' => dirname(__DIR__) . '/assets/images/blog/uploads',
     'upload_url_base' => '/assets/images/blog/uploads',
 ];

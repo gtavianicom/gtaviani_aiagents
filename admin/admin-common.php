@@ -7,7 +7,7 @@ declare(strict_types=1);
 // aggiunta qui), sessione, autenticazione, CSRF. Ogni pagina admin fa
 // require_once di questo file per primo.
 
-require_once __DIR__ . '/../blog-template.php';
+require_once __DIR__ . '/../api/blog-template.php';
 
 function admin_config(): array
 {
