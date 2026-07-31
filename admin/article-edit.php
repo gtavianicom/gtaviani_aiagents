@@ -89,6 +89,8 @@ $csrf = admin_csrf_token();
   <title><?= $isNew ? 'Nuovo articolo' : 'Modifica articolo' ?> — Admin Blog GTAVIANI</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/vendor/quill/quill.snow.css">
+  <style>#body-editor { min-height: 320px; background: #fff; }</style>
 </head>
 <body>
   <?= admin_topbar_html('articles', $user['username']) ?>
@@ -113,9 +115,12 @@ $csrf = admin_csrf_token();
           <textarea name="intro" rows="3" required><?= admin_html_escape((string) $values['intro']) ?></textarea>
         </label>
 
-        <label>Corpo articolo (HTML)
-          <textarea name="body_html" rows="16" required><?= admin_html_escape((string) $values['body_html']) ?></textarea>
-          <span class="admin-hint">HTML già pronto (non markdown).</span>
+        <label>Corpo articolo
+          <div id="body-editor-container" class="admin-editor-container">
+            <div id="body-editor"></div>
+          </div>
+          <textarea name="body_html" id="body-html-field" required style="display:none;"><?= admin_html_escape((string) $values['body_html']) ?></textarea>
+          <span class="admin-hint">Scrivi normalmente — l'HTML viene generato automaticamente dall'editor.</span>
         </label>
 
         <label>Immagine principale
@@ -149,6 +154,40 @@ $csrf = admin_csrf_token();
     </div>
   </div>
 
+  <script src="assets/vendor/quill/quill.js"></script>
+  <script>
+    // Editor visuale (WYSIWYG) per il corpo articolo — Gabriele scrive testo
+    // normale, l'HTML viene generato da Quill. La textarea reale (body_html)
+    // resta l'unica cosa che il form invia: viene nascosta via CSS, popolata
+    // con l'HTML esistente all'avvio (editing di un articolo già presente) e
+    // risincronizzata dal contenuto dell'editor appena prima del submit.
+    (function () {
+      var hiddenField = document.getElementById('body-html-field');
+      var initialHtml = hiddenField.value;
+
+      var quill = new Quill('#body-editor', {
+        theme: 'snow',
+        modules: {
+          toolbar: [
+            [{ header: [2, 3, false] }],
+            ['bold', 'italic'],
+            ['link', 'blockquote'],
+            [{ list: 'ordered' }, { list: 'bullet' }],
+            ['clean'],
+          ],
+        },
+      });
+
+      if (initialHtml.trim() !== '') {
+        quill.clipboard.dangerouslyPasteHTML(initialHtml);
+      }
+
+      var form = hiddenField.closest('form');
+      form.addEventListener('submit', function () {
+        hiddenField.value = quill.root.innerHTML;
+      });
+    })();
+  </script>
   <script>
     // Upload asincrono: carica il file su upload-image.php, poi riempie il
     // campo testo primary_image con l'URL pubblico ritornato — niente

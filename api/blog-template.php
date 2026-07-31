@@ -214,7 +214,6 @@ function gta_blog_header_html(): string
         . '        <a href="/#consulente-esterno">Consulenza AI</a>' . "\n"
         . '        <a href="/#piattaforma">AI Workspace</a>' . "\n"
         . '        <a href="/retail-ecommerce-ai-team.html" class="nav-badge-link">AI E-Commerce</a>' . "\n"
-        . '        <a href="/blog.html" class="nav-badge-link active">Blog</a>' . "\n"
         . '      </nav>' . "\n"
         . "\n"
         . '      <a href="/contact.html" id="cta-nav-contact" class="btn btn-primary nav-contact">CONTATTO</a>' . "\n"
