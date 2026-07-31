@@ -173,3 +173,24 @@ form.admin-inline { display: inline; }
   border-radius: 6px;
   border: 1px solid var(--admin-border);
 }
+
+/* GTA-ADMIN-001 (fix 31/7): l'editor Quill vive dentro un <label>, che
+   applica font-weight:600/font-size:0.9rem a tutto ciò che contiene
+   (vedi .admin-form label sopra) — senza questo reset il testo
+   dell'articolo appariva tutto in grassetto. Quill di suo non aggiunge
+   spaziatura verticale tra i paragrafi (comportamento di default della
+   libreria, non un bug nostro) — aggiunta qui esplicitamente. */
+.ql-editor {
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+.ql-editor p,
+.ql-editor h1,
+.ql-editor h2,
+.ql-editor h3,
+.ql-editor ul,
+.ql-editor ol,
+.ql-editor blockquote {
+  margin-bottom: 0.75rem;
+}

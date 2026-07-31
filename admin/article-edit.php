@@ -88,8 +88,12 @@ $csrf = admin_csrf_token();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= $isNew ? 'Nuovo articolo' : 'Modifica articolo' ?> — Admin Blog GTAVIANI</title>
   <meta name="robots" content="noindex, nofollow">
-  <link rel="stylesheet" href="style.css">
+  <!-- quill.snow.css PRIMA di style.css: entrambi hanno regole su .ql-editor
+       con la stessa specificità (es. margin sui paragrafi) — a parità di
+       specificità vince l'ultima dichiarata, quindi il nostro override in
+       style.css deve restare per ultimo. -->
   <link rel="stylesheet" href="assets/vendor/quill/quill.snow.css">
+  <link rel="stylesheet" href="style.css">
   <style>#body-editor { min-height: 320px; background: #fff; }</style>
 </head>
 <body>
