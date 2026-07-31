@@ -7,6 +7,25 @@ declare(strict_types=1);
 // aggiunta qui), sessione, autenticazione, CSRF. Ogni pagina admin fa
 // require_once di questo file per primo.
 
+// Incidente 31/7: admin-config.php mancante in produzione ha fatto
+// arrivare un'eccezione non gestita fino al browser, con lo stack trace
+// completo — PHP include di default gli argomenti reali delle funzioni
+// (qui: username/password digitati) nei trace. Da qui in poi: mai
+// mostrare errori grezzi al browser, mai loggare gli argomenti delle
+// chiamate, sempre e solo un messaggio generico + log lato server.
+ini_set('display_errors', '0');
+ini_set('log_errors', '1');
+ini_set('zend.exception_ignore_args', '1');
+error_reporting(E_ALL);
+
+set_exception_handler(function (Throwable $e): void {
+    error_log('[admin] uncaught: ' . $e->getMessage() . ' in ' . $e->getFile() . ':' . $e->getLine());
+    if (!headers_sent()) {
+        http_response_code(500);
+    }
+    echo 'Si è verificato un errore interno. Riprova più tardi o contatta chi gestisce il sito.';
+});
+
 require_once __DIR__ . '/../api/blog-template.php';
 
 function admin_config(): array
