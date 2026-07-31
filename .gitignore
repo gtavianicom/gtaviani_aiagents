@@ -21,3 +21,13 @@
 /api/composer.json
 /api/composer.lock
 /api/vendor/
+
+# GTA-ADMIN-001 — pannello admin del blog (login multi-utente, editing
+# articoli, upload immagini, gestione utenti). Stesso motivo di mcp.php sopra:
+# repo PUBBLICO, la gestione interna del sito non deve mai essere rivelata/
+# tracciata. L'intera cartella (codice incluso, non solo la config) resta
+# fuori da git — deploy in produzione via upload manuale (FTP/SSH), mai via
+# "git pull". Le immagini caricate dal pannello (e in futuro dal tool MCP
+# upload_image, GTA-BLOG-IMG-001) restano anch'esse fuori da git.
+/api/admin/
+/assets/images/blog/uploads/
