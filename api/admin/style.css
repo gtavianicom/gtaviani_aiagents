@@ -1,0 +1,175 @@
+/* GTA-ADMIN-001 — stile minimale del pannello admin, non condiviso col sito
+   pubblico (non estende assets/css/style.css: è uno strumento interno, non
+   una pagina brand-facing). */
+
+:root {
+  --admin-primary: #014374;
+  --admin-secondary: #545454;
+  --admin-bg: #f4f6f8;
+  --admin-border: #d8dee4;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--admin-bg);
+  color: #1c1c1c;
+  margin: 0;
+}
+
+a { color: var(--admin-primary); }
+
+.admin-topbar {
+  background: var(--admin-primary);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-topbar a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 1rem;
+  font-weight: 600;
+}
+
+.admin-topbar a.active {
+  text-decoration: underline;
+}
+
+.admin-container {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.admin-card {
+  background: #fff;
+  border: 1px solid var(--admin-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+table.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th, .admin-table td {
+  text-align: left;
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid var(--admin-border);
+  font-size: 0.95rem;
+}
+
+.admin-badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.admin-badge-published { background: #dcf6e3; color: #16794a; }
+.admin-badge-draft { background: #fde8cf; color: #9a5b00; }
+.admin-badge-active { background: #dcf6e3; color: #16794a; }
+.admin-badge-inactive { background: #eee; color: #777; }
+
+.admin-btn {
+  display: inline-block;
+  border: none;
+  border-radius: 6px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: var(--admin-primary);
+  color: #fff;
+  text-decoration: none;
+}
+
+.admin-btn-secondary { background: var(--admin-secondary); }
+.admin-btn-danger { background: #b3261e; }
+.admin-btn-small { padding: 0.3rem 0.6rem; font-size: 0.8rem; }
+
+form.admin-inline { display: inline; }
+
+.admin-form label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.admin-form input[type="text"],
+.admin-form input[type="password"],
+.admin-form input[type="url"],
+.admin-form textarea {
+  display: block;
+  width: 100%;
+  margin-top: 0.35rem;
+  padding: 0.5rem;
+  border: 1px solid var(--admin-border);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: normal;
+}
+
+.admin-form textarea { resize: vertical; }
+
+.admin-hint {
+  font-weight: normal;
+  color: var(--admin-secondary);
+  font-size: 0.8rem;
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.admin-error {
+  background: #fde2e1;
+  color: #8a1c1c;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.admin-message {
+  background: #dcf6e3;
+  color: #16794a;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.admin-login-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.admin-login-form {
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--admin-border);
+  width: 320px;
+}
+
+.admin-login-form h1 {
+  font-size: 1.3rem;
+  margin-top: 0;
+  color: var(--admin-primary);
+}
+
+.admin-image-preview {
+  max-width: 220px;
+  display: block;
+  margin-top: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--admin-border);
+}
