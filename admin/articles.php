@@ -7,6 +7,11 @@ $user = admin_require_login();
 $pdo = admin_db();
 $blogConfig = admin_blog_config();
 
+// GTA-BLOG-014: nessun cron sull'hosting — ogni apertura della lista
+// articoli è anche un'occasione per materializzare articoli schedulati che
+// hanno superato la data (vedi gta_blog_publish_due in blog-template.php).
+gta_blog_publish_due($pdo, $blogConfig);
+
 $message = null;
 $error = null;
 
@@ -31,6 +36,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $error = 'Articolo non trovato.';
         } else {
             $article['published'] = $action === 'publish';
+            if ($action === 'publish') {
+                // GTA-BLOG-014: il bottone "Pubblica" qui è un'azione esplicita
+                // "rendi live ORA" — se l'articolo aveva una schedulazione
+                // futura rimasta da una modifica precedente, la cancelliamo:
+                // altrimenti cliccare "Pubblica" non lo renderebbe live
+                // (resterebbe "Programmato"), comportamento sorprendente per
+                // chi clicca quel bottone aspettandosi l'effetto immediato.
+                $article['scheduled_publish_at'] = null;
+            }
             $updated = gta_blog_upsert($pdo, $article);
             gta_blog_regenerate($pdo, $blogConfig, $updated);
             $message = $action === 'publish' ? 'Articolo pubblicato — ora visibile pubblicamente.' : 'Articolo rimesso in bozza.';
@@ -82,8 +96,10 @@ $csrf = admin_csrf_token();
                 <a href="article-edit.php?slug=<?= urlencode($article['slug']) ?>"><?= admin_html_escape($article['title']) ?></a>
               </td>
               <td>
-                <?php if (!empty($article['published'])): ?>
+                <?php if (gta_blog_is_live($article)): ?>
                   <span class="admin-badge admin-badge-published">Pubblicato</span>
+                <?php elseif (!empty($article['published']) && !empty($article['scheduled_publish_at'])): ?>
+                  <span class="admin-badge admin-badge-scheduled">Programmato — <?= admin_html_escape(admin_utc_iso_to_datetime_local($article['scheduled_publish_at'])) ?></span>
                 <?php else: ?>
                   <span class="admin-badge admin-badge-draft">Bozza</span>
                 <?php endif; ?>

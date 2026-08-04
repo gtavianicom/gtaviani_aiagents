@@ -179,6 +179,45 @@ function admin_html_escape(string $value): string
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
 
+// GTA-BLOG-014 — il DB salva scheduled_publish_at in UTC (stesso stile di
+// created_at/updated_at), ma Gabriele digita/legge un orario in un campo
+// <input type="datetime-local"> del browser, senza fuso orario esplicito:
+// qui lo trattiamo come orario locale Italia (Europe/Rome, gestisce da solo
+// il cambio ora legale/solare). Le altre due vie di scrittura del campo
+// (blog.php diretto, tool MCP) sono invece pensate per un chiamante
+// API/agente e trattano un input senza offset come UTC di default (vedi
+// gta_blog_normalize_scheduled_publish_at in blog-template.php) — qui
+// serve la conversione in più perché l'unico vero input umano è questo form.
+
+function admin_datetime_local_to_utc_iso(string $localValue): ?string
+{
+    $localValue = trim($localValue);
+    if ($localValue === '') {
+        return null;
+    }
+    try {
+        $dt = new DateTimeImmutable($localValue, new DateTimeZone('Europe/Rome'));
+    } catch (\Exception $e) {
+        throw new InvalidArgumentException('Data/ora di pubblicazione programmata non valida.');
+    }
+
+    return $dt->setTimezone(new DateTimeZone('UTC'))->format('c');
+}
+
+function admin_utc_iso_to_datetime_local(?string $utcIso): string
+{
+    if (empty($utcIso)) {
+        return '';
+    }
+    try {
+        $dt = new DateTimeImmutable($utcIso, new DateTimeZone('UTC'));
+    } catch (\Exception $e) {
+        return '';
+    }
+
+    return $dt->setTimezone(new DateTimeZone('Europe/Rome'))->format('Y-m-d\TH:i');
+}
+
 // Barra di navigazione condivisa tra le pagine loggate — $active è 'articles'
 // o 'users'. Pensata per crescere con una voce per modulo quando arriverà un
 // secondo servizio oltre al blog (guscio estendibile, vedi GTA-ADMIN-001).

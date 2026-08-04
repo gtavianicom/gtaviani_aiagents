@@ -71,7 +71,75 @@ function gta_blog_db(array $config): PDO
         $pdo->exec('ALTER TABLE articles ADD COLUMN deleted_at TEXT NULL');
     }
 
+    // GTA-BLOG-014 — stessa migrazione idempotente di deleted_at sopra:
+    // data/ora (UTC, ISO8601) da cui un articolo approvato (published=1)
+    // diventa effettivamente live. NULL = nessuna schedulazione, comportamento
+    // invariato (live appena published=1).
+    $hasScheduledPublishAt = false;
+    foreach ($pdo->query('PRAGMA table_info(articles)') as $col) {
+        if ($col['name'] === 'scheduled_publish_at') {
+            $hasScheduledPublishAt = true;
+            break;
+        }
+    }
+    if (!$hasScheduledPublishAt) {
+        $pdo->exec('ALTER TABLE articles ADD COLUMN scheduled_publish_at TEXT NULL');
+    }
+
     return $pdo;
+}
+
+// GTA-BLOG-014 — normalizza un input data/ora libero (form admin già
+// convertito in UTC, o stringa ISO8601 passata da blog.php/tool MCP) nel
+// formato canonico salvato a DB: ISO8601 UTC (stesso stile di created_at/
+// updated_at, gmdate('c')). Una stringa senza offset esplicito è trattata
+// come UTC di default — scelta pensata per un chiamante API/agente, non per
+// input umano diretto (quello passa da un form con conversione dedicata,
+// vedi admin/article-edit.php). Stringa vuota/NULL -> NULL (nessuna
+// schedulazione). Lancia InvalidArgumentException se non parsabile.
+function gta_blog_normalize_scheduled_publish_at(?string $raw): ?string
+{
+    if ($raw === null) {
+        return null;
+    }
+    $raw = trim($raw);
+    if ($raw === '') {
+        return null;
+    }
+    try {
+        $dt = new DateTimeImmutable($raw, new DateTimeZone('UTC'));
+    } catch (\Exception $e) {
+        throw new InvalidArgumentException('scheduled_publish_at non valida — usa un formato data/ora riconoscibile, es. 2026-08-10T09:00:00Z');
+    }
+
+    return $dt->setTimezone(new DateTimeZone('UTC'))->format('c');
+}
+
+// GTA-BLOG-014 — vero se un articolo è EFFETTIVAMENTE raggiungibile in
+// pubblico ora: published=1 E non cancellato E (nessuna data schedulata O
+// data già raggiunta). Sostituisce, ovunque prima si controllava solo
+// "published", il vero criterio di visibilità pubblica (pagina articolo,
+// blog.html, sitemap-blog.xml).
+function gta_blog_is_live(array $article, ?string $nowIso = null): bool
+{
+    if (empty($article['published']) || !empty($article['deleted_at'])) {
+        return false;
+    }
+    $scheduled = $article['scheduled_publish_at'] ?? null;
+    if (empty($scheduled)) {
+        return true;
+    }
+    $now = $nowIso ?? gmdate('c');
+    $scheduledTs = strtotime((string) $scheduled);
+    $nowTs = strtotime($now);
+    if ($scheduledTs === false || $nowTs === false) {
+        // Dato corrotto/non parsabile: non blocchiamo un articolo già
+        // approvato per un valore che non dovrebbe mai arrivare qui (la
+        // scrittura passa sempre da gta_blog_normalize_scheduled_publish_at).
+        return true;
+    }
+
+    return $scheduledTs <= $nowTs;
 }
 
 function gta_blog_fetch_one(PDO $pdo, string $slug): ?array
@@ -88,7 +156,16 @@ function gta_blog_fetch_one(PDO $pdo, string $slug): ?array
 
 function gta_blog_fetch_published(PDO $pdo): array
 {
-    $stmt = $pdo->query("SELECT * FROM articles WHERE published = 1 AND deleted_at IS NULL ORDER BY created_at DESC");
+    // GTA-BLOG-014: "pubblicato" da solo non basta più — un articolo con
+    // scheduled_publish_at nel futuro resta escluso da qui (quindi da
+    // blog.html/sitemap-blog.xml, entrambi popolati da questa funzione) anche
+    // se published=1. Confronto a livello SQL (non in PHP dopo il fetch) per
+    // restare corretto anche quando la lista è grande.
+    $stmt = $pdo->prepare("SELECT * FROM articles
+        WHERE published = 1 AND deleted_at IS NULL
+          AND (scheduled_publish_at IS NULL OR scheduled_publish_at <= :now)
+        ORDER BY created_at DESC");
+    $stmt->execute([':now' => gmdate('c')]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
@@ -120,8 +197,8 @@ function gta_blog_upsert(PDO $pdo, array $data): array
     $createdAt = $existing['created_at'] ?? $now;
 
     $stmt = $pdo->prepare('INSERT INTO articles
-        (slug, title, intro, body_html, primary_image, meta_description, og_image, keywords, published, created_at, updated_at)
-        VALUES (:slug, :title, :intro, :body_html, :primary_image, :meta_description, :og_image, :keywords, :published, :created_at, :updated_at)
+        (slug, title, intro, body_html, primary_image, meta_description, og_image, keywords, published, scheduled_publish_at, created_at, updated_at)
+        VALUES (:slug, :title, :intro, :body_html, :primary_image, :meta_description, :og_image, :keywords, :published, :scheduled_publish_at, :created_at, :updated_at)
         ON CONFLICT(slug) DO UPDATE SET
             title = excluded.title,
             intro = excluded.intro,
@@ -131,6 +208,7 @@ function gta_blog_upsert(PDO $pdo, array $data): array
             og_image = excluded.og_image,
             keywords = excluded.keywords,
             published = excluded.published,
+            scheduled_publish_at = excluded.scheduled_publish_at,
             updated_at = excluded.updated_at');
 
     $stmt->execute([
@@ -143,6 +221,10 @@ function gta_blog_upsert(PDO $pdo, array $data): array
         ':og_image' => $data['og_image'],
         ':keywords' => $data['keywords'],
         ':published' => $data['published'] ? 1 : 0,
+        // GTA-BLOG-014: chiave opzionale — i caller che non la impostano
+        // (nessuna modifica sotto GTA-BLOG-014) continuano a salvare NULL,
+        // comportamento identico a prima.
+        ':scheduled_publish_at' => $data['scheduled_publish_at'] ?? null,
         ':created_at' => $createdAt,
         ':updated_at' => $now,
     ]);
@@ -495,7 +577,11 @@ function gta_blog_regenerate(PDO $pdo, array $config, ?array $affectedArticle = 
 
     if ($affectedArticle !== null) {
         $path = $config['site_root'] . '/blog/' . $affectedArticle['slug'] . '.html';
-        if (!empty($affectedArticle['published'])) {
+        // GTA-BLOG-014: "raggiungibile" ora significa is_live (published +
+        // data raggiunta), non più solo published — un articolo approvato ma
+        // schedulato nel futuro non deve avere una pagina statica raggiungibile
+        // prima della data, esattamente come una bozza.
+        if (gta_blog_is_live($affectedArticle)) {
             $html = gta_blog_render_article($affectedArticle, $config);
             gta_blog_write_file($path, $html);
         } elseif (file_exists($path)) {
@@ -511,9 +597,38 @@ function gta_blog_regenerate(PDO $pdo, array $config, ?array $affectedArticle = 
     // GTA-BLOG-001 (nessun contenuto blog reale da riportare oggi).
 
     // GTA-BLOG-007: ping automatico a Google solo quando l'articolo toccato
-    // da questa chiamata è effettivamente pubblicato (non su ogni rigenerazione
-    // generica, non su delete/restore-a-bozza).
-    if ($affectedArticle !== null && !empty($affectedArticle['published'])) {
+    // da questa chiamata è effettivamente live ora (non su ogni rigenerazione
+    // generica, non su delete/restore-a-bozza, non su un articolo ancora
+    // schedulato nel futuro).
+    if ($affectedArticle !== null && gta_blog_is_live($affectedArticle)) {
         gta_blog_ping_search_engines($config);
+    }
+}
+
+// GTA-BLOG-014 — il sito è statico e non esiste nessun cron sull'hosting:
+// questo è il meccanismo di "risveglio" al posto di un job schedulato.
+// Ogni volta che blog.php, il pannello admin o l'endpoint MCP ricevono una
+// richiesta (autenticata), controlliamo se qualche articolo già approvato
+// (published=1) e schedulato ha superato la sua data senza che la pagina
+// statica sia mai stata materializzata, e in quel caso la generiamo adesso.
+// Costo per richiesta: una query indicizzabile su una tabella piccola, più
+// il lavoro vero e proprio SOLO per gli articoli effettivamente scaduti (il
+// caso comune — nessun articolo scaduto in questo momento — costa una sola
+// query vuota). Latenza accettata fino alla prossima richiesta, come da
+// spec del task (nessun cron reale disponibile su questo hosting).
+function gta_blog_publish_due(PDO $pdo, array $config): void
+{
+    $stmt = $pdo->prepare("SELECT * FROM articles
+        WHERE published = 1 AND deleted_at IS NULL
+          AND scheduled_publish_at IS NOT NULL
+          AND scheduled_publish_at <= :now");
+    $stmt->execute([':now' => gmdate('c')]);
+    $due = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($due as $article) {
+        $path = $config['site_root'] . '/blog/' . $article['slug'] . '.html';
+        if (!file_exists($path)) {
+            gta_blog_regenerate($pdo, $config, $article);
+        }
     }
 }

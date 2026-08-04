@@ -57,6 +57,11 @@ if (!in_array($action, ['publish', 'delete', 'list', 'get', 'restore'], true)) {
 
 $pdo = gta_blog_db($config);
 
+// GTA-BLOG-014: nessun cron sull'hosting — ogni richiesta autenticata è
+// l'occasione per materializzare eventuali articoli schedulati che hanno
+// superato la data (vedi gta_blog_publish_due in blog-template.php).
+gta_blog_publish_due($pdo, $config);
+
 // GTA-BLOG-002 — action:list: tutti gli articoli (pubblicati e bozze), campi
 // sintetici per un agente editor che deve vedere il colpo d'occhio prima di
 // decidere cosa aprire con action:get.
@@ -68,6 +73,7 @@ if ($action === 'list') {
             'title' => $a['title'],
             'intro' => $a['intro'],
             'published' => (bool) $a['published'],
+            'scheduled_publish_at' => $a['scheduled_publish_at'] ?? null,
             'created_at' => $a['created_at'],
             'updated_at' => $a['updated_at'],
         ];
@@ -100,6 +106,7 @@ if ($action === 'get') {
             'og_image' => $article['og_image'],
             'keywords' => $article['keywords'],
             'published' => (bool) $article['published'],
+            'scheduled_publish_at' => $article['scheduled_publish_at'] ?? null,
             'created_at' => $article['created_at'],
             'updated_at' => $article['updated_at'],
         ],
@@ -177,6 +184,18 @@ $metaDescription = (is_string($data['meta_description'] ?? null) && trim($data['
 $ogImage = (is_string($data['og_image'] ?? null) && trim($data['og_image']) !== '') ? $data['og_image'] : $primaryImage;
 $published = !isset($data['published']) || $data['published'] === true || $data['published'] === 1 || $data['published'] === '1';
 
+// GTA-BLOG-014: opzionale, NULL/assente = comportamento invariato (nessuna
+// schedulazione, live appena published=true). Qui (blog.php diretto, token
+// umano) il campo è pienamente rispettato, come published — a differenza
+// del tool MCP publish_article dove resta solo una proposta, vedi mcp.php.
+try {
+    $scheduledPublishAt = gta_blog_normalize_scheduled_publish_at(
+        is_string($data['scheduled_publish_at'] ?? null) ? $data['scheduled_publish_at'] : null
+    );
+} catch (InvalidArgumentException $e) {
+    gta_blog_respond(400, ['error' => $e->getMessage()]);
+}
+
 $articleData = [
     'slug' => $slug,
     'title' => $data['title'],
@@ -187,6 +206,7 @@ $articleData = [
     'og_image' => $ogImage,
     'keywords' => $keywords,
     'published' => $published,
+    'scheduled_publish_at' => $scheduledPublishAt,
 ];
 
 $saved = gta_blog_upsert($pdo, $articleData);
@@ -199,4 +219,5 @@ gta_blog_respond(200, [
     'slug' => $slug,
     'url' => $url,
     'published' => (bool) $saved['published'],
+    'scheduled_publish_at' => $saved['scheduled_publish_at'] ?? null,
 ]);

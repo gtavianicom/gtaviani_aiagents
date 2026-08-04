@@ -76,6 +76,7 @@ table.admin-table {
 
 .admin-badge-published { background: #dcf6e3; color: #16794a; }
 .admin-badge-draft { background: #fde8cf; color: #9a5b00; }
+.admin-badge-scheduled { background: #dde8fd; color: #1d4ed8; }
 .admin-badge-active { background: #dcf6e3; color: #16794a; }
 .admin-badge-inactive { background: #eee; color: #777; }
 

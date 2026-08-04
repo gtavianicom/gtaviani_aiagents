@@ -13,7 +13,7 @@ $error = null;
 $values = $article ?? [
     'slug' => '', 'title' => '', 'intro' => '', 'body_html' => '',
     'primary_image' => '', 'meta_description' => '', 'og_image' => '', 'keywords' => '',
-    'published' => 0,
+    'published' => 0, 'scheduled_publish_at' => null,
 ];
 $originalSlug = $requestedSlug;
 
@@ -35,17 +35,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'og_image' => trim((string) ($_POST['og_image'] ?? '')),
         'keywords' => trim((string) ($_POST['keywords'] ?? '')),
         'published' => 0,
+        'scheduled_publish_at' => null,
     ];
+
+    $rawScheduledPublishAt = trim((string) ($_POST['scheduled_publish_at'] ?? ''));
+    $scheduledPublishAtError = null;
+    try {
+        $normalizedScheduledPublishAt = admin_datetime_local_to_utc_iso($rawScheduledPublishAt);
+    } catch (InvalidArgumentException $e) {
+        $normalizedScheduledPublishAt = null;
+        $scheduledPublishAtError = $e->getMessage();
+    }
+    $values['scheduled_publish_at'] = $normalizedScheduledPublishAt;
 
     if ($title === '' || $intro === '' || $bodyHtml === '') {
         $error = 'Titolo, sommario e corpo articolo sono obbligatori.';
     } elseif ($newSlug === '') {
         $error = 'Slug non derivabile — controlla il titolo.';
+    } elseif ($scheduledPublishAtError !== null) {
+        $error = $scheduledPublishAtError;
     } else {
         $existingOriginal = $originalSlug !== '' ? gta_blog_fetch_one($pdo, $originalSlug) : null;
         // Il salvataggio normale NON cambia lo stato pubblicato/bozza — quello
         // si fa solo dal bottone dedicato in articles.php (azione distinta,
-        // richiesta esplicita del brief).
+        // richiesta esplicita del brief). La data di pubblicazione programmata
+        // invece è un campo editoriale come gli altri: si salva sempre qui.
         $publishedCurrent = $existingOriginal['published'] ?? 0;
 
         $data = [
@@ -58,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'og_image' => $values['og_image'] ?: null,
             'keywords' => $values['keywords'] ?: null,
             'published' => (bool) $publishedCurrent,
+            'scheduled_publish_at' => $normalizedScheduledPublishAt,
         ];
 
         $updated = gta_blog_upsert($pdo, $data);
@@ -149,6 +164,11 @@ $csrf = admin_csrf_token();
 
         <label>Keywords (opzionale, separate da virgola)
           <input type="text" name="keywords" value="<?= admin_html_escape((string) $values['keywords']) ?>">
+        </label>
+
+        <label>Pubblicazione programmata (opzionale)
+          <input type="datetime-local" name="scheduled_publish_at" value="<?= admin_html_escape(admin_utc_iso_to_datetime_local($values['scheduled_publish_at'] ?? null)) ?>">
+          <span class="admin-hint">Ora italiana. Se impostata, l'articolo diventa visibile pubblicamente solo da questa data/ora IN POI — e solo se è anche "Pubblicato" dalla lista articoli (le due condizioni servono entrambe). Lascia vuoto per nessuna schedulazione.</span>
         </label>
 
         <button type="submit" class="admin-btn">Salva</button>
