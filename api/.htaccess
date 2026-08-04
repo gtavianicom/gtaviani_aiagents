@@ -37,3 +37,16 @@
         Deny from all
     </IfModule>
 </Files>
+
+# GTA-SEC-001 (2026-08-04) — blog-data/ (contiene blog.sqlite: password
+# hash admin_users + TUTTI gli articoli inclusi i draft) e mcp-sessions/
+# risultavano raggiungibili via HTTP senza nessuna protezione — i blocchi
+# sopra proteggono solo file per nome, non un'intera sottocartella.
+# Scoperto perché blog.sqlite era scaricabile direttamente, senza auth.
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^blog-data/ - [F,L]
+    RewriteRule ^mcp-sessions/ - [F,L]
+</IfModule>
