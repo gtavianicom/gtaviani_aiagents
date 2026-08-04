@@ -184,20 +184,6 @@ $metaDescription = (is_string($data['meta_description'] ?? null) && trim($data['
 $ogImageRaw = (is_string($data['og_image'] ?? null) && trim($data['og_image']) !== '') ? $data['og_image'] : $primaryImageRaw;
 $published = !isset($data['published']) || $data['published'] === true || $data['published'] === 1 || $data['published'] === '1';
 
-// GTA-BLOG-IMG-002: stessa logica del tool MCP publish_article — qualunque
-// primary_image/og_image che punti a un host esterno viene scaricata e
-// ri-ospitata qui sul server, senza bisogno che chi chiama l'abbia già
-// fatto. Mai bloccante: se il download fallisce, l'URL originale resta
-// invariata (vedi gta_blog_ensure_hosted_image in blog-template.php).
-$primaryImageResult = gta_blog_ensure_hosted_image($primaryImageRaw !== '' ? $primaryImageRaw : null, $config);
-$primaryImage = $primaryImageResult['url'] ?? '';
-if ($ogImageRaw === $primaryImageRaw) {
-    $ogImage = $primaryImage;
-} else {
-    $ogImageResult = gta_blog_ensure_hosted_image($ogImageRaw !== '' ? $ogImageRaw : null, $config);
-    $ogImage = $ogImageResult['url'] ?? '';
-}
-
 // GTA-BLOG-014: opzionale, NULL/assente = comportamento invariato (nessuna
 // schedulazione, live appena published=true). Qui (blog.php diretto, token
 // umano) il campo è pienamente rispettato, come published — a differenza
@@ -210,20 +196,44 @@ try {
     gta_blog_respond(400, ['error' => $e->getMessage()]);
 }
 
+// GTA-BLOG-IMG-003: PRIMA salviamo con le URL così come arrivano (anche se
+// esterne), POI proviamo il ri-hosting — stesso ordine e stesso motivo di
+// gta_mcp_publish_article in mcp.php (un download lento/bloccato non deve
+// poter impedire che l'articolo venga salvato).
 $articleData = [
     'slug' => $slug,
     'title' => $data['title'],
     'intro' => $data['intro'],
     'body_html' => $data['body_html'],
-    'primary_image' => $primaryImage,
+    'primary_image' => $primaryImageRaw,
     'meta_description' => $metaDescription,
-    'og_image' => $ogImage,
+    'og_image' => $ogImageRaw,
     'keywords' => $keywords,
     'published' => $published,
     'scheduled_publish_at' => $scheduledPublishAt,
 ];
 
 $saved = gta_blog_upsert($pdo, $articleData);
+
+// GTA-BLOG-IMG-002/003: qualunque primary_image/og_image che punti a un
+// host esterno viene scaricata e ri-ospitata qui sul server, senza bisogno
+// che chi chiama l'abbia già fatto. Mai bloccante: se il download fallisce,
+// l'URL originale resta invariata (vedi gta_blog_ensure_hosted_image in
+// blog-template.php) — e a questo punto l'articolo è comunque già salvato.
+$primaryImageResult = gta_blog_ensure_hosted_image($primaryImageRaw !== '' ? $primaryImageRaw : null, $config);
+$primaryImage = $primaryImageResult['url'] ?? '';
+if ($ogImageRaw === $primaryImageRaw) {
+    $ogImage = $primaryImage;
+} else {
+    $ogImageResult = gta_blog_ensure_hosted_image($ogImageRaw !== '' ? $ogImageRaw : null, $config);
+    $ogImage = $ogImageResult['url'] ?? '';
+}
+
+if ($primaryImageResult['rehosted'] || $ogImage !== $ogImageRaw) {
+    $articleData['primary_image'] = $primaryImage;
+    $articleData['og_image'] = $ogImage;
+    $saved = gta_blog_upsert($pdo, $articleData);
+}
 
 gta_blog_regenerate($pdo, $config, $saved);
 
