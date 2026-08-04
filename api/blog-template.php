@@ -233,6 +233,12 @@ function gta_blog_ensure_hosted_image(?string $url, array $config): array
 
         return ['url' => $hostedUrl, 'rehosted' => true, 'error' => null];
     } catch (\RuntimeException $e) {
+        // Loggato lato server (prima non lo era): il chiamante MCP/API vede
+        // comunque il motivo in primary_image_rehost_warning, ma quel campo
+        // è visibile solo se qualcuno legge la risposta — questo resta nel
+        // log del server anche se nessuno la controlla in quel momento.
+        error_log('[gta_blog_ensure_hosted_image] rehost fallito per ' . $url . ': ' . $e->getMessage());
+
         return ['url' => $url, 'rehosted' => false, 'error' => $e->getMessage()];
     }
 }
