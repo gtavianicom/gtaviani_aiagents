@@ -86,6 +86,22 @@ function gta_blog_db(array $config): PDO
         $pdo->exec('ALTER TABLE articles ADD COLUMN scheduled_publish_at TEXT NULL');
     }
 
+    // GTA-ADMIN-002 — data di pubblicazione "vera", per ordinare/mostrare la
+    // lista admin senza usare updated_at (che si sposta a ogni modifica di
+    // contenuto, anche su un articolo pubblicato da settimane — sballerebbe
+    // l'ordine "più recente in alto"). Calcolata/stampata da gta_blog_upsert,
+    // vedi lì per la logica completa.
+    $hasPublishedAt = false;
+    foreach ($pdo->query('PRAGMA table_info(articles)') as $col) {
+        if ($col['name'] === 'published_at') {
+            $hasPublishedAt = true;
+            break;
+        }
+    }
+    if (!$hasPublishedAt) {
+        $pdo->exec('ALTER TABLE articles ADD COLUMN published_at TEXT NULL');
+    }
+
     return $pdo;
 }
 
@@ -180,6 +196,21 @@ function gta_blog_fetch_all(PDO $pdo): array
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+// GTA-ADMIN-002 — variante di gta_blog_fetch_all SOLO per la lista del
+// pannello admin: ordina per data di pubblicazione (published_at) più
+// recente in alto, righe senza data (mai pubblicate) in fondo. Funzione
+// separata invece di cambiare l'ordinamento di gta_blog_fetch_all perché
+// quella è anche il contratto action:list per blog.php/tool MCP
+// (documentato come "ordinati per updated_at decrescente" — cambiarlo
+// avrebbe effetti sul consumo lato agente, fuori scope di questo aggiustamento
+// solo-admin-panel).
+function gta_blog_fetch_all_for_admin(PDO $pdo): array
+{
+    $stmt = $pdo->query("SELECT * FROM articles WHERE deleted_at IS NULL
+        ORDER BY (published_at IS NULL) ASC, published_at DESC, updated_at DESC");
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 // GTA-BLOG-005: lettura diretta di una riga soft-deleted, usata solo da
 // gta_blog_restore() — non esposta ne' come action REST ne' come tool MCP.
 function gta_blog_fetch_one_including_deleted(PDO $pdo, string $slug): ?array
@@ -196,9 +227,38 @@ function gta_blog_upsert(PDO $pdo, array $data): array
     $existing = gta_blog_fetch_one($pdo, $data['slug']);
     $createdAt = $existing['created_at'] ?? $now;
 
+    // GTA-ADMIN-002 — data di pubblicazione "vera" (published_at), derivata
+    // qui invece che lasciata a chi chiama, così ogni via di scrittura
+    // (blog.php, tool MCP, admin panel) resta coerente automaticamente.
+    // Regola: se questo salvataggio propone/conferma una schedulazione,
+    // published_at SEGUE quella data (è il "vivo da" annunciato, passato o
+    // futuro). Altrimenti, se l'articolo era GIA' pubblicato-senza-
+    // schedulazione anche prima di questo salvataggio (un semplice edit di
+    // contenuto), non tocchiamo published_at — un fix di battitura non deve
+    // far "risalire" un articolo vecchio in cima alla lista. In ogni altro
+    // caso (primo publish, o una schedulazione che viene tolta/cancellata
+    // mentre resta pubblicato: l'intento è "vivo ORA") published_at diventa
+    // adesso. Se published=false, published_at resta quello che era prima
+    // (storico, non azzerato — se poi ripubblicato senza schedulazione
+    // ripartirà da "adesso", vedi il ramo sopra: existing['published')
+    // sarebbe false in quel momento).
+    $publishedAt = $existing['published_at'] ?? null;
+    if (!empty($data['published'])) {
+        if (!empty($data['scheduled_publish_at'])) {
+            $publishedAt = $data['scheduled_publish_at'];
+        } else {
+            $wasLiveWithoutSchedule = $existing !== null
+                && !empty($existing['published'])
+                && empty($existing['scheduled_publish_at']);
+            if (!$wasLiveWithoutSchedule) {
+                $publishedAt = $now;
+            }
+        }
+    }
+
     $stmt = $pdo->prepare('INSERT INTO articles
-        (slug, title, intro, body_html, primary_image, meta_description, og_image, keywords, published, scheduled_publish_at, created_at, updated_at)
-        VALUES (:slug, :title, :intro, :body_html, :primary_image, :meta_description, :og_image, :keywords, :published, :scheduled_publish_at, :created_at, :updated_at)
+        (slug, title, intro, body_html, primary_image, meta_description, og_image, keywords, published, scheduled_publish_at, published_at, created_at, updated_at)
+        VALUES (:slug, :title, :intro, :body_html, :primary_image, :meta_description, :og_image, :keywords, :published, :scheduled_publish_at, :published_at, :created_at, :updated_at)
         ON CONFLICT(slug) DO UPDATE SET
             title = excluded.title,
             intro = excluded.intro,
@@ -209,6 +269,7 @@ function gta_blog_upsert(PDO $pdo, array $data): array
             keywords = excluded.keywords,
             published = excluded.published,
             scheduled_publish_at = excluded.scheduled_publish_at,
+            published_at = excluded.published_at,
             updated_at = excluded.updated_at');
 
     $stmt->execute([
@@ -225,6 +286,7 @@ function gta_blog_upsert(PDO $pdo, array $data): array
         // (nessuna modifica sotto GTA-BLOG-014) continuano a salvare NULL,
         // comportamento identico a prima.
         ':scheduled_publish_at' => $data['scheduled_publish_at'] ?? null,
+        ':published_at' => $publishedAt,
         ':created_at' => $createdAt,
         ':updated_at' => $now,
     ]);

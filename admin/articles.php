@@ -54,7 +54,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$articles = gta_blog_fetch_all($pdo);
+// GTA-ADMIN-002: qui (solo pannello admin) ordiniamo per data di
+// pubblicazione più recente in alto, non per updated_at — vedi
+// gta_blog_fetch_all_for_admin per il perché non è la stessa funzione usata
+// da blog.php/tool MCP.
+$articles = gta_blog_fetch_all_for_admin($pdo);
 $csrf = admin_csrf_token();
 ?>
 <!DOCTYPE html>
@@ -82,13 +86,14 @@ $csrf = admin_csrf_token();
           <tr>
             <th>Titolo</th>
             <th>Stato</th>
+            <th>Data pubblicazione</th>
             <th>Aggiornato</th>
             <th>Azioni</th>
           </tr>
         </thead>
         <tbody>
           <?php if (empty($articles)): ?>
-            <tr><td colspan="4">Nessun articolo ancora. Crea il primo con "+ Nuovo articolo".</td></tr>
+            <tr><td colspan="5">Nessun articolo ancora. Crea il primo con "+ Nuovo articolo".</td></tr>
           <?php endif; ?>
           <?php foreach ($articles as $article): ?>
             <tr>
@@ -99,9 +104,16 @@ $csrf = admin_csrf_token();
                 <?php if (gta_blog_is_live($article)): ?>
                   <span class="admin-badge admin-badge-published">Pubblicato</span>
                 <?php elseif (!empty($article['published']) && !empty($article['scheduled_publish_at'])): ?>
-                  <span class="admin-badge admin-badge-scheduled">Programmato — <?= admin_html_escape(admin_utc_iso_to_datetime_local($article['scheduled_publish_at'])) ?></span>
+                  <span class="admin-badge admin-badge-scheduled">Programmato — <?= admin_html_escape(str_replace('T', ' ', admin_utc_iso_to_datetime_local($article['scheduled_publish_at']))) ?></span>
                 <?php else: ?>
                   <span class="admin-badge admin-badge-draft">Bozza</span>
+                <?php endif; ?>
+              </td>
+              <td>
+                <?php if (!empty($article['published_at'])): ?>
+                  <?= admin_html_escape(str_replace('T', ' ', admin_utc_iso_to_datetime_local($article['published_at']))) ?>
+                <?php else: ?>
+                  &mdash;
                 <?php endif; ?>
               </td>
               <td><?= admin_html_escape(substr((string) $article['updated_at'], 0, 10)) ?></td>
