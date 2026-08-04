@@ -41,7 +41,7 @@ a { color: var(--admin-primary); }
 }
 
 .admin-container {
-  width: 80%;
+  width: 90%;
   margin: 2rem auto;
   padding: 0 1.5rem;
 }

@@ -102,6 +102,22 @@ function gta_blog_db(array $config): PDO
         $pdo->exec('ALTER TABLE articles ADD COLUMN published_at TEXT NULL');
     }
 
+    // Backfill self-healing (NON solo al momento della ALTER sopra: sulla
+    // riga di produzione la colonna può già esistere — creata da un deploy
+    // precedente — con righe rimaste a NULL perché scritte prima che questa
+    // logica di backfill esistesse). Righe già valorizzate non vengono mai
+    // toccate (entrambe le query filtrano su published_at IS NULL), quindi
+    // ripetere questo passo a ogni connessione costa una query quasi sempre
+    // a zero righe — stesso principio di gta_blog_publish_due(). Priorità:
+    // se c'è una schedulazione, quella è la data; altrimenti, per un
+    // articolo già pubblicato, la miglior approssimazione disponibile è
+    // updated_at (non abbiamo mai registrato il vero istante di
+    // pubblicazione prima d'ora).
+    $pdo->exec("UPDATE articles SET published_at = scheduled_publish_at
+        WHERE published_at IS NULL AND scheduled_publish_at IS NOT NULL");
+    $pdo->exec("UPDATE articles SET published_at = updated_at
+        WHERE published_at IS NULL AND published = 1");
+
     return $pdo;
 }
 

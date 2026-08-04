@@ -31,7 +31,7 @@ $csrf = admin_csrf_token();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login — Admin Blog GTAVIANI</title>
   <meta name="robots" content="noindex, nofollow">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=<?= admin_asset_version() ?>">
 </head>
 <body class="admin-login-body">
   <form method="post" class="admin-login-form">

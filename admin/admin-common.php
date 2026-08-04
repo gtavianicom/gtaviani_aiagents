@@ -179,6 +179,19 @@ function admin_html_escape(string $value): string
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
 
+// GTA-ADMIN-002 — cache-busting per style.css: senza questo, un browser che
+// ha già visitato il pannello tiene la CSS vecchia in cache (nessun header
+// di invalidazione esplicito su questo hosting) e un aggiornamento di stile
+// come questo (larghezza pagina) può restare invisibile finché non si fa un
+// refresh forzato. mtime del file reale — cambia automaticamente a ogni
+// deploy che tocca style.css, zero manutenzione.
+function admin_asset_version(): string
+{
+    $path = __DIR__ . '/style.css';
+
+    return (string) (file_exists($path) ? filemtime($path) : time());
+}
+
 // GTA-BLOG-014 — il DB salva scheduled_publish_at in UTC (stesso stile di
 // created_at/updated_at), ma Gabriele digita/legge un orario in un campo
 // <input type="datetime-local"> del browser, senza fuso orario esplicito:

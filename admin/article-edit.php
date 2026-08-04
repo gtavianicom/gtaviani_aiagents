@@ -108,7 +108,7 @@ $csrf = admin_csrf_token();
        specificità vince l'ultima dichiarata, quindi il nostro override in
        style.css deve restare per ultimo. -->
   <link rel="stylesheet" href="assets/vendor/quill/quill.snow.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=<?= admin_asset_version() ?>">
   <style>#body-editor { min-height: 320px; background: #fff; }</style>
 </head>
 <body>

@@ -68,7 +68,7 @@ $csrf = admin_csrf_token();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Articoli — Admin Blog GTAVIANI</title>
   <meta name="robots" content="noindex, nofollow">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=<?= admin_asset_version() ?>">
 </head>
 <body>
   <?= admin_topbar_html('articles', $user['username']) ?>
@@ -104,7 +104,7 @@ $csrf = admin_csrf_token();
                 <?php if (gta_blog_is_live($article)): ?>
                   <span class="admin-badge admin-badge-published">Pubblicato</span>
                 <?php elseif (!empty($article['published']) && !empty($article['scheduled_publish_at'])): ?>
-                  <span class="admin-badge admin-badge-scheduled">Programmato — <?= admin_html_escape(str_replace('T', ' ', admin_utc_iso_to_datetime_local($article['scheduled_publish_at']))) ?></span>
+                  <span class="admin-badge admin-badge-scheduled">Programmato</span>
                 <?php else: ?>
                   <span class="admin-badge admin-badge-draft">Bozza</span>
                 <?php endif; ?>
