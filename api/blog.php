@@ -177,12 +177,26 @@ if (is_array($keywordsRaw)) {
     $keywords = is_string($keywordsRaw) ? $keywordsRaw : '';
 }
 
-$primaryImage = is_string($data['primary_image'] ?? null) ? $data['primary_image'] : '';
+$primaryImageRaw = is_string($data['primary_image'] ?? null) ? $data['primary_image'] : '';
 $metaDescription = (is_string($data['meta_description'] ?? null) && trim($data['meta_description']) !== '')
     ? $data['meta_description']
     : $data['intro'];
-$ogImage = (is_string($data['og_image'] ?? null) && trim($data['og_image']) !== '') ? $data['og_image'] : $primaryImage;
+$ogImageRaw = (is_string($data['og_image'] ?? null) && trim($data['og_image']) !== '') ? $data['og_image'] : $primaryImageRaw;
 $published = !isset($data['published']) || $data['published'] === true || $data['published'] === 1 || $data['published'] === '1';
+
+// GTA-BLOG-IMG-002: stessa logica del tool MCP publish_article — qualunque
+// primary_image/og_image che punti a un host esterno viene scaricata e
+// ri-ospitata qui sul server, senza bisogno che chi chiama l'abbia già
+// fatto. Mai bloccante: se il download fallisce, l'URL originale resta
+// invariata (vedi gta_blog_ensure_hosted_image in blog-template.php).
+$primaryImageResult = gta_blog_ensure_hosted_image($primaryImageRaw !== '' ? $primaryImageRaw : null, $config);
+$primaryImage = $primaryImageResult['url'] ?? '';
+if ($ogImageRaw === $primaryImageRaw) {
+    $ogImage = $primaryImage;
+} else {
+    $ogImageResult = gta_blog_ensure_hosted_image($ogImageRaw !== '' ? $ogImageRaw : null, $config);
+    $ogImage = $ogImageResult['url'] ?? '';
+}
 
 // GTA-BLOG-014: opzionale, NULL/assente = comportamento invariato (nessuna
 // schedulazione, live appena published=true). Qui (blog.php diretto, token
@@ -214,10 +228,15 @@ $saved = gta_blog_upsert($pdo, $articleData);
 gta_blog_regenerate($pdo, $config, $saved);
 
 $url = rtrim((string) $config['site_url'], '/') . '/blog/' . $slug . '.html';
-gta_blog_respond(200, [
+$responsePayload = [
     'ok' => true,
     'slug' => $slug,
     'url' => $url,
     'published' => (bool) $saved['published'],
     'scheduled_publish_at' => $saved['scheduled_publish_at'] ?? null,
-]);
+    'primary_image' => $saved['primary_image'] ?? null,
+];
+if ($primaryImageResult['error'] !== null) {
+    $responsePayload['primary_image_rehost_warning'] = $primaryImageResult['error'];
+}
+gta_blog_respond(200, $responsePayload);

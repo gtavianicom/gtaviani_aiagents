@@ -21,6 +21,222 @@ declare(strict_types=1);
 // 4. llms.txt NON viene toccato in questo task (nessun contenuto blog reale
 //    da riportare finché non ci sono articoli veri).
 
+// GTA-BLOG-IMG-002 — vero se l'IP ricade in un range privato/riservato/
+// loopback/link-local (IPv4 e IPv6) — protezione SSRF, usata per rifiutare
+// URL che puntano a indirizzi interni prima di scaricarli. Spostata qui da
+// mcp.php (era gta_mcp_is_disallowed_ip) perché ora la usa anche blog.php.
+function gta_blog_is_disallowed_ip(string $ip): bool
+{
+    return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) === false;
+}
+
+// GTA-BLOG-IMG-002 — scarica un'immagine da una URL pubblica arbitraria e la
+// ri-ospita sul sito (assets/images/blog/uploads/), ritornando l'URL
+// pubblico. Logica invariata rispetto alla versione originale in mcp.php
+// (gta_mcp_upload_image, GTA-BLOG-IMG-001) — spostata qui perché ora la
+// chiama anche gta_blog_ensure_hosted_image() sotto, usata da entrambi i
+// publish path (blog.php diretto e tool MCP), non solo dal tool upload_image
+// esplicito. Lancia RuntimeException col messaggio d'errore invece di
+// ToolCallException (specifico dell'SDK MCP, non disponibile qui) — chi
+// chiama da mcp.php la converte.
+//
+// Protezione SSRF (URL arbitraria fornita da un chiamante non fidato): solo
+// schema http/https, l'hostname viene risolto e l'IP validato PRIMA di
+// connettersi (rifiuta range privati/riservati/loopback/link-local, incluso
+// il metadata endpoint cloud 169.254.169.254), l'IP validato viene
+// "pinnato" con CURLOPT_RESOLVE per evitare DNS rebinding, nessun redirect
+// seguito automaticamente, download interrotto oltre il limite dimensione
+// anche se Content-Length mente, contenuto rivalidato come immagine reale
+// dopo il download. Stessa policy formati/limite del pannello admin
+// (admin/upload-image.php): jpg/png/webp, max 5MB.
+function gta_blog_download_and_host_image(string $imageUrl, array $config): string
+{
+    $imageUrl = trim($imageUrl);
+    if ($imageUrl === '') {
+        throw new \RuntimeException('image_url obbligatorio');
+    }
+
+    $parts = parse_url($imageUrl);
+    if ($parts === false || empty($parts['scheme']) || empty($parts['host'])) {
+        throw new \RuntimeException('image_url non valida');
+    }
+
+    $scheme = strtolower($parts['scheme']);
+    if (!in_array($scheme, ['http', 'https'], true)) {
+        throw new \RuntimeException('Schema non consentito — solo http/https');
+    }
+
+    $host = $parts['host'];
+    $port = $parts['port'] ?? ($scheme === 'https' ? 443 : 80);
+
+    $ips = [];
+    if (filter_var($host, FILTER_VALIDATE_IP) !== false) {
+        $ips[] = $host;
+    } else {
+        $records = @dns_get_record($host, DNS_A + DNS_AAAA);
+        if (is_array($records)) {
+            foreach ($records as $r) {
+                if (!empty($r['ip'])) {
+                    $ips[] = $r['ip'];
+                }
+                if (!empty($r['ipv6'])) {
+                    $ips[] = $r['ipv6'];
+                }
+            }
+        }
+        if (empty($ips)) {
+            $resolved = gethostbyname($host);
+            if ($resolved !== $host) {
+                $ips[] = $resolved;
+            }
+        }
+    }
+
+    if (empty($ips)) {
+        throw new \RuntimeException('Impossibile risolvere l\'host della URL');
+    }
+
+    $safeIp = null;
+    foreach ($ips as $ip) {
+        if (gta_blog_is_disallowed_ip($ip)) {
+            throw new \RuntimeException('URL non consentita — punta a un indirizzo interno/riservato');
+        }
+        if ($safeIp === null) {
+            $safeIp = $ip;
+        }
+    }
+
+    $maxBytes = 5 * 1024 * 1024;
+    $tmpFile = tempnam(sys_get_temp_dir(), 'gta_img_');
+    $fh = fopen($tmpFile, 'wb');
+    if ($fh === false) {
+        throw new \RuntimeException('Impossibile preparare il download');
+    }
+
+    $aborted = false;
+    $ch = curl_init();
+    curl_setopt_array($ch, [
+        CURLOPT_URL => $imageUrl,
+        CURLOPT_RESOLVE => [$host . ':' . $port . ':' . $safeIp],
+        CURLOPT_FOLLOWLOCATION => false,
+        CURLOPT_CONNECTTIMEOUT => 5,
+        CURLOPT_TIMEOUT => 15,
+        CURLOPT_PROTOCOLS => CURLPROTO_HTTP | CURLPROTO_HTTPS,
+        CURLOPT_FILE => $fh,
+        CURLOPT_NOPROGRESS => false,
+        CURLOPT_PROGRESSFUNCTION => static function ($res, $downloadSize, $downloadedBytes) use ($maxBytes, &$aborted): int {
+            if ($downloadedBytes > $maxBytes) {
+                $aborted = true;
+
+                return 1;
+            }
+
+            return 0;
+        },
+        CURLOPT_USERAGENT => 'GTAviani-BlogBot/1.0',
+    ]);
+
+    $ok = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $curlErr = curl_error($ch);
+    fclose($fh);
+
+    if ($aborted) {
+        @unlink($tmpFile);
+        throw new \RuntimeException('Immagine troppo grande (limite 5MB)');
+    }
+
+    if ($ok === false) {
+        @unlink($tmpFile);
+        throw new \RuntimeException('Download fallito: ' . $curlErr);
+    }
+
+    if ($httpCode < 200 || $httpCode >= 300) {
+        @unlink($tmpFile);
+        throw new \RuntimeException('Download fallito: HTTP ' . $httpCode);
+    }
+
+    clearstatcache(true, $tmpFile);
+    if (filesize($tmpFile) > $maxBytes) {
+        @unlink($tmpFile);
+        throw new \RuntimeException('Immagine troppo grande (limite 5MB)');
+    }
+
+    $imageInfo = @getimagesize($tmpFile);
+    if ($imageInfo === false) {
+        @unlink($tmpFile);
+        throw new \RuntimeException('Il contenuto scaricato non è un\'immagine valida');
+    }
+
+    $allowedMime = [
+        'image/jpeg' => 'jpg',
+        'image/png' => 'png',
+        'image/webp' => 'webp',
+    ];
+    $mime = $imageInfo['mime'];
+    if (!isset($allowedMime[$mime])) {
+        @unlink($tmpFile);
+        throw new \RuntimeException('Formato non supportato — solo jpg, png, webp');
+    }
+
+    $uploadDir = $config['site_root'] . '/assets/images/blog/uploads';
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
+
+    $ext = $allowedMime[$mime];
+    $filename = gmdate('Ymd-His') . '-' . bin2hex(random_bytes(6)) . '.' . $ext;
+    $destination = $uploadDir . '/' . $filename;
+
+    if (!rename($tmpFile, $destination)) {
+        @unlink($tmpFile);
+        throw new \RuntimeException('Impossibile salvare l\'immagine sul server');
+    }
+    chmod($destination, 0644);
+
+    return rtrim((string) $config['site_url'], '/') . '/assets/images/blog/uploads/' . $filename;
+}
+
+// GTA-BLOG-IMG-002 (2026-08-04) — responsabilità spostata dall'agente al
+// server: prima l'agente Paperclip doveva chiamare esplicitamente il tool
+// upload_image PRIMA di publish_article, passandogli l'URL esterno
+// (tipicamente il bucket Google Cloud del generatore immagini) e usando
+// l'URL ritornato — un bug di binding lato Paperclip (tools/list in cache,
+// non vede i tool aggiunti dopo la connessione) ha fatto sì che l'agente
+// pubblicasse comunque con l'URL esterno diretto, mai ri-ospitato. Fix
+// strutturale: ogni volta che un articolo viene salvato con
+// primary_image/og_image che punta a un host DIVERSO dal nostro
+// (site_url), il server la scarica e ri-ospita da solo, qui — a prescindere
+// da cosa fa/dimentica l'agente o quale tool riesce a chiamare. Mai
+// bloccante: se il download fallisce (rete, formato, SSRF), l'URL originale
+// resta invariata e l'errore torna nel campo 'error' — il publish/save non
+// si interrompe mai per questo (stesso principio del fallback già adottato
+// lato skill Paperclip, solo che ora è anche una rete di sicurezza qui).
+//
+// @return array{url: ?string, rehosted: bool, error: ?string}
+function gta_blog_ensure_hosted_image(?string $url, array $config): array
+{
+    $url = $url !== null ? trim($url) : '';
+    if ($url === '') {
+        return ['url' => $url, 'rehosted' => false, 'error' => null];
+    }
+
+    $ourHost = strtolower((string) parse_url((string) $config['site_url'], PHP_URL_HOST));
+    $urlHost = strtolower((string) parse_url($url, PHP_URL_HOST));
+    if ($urlHost === '' || $urlHost === $ourHost) {
+        // Già nostra (o URL relativa/non http) — niente da fare.
+        return ['url' => $url, 'rehosted' => false, 'error' => null];
+    }
+
+    try {
+        $hostedUrl = gta_blog_download_and_host_image($url, $config);
+
+        return ['url' => $hostedUrl, 'rehosted' => true, 'error' => null];
+    } catch (\RuntimeException $e) {
+        return ['url' => $url, 'rehosted' => false, 'error' => $e->getMessage()];
+    }
+}
+
 function gta_blog_slugify(string $text): string
 {
     $text = trim($text);
