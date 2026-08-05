@@ -47,6 +47,21 @@ Options -Indexes
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    # GTA-BLOG-016 (2026-08-05) — questo blocco RewriteEngine ha
+    # involontariamente reso INATTIVA, per tutto ciò che sta sotto /api/, la
+    # regola equivalente nel .htaccess di root (GTA-BLOG-001, 2026-07-30) che
+    # passa l'header Authorization a PHP su questo hosting — un
+    # sotto-.htaccess con un proprio RewriteEngine On non eredita
+    # automaticamente le regole del genitore (serve RewriteOptions Inherit,
+    # mai impostato). Effetto: blog.php E mcp.php rispondevano 401 "Token
+    # mancante o non valido" anche con token corretto, dal 4/8 in poi.
+    # Duplicata qui invece di aggiungere RewriteOptions Inherit — esplicito e
+    # autosufficiente, non dipende da sottigliezze di ereditarietà tra
+    # Apache/versioni diverse.
+    RewriteCond %{HTTP:Authorization} ^(.*)
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%1]
+
     RewriteRule ^blog-data/ - [F,L]
     RewriteRule ^mcp-sessions/ - [F,L]
 </IfModule>
