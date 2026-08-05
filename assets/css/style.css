@@ -1453,16 +1453,6 @@ section > h2 {
   color: var(--color-primary);
 }
 
-/* ai-team-ecommerce.html — CTA ripetute con leva urgenza/scarsità, a fine sezione */
-.section-cta {
-  text-align: center;
-  margin: 2.5rem auto 0;
-}
-
-.section-cta .btn {
-  white-space: normal;
-}
-
 /* ai-team-ecommerce.html — form lead statico (placeholder in attesa di GTA-ECOM-000-FORM) */
 .lead-form-card {
   max-width: 560px;
