@@ -480,15 +480,29 @@ function gta_blog_upsert(PDO $pdo, array $data): array
     // (storico, non azzerato — se poi ripubblicato senza schedulazione
     // ripartirà da "adesso", vedi il ramo sopra: existing['published')
     // sarebbe false in quel momento).
+    //
+    // GTA-ADMIN-003: "senza schedulazione" va giudicato allo stato
+    // dell'articolo ESISTENTE, non solo "scheduled_publish_at non
+    // impostato" — un articolo pubblicato con una scheduled_publish_at
+    // ormai PASSATA (consumata da gta_blog_publish_due, mai ripulita in
+    // automatico) era comunque già live prima di questo salvataggio. Senza
+    // questo controllo, aprire quell'articolo e svuotare il campo
+    // "Pubblicazione programmata" (pensando sia "consumato e da ripulire")
+    // veniva trattato come "schedulazione tolta mentre resta pubblicato" →
+    // published_at saltava a oggi, cancellando la data storica reale. Solo
+    // una schedulazione ancora FUTURA (articolo non ancora davvero live)
+    // deve contare come "non era live", per coerenza con l'intento di
+    // quel ramo (cancellare uno scheduling futuro = "vivo ORA" da adesso).
     $publishedAt = $existing['published_at'] ?? null;
     if (!empty($data['published'])) {
         if (!empty($data['scheduled_publish_at'])) {
             $publishedAt = $data['scheduled_publish_at'];
         } else {
-            $wasLiveWithoutSchedule = $existing !== null
+            $existingScheduled = $existing['scheduled_publish_at'] ?? null;
+            $wasLiveWithoutFutureSchedule = $existing !== null
                 && !empty($existing['published'])
-                && empty($existing['scheduled_publish_at']);
-            if (!$wasLiveWithoutSchedule) {
+                && (empty($existingScheduled) || $existingScheduled <= $now);
+            if (!$wasLiveWithoutFutureSchedule) {
                 $publishedAt = $now;
             }
         }
