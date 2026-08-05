@@ -1393,6 +1393,35 @@ section > h2 {
   }
 }
 
+/* GTA-MOBILE-CTA-001 — bottone CTA flottante (pill arrotondato), fisso in
+   basso, solo mobile (stessa soglia del menu hamburger, .site-header
+   @media max-width:800px sopra). Su desktop il CONTATTO in header (sticky)
+   copre già lo stesso bisogno, niente bottone lì. z-index sotto al cookie
+   banner (1000): se coesistono alla prima visita, il banner dismissibile
+   resta sopra. */
+.mobile-sticky-cta {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .mobile-sticky-cta {
+    display: block;
+    position: fixed;
+    bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+    left: 1rem;
+    right: 1rem;
+    z-index: 900;
+    background: var(--color-primary);
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 0.9rem 1.5rem;
+    border-radius: 999px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  }
+}
+
 /* ai-team-ecommerce.html — nav badge "Solo 10 posti" sulla voce di menu */
 .nav-badge-link {
   display: inline-flex;
