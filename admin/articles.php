@@ -36,18 +36,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $error = 'Articolo non trovato.';
         } else {
             $article['published'] = $action === 'publish';
-            if ($action === 'publish') {
-                // GTA-BLOG-014: il bottone "Pubblica" qui è un'azione esplicita
-                // "rendi live ORA" — se l'articolo aveva una schedulazione
-                // futura rimasta da una modifica precedente, la cancelliamo:
-                // altrimenti cliccare "Pubblica" non lo renderebbe live
-                // (resterebbe "Programmato"), comportamento sorprendente per
-                // chi clicca quel bottone aspettandosi l'effetto immediato.
-                $article['scheduled_publish_at'] = null;
-            }
+            // GTA-ADMIN-003 (fix, era il contrario in GTA-BLOG-014): "Pubblica"
+            // qui e' solo l'approvazione bozza->approvato (published=true) —
+            // NON forza piu' live immediato. Se l'articolo ha gia' una
+            // scheduled_publish_at futura, resta rispettata: l'articolo passa
+            // a "Programmato" e diventa visibile pubblicamente solo alla data
+            // schedulata (gta_blog_is_live), non al click. Nessuna schedulazione
+            // impostata -> comportamento invariato, live subito.
             $updated = gta_blog_upsert($pdo, $article);
             gta_blog_regenerate($pdo, $blogConfig, $updated);
-            $message = $action === 'publish' ? 'Articolo pubblicato — ora visibile pubblicamente.' : 'Articolo rimesso in bozza.';
+            $message = $action === 'publish' ? 'Articolo approvato — pubblicato subito se non schedulato, altrimenti alla data programmata.' : 'Articolo rimesso in bozza.';
         }
     } else {
         $error = 'Azione non riconosciuta.';
@@ -101,10 +99,12 @@ $csrf = admin_csrf_token();
                 <a href="article-edit.php?slug=<?= urlencode($article['slug']) ?>"><?= admin_html_escape($article['title']) ?></a>
               </td>
               <td>
-                <?php if (gta_blog_is_live($article)): ?>
-                  <span class="admin-badge admin-badge-published">Pubblicato</span>
-                <?php elseif (!empty($article['published']) && !empty($article['scheduled_publish_at'])): ?>
-                  <span class="admin-badge admin-badge-scheduled">Programmato</span>
+                <?php /* GTA-ADMIN-003: Stato riflette solo published (Bozza/Approvato) —
+                     "pubblicato" fuorviava, l'articolo approvato diventa visibile
+                     davvero solo alla data in colonna "Data pubblicazione", non al
+                     click. Quella colonna già dice se/quando è live. */ ?>
+                <?php if (!empty($article['published'])): ?>
+                  <span class="admin-badge admin-badge-published">Approvato</span>
                 <?php else: ?>
                   <span class="admin-badge admin-badge-draft">Bozza</span>
                 <?php endif; ?>

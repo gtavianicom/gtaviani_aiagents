@@ -168,7 +168,7 @@ $csrf = admin_csrf_token();
 
         <label>Pubblicazione programmata (opzionale)
           <input type="datetime-local" name="scheduled_publish_at" value="<?= admin_html_escape(admin_utc_iso_to_datetime_local($values['scheduled_publish_at'] ?? null)) ?>">
-          <span class="admin-hint">Ora italiana. Se impostata, l'articolo diventa visibile pubblicamente solo da questa data/ora IN POI — e solo se è anche "Pubblicato" dalla lista articoli (le due condizioni servono entrambe). Lascia vuoto per nessuna schedulazione.</span>
+          <span class="admin-hint">Ora italiana. Se impostata, l'articolo diventa visibile pubblicamente solo da questa data/ora IN POI — e solo se è anche "Approvato" dalla lista articoli (le due condizioni servono entrambe). Lascia vuoto per nessuna schedulazione.</span>
         </label>
 
         <button type="submit" class="admin-btn">Salva</button>
