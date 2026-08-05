@@ -224,9 +224,6 @@
       <strong>Il Team AI non guadagna un centesimo in più: costa solo in base al numero agenti ai e alla velocità di esecuzione.</strong>
     </div>
 
-    <div class="section-cta">
-      <a href="prenota-ecommerce-ai-team.html" class="btn btn-primary btn-lg cta-lead" data-cta-location="problema">Prenota Analisi Gratuita</a>
-    </div>
   </section>
 
   <!-- [3] SOLUZIONE / ORGANIGRAMMA AI — GTA-ECOM-002 -->
@@ -302,9 +299,6 @@
       </div>
     </div>
 
-    <div class="section-cta">
-      <a href="prenota-ecommerce-ai-team.html" class="btn btn-primary btn-lg cta-lead" data-cta-location="soluzione">Prenota Analisi Gratuita</a>
-    </div>
   </section>
 
   <!-- [5] RISULTATI ATTESI — GTA-ECOM-003 -->
@@ -434,9 +428,6 @@
       </div>
     </div>
 
-    <div class="section-cta">
-      <a href="prenota-ecommerce-ai-team.html" class="btn btn-primary btn-lg cta-lead" data-cta-location="metodo">Prenota Analisi Gratuita</a>
-    </div>
   </section>
 
   <!-- [7] OFFERTA / PRICING — GTA-ECOM-004 -->
@@ -495,9 +486,6 @@
          per aggiornare i posti rimasti (nessun CMS, sito statico) -->
     <p class="scarcity-counter" style="color: #ffffff;">⏳ Posti rimasti: <strong>4</strong> su 10</p>
 
-    <div class="section-cta">
-      <a href="prenota-ecommerce-ai-team.html" class="btn btn-white btn-lg cta-lead" data-cta-location="offerta">Prenota Analisi Gratuita</a>
-    </div>
   </section>
 
   <!-- [8] FIDUCIA — GTA-ECOM-005 -->
@@ -609,6 +597,13 @@
     ]
   }
   </script>
+
+  <!-- GTA-MOBILE-CTA-001: bottone flottante, sostituisce i 4 "Prenota Analisi
+       Gratuita" ripetuti a metà sezione (problema/soluzione/metodo/offerta,
+       rimossi) — resta solo quello nell'Hero come CTA primaria above-the-fold.
+       cta-lead: tracciato dallo stesso listener GTM di riga ~700 (data-cta-location
+       dedicato). id="cta-sticky": trigger GTM dedicato se serve isolarlo. -->
+  <a href="prenota-ecommerce-ai-team.html" id="cta-sticky" class="sticky-cta cta-lead" data-cta-location="floating">Prenota Analisi Gratuita →</a>
 
   <!-- [10] FOOTER (stesso pattern di index.html) -->
   <section id="cta-footer" class="dark-section">
