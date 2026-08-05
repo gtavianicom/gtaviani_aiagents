@@ -84,6 +84,7 @@ $csrf = admin_csrf_token();
           <tr>
             <th>Titolo</th>
             <th>Stato</th>
+            <th>Online</th>
             <th>Data pubblicazione</th>
             <th>Aggiornato</th>
             <th>Azioni</th>
@@ -91,7 +92,7 @@ $csrf = admin_csrf_token();
         </thead>
         <tbody>
           <?php if (empty($articles)): ?>
-            <tr><td colspan="5">Nessun articolo ancora. Crea il primo con "+ Nuovo articolo".</td></tr>
+            <tr><td colspan="6">Nessun articolo ancora. Crea il primo con "+ Nuovo articolo".</td></tr>
           <?php endif; ?>
           <?php foreach ($articles as $article): ?>
             <tr>
@@ -107,6 +108,16 @@ $csrf = admin_csrf_token();
                   <span class="admin-badge admin-badge-published">Approvato</span>
                 <?php else: ?>
                   <span class="admin-badge admin-badge-draft">Bozza</span>
+                <?php endif; ?>
+              </td>
+              <td>
+                <?php /* GTA-ADMIN-003: flag separato — "Approvato" (Stato) non vuol
+                     dire visibile ORA, se è schedulato nel futuro. Questa colonna
+                     risponde solo alla domanda "un visitatore lo vede oggi?". */ ?>
+                <?php if (gta_blog_is_live($article)): ?>
+                  <span class="admin-badge admin-badge-published" title="Visibile pubblicamente ora">&#10003; Online</span>
+                <?php else: ?>
+                  <span class="admin-badge admin-badge-draft" title="Non ancora visibile pubblicamente">&mdash;</span>
                 <?php endif; ?>
               </td>
               <td>
