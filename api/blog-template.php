@@ -478,7 +478,21 @@ function gta_blog_fetch_one_including_deleted(PDO $pdo, string $slug): ?array
 function gta_blog_upsert(PDO $pdo, array $data): array
 {
     $now = gmdate('c');
-    $existing = gta_blog_fetch_one($pdo, $data['slug']);
+    // GTA-BLOG-MCPAUTH-24H-001 (fix reale, 2026-08-06) — deve vedere anche
+    // una riga soft-deleted (non gta_blog_fetch_one, che la esclude): un
+    // upsert su uno slug cancellato in precedenza deve "resuscitarlo"
+    // (vedi ON CONFLICT sotto, deleted_at = NULL), non trattarlo come
+    // inesistente. Con la vecchia gta_blog_fetch_one qui, $existing
+    // risultava sempre null per uno slug gia' cancellato -> created_at
+    // veniva perso E, piu' grave, l'upsert successivo lasciava deleted_at
+    // ancora valorizzato (mai nella lista UPDATE SET) mentre tutto il
+    // resto veniva aggiornato: la riga restava invisibile per sempre a
+    // qualunque fetch normale, pur essendo stata "ripubblicata" con
+    // successo -- causa reale del fallimento ricorrente su uno slug
+    // riusato dopo un delete_article (isolato con una riproduzione diretta
+    // il 06/08, non un problema di dimensione payload ne' di SDK/sessioni
+    // come inizialmente sospettato).
+    $existing = gta_blog_fetch_one_including_deleted($pdo, $data['slug']);
     $createdAt = $existing['created_at'] ?? $now;
 
     // GTA-ADMIN-002 — data di pubblicazione "vera" (published_at), derivata
@@ -552,7 +566,8 @@ function gta_blog_upsert(PDO $pdo, array $data): array
             scheduled_publish_at = excluded.scheduled_publish_at,
             published_at = excluded.published_at,
             article_code = excluded.article_code,
-            updated_at = excluded.updated_at');
+            updated_at = excluded.updated_at,
+            deleted_at = NULL');
 
     $stmt->execute([
         ':slug' => $data['slug'],
