@@ -82,6 +82,7 @@ $csrf = admin_csrf_token();
       <table class="admin-table">
         <thead>
           <tr>
+            <th>Codice</th>
             <th>Titolo</th>
             <th>Stato</th>
             <th>Online</th>
@@ -92,10 +93,14 @@ $csrf = admin_csrf_token();
         </thead>
         <tbody>
           <?php if (empty($articles)): ?>
-            <tr><td colspan="6">Nessun articolo ancora. Crea il primo con "+ Nuovo articolo".</td></tr>
+            <tr><td colspan="7">Nessun articolo ancora. Crea il primo con "+ Nuovo articolo".</td></tr>
           <?php endif; ?>
           <?php foreach ($articles as $article): ?>
             <tr>
+              <td>
+                <?php /* GTA-BLOG-018: solo uso interno/backend, mai in frontend. */ ?>
+                <?= $article['article_code'] !== null && $article['article_code'] !== '' ? admin_html_escape((string) $article['article_code']) : '&mdash;' ?>
+              </td>
               <td>
                 <a href="article-edit.php?slug=<?= urlencode($article['slug']) ?>"><?= admin_html_escape($article['title']) ?></a>
               </td>

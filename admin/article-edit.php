@@ -13,7 +13,7 @@ $error = null;
 $values = $article ?? [
     'slug' => '', 'title' => '', 'intro' => '', 'body_html' => '',
     'primary_image' => '', 'meta_description' => '', 'og_image' => '', 'keywords' => '',
-    'published' => 0, 'scheduled_publish_at' => null,
+    'published' => 0, 'scheduled_publish_at' => null, 'article_code' => '',
 ];
 $originalSlug = $requestedSlug;
 
@@ -36,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'keywords' => trim((string) ($_POST['keywords'] ?? '')),
         'published' => 0,
         'scheduled_publish_at' => null,
+        'article_code' => trim((string) ($_POST['article_code'] ?? '')),
     ];
 
     $rawScheduledPublishAt = trim((string) ($_POST['scheduled_publish_at'] ?? ''));
@@ -73,6 +74,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'keywords' => $values['keywords'] ?: null,
             'published' => (bool) $publishedCurrent,
             'scheduled_publish_at' => $normalizedScheduledPublishAt,
+            // GTA-BLOG-018: chiave sempre presente qui (a differenza del tool
+            // MCP) — il form admin è l'unico punto dove il codice va anche
+            // svuotato esplicitamente, non solo impostato.
+            'article_code' => $values['article_code'] ?: null,
         ];
 
         $updated = gta_blog_upsert($pdo, $data);
@@ -164,6 +169,11 @@ $csrf = admin_csrf_token();
 
         <label>Keywords (opzionale, separate da virgola)
           <input type="text" name="keywords" value="<?= admin_html_escape((string) $values['keywords']) ?>">
+        </label>
+
+        <label>Codice articolo (opzionale, uso interno)
+          <input type="text" name="article_code" value="<?= admin_html_escape((string) ($values['article_code'] ?? '')) ?>" placeholder="es. 10.1">
+          <span class="admin-hint">Riferimento interno al piano contenuti — non visibile sul sito pubblico, usato solo qui e dall'agente via MCP per query/aggiornamenti.</span>
         </label>
 
         <label>Pubblicazione programmata (opzionale)

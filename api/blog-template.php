@@ -340,6 +340,22 @@ function gta_blog_db(array $config): PDO
     $pdo->exec("UPDATE articles SET published_at = updated_at
         WHERE published_at IS NULL AND published = 1");
 
+    // GTA-BLOG-018 — stessa migrazione idempotente di deleted_at/
+    // scheduled_publish_at/published_at sopra: codice interno alphanumerico
+    // (es. "10.1", riferimento al piano contenuti) — SOLO uso backend/MCP,
+    // mai reso nel frontend pubblico (gta_blog_render_article/blog.html non
+    // lo referenziano, di proposito).
+    $hasArticleCode = false;
+    foreach ($pdo->query('PRAGMA table_info(articles)') as $col) {
+        if ($col['name'] === 'article_code') {
+            $hasArticleCode = true;
+            break;
+        }
+    }
+    if (!$hasArticleCode) {
+        $pdo->exec('ALTER TABLE articles ADD COLUMN article_code TEXT NULL');
+    }
+
     return $pdo;
 }
 
@@ -508,9 +524,22 @@ function gta_blog_upsert(PDO $pdo, array $data): array
         }
     }
 
+    // GTA-BLOG-018 — a differenza degli altri campi (sempre sovrascritti con
+    // quel che passa il chiamante), article_code segue la regola "assente =
+    // non toccare": un chiamante che non conosce il campo (es. l'agente
+    // Paperclip che aggiorna solo i contenuti di un articolo già codificato
+    // da admin) non deve poterlo azzerare per omissione. Solo un chiamante
+    // che passa ESPLICITAMENTE la chiave (anche null/vuota, per svuotarlo —
+    // vedi admin/article-edit.php) può cambiarlo.
+    $articleCode = array_key_exists('article_code', $data)
+        ? (($data['article_code'] !== null && trim((string) $data['article_code']) !== '')
+            ? trim((string) $data['article_code'])
+            : null)
+        : ($existing['article_code'] ?? null);
+
     $stmt = $pdo->prepare('INSERT INTO articles
-        (slug, title, intro, body_html, primary_image, meta_description, og_image, keywords, published, scheduled_publish_at, published_at, created_at, updated_at)
-        VALUES (:slug, :title, :intro, :body_html, :primary_image, :meta_description, :og_image, :keywords, :published, :scheduled_publish_at, :published_at, :created_at, :updated_at)
+        (slug, title, intro, body_html, primary_image, meta_description, og_image, keywords, published, scheduled_publish_at, published_at, article_code, created_at, updated_at)
+        VALUES (:slug, :title, :intro, :body_html, :primary_image, :meta_description, :og_image, :keywords, :published, :scheduled_publish_at, :published_at, :article_code, :created_at, :updated_at)
         ON CONFLICT(slug) DO UPDATE SET
             title = excluded.title,
             intro = excluded.intro,
@@ -522,6 +551,7 @@ function gta_blog_upsert(PDO $pdo, array $data): array
             published = excluded.published,
             scheduled_publish_at = excluded.scheduled_publish_at,
             published_at = excluded.published_at,
+            article_code = excluded.article_code,
             updated_at = excluded.updated_at');
 
     $stmt->execute([
@@ -539,6 +569,7 @@ function gta_blog_upsert(PDO $pdo, array $data): array
         // comportamento identico a prima.
         ':scheduled_publish_at' => $data['scheduled_publish_at'] ?? null,
         ':published_at' => $publishedAt,
+        ':article_code' => $articleCode,
         ':created_at' => $createdAt,
         ':updated_at' => $now,
     ]);
