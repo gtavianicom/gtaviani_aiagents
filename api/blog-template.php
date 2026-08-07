@@ -524,17 +524,23 @@ function gta_blog_upsert(PDO $pdo, array $data): array
     // deve contare come "non era live", per coerenza con l'intento di
     // quel ramo (cancellare uno scheduling futuro = "vivo ORA" da adesso).
     $publishedAt = $existing['published_at'] ?? null;
-    if (!empty($data['published'])) {
-        if (!empty($data['scheduled_publish_at'])) {
-            $publishedAt = $data['scheduled_publish_at'];
-        } else {
-            $existingScheduled = $existing['scheduled_publish_at'] ?? null;
-            $wasLiveWithoutFutureSchedule = $existing !== null
-                && !empty($existing['published'])
-                && (empty($existingScheduled) || $existingScheduled <= $now);
-            if (!$wasLiveWithoutFutureSchedule) {
-                $publishedAt = $now;
-            }
+    // GTA-BLOG-021 — prima questo intero ramo era condizionato a
+    // "!empty($data['published'])": un salvataggio in bozza (published=false,
+    // il caso normale per il tool MCP publish_article, sempre bozza per
+    // design) che aggiornava SOLO scheduled_publish_at lasciava published_at
+    // congelato al vecchio valore, disallineato dalla schedulazione reale
+    // (visto in produzione: lista admin mostrava una data vecchia, l'edit
+    // quella nuova). Una schedulazione presente è la fonte di verità su
+    // "quando" indipendentemente da published — spostata fuori dal check.
+    if (!empty($data['scheduled_publish_at'])) {
+        $publishedAt = $data['scheduled_publish_at'];
+    } elseif (!empty($data['published'])) {
+        $existingScheduled = $existing['scheduled_publish_at'] ?? null;
+        $wasLiveWithoutFutureSchedule = $existing !== null
+            && !empty($existing['published'])
+            && (empty($existingScheduled) || $existingScheduled <= $now);
+        if (!$wasLiveWithoutFutureSchedule) {
+            $publishedAt = $now;
         }
     }
 
