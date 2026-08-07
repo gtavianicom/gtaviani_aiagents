@@ -460,15 +460,8 @@ function gta_blog_fetch_all(PDO $pdo): array
 // solo-admin-panel).
 function gta_blog_fetch_all_for_admin(PDO $pdo): array
 {
-    // GTA-BLOG-021: stesso criterio della colonna "Data pubblicazione" in
-    // admin/articles.php (COALESCE(scheduled_publish_at, published_at)) —
-    // ordinare per il solo published_at (stantio quando un salvataggio
-    // agente published=false aggiorna la schedulazione senza ririapprovare)
-    // produceva un ordine incoerente con la data davvero mostrata in lista.
     $stmt = $pdo->query("SELECT * FROM articles WHERE deleted_at IS NULL
-        ORDER BY (COALESCE(scheduled_publish_at, published_at) IS NULL) ASC,
-                 COALESCE(scheduled_publish_at, published_at) DESC,
-                 updated_at DESC");
+        ORDER BY (published_at IS NULL) ASC, published_at DESC, updated_at DESC");
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
