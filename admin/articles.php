@@ -126,8 +126,22 @@ $csrf = admin_csrf_token();
                 <?php endif; ?>
               </td>
               <td>
-                <?php if (!empty($article['published_at'])): ?>
-                  <?= admin_html_escape(str_replace('T', ' ', admin_utc_iso_to_datetime_local($article['published_at']))) ?>
+                <?php
+                  // GTA-BLOG-021: published_at si aggiorna solo sui salvataggi
+                  // con published=true (vedi gta_blog_upsert) — il tool MCP
+                  // publish_article forza sempre published=false, quindi un
+                  // aggiornamento agente di scheduled_publish_at su un
+                  // articolo gia' approvato in passato lasciava questa colonna
+                  // ferma al vecchio valore. scheduled_publish_at, quando
+                  // presente, e' sempre la data corretta da mostrare (coincide
+                  // con published_at nel caso normale, lo sostituisce solo
+                  // quando sono disallineati).
+                  $displayPublishDate = !empty($article['scheduled_publish_at'])
+                      ? $article['scheduled_publish_at']
+                      : ($article['published_at'] ?? null);
+                ?>
+                <?php if (!empty($displayPublishDate)): ?>
+                  <?= admin_html_escape(str_replace('T', ' ', admin_utc_iso_to_datetime_local($displayPublishDate))) ?>
                 <?php else: ?>
                   &mdash;
                 <?php endif; ?>
