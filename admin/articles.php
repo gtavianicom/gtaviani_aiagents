@@ -23,13 +23,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($slug === '') {
         $error = 'Slug mancante nella richiesta.';
     } elseif ($action === 'delete') {
-        gta_blog_delete($pdo, $slug);
-        // gta_blog_delete forza published=0 e valorizza deleted_at: passiamo
-        // la riga (ora esclusa dai fetch normali) a gta_blog_regenerate solo
-        // per rimuovere l'eventuale pagina statica — stesso pattern di blog.php.
+        // GTA-BLOG-HARDDELETE-001 — richiesta esplicita di Gabriele: questo
+        // bottone deve cancellare per sempre, non lasciare una riga
+        // recuperabile. La riga serve ancora un istante DOPO il DELETE per
+        // sapere se rimuovere una pagina statica pubblicata — la leggiamo
+        // PRIMA.
         $deletedRow = gta_blog_fetch_one_including_deleted($pdo, $slug);
+        gta_blog_delete_permanent($pdo, $slug);
         gta_blog_regenerate($pdo, $blogConfig, $deletedRow);
-        $message = 'Articolo eliminato (recuperabile solo manualmente sul database — nessuna azione di ripristino esposta qui di proposito).';
+        $message = 'Articolo eliminato definitivamente.';
     } elseif ($action === 'publish' || $action === 'unpublish') {
         $article = gta_blog_fetch_one($pdo, $slug);
         if ($article === null) {
@@ -146,7 +148,7 @@ $csrf = admin_csrf_token();
                     <button type="submit" class="admin-btn admin-btn-small">Pubblica</button>
                   <?php endif; ?>
                 </form>
-                <form method="post" class="admin-inline" onsubmit="return confirm('Eliminare questo articolo? Resterà recuperabile solo manualmente sul DB.');">
+                <form method="post" class="admin-inline" onsubmit="return confirm('Eliminare DEFINITIVAMENTE questo articolo? Non è recuperabile.');">
                   <input type="hidden" name="csrf_token" value="<?= admin_html_escape($csrf) ?>">
                   <input type="hidden" name="slug" value="<?= admin_html_escape($article['slug']) ?>">
                   <input type="hidden" name="action" value="delete">

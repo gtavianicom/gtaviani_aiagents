@@ -613,6 +613,21 @@ function gta_blog_delete(PDO $pdo, string $slug): bool
     return $stmt->rowCount() > 0;
 }
 
+// GTA-BLOG-HARDDELETE-001 — cancellazione REALE (DELETE, non deleted_at),
+// SOLO per il bottone "Elimina" del pannello admin (admin/articles.php) —
+// richiesta esplicita di Gabriele: quel bottone deve rimuovere la riga per
+// sempre, non lasciarla recuperabile. Il tool MCP delete_article (agente
+// Paperclip) e il ramo di admin/article-edit.php che soft-cancella il vecchio
+// slug durante un rename restano su gta_blog_delete() sopra, invariati — la
+// rete di sicurezza contro uno slug allucinato/sbagliato dall'agente non è
+// in scope di questa richiesta.
+function gta_blog_delete_permanent(PDO $pdo, string $slug): bool
+{
+    $stmt = $pdo->prepare('DELETE FROM articles WHERE slug = :slug');
+    $stmt->execute([':slug' => $slug]);
+    return $stmt->rowCount() > 0;
+}
+
 // GTA-BLOG-005 (punto 1) — azione "restore", raggiungibile SOLO via blog.php
 // diretto (token blog-config.php), MAI esposta come tool MCP (l'agente
 // Paperclip non deve poter reincludere un articolo cancellato).
