@@ -927,7 +927,16 @@ function gta_blog_update_sitemap(array $articles, array $config): void
         $addUrl($siteUrl . '/blog/' . $article['slug'] . '.html', $lastmod, 'monthly', '0.5');
     }
 
-    $dom->save($path);
+    // GTA-BLOG-SEO-001: $dom->save() ritorna false su fallimento (es. il file
+    // esiste già ma non è scrivibile dall'utente PHP-FPM — capita se è stato
+    // toccato una volta via FTP/SSH con owner diverso) invece di lanciare
+    // un'eccezione. Prima non veniva controllato: la sitemap restava ferma
+    // silenziosamente, nessun errore visibile finché qualcuno non notava che
+    // Search Console non trovava gli articoli nuovi. Stesso pattern di
+    // silent-failure già noto su GTA-BLOG-IMG-004 (ri-hosting immagini).
+    if ($dom->save($path) === false) {
+        error_log('gta_blog_update_sitemap: scrittura fallita su ' . $path . ' — verificare permessi/owner del file sul server.');
+    }
 }
 
 // GTA-BLOG-007: notifica automatica a Google quando la sitemap del blog
