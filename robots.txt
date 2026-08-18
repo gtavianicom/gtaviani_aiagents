@@ -1,5 +1,37 @@
 User-agent: *
 Allow: /
 
+# AI search crawlers — esplicitamente elencati per chiarezza GEO (già
+# coperti dal blocco generico sopra, nessun blocco attivo verso di loro)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://aiagents.gtaviani.com/sitemap.xml
 Sitemap: https://aiagents.gtaviani.com/sitemap-blog.xml
