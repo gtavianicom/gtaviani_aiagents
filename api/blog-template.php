@@ -756,7 +756,17 @@ function gta_blog_head_html(string $title, string $description, string $canonica
 function gta_blog_render_article(array $article, array $config): string
 {
     $siteUrl = rtrim($config['site_url'], '/');
-    $title = htmlspecialchars($article['title'] . ' | Blog GTAVIANI', ENT_QUOTES);
+    // GTA-SEO-TITLE-LENGTH-001 (2026-08-30) — Bing Webmaster segnala i
+    // <title> oltre 70 caratteri come possibile causa di troncamento nei
+    // risultati di ricerca. Il suffisso " | Blog GTAVIANI" (16 caratteri)
+    // sommato a un titolo articolo già vicino al limite consigliato (60,
+    // checklist SEO §1.2) sfora facilmente i 70 totali — invece di fidarsi
+    // che ogni titolo futuro resti abbastanza corto (la skill di scrittura
+    // ha già dimostrato oggi di non essere affidabile su vincoli di
+    // formato), il suffisso si aggiunge SOLO se il totale resta entro 70.
+    $titleWithSuffix = $article['title'] . ' | Blog GTAVIANI';
+    $titleRaw = (mb_strlen($titleWithSuffix) <= 70) ? $titleWithSuffix : $article['title'];
+    $title = htmlspecialchars($titleRaw, ENT_QUOTES);
     $descriptionRaw = $article['meta_description'] ?: $article['intro'];
     $description = htmlspecialchars($descriptionRaw, ENT_QUOTES);
     $canonical = $siteUrl . '/blog/' . $article['slug'] . '.html';
