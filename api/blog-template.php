@@ -727,6 +727,7 @@ function gta_blog_head_html(string $title, string $description, string $canonica
         . '  <title>' . $title . '</title>' . "\n"
         . '  <meta name="description" content="' . $description . '">' . "\n"
         . '  <link rel="canonical" href="' . $canonical . '">' . "\n"
+        . '  <link rel="alternate" type="application/rss+xml" title="Blog GTaviani Consulting" href="/feed.xml">' . "\n"
         . '  <meta name="robots" content="' . $robots . '">' . "\n"
         . '  <meta name="theme-color" content="#014374">' . "\n"
         . '  <link rel="icon" type="image/png" href="/assets/images/gtaviani-marca.png">' . "\n"
@@ -939,6 +940,171 @@ function gta_blog_update_sitemap(array $articles, array $config): void
     }
 }
 
+// GTA-RSS-FEED-001 — risolve l'URL immagine di un articolo con la stessa
+// logica (og_image col fallback su primary_image) usata da
+// gta_blog_render_article per l'OG image, riusata qui per l'enclosure RSS e
+// per l'unica immagine embeddabile nella sitemap-news.
+function gta_blog_resolve_image_url(array $article, string $siteUrl): ?string
+{
+    $raw = $article['og_image'] ?: $article['primary_image'];
+    if (!$raw) {
+        return null;
+    }
+    return (strpos($raw, 'http') === 0) ? $raw : $siteUrl . '/' . ltrim($raw, '/');
+}
+
+// GTA-RSS-FEED-001 — feed.xml (RSS 2.0), un item per articolo live, contenuto
+// completo in <content:encoded> (stesso body_html della pagina statica).
+// Stesso pattern di gta_blog_update_sitemap: rigenerato ad ogni
+// gta_blog_regenerate, scrittura verificata invece di fallire in silenzio.
+function gta_blog_update_feed(array $articles, array $config): void
+{
+    $path = $config['site_root'] . '/feed.xml';
+    $siteUrl = rtrim($config['site_url'], '/');
+    $now = gmdate('r');
+
+    $dom = new DOMDocument('1.0', 'UTF-8');
+    $dom->formatOutput = true;
+
+    // GTA-RSS-FEED-001: createElement($name, $value) tratta $value come XML
+    // gia' parsato, non come testo grezzo — un "&" non seguito da
+    // un'entita' valida lo rompe silenziosamente (successo con warning PHP,
+    // elemento vuoto). Helper che passa sempre da createTextNode, l'unico
+    // modo sicuro con testo arbitrario.
+    $textEl = static function (string $name, string $value) use ($dom) {
+        $el = $dom->createElement($name);
+        $el->appendChild($dom->createTextNode($value));
+        return $el;
+    };
+
+    $rss = $dom->createElement('rss');
+    $rss->setAttribute('version', '2.0');
+    $rss->setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns:content', 'http://purl.org/rss/1.0/modules/content/');
+    $rss->setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns:atom', 'http://www.w3.org/2005/Atom');
+    $dom->appendChild($rss);
+
+    $channel = $dom->createElement('channel');
+    $rss->appendChild($channel);
+
+    $channel->appendChild($textEl('title', 'Blog GTaviani Consulting'));
+    $channel->appendChild($textEl('link', $siteUrl . '/blog.html'));
+    $channel->appendChild($textEl('description', 'Consulenza AI per PMI retail ed e-commerce: agenti AI, AI Act, GDPR, casi pratici.'));
+    $channel->appendChild($textEl('language', 'it'));
+    $channel->appendChild($textEl('lastBuildDate', $now));
+
+    $atomLink = $dom->createElement('atom:link');
+    $atomLink->setAttribute('href', $siteUrl . '/feed.xml');
+    $atomLink->setAttribute('rel', 'self');
+    $atomLink->setAttribute('type', 'application/rss+xml');
+    $channel->appendChild($atomLink);
+
+    foreach ($articles as $article) {
+        $link = $siteUrl . '/blog/' . $article['slug'] . '.html';
+        $pubDateRaw = $article['published_at'] ?: $article['created_at'];
+        $pubDateTs = strtotime((string) $pubDateRaw);
+
+        $item = $dom->createElement('item');
+        $item->appendChild($dom->createElement('title'))->appendChild($dom->createCDATASection($article['title']));
+        $item->appendChild($textEl('link', $link));
+        $guid = $textEl('guid', $link);
+        $guid->setAttribute('isPermaLink', 'true');
+        $item->appendChild($guid);
+        $item->appendChild($textEl('pubDate', $pubDateTs !== false ? date('r', $pubDateTs) : $now));
+        $item->appendChild($dom->createElement('description'))->appendChild($dom->createCDATASection($article['meta_description'] ?: $article['intro']));
+
+        $contentEncoded = $dom->createElementNS('http://purl.org/rss/1.0/modules/content/', 'content:encoded');
+        $contentEncoded->appendChild($dom->createCDATASection($article['body_html']));
+        $item->appendChild($contentEncoded);
+
+        $imageUrl = gta_blog_resolve_image_url($article, $siteUrl);
+        if ($imageUrl !== null) {
+            $enclosure = $dom->createElement('enclosure');
+            $enclosure->setAttribute('url', $imageUrl);
+            // GTA-RSS-FEED-001: length obbligatorio per spec RSS 2.0 ma
+            // l'immagine puo' essere remota (URL esterna mai ri-ospitata,
+            // vedi GTA-BLOG-IMG-004) — niente HTTP di rete qui (ogni
+            // regenerate deve restare veloce/offline), solo filesize() se il
+            // file e' locale al sito, altrimenti 0 (valore tollerato dai
+            // reader RSS, non blocca il parsing).
+            $localPath = (strpos($imageUrl, $siteUrl . '/') === 0)
+                ? $config['site_root'] . '/' . substr($imageUrl, strlen($siteUrl) + 1)
+                : null;
+            $size = ($localPath !== null && is_file($localPath)) ? filesize($localPath) : 0;
+            $enclosure->setAttribute('length', (string) $size);
+            $enclosure->setAttribute('type', gta_blog_guess_image_mime($imageUrl));
+            $item->appendChild($enclosure);
+        }
+
+        $channel->appendChild($item);
+    }
+
+    if ($dom->save($path) === false) {
+        error_log('gta_blog_update_feed: scrittura fallita su ' . $path . ' — verificare permessi/owner del file sul server.');
+    }
+}
+
+// GTA-RSS-FEED-001 — mime-type approssimato dall'estensione, solo per
+// l'attributo "type" dell'enclosure RSS (non usato per validare l'upload,
+// quella policy vive in gta_blog_download_and_host_image).
+function gta_blog_guess_image_mime(string $url): string
+{
+    $ext = strtolower(pathinfo(parse_url($url, PHP_URL_PATH) ?: '', PATHINFO_EXTENSION));
+    return match ($ext) {
+        'png' => 'image/png',
+        'webp' => 'image/webp',
+        default => 'image/jpeg',
+    };
+}
+
+// GTA-RSS-FEED-001 — sitemap-news.xml per Google News/Discover: SOLO articoli
+// con published_at nelle ultime 48h (requisito Google News, non un semplice
+// "recenti" arbitrario) con il tag <news:news> richiesto dallo schema.
+// Sitemap separata da sitemap-blog.xml (che resta lo storico completo per
+// crawling normale) perche' Google News scarta l'intera entry se contiene
+// anche un solo URL fuori dalla finestra.
+function gta_blog_update_news_sitemap(array $articles, array $config): void
+{
+    $path = $config['site_root'] . '/sitemap-news.xml';
+    $siteUrl = rtrim($config['site_url'], '/');
+    $cutoff = strtotime('-2 days');
+
+    $dom = new DOMDocument('1.0', 'UTF-8');
+    $dom->formatOutput = true;
+    $urlset = $dom->createElementNS('http://www.sitemaps.org/schemas/sitemap/0.9', 'urlset');
+    $urlset->setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns:news', 'http://www.google.com/schemas/sitemap-news/0.9');
+    $dom->appendChild($urlset);
+
+    foreach ($articles as $article) {
+        $pubDateRaw = $article['published_at'] ?: $article['created_at'];
+        $pubDateTs = strtotime((string) $pubDateRaw);
+        if ($pubDateTs === false || $pubDateTs < $cutoff) {
+            continue;
+        }
+
+        $url = $dom->createElement('url');
+        $url->appendChild($dom->createElement('loc', $siteUrl . '/blog/' . $article['slug'] . '.html'));
+
+        $news = $dom->createElementNS('http://www.google.com/schemas/sitemap-news/0.9', 'news:news');
+
+        $publication = $dom->createElementNS('http://www.google.com/schemas/sitemap-news/0.9', 'news:publication');
+        $publication->appendChild($dom->createElementNS('http://www.google.com/schemas/sitemap-news/0.9', 'news:name', 'GTaviani Consulting'));
+        $publication->appendChild($dom->createElementNS('http://www.google.com/schemas/sitemap-news/0.9', 'news:language', 'it'));
+        $news->appendChild($publication);
+
+        $news->appendChild($dom->createElementNS('http://www.google.com/schemas/sitemap-news/0.9', 'news:publication_date', date('c', $pubDateTs)));
+        $newsTitle = $dom->createElementNS('http://www.google.com/schemas/sitemap-news/0.9', 'news:title');
+        $newsTitle->appendChild($dom->createCDATASection($article['title']));
+        $news->appendChild($newsTitle);
+
+        $url->appendChild($news);
+        $urlset->appendChild($url);
+    }
+
+    if ($dom->save($path) === false) {
+        error_log('gta_blog_update_news_sitemap: scrittura fallita su ' . $path . ' — verificare permessi/owner del file sul server.');
+    }
+}
+
 // GTA-BLOG-007: notifica automatica a Google quando la sitemap del blog
 // cambia per un articolo che va live — sostituisce il resubmit manuale che
 // Gabriele faceva a mano su Search Console (insostenibile con articoli
@@ -983,6 +1149,8 @@ function gta_blog_regenerate(PDO $pdo, array $config, ?array $affectedArticle = 
     gta_blog_write_file($config['site_root'] . '/blog.html', $listHtml);
 
     gta_blog_update_sitemap($published, $config);
+    gta_blog_update_feed($published, $config);
+    gta_blog_update_news_sitemap($published, $config);
     // NB: niente aggiornamento di llms.txt qui — deliberatamente fuori scope
     // GTA-BLOG-001 (nessun contenuto blog reale da riportare oggi).
 

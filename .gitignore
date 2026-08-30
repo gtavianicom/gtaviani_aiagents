@@ -7,6 +7,10 @@
 /blog/
 /blog.html
 /sitemap-blog.xml
+# GTA-RSS-FEED-001 — stesso motivo di sitemap-blog.xml sopra: rigenerati ad
+# ogni publish/delete da gta_blog_regenerate.
+/feed.xml
+/sitemap-news.xml
 
 # GTA-BLOG-003 — endpoint MCP (api/mcp.php) e le sue dipendenze Composer.
 # Motivo diverso dal blocco sopra: questo repo e' PUBBLICO (template clonato

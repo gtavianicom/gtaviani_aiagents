@@ -35,3 +35,9 @@ Allow: /
 
 Sitemap: https://aiagents.gtaviani.com/sitemap.xml
 Sitemap: https://aiagents.gtaviani.com/sitemap-blog.xml
+Sitemap: https://aiagents.gtaviani.com/sitemap-news.xml
+
+# RSS 2.0 (GTA-RSS-FEED-001) — non e' una direttiva standard robots.txt, ma
+# non e' nemmeno vietata: alcuni feed reader/discovery bot la usano.
+# Discovery primaria resta il tag <link rel="alternate"> in blog.html.
+
