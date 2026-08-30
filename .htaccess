@@ -24,3 +24,10 @@ RewriteRule ^(.*)$ https://aiagents.gtaviani.com/$1 [L,R=301]
 # è sicura da tenere sempre accesa.
 RewriteCond %{HTTP:Authorization} ^(.*)
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%1]
+
+# GTA-SEO-404-ECOMMERCE-URL-001 (2026-08-30) — Bing Webmaster segnalava
+# /e-commerce-ai-team come 404: nessuna pagina del sito la linka (probabile
+# vecchia URL/backlink esterno), la pagina equivalente reale è
+# retail-ecommerce-ai-team.html. Redirect 301 invece di lasciarla 404 per
+# recuperare eventuale link equity/traffico residuo.
+RewriteRule ^e-commerce-ai-team/?$ /retail-ecommerce-ai-team.html [L,R=301]
