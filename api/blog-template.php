@@ -1127,6 +1127,136 @@ function gta_blog_ping_search_engines(array $config): void
     }
 }
 
+// GTA-SEO-INDEX-AUTOMATION-001 — indicizzazione "velocissima" (entro 1 ora
+// dalla pubblicazione, checklist SEO/GEO §2): a differenza del ping sitemap
+// sopra (un hint generico), Google Indexing API e IndexNow notificano
+// l'URL specifico appena cambiato. Entrambe richiedono credenziali prodotte
+// da GTA-SEO-INDEX-SETUP-001 (service account GCP + chiave IndexNow) —
+// finché $config non le contiene, queste funzioni restano no-op silenziose:
+// il codice può stare in produzione da subito, si attiva da solo quando
+// Gabriele completa il setup, senza bisogno di un altro deploy.
+
+function gta_base64url_encode(string $data): string
+{
+    return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');
+}
+
+// Scambia il service account JSON (grant JWT-bearer, RFC 7523) per un
+// access token OAuth2 — nessuna libreria Google (niente composer per
+// questo, coerente con la scelta "zero dipendenze extra" già fatta per il
+// resto del motore blog, vedi gta_blog_ping_search_engines sopra e
+// mcp.php che usa vendor/ SOLO per l'SDK MCP). Silenzioso su qualunque
+// errore (file mancante, chiave malformata, rete): mai bloccare una
+// publish/regenerate per questo.
+function gta_google_indexing_access_token(array $config): ?string
+{
+    $keyFile = $config['google_indexing_service_account_json'] ?? null;
+    if (!$keyFile || !is_readable($keyFile)) {
+        return null;
+    }
+
+    try {
+        $serviceAccount = json_decode((string) file_get_contents($keyFile), true, 512, JSON_THROW_ON_ERROR);
+        $clientEmail = $serviceAccount['client_email'] ?? null;
+        $privateKey = $serviceAccount['private_key'] ?? null;
+        $tokenUri = $serviceAccount['token_uri'] ?? 'https://oauth2.googleapis.com/token';
+        if (!$clientEmail || !$privateKey) {
+            return null;
+        }
+
+        $now = time();
+        $header = gta_base64url_encode(json_encode(['alg' => 'RS256', 'typ' => 'JWT'], JSON_THROW_ON_ERROR));
+        $claims = gta_base64url_encode(json_encode([
+            'iss' => $clientEmail,
+            'scope' => 'https://www.googleapis.com/auth/indexing',
+            'aud' => $tokenUri,
+            'iat' => $now,
+            'exp' => $now + 3600,
+        ], JSON_THROW_ON_ERROR));
+        $signingInput = $header . '.' . $claims;
+
+        $signature = '';
+        $signed = openssl_sign($signingInput, $signature, $privateKey, OPENSSL_ALGO_SHA256);
+        if (!$signed) {
+            error_log('gta_google_indexing_access_token: firma JWT fallita — chiave privata malformata?');
+            return null;
+        }
+        $jwt = $signingInput . '.' . gta_base64url_encode($signature);
+
+        $body = http_build_query([
+            'grant_type' => 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+            'assertion' => $jwt,
+        ]);
+        $context = stream_context_create(['http' => [
+            'method' => 'POST',
+            'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+            'content' => $body,
+            'timeout' => 5,
+            'ignore_errors' => true,
+        ]]);
+        $response = @file_get_contents($tokenUri, false, $context);
+        if ($response === false) {
+            return null;
+        }
+        $decoded = json_decode($response, true);
+        return $decoded['access_token'] ?? null;
+    } catch (\Throwable $e) {
+        error_log('gta_google_indexing_access_token: ' . $e->getMessage());
+        return null;
+    }
+}
+
+// $action: 'URL_UPDATED' (articolo pubblicato/aggiornato) o 'URL_DELETED'
+// (articolo rimosso dal sito pubblico — rimesso in bozza o cancellato).
+function gta_blog_notify_google_indexing(string $url, string $action, array $config): void
+{
+    $token = gta_google_indexing_access_token($config);
+    if ($token === null) {
+        return; // Setup non ancora completato (GTA-SEO-INDEX-SETUP-001) — no-op.
+    }
+
+    try {
+        $context = stream_context_create(['http' => [
+            'method' => 'POST',
+            'header' => "Content-Type: application/json\r\nAuthorization: Bearer {$token}\r\n",
+            'content' => json_encode(['url' => $url, 'type' => $action], JSON_THROW_ON_ERROR),
+            'timeout' => 5,
+            'ignore_errors' => true,
+        ]]);
+        @file_get_contents('https://indexing.googleapis.com/v3/urlNotifications:publish', false, $context);
+    } catch (\Throwable $e) {
+        error_log('gta_blog_notify_google_indexing: ' . $e->getMessage());
+    }
+}
+
+function gta_blog_notify_indexnow(array $urls, array $config): void
+{
+    $key = $config['indexnow_key'] ?? null;
+    if (!$key || $urls === []) {
+        return; // Setup non ancora completato (GTA-SEO-INDEX-SETUP-001) — no-op.
+    }
+
+    try {
+        $host = parse_url($config['site_url'], PHP_URL_HOST);
+        $payload = [
+            'host' => $host,
+            'key' => $key,
+            'keyLocation' => rtrim($config['site_url'], '/') . '/' . $key . '.txt',
+            'urlList' => $urls,
+        ];
+        $context = stream_context_create(['http' => [
+            'method' => 'POST',
+            'header' => "Content-Type: application/json; charset=utf-8\r\n",
+            'content' => json_encode($payload, JSON_THROW_ON_ERROR),
+            'timeout' => 5,
+            'ignore_errors' => true,
+        ]]);
+        @file_get_contents('https://api.indexnow.org/indexnow', false, $context);
+    } catch (\Throwable $e) {
+        error_log('gta_blog_notify_indexnow: ' . $e->getMessage());
+    }
+}
+
 function gta_blog_regenerate(PDO $pdo, array $config, ?array $affectedArticle = null): void
 {
     $published = gta_blog_fetch_published($pdo);
@@ -1160,6 +1290,22 @@ function gta_blog_regenerate(PDO $pdo, array $config, ?array $affectedArticle = 
     // schedulato nel futuro).
     if ($affectedArticle !== null && gta_blog_is_live($affectedArticle)) {
         gta_blog_ping_search_engines($config);
+    }
+
+    // GTA-SEO-INDEX-AUTOMATION-001: notifica Indexing API + IndexNow
+    // sull'URL specifico dell'articolo toccato — stessa condizione del ping
+    // sopra per l'evento "live", più il caso simmetrico "non più live"
+    // (rimesso in bozza o cancellato) per Google Indexing API, che ha un
+    // tipo di notifica dedicato URL_DELETED. IndexNow non ha un analogo
+    // "delete": si notifica solo quando l'URL torna a rispondere davvero.
+    if ($affectedArticle !== null) {
+        $articleUrl = rtrim($config['site_url'], '/') . '/blog/' . $affectedArticle['slug'] . '.html';
+        if (gta_blog_is_live($affectedArticle)) {
+            gta_blog_notify_google_indexing($articleUrl, 'URL_UPDATED', $config);
+            gta_blog_notify_indexnow([$articleUrl], $config);
+        } else {
+            gta_blog_notify_google_indexing($articleUrl, 'URL_DELETED', $config);
+        }
     }
 }
 
