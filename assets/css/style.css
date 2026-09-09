@@ -239,6 +239,290 @@ section > h2 {
   font-weight: 600;
 }
 
+.hero-cover {
+  display: block;
+  width: 320px;
+  max-width: 70vw;
+  height: auto;
+  margin: 0 auto 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+
+/* Home: card compatta promo eBook — GTA-EBOOK-004 (rifatta piccola su richiesta di Gabriele) */
+.ebook-mini-section {
+  padding: 2rem 1.5rem;
+}
+
+.ebook-mini-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;
+  background: #f7f9fb;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(1, 67, 116, 0.08);
+  text-decoration: none;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.ebook-mini-card:hover {
+  box-shadow: 0 14px 30px rgba(1, 67, 116, 0.14);
+  transform: translateY(-2px);
+}
+
+.ebook-mini-cover {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.ebook-mini-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.ebook-mini-title {
+  font-weight: 700;
+  color: var(--color-primary);
+  font-size: 1.5rem;
+}
+
+.ebook-mini-text {
+  font-size: 1.1rem;
+  color: var(--color-secondary);
+  line-height: 1.4;
+}
+
+.ebook-mini-cta {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: 0.35rem;
+}
+
+.ebook-mini-cta i {
+  font-size: 0.95rem;
+  margin-left: 0.2rem;
+}
+
+@media (max-width: 560px) {
+  .ebook-mini-card {
+    max-width: 100%;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .ebook-mini-cover {
+    width: 180px;
+    height: 180px;
+  }
+
+  .ebook-mini-body {
+    align-items: center;
+  }
+}
+
+/* Box FAQ (GEO) — stesso trattamento visivo del box Fonti */
+.chapter-faq-box {
+  background: #f7f9fb;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.chapter-faq-box h2 {
+  text-align: left;
+  max-width: none;
+  margin: 0 0 0.25rem;
+  font-size: 1.1rem;
+}
+
+/* Accordion GEO-safe: risposta nel DOM sempre (crawlabile), visibile solo al click (details/summary nativo) */
+.chapter-faq-box .faq-list {
+  margin-top: 0.5rem;
+  max-width: none;
+}
+
+.chapter-faq-box .faq-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.chapter-faq-box .faq-item:last-child {
+  border-bottom: none;
+}
+
+.chapter-faq-box .faq-item summary {
+  padding: 0.85rem 1.75rem 0.85rem 0;
+  font-size: 0.9rem;
+}
+
+.chapter-faq-box .faq-item summary::after {
+  top: 0.85rem;
+  font-size: 1.1rem;
+}
+
+.chapter-faq-box .faq-item p {
+  margin: 0 0 0.85rem;
+  font-size: 0.85rem;
+}
+
+/* Box "Fonti del capitolo" — elenco numerato, font ridotto, riga intera cliccabile (URL non mostrato) */
+/* Tabelle nei capitoli (convertite da markdown) — scroll orizzontale su mobile invece di rompere il layout */
+.chapter-table-wrap {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+}
+
+.chapter-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.chapter-table th,
+.chapter-table td {
+  padding: 0.65rem 0.85rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.chapter-table th {
+  background: #f7f9fb;
+  color: var(--color-primary);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.chapter-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.chapter-sources-box {
+  background: #f7f9fb;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+
+.chapter-sources-box h2 {
+  text-align: left;
+  max-width: none;
+  margin: 0 0 0.85rem;
+  font-size: 1.1rem;
+}
+
+.chapter-sources-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+  line-height: 1.5;
+}
+
+.chapter-sources-list li {
+  margin-bottom: 0.5rem;
+}
+
+.chapter-sources-list li:last-child {
+  margin-bottom: 0;
+}
+
+.chapter-sources-list a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.chapter-sources-list a:hover {
+  text-decoration: underline;
+}
+
+.chapter-sources-list a strong {
+  color: var(--color-primary);
+}
+
+/* Navigazione avanti/indietro tra capitoli — bottoni allineati sx/dx in fondo pagina */
+.chapter-nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.chapter-nav-prev {
+  margin-right: auto;
+}
+
+.chapter-nav-next {
+  margin-left: auto;
+}
+
+@media (max-width: 480px) {
+  .chapter-nav-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .chapter-nav-prev,
+  .chapter-nav-next {
+    text-align: center;
+  }
+}
+
+/* Bottone fluttuante eBook — pagine capitolo (visitatori da indicizzazione/GEO che atterrano in profondità) */
+.ebook-floating-cta {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.65rem 1.5rem 0.65rem 0.65rem;
+  box-shadow: 0 10px 26px rgba(1, 67, 116, 0.25);
+  text-decoration: none;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.ebook-floating-cta:hover {
+  box-shadow: 0 14px 32px rgba(1, 67, 116, 0.32);
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.ebook-floating-cover {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ebook-floating-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
 /* Sezioni contenuto generiche */
 .pain-list {
   list-style: none;

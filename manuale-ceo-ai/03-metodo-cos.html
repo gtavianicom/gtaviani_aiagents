@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3. Il metodo: impegni, loop e Condizioni di Soddisfazione | GTaviani Consulting</title>
+  <meta name="description" content="Questo è il capitolo che ti chiedo di leggere due volte. Non è una conoscenza da acquisire: è una formazione strategica, un modo di pensare che userai per…">
+  <link rel="canonical" href="https://aiagents.gtaviani.com/manuale-ceo-ai/03-metodo-cos.html">
+  <meta name="theme-color" content="#014374">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://aiagents.gtaviani.com/manuale-ceo-ai/03-metodo-cos.html">
+  <meta property="og:site_name" content="GTaviani Consulting">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:title" content="3. Il metodo: impegni, loop e Condizioni di Soddisfazione">
+  <meta property="og:description" content="Questo è il capitolo che ti chiedo di leggere due volte. Non è una conoscenza da acquisire: è una formazione strategica, un modo di pensare che userai per…">
+  <meta property="og:image" content="https://aiagents.gtaviani.com/assets/images/og-manuale-ceo-ai.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="3. Il metodo: impegni, loop e Condizioni di Soddisfazione">
+  <meta name="twitter:description" content="Questo è il capitolo che ti chiedo di leggere due volte. Non è una conoscenza da acquisire: è una formazione strategica, un modo di pensare che userai per…">
+  <meta name="twitter:image" content="https://aiagents.gtaviani.com/assets/images/og-manuale-ceo-ai.png">
+  <link rel="icon" type="image/png" href="/assets/images/gtaviani-marca.png">
+  <link rel="apple-touch-icon" href="/assets/images/gtaviani-marca.png">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/blog.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Chapter",
+  "name": "3. Il metodo: impegni, loop e Condizioni di Soddisfazione",
+  "position": 4,
+  "url": "https://aiagents.gtaviani.com/manuale-ceo-ai/03-metodo-cos.html",
+  "isPartOf": {
+    "@type": "Book",
+    "name": "Manuale del CEO AI",
+    "url": "https://aiagents.gtaviani.com/manuale-ceo-ai.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "GTAVIANI Consulting",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://aiagents.gtaviani.com/assets/images/gtaviani-marca.png"
+    }
+  }
+}
+  </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Cosa sono le Condizioni di Soddisfazione (CoS)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sono i criteri verificabili, dichiarati prima che il lavoro inizi e concordati tra chi chiede e chi esegue, che devono essere veri perché un lavoro sia considerato completato — non un obiettivo generico ma una misura, una soglia e un tempo (es. «tempo medio di prima risposta sotto i due minuti sull'80% delle richieste, misurato per quattro settimane»). Si dividono in tecniche (verificabili automaticamente) e semantiche (verificate da un giudizio)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Da dove viene questo metodo e perché si applica agli Agenti AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Il metodo nasce nel 1986 dal lavoro di Terry Winograd e Fernando Flores (Action Workflow), pensato per coordinare il lavoro tra persone nelle organizzazioni. Torna attuale con gli agenti perché il loro ciclo tecnico — osserva, ragiona, agisci, valuta — corrisponde alla fase di esecuzione del metodo; ciò che spesso manca nei progetti AI sono le altre fasi (richiesta chiara, negoziazione, accettazione formale), le stesse che mancano nella maggior parte delle organizzazioni umane."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Perché le CoS sono lo strumento principale del CEO, non solo degli sviluppatori?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Perché liberano il CEO dal dover capire la tecnologia (basta sapere cosa deve essere vero quando il lavoro è finito, e verificarlo), rendono confrontabili consulenti e fornitori (chi accetta CoS verificabili si assume una responsabilità, chi vende «un percorso di innovazione» senza CoS vende solo ore), e migliorano il modo in cui l'intera organizzazione lavora, con o senza AI."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo-link">
+        <img src="/assets/images/gtaviani-logo-orizzontale.png" alt="GTAVIANI — Retail E-Commerce Growth" class="logo">
+      </a>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Apri il menu">
+        <i class="fas fa-bars"></i>
+      </label>
+
+      <nav class="site-nav">
+        <a href="/#fiducia-faq">AI Act &amp; GDPR</a>
+        <a href="/#consulente-esterno">Consulenza AI</a>
+        <a href="/#piattaforma">AI Workspace</a>
+        <a href="/retail-ecommerce-ai-team.html" class="nav-badge-link">AI E-Commerce</a>
+      </nav>
+
+      <a href="/contact.html" id="cta-nav-contact" class="btn btn-primary nav-contact">CONTATTO</a>
+      <a href="https://aispace.gtaviani.com" class="btn btn-primary-light nav-login">LOGIN</a>
+    </div>
+  </header>
+
+  <section class="hero blog-hero">
+    <p class="hero-badge"><a href="/manuale-ceo-ai.html" style="color:inherit">Manuale del CEO AI</a></p>
+    <h1>3. Il metodo: impegni, loop e Condizioni di Soddisfazione</h1>
+    <p class="hero-subtitle">Questo è il capitolo che ti chiedo di leggere due volte. Non è una conoscenza da acquisire: è una formazione strategica, un modo di pensare che userai per…</p>
+  </section>
+
+  <section class="blog-article">
+        <div class="blog-article-body">
+        <p>Questo è il capitolo che ti chiedo di leggere due volte. Non è una conoscenza da acquisire: è una formazione strategica, un modo di pensare che userai per tutto — per progettare la riorganizzazione, per chiedere lavoro agli agenti, per valutare un consulente, per governare la relazione tra le persone e gli agenti nella tua azienda.</p>
+        <p>Il metodo non l'ho inventato io. È nato quarant'anni fa per risolvere un problema che sembrava lontanissimo dall'AI — come coordinare il lavoro tra persone dentro le organizzazioni — ed è tornato di grande attualità proprio perché gli agenti AI hanno lo stesso problema. Si chiama Action Workflow, lo hanno formulato Terry Winograd e Fernando Flores, e io lo chiamo semplicemente «il metodo W&amp;F».</p>
+        <h2>Da dove viene</h2>
+        <h3>Due persone, un'idea</h3>
+        <p>Fernando Flores è un ingegnere cileno, ministro delle finanze di Salvador Allende, imprigionato per tre anni dopo il golpe del 1973; arriva negli Stati Uniti nel 1976 e studia filosofia del linguaggio. Terry Winograd è uno dei pionieri dell'Intelligenza Artificiale al MIT, poi professore a Stanford, dove sarà il mentore di Larry Page, fondatore di Google. Nel 1986 pubblicano insieme un libro, <em>Understanding Computers and Cognition</em>, con una tesi che a un imprenditore suona subito familiare: le organizzazioni non sono macchine che elaborano informazioni; sono reti di impegni. Quando chiedi, prometti, accetti o rifiuti, non stai trasmettendo dati: stai compiendo un'azione che crea un impegno tra due persone.</p>
+        <p>Da questa tesi nasce un software di coordinamento del lavoro, un metodo brevettato negli Stati Uniti nel 1993-94, e una scuola di management — il «management per impegni» — adottata da grandi aziende nei decenni successivi.</p>
+        <h3>Perché torna utile oggi</h3>
+        <p>Quarant'anni dopo, gli agenti AI hanno digitalizzato questo modello quasi senza saperlo. Il ciclo tecnico di un agente — osserva, ragiona, agisci, valuta — è la fase di esecuzione del metodo. Ciò che manca nella maggior parte dei progetti AI sono le altre fasi: la richiesta chiara, la negoziazione prima di eseguire, l'accettazione formale del risultato. E sono esattamente le fasi che mancano anche nella maggior parte delle organizzazioni umane: secondo Flores, nelle migliori aziende viene mantenuto circa il 60% degli impegni presi, in quelle normali il 30%.</p>
+        <p>Per te la notizia è buona: il metodo che ti serve per far lavorare bene gli agenti è lo stesso che ti serve per far lavorare bene le persone. Impararlo una volta vale per entrambi.</p>
+        <h2>Il loop del metodo</h2>
+        <h3>Quattro fasi</h3>
+        <p>Il metodo descrive ogni lavoro come un ciclo — un loop — tra chi chiede (il <em>cliente</em> dell'impegno, che può essere tu, un tuo responsabile, un agente coordinatore) e chi esegue (il <em>performer</em>: un collaboratore, un consulente, un agente). Il ciclo ha quattro fasi.</p>
+        <p>Nella <strong>Richiesta</strong>, chi chiede formula ciò che vuole e — questo è il punto — dichiara le condizioni che devono verificarsi perché il lavoro sia considerato fatto bene. Nella <strong>Negoziazione</strong>, le due parti si accordano su cosa significa «fatto bene»: chi esegue può accettare, rifiutare, controproporre; il ciclo prosegue solo quando c'è un impegno esplicito. Nell'<strong>Esecuzione</strong>, chi esegue svolge il lavoro e dichiara di aver finito. Nell'<strong>Accettazione</strong>, chi ha chiesto verifica il risultato rispetto alle condizioni concordate e dichiara la soddisfazione — chiudendo il ciclo — oppure lo riapre.</p>
+        <figure class="chapter-figure"><img src="/assets/images/manuale-ceo-ai/img_03_loop_wf.png" alt="Quattro fasi — 03 loop wf" loading="lazy"><figcaption>03 loop wf</figcaption></figure>
+        <h3>Le rotture non sono errori</h3>
+        <p>Quando un ciclo si interrompe — il lavoro non può essere fatto come concordato, un dato manca, una condizione si rivela irrealistica — il metodo lo chiama <em>breakdown</em>, rottura. La rottura non è un fallimento: è il momento in cui la rete degli impegni diventa visibile e va rinegoziata. In un'organizzazione normale le rotture si nascondono (il lavoro «più o meno fatto», il ritardo non dichiarato); nel metodo si dichiarano subito, e si torna alla negoziazione.</p>
+        <p>Per un CEO questa è la chiave per governare gli agenti senza controllarli uno per uno: un agente ben progettato dichiara la rottura e chiede a una persona, invece di insistere o inventare. E un consulente serio dichiara la rottura quando un gradino del progetto non raggiunge il risultato, invece di nasconderlo nel report.</p>
+        <h2>Le Condizioni di Soddisfazione</h2>
+        <h3>Cosa sono</h3>
+        <p>Tutto il metodo si regge su un concetto: le Condizioni di Soddisfazione — in breve, CoS. Sono le condizioni, dichiarate prima che il lavoro inizi e concordate tra chi chiede e chi esegue, che devono essere vere perché il lavoro sia considerato completato. Non sono «obiettivi» nel senso generico: sono criteri verificabili, con una misura, una soglia, un tempo.</p>
+        <p>Senza CoS esplicite la richiesta è vaga, l'esecuzione è interpretativa e l'accettazione è arbitraria. È la condizione normale della maggior parte del lavoro nelle aziende, ed è il motivo per cui tante riunioni finiscono con «ci siamo capiti» e tanti progetti con «non era quello che intendevo».</p>
+        <h3>Anatomia di una CoS</h3>
+        <p>Una CoS non è «migliorare il servizio clienti». È: «tempo medio di prima risposta sotto i due minuti su almeno l'80% delle richieste, con tasso di passaggio a una persona sotto il 20%, misurato dal cruscotto per quattro settimane consecutive». La prima frase è un desiderio. La seconda è un impegno che si può verificare, e su cui due parti — tu e il tuo consulente, il tuo responsabile e il suo AI Team — possono dirsi «fatto» o «non fatto» senza discutere.</p>
+        <figure class="chapter-figure"><img src="/assets/images/manuale-ceo-ai/img_03_anatomia_cos.png" alt="Anatomia di una CoS — 03 anatomia cos" loading="lazy"><figcaption>03 anatomia cos</figcaption></figure>
+        <p>Le CoS che uso hanno cinque elementi: <strong>cosa</strong> deve essere vero (il risultato, non l'attività); <strong>quanto</strong> (la misura e la soglia); <strong>entro quando</strong> (la finestra di tempo); <strong>come si verifica</strong> (la fonte del dato, il cruscotto, il controllo); <strong>cosa succede se non è vero</strong> (rinegoziazione, stop, passaggio a una persona). Nel lavoro degli agenti le CoS si dividono in <em>tecniche</em> — verificabili automaticamente: un file esiste, un ordine è stato registrato, un campo non è vuoto — e <em>semantiche</em> — verificate da un giudizio: la risposta è nel tono del brand, il testo copre tutti i punti richiesti. Un buon progetto le ha entrambe.</p>
+        <h3>Perché le CoS sono lo strumento del CEO</h3>
+        <p>Ti chiedo di fare delle CoS lo strumento di richiesta per ogni progettazione e ogni esecuzione nella tua azienda, per tre ragioni.</p>
+        <p>La prima è che ti liberano dal dover capire la tecnologia. Non devi sapere come un agente recupera un carrello abbandonato o riconcilia una fattura: devi saper dire cosa deve essere vero quando ha finito, e verificarlo. La CoS è la lingua in cui un CEO parla a un sistema tecnico senza diventare tecnico.</p>
+        <p>La seconda è che rendono confrontabili consulenti e fornitori. Chi accetta di firmare un progetto con CoS verificabili per ogni gradino si assume una responsabilità; chi propone «un percorso di innovazione» senza CoS ti sta vendendo ore. Il capitolo 8 ne fa un criterio di selezione.</p>
+        <p>La terza è che cambiano il modo in cui la tua organizzazione lavora, con o senza AI. Un responsabile che impara a chiedere con CoS ai suoi collaboratori diventa un responsabile migliore, e i suoi collaboratori sanno finalmente cosa significa «fatto bene». Ho visto aziende in cui l'adozione del metodo con gli agenti ha migliorato la qualità delle riunioni tra persone prima ancora che il primo agente andasse in produzione.</p>
+        <blockquote><p><strong>Attenzione.</strong> La CoS più frequente che vedo scrivere dai CEO è «ridurre i costi». Non è una CoS: non dice quali costi, di quanto, entro quando, misurati come, e cosa succede se non accade. Trasformarla in «ridurre il costo per ordine gestito del 20% entro sei mesi, misurato dal controllo di gestione, con revisione mensile e stop se i reclami superano il 3%» richiede dieci minuti e cambia tutto il progetto.</p></blockquote>
+        <h2>Applicare il metodo a tutto</h2>
+        <h3>Alla progettazione della riorganizzazione</h3>
+        <p>Il primo uso del metodo è il tuo piano di trasformazione. Ogni gradino del piano — dall'audit al primo agente, dal primo agente al primo AI Team, dal primo team all'organizzazione mista — è un ciclo completo: tu chiedi con CoS, il consulente negozia (accetta, rifiuta, contropropone con i suoi numeri), esegue, e alla revisione tu accetti o riapri. Nessun gradino si chiude senza CoS negoziate e verificate. Nessun gradino successivo parte senza che il precedente sia accettato.</p>
+        <p>Questo ti dà due cose che nessun progetto tecnologico tradizionale dà: la possibilità di fermarti a ogni gradino senza aver «buttato» l'investimento, perché ogni gradino ha prodotto un risultato verificato; e la trasparenza sulle rotture, che emergono subito invece che a fine progetto.</p>
+        <h3>Alla produzione di nuovi prodotti e servizi</h3>
+        <p>Il secondo uso è la progettazione di ciò che vendi. Un nuovo servizio pensato con l'AI — un'assistenza che risponde in due minuti a qualsiasi ora, una personalizzazione dell'offerta per ogni cliente, un preventivo in un'ora invece che in tre giorni — nasce da CoS scritte dal punto di vista del cliente finale: cosa deve essere vero per lui perché il servizio valga il prezzo. Le stesse CoS diventano poi le condizioni che dai all'AI Team che erogherà quel servizio. Il capitolo 4 e il capitolo 7 mostrano esempi.</p>
+        <h3>Alla relazione tra persone e agenti</h3>
+        <p>Il terzo uso è quotidiano. In un'azienda con AI Team, il lavoro è organizzato come una gerarchia di impegni: tu chiedi al responsabile di funzione con CoS; il responsabile chiede al chief del suo AI Team con CoS; il chief chiede ai singoli agenti con CoS; un agente chiede a una persona di confermare un'azione critica — e questa è l'inversione dei ruoli: l'agente diventa cliente e la persona esecutore, per un istante. Ogni livello ha il suo ciclo e le sue condizioni. Progettare l'organizzazione AI first significa disegnare questa gerarchia e assicurarsi che ogni anello si chiuda con una verifica.</p>
+        <figure class="chapter-figure"><img src="/assets/images/manuale-ceo-ai/img_03_loop_annidati.png" alt="Alla relazione tra persone e agenti — 03 loop annidati" loading="lazy"><figcaption>03 loop annidati</figcaption></figure>
+        <h3>Al lavoro degli agenti in loop</h3>
+        <p>Il quarto uso è quello tecnico, e devi conoscerlo solo per esigerlo. Un agente ben progettato non riceve un «prompt»: riceve un compito strutturato con un titolo, una descrizione dell'intento che non cambia, le CoS tecniche e semantiche, e le competenze da attivare. Lavora in loop finché le CoS non sono verificate; dopo un numero massimo di tentativi dichiara la rottura e chiede. Le CoS concordate sono registrate in un luogo che l'agente non può modificare. Questo è ciò che un consulente qualificato costruisce, e ciò che devi chiedere di vedere: non il codice, ma il compito strutturato e il registro delle CoS.</p>
+        <blockquote><p><strong>Dato con fonte.</strong> Nei sistemi che applicano un protocollo di impegni tra agenti, le metriche che si misurano sono: CoS raggiunte al primo ciclo (obiettivo sopra il 70%), rinegoziazioni (sotto il 20%), rotture (sotto il 5%). Quando le rotture crescono, il problema è quasi sempre a monte — CoS mal negoziate o competenze mancanti — non il modello. Fonte: G. Taviani, «Manuale del Consulente AI», capitolo «Il Metodo», 2026.</p></blockquote>
+        <h3>E quando arriverà l'AGI?</h3>
+        <p>Una domanda legittima: se i modelli impareranno a costruirsi da soli il ciclo di verifica — e i più recenti già ragionano in cicli al loro interno — il metodo servirà ancora? Sì, e servirà di più. Ciò che si sposta dentro il modello è la parte tecnica del loop: far girare l'agente, verificare, riprovare. Ciò che resta fuori è la parte di business: chi fissa l'obiettivo e le sue CoS, quali dati usare, dove è richiesto il controllo umano, cosa l'agente può e non può fare. Il metodo sale di un livello, da «come faccio funzionare l'agente» a «come progetto il team di agenti che lavora per la mia azienda». Ed è esattamente il livello a cui deve stare un CEO.</p>
+        <h2>Il metodo in tre frasi</h2>
+        <p>Per la strategia: nessun gradino del piano si chiude senza CoS negoziate e verificate con te. Per la progettazione: nessun agente, nessun servizio, nessuna riorganizzazione viene costruita senza CoS scritte prima. Per l'esecuzione: nessuno — persona o agente — dichiara di aver finito senza che le CoS siano verificate, e nessun lavoro prosegue all'infinito senza chiedere.</p>
+        <blockquote><p><strong>Suggerimento.</strong> Nella prossima riunione di direzione, prova a chiudere ogni decisione con una CoS scritta: cosa deve essere vero, quanto, entro quando, verificato come, cosa succede altrimenti. Sarà scomodo la prima volta. Alla terza riunione ti chiederai come facevi prima.</p></blockquote>
+        <blockquote><p><strong>Dove trovare.</strong> Il metodo di questo capitolo, nella sua forma operativa per consulenti e agenti, è descritto nel «Manuale del Consulente AI» ed è alla base del percorso di qualificazione dell'AI Workspace Club (https://www.aiworkspace.club): un consulente qualificato lì lavora con le stesse CoS che hai imparato qui.</p></blockquote>
+        <div class="chapter-faq-box">
+          <h2>FAQ — Domande frequenti su questo capitolo</h2>
+
+          <div class="faq-list">
+          <details class="faq-item">
+            <summary>Cosa sono le Condizioni di Soddisfazione (CoS)?</summary>
+            <p>Sono i criteri verificabili, dichiarati prima che il lavoro inizi e concordati tra chi chiede e chi esegue, che devono essere veri perché un lavoro sia considerato completato — non un obiettivo generico ma una misura, una soglia e un tempo (es. «tempo medio di prima risposta sotto i due minuti sull'80% delle richieste, misurato per quattro settimane»). Si dividono in tecniche (verificabili automaticamente) e semantiche (verificate da un giudizio).</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Da dove viene questo metodo e perché si applica agli Agenti AI?</summary>
+            <p>Il metodo nasce nel 1986 dal lavoro di Terry Winograd e Fernando Flores (Action Workflow), pensato per coordinare il lavoro tra persone nelle organizzazioni. Torna attuale con gli agenti perché il loro ciclo tecnico — osserva, ragiona, agisci, valuta — corrisponde alla fase di esecuzione del metodo; ciò che spesso manca nei progetti AI sono le altre fasi (richiesta chiara, negoziazione, accettazione formale), le stesse che mancano nella maggior parte delle organizzazioni umane.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Perché le CoS sono lo strumento principale del CEO, non solo degli sviluppatori?</summary>
+            <p>Perché liberano il CEO dal dover capire la tecnologia (basta sapere cosa deve essere vero quando il lavoro è finito, e verificarlo), rendono confrontabili consulenti e fornitori (chi accetta CoS verificabili si assume una responsabilità, chi vende «un percorso di innovazione» senza CoS vende solo ore), e migliorano il modo in cui l'intera organizzazione lavora, con o senza AI.</p>
+          </details>
+          </div>
+        </div>
+        <div class="chapter-sources-box">
+          <h2>Fonti del capitolo</h2>
+          <ol class="chapter-sources-list">
+            <li><a href="https://dl.acm.org/doi/abs/10.5555/5245" target="_blank" rel="noopener noreferrer"><strong>Winograd T.</strong>, Flores F., <em>Understanding Computers and Cognition: A New Foundation for Design</em>, Addison-Wesley, 1986</a></li>
+            <li><a href="https://dl.acm.org/doi/10.1145/143457.143530" target="_blank" rel="noopener noreferrer"><strong>Medina-Mora R.</strong>, Winograd T., Flores R., Flores F., «The Action Workflow Approach to Workflow Management Technology», CSCW 1992</a></li>
+            <li><a href="https://patents.google.com/patent/US5630069A" target="_blank" rel="noopener noreferrer"><strong>Google Patents</strong>, US5630069A «Method and apparatus for creating workflow maps of business processes»</a></li>
+            <li><a href="https://www.strategy-business.com/article/07404" target="_blank" rel="noopener noreferrer"><strong>strategy+business</strong>, «Fernando Flores Wants to Make You an Offer», 2007</a></li>
+            <li><a href="http://coevolving.com/blogs/index.php/archive/conversations-for-action-commitment-management-protocol/" target="_blank" rel="noopener noreferrer"><strong>Coevolving Innovations</strong>, «Conversations for action, commitment management protocol»</a></li>
+            <li><a href="https://stream.syscoi.com/2018/08/17/commitment-based-or-promise-based-management-flores-and-winograd-plus-vision-consulting-glennon-and-spinosa-later/" target="_blank" rel="noopener noreferrer"><strong>Systems Community of Inquiry</strong>, «Commitment-based or promise-based management – Flores and Winograd», 2018</a></li>
+            <li><a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener noreferrer"><strong>Anthropic</strong>, «Building Effective Agents», dicembre 2024</a></li>
+            <li><a href="https://arxiv.org/abs/2309.11495" target="_blank" rel="noopener noreferrer"><strong>Dhuliawala S. et al.</strong>, «Chain-of-Verification Reduces Hallucination in Large Language Models», 2023</a></li>
+            <li><a href="https://www.aiworkspace.club" target="_blank" rel="noopener noreferrer"><strong>G. Taviani</strong>, «Manuale del Consulente AI», capitolo «Il Metodo» (AWA CAWP), settembre 2026</a></li>
+            <li><a href="https://aiagents.gtaviani.com/blog/cawp-loop-agentico-ecommerce.html" target="_blank" rel="noopener noreferrer"><strong>GTAVIANI</strong>, «Dal Prompt al Loop Agentico»</a></li>
+          </ol>
+        </div>
+        </div>
+        <nav class="chapter-nav-buttons" aria-label="Navigazione capitoli">
+          <a href="/manuale-ceo-ai/02-agenti-ai-team.html" rel="prev" class="btn btn-primary-light chapter-nav-prev">&larr; Indietro</a>
+          <a href="/manuale-ceo-ai/04-ai-strategica-business-model.html" rel="next" class="btn btn-primary chapter-nav-next">Avanti &rarr;</a>
+        </nav>
+  </section>
+
+  <section id="cta-footer" class="dark-section">
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <img src="/assets/images/gtaviani-logo-orizzontale.png" alt="GTAVIANI — Retail E-Commerce Growth" class="footer-logo">
+        <div class="footer-links">
+          <a href="https://www.gtaviani.com">gtaviani.com</a>
+          <a href="https://aispace.gtaviani.com">Accesso Cliente</a>
+          <a href="/sitemap.xml">Sitemap</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/blog.html" id="cta-footer-blog">Blog</a>
+          <a href="/manuale-ceo-ai.html" id="cta-footer-ebook">eBook</a>
+        </div>
+      </div>
+      <nav class="footer-landing-links" aria-label="Soluzioni AI per la tua PMI">
+        <a href="/retail-ecommerce-ai-team.html">AI E-Commerce Team (Retail)</a>
+        <a href="/lp-consulente-ai.html">Consulente AI per il Retail</a>
+        <a href="/lp-ai-act-gdpr.html">AI Act e GDPR per PMI</a>
+        <a href="/lp-chatbot-aziendale.html">AI Chatbot Aziendali</a>
+        <a href="/lp-fondi-pmi.html">Fondi e Finanziamenti per AI</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 GTAVIANI — Retail E-Commerce Growth. Tutti i diritti riservati.</p>
+    </footer>
+  </section>
+  <a href="/manuale-ceo-ai.html" class="ebook-floating-cta" aria-label="Scarica gratis il Manuale del CEO AI">
+    <img src="/assets/images/eBook-ManualeCeoAI1200x1200.png" alt="" class="ebook-floating-cover">
+    <span class="ebook-floating-text">Scarica il Manuale gratis</span>
+  </a>
+</body>
+</html>

@@ -47,6 +47,13 @@ consulenza, formazione del team e accesso alla piattaforma whitelabel
 - [AI Act & GDPR](https://aiagents.gtaviani.com/lp-ai-act-gdpr.html)
 - [AI Chatbot Aziendali](https://aiagents.gtaviani.com/lp-chatbot-aziendale.html)
 - [Fondi e Finanziamenti per l'AI](https://aiagents.gtaviani.com/lp-fondi-pmi.html)
+- [Manuale del CEO AI — eBook gratuito](https://aiagents.gtaviani.com/manuale-ceo-ai.html):
+  guida strategica gratuita per CEO e imprenditori di PMI su come decidere,
+  riorganizzare l'azienda con Agenti AI e AI Team, e scegliere un Consulente
+  AI qualificato. 16 capitoli (contesto AI, metodo, applicazioni strategiche
+  per modello di business/organizzazione/marketing/produzione, scelta del
+  consulente, regole AI Act/GDPR, capitoli verticali per settore). Download
+  gratuito via form.
 
 ## Target
 
