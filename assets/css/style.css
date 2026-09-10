@@ -89,6 +89,11 @@ section > h2 {
   color: var(--color-primary);
 }
 
+.btn-black {
+  background-color: #000000;
+  color: #ffffff;
+}
+
 /* Header */
 .container {
   max-width: var(--max-width);
@@ -162,16 +167,14 @@ section > h2 {
 @media (max-width: 800px) {
   .site-nav {
     display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
     background: #fff;
     padding: 1.5rem;
     border-bottom: 1px solid var(--color-border);
+    width: 100%;
+    order: 3;
   }
 
   .nav-toggle-input:checked ~ .site-nav {
@@ -185,13 +188,25 @@ section > h2 {
 
   .header-inner {
     flex-wrap: wrap;
-    row-gap: 0.75rem;
+    row-gap: 0;
   }
 
   .nav-contact,
   .nav-login {
-    order: 3;
-    padding: 0.5rem 1rem;
+    display: none;
+    order: 4;
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+  }
+
+  .nav-contact {
+    margin-bottom: 0.75rem;
+  }
+
+  .nav-toggle-input:checked ~ .nav-contact,
+  .nav-toggle-input:checked ~ .nav-login {
+    display: block;
   }
 }
 
