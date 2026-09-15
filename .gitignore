@@ -37,3 +37,6 @@
 # blog-data/ sopra.
 /admin/admin-config.php
 /assets/images/blog/uploads/
+
+# macOS
+.DS_Store

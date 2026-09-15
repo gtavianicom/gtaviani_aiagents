@@ -147,10 +147,37 @@ section > h2 {
 }
 
 .nav-contact,
-.nav-login {
+.nav-login,
+.nav-books {
   flex-shrink: 0;
   padding: 0.6rem 1.5rem;
   font-size: 0.9rem;
+}
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.lang-switch .lang-current {
+  color: var(--color-primary);
+}
+
+.lang-switch .lang-divider {
+  color: var(--color-border);
+}
+
+.lang-switch .lang-link {
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+.lang-switch .lang-link:hover {
+  color: var(--color-primary);
 }
 
 .nav-toggle-input {
@@ -192,7 +219,8 @@ section > h2 {
   }
 
   .nav-contact,
-  .nav-login {
+  .nav-login,
+  .nav-books {
     display: none;
     order: 4;
     width: 100%;
@@ -200,12 +228,14 @@ section > h2 {
     text-align: center;
   }
 
-  .nav-contact {
+  .nav-contact,
+  .nav-books {
     margin-bottom: 0.75rem;
   }
 
   .nav-toggle-input:checked ~ .nav-contact,
-  .nav-toggle-input:checked ~ .nav-login {
+  .nav-toggle-input:checked ~ .nav-login,
+  .nav-toggle-input:checked ~ .nav-books {
     display: block;
   }
 }
@@ -1322,6 +1352,21 @@ section > h2 {
   text-align: center;
 }
 
+.footer-legal-links {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  text-align: center;
+  margin-top: 0.35rem;
+}
+
+.footer-legal-links a {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-legal-links a:hover {
+  color: #ffffff;
+}
+
 /* Landing page Ads (funnel Annuncio -> Landing con form integrato): layout a
    2 colonne, contenuto di convincimento a sx + form Tally sempre visibile a
    dx (no navigazione a pagina esterna: il lead si lascia senza uscire dalla
@@ -1477,6 +1522,42 @@ section > h2 {
   margin: 0;
   font-size: 1rem;
   line-height: 1.5;
+}
+
+.lp-includes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.lp-includes-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.lp-includes-list li i {
+  color: var(--color-primary);
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+.lp-includes-list li.lp-highlight {
+  background: rgba(1, 67, 116, 0.08);
+  border: 1px solid rgba(1, 67, 116, 0.25);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.lp-includes-list li.lp-highlight i {
+  color: var(--color-primary);
 }
 
 /* lp-ai-team-ecommerce.html — badge totale promo (€4.500 barrato -> GRATIS) */

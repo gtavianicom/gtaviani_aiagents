@@ -60,3 +60,11 @@ consulenza, formazione del team e accesso alla piattaforma whitelabel
 PMI italiane del settore retail ed e-commerce, 5-30 dipendenti, guidate da un
 decision maker che vuole adottare l'AI senza disorganizzare il team né
 assumere personale specializzato.
+
+## English version
+
+The site is also available in English at [aiagents.gtaviani.com/en/](https://aiagents.gtaviani.com/en/),
+mirroring the homepage, the three pillar pages, and all landing pages listed
+above. The Blog and the "Manuale del CEO AI" ebook (16 chapters) remain
+Italian-only on this domain — their English edition is a separate product at
+[ceoaimanual.gtaviani.com](https://ceoaimanual.gtaviani.com).

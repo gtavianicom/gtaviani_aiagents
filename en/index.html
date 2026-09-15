@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agents for Retail &amp; E-Commerce SMBs | GTaviani Consulting</title>
+  <meta name="description" content="AI agent consulting for Italian retail and e-commerce SMBs: automated marketing, sales and customer service, cost and performance monitored per agent.">
+  <link rel="canonical" href="https://aiagents.gtaviani.com/en/">
+  <link rel="alternate" hreflang="it" href="https://aiagents.gtaviani.com/">
+  <link rel="alternate" hreflang="en" href="https://aiagents.gtaviani.com/en/">
+  <link rel="alternate" hreflang="x-default" href="https://aiagents.gtaviani.com/">
+  <meta name="theme-color" content="#014374">
+
+  <!-- Open Graph / social share -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aiagents.gtaviani.com/en/">
+  <meta property="og:site_name" content="GTaviani Consulting">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="AI Consultant for Retail & E-Commerce | GTaviani Consulting">
+  <meta property="og:description" content="AI agent consulting for Italian retail and e-commerce SMBs: automated marketing, sales and customer service with GTaviani AI Space. Monitor cost and performance per agent.">
+  <meta property="og:image" content="https://aiagents.gtaviani.com/assets/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="GTaviani Consulting — AI Consultant for Retail &amp; E-Commerce">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Consultant for Retail & E-Commerce | GTaviani Consulting">
+  <meta name="twitter:description" content="AI agent consulting for Italian retail and e-commerce SMBs: automated marketing, sales and customer service with GTaviani AI Space.">
+  <meta name="twitter:image" content="https://aiagents.gtaviani.com/assets/images/og-image.png">
+  <link rel="icon" type="image/png" href="/assets/images/gtaviani-marca.png">
+  <link rel="apple-touch-icon" href="/assets/images/gtaviani-marca.png">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "GTAVIANI — Retail E-Commerce Growth",
+    "url": "https://aiagents.gtaviani.com/",
+    "logo": "https://aiagents.gtaviani.com/assets/images/gtaviani-marca.png",
+    "description": "AI agent consulting for Italian retail and e-commerce SMBs: controlled adoption of artificial intelligence, staff training, AI Act and GDPR compliance, AI Workspace whitelabel platform.",
+    "areaServed": "IT",
+    "knowsAbout": ["Consulenza AI per PMI", "AI Act", "GDPR", "AI Workspace", "Automazione con AI Agent", "Fondi e finanziamenti per intelligenza artificiale"],
+    "sameAs": ["https://www.gtaviani.com"]
+  }
+  </script>
+
+  <!-- Consent Mode v2 (default negato) -- GTA-LEGAL-001, conforme Linee Guida Cookie Garante Privacy -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 500
+    });
+    (function () {
+      var stored = localStorage.getItem('gta_cookie_consent');
+      if (stored === 'granted') {
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted',
+          'analytics_storage': 'granted'
+        });
+      }
+    })();
+  </script>
+
+  <!-- Google Tag Manager (container reale fornito da Gabriele) -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TS75TN3S');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Cattura utm/ad params in ingresso: il redirect di Tally al completamento
+       form punta a un URL fisso senza attribuzione, altrimenti si perde la
+       campagna di provenienza (GTA-WEB-002) -->
+  <script>
+    (function () {
+      if (window.location.search && window.location.search.indexOf('utm_source=FormCompleted') === -1) {
+        sessionStorage.setItem('gta_lead_utm', window.location.search);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TS75TN3S"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#hero" class="logo-link">
+        <img src="/assets/images/gtaviani-logo-orizzontale.png" alt="GTAVIANI — Retail E-Commerce Growth" class="logo">
+      </a>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Open menu">
+        <i class="fas fa-bars"></i>
+      </label>
+
+      <nav class="site-nav">
+        <a href="/en/#consulente-esterno">AI Consulting</a>
+        <a href="/en/#piattaforma">AI Workspace</a>
+        <a href="/en/retail-ecommerce-ai-team.html" class="nav-badge-link">AI E-Commerce</a>
+        <div class="lang-switch" aria-label="Switch language">
+          <a href="/" class="lang-link">IT</a>
+          <span class="lang-divider">|</span>
+          <span class="lang-current">EN</span>
+        </div>
+      </nav>
+
+      <a href="https://ceoaimanual.gtaviani.com" id="cta-nav-books" class="btn btn-primary-light nav-books" target="_blank" rel="noopener">BOOKS</a>
+      <a href="/en/contact.html" id="cta-nav-contact" class="btn btn-primary nav-contact">CONTACT</a>
+      <a href="https://aispace.gtaviani.com" class="btn btn-primary-light nav-login">LOGIN</a>
+    </div>
+  </header>
+
+  <!-- [1] HERO — GTA-CONTENT-001 -->
+  <section id="hero" class="hero">
+    <h1>AI Consultance</h1>
+    <p class="hero-subtitle">Reclaim hours of work and eliminate repetitive tasks with custom AI agents, monitoring costs and results in real time. No upfront investment, no team to hire.</p>
+    <a href="#problema" id="cta-hero-scroll" class="scroll-cue" aria-label="Learn more">See how ↓</a>
+  </section>
+
+  <!-- [1.5] EBOOK MANUALE DEL CEO AI — GTA-EBOOK-004 (card compatta) -->
+  <section id="ebook-ceo-ai" class="ebook-mini-section">
+    <a href="https://ceoaimanual.gtaviani.com" id="cta-ebook-home" class="ebook-mini-card" target="_blank" rel="noopener">
+      <img src="/assets/images/eBook-CeoAiManual-EN-1200x1200.png" alt="Cover of The AI Manual for CEOs, 2026 Edition, by Gabriele Taviani" class="ebook-mini-cover">
+      <span class="ebook-mini-body">
+        <span class="ebook-mini-title">The AI Manual for CEOs</span>
+        <span class="ebook-mini-text">The 2026 English edition: AI in the language of the people who run companies — a step-by-step method, not theory. Available on Amazon.</span>
+        <span class="ebook-mini-cta">More info &amp; buy <i class="fa-solid fa-arrow-right"></i></span>
+      </span>
+    </a>
+  </section>
+
+  <!-- [2] IL PROBLEMA — GTA-CONTENT-002 -->
+  <section id="problema">
+    <h2>SMBs &amp; AI</h2>
+    <p class="section-intro">It's not a technology problem. It's a problem of skills and trust — ones your SMB doesn't have to build alone.</p>
+
+    <div class="stat-callout">
+      <div class="stat-strip">
+        <div class="stat-item">
+          <span class="stat-number">8.2%</span>
+          <span class="stat-label">Italian SMBs Using AI</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">13.5%</span>
+          <span class="stat-label">European Average</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">70.2%</span>
+          <span class="stat-label">SMBs Ready for AI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-circle-question"></i></div>
+        <h3>Why invest in AI, and for what</h3>
+        <p>You know you need to bring it into your company, but lack clarity on why and what to actually use it for.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-people-arrows"></i></div>
+        <h3>Internal staff resistance</h3>
+        <p>The team fears being replaced or doesn't know how to integrate AI into their daily work.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-compass"></i></div>
+        <h3>Confusion about what to delegate to AI</h3>
+        <p>Too many possibilities, no clear priority on where to start adoption.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-chart-pie"></i></div>
+        <h3>Unclear return on investment</h3>
+        <p>Hard to estimate what you actually gain compared to what you invest.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-receipt"></i></div>
+        <h3>Uncertain real cost of AI</h3>
+        <p>It's unclear how costs are covered or how they become a revenue accelerator.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-sitemap"></i></div>
+        <h3>Poorly Defined Internal Processes</h3>
+        <p>Without clear processes to follow, automating with AI becomes risky — and this is exactly what holds many business owners back from bringing it into their company.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- [3] AI ACT & GDPR — GTA-CONTENT-003 -->
+  <section id="fiducia-faq" class="light-divider">
+    <h2>AI Act &amp; GDPR</h2>
+    <p class="section-intro">
+      Every SMB using an AI agent — even just a chatbot — is already a <strong>deployer</strong>
+      under the European AI Act: the obligation to provide <strong>AI literacy training for staff (Art. 4)</strong>
+      is already in force, and from <strong>December 2, 2026</strong>, the
+      <strong>transparency obligations toward customers (Art. 50)</strong> take effect — deadlines already set, concrete
+      penalties for those who don't comply.
+    </p>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h3>AI Literacy for Staff</h3>
+        <p>Anyone in the company using AI systems must have an adequate, documented level of competence — an obligation already in force.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-comment-dots"></i></div>
+        <h3>Transparency Toward Customers</h3>
+        <p>Anyone interacting with your chatbot or AI agent must know it: disclosure is not optional.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-file-signature"></i></div>
+        <h3>DPA with AI Vendors</h3>
+        <p>Every vendor that processes your company's data on your behalf requires a compliant data processing agreement.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-shield-halved"></i></div>
+        <h3>Updated Privacy Notice</h3>
+        <p>Data processing carried out through AI systems must be disclosed in your privacy notice, with the correct legal basis.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-clipboard-check"></i></div>
+        <h3>Register and Audit Trail</h3>
+        <p>You need a documented record of which agents you use, on what data, and with what human oversight.</p>
+      </div>
+    </div>
+
+    <div class="conclusion-grid">
+      <div class="conclusion-box">
+        <div class="alert-icon"><i class="fas fa-triangle-exclamation"></i></div>
+        <div class="alert-content">
+          <strong>Risks and Penalties</strong>
+          <p>Penalties of up to <strong>7% of global turnover</strong> for non-compliant high-risk
+            systems, exclusion from public and corporate tenders and supply contracts, plus
+            direct legal exposure for damages caused by uncontrolled AI systems.</p>
+        </div>
+      </div>
+      <div class="ready-box">
+        <div class="alert-icon"><i class="fas fa-circle-check"></i></div>
+        <div class="alert-content">
+          <strong>What It Means to Be AI-Act Ready</strong>
+          <p>Transparent and documented AI agents, compliant data processing, disclosure
+            obligations met: compliance is becoming a requirement that more and more tenders and
+            supply contracts will demand to work with you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- [4] CONSULENTE AI — GTA-CONTENT-004 -->
+  <section id="consulente-esterno" class="dark-section">
+    <div class="section-icon"><i class="fas fa-user-tie"></i></div>
+    <h2>AI Consultant</h2>
+    <p class="section-intro">Before technology, we focus on your processes: we clarify them and make them ready to be supported by AI — we solve the organizational problem and bring AI into your company with the same engagement.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-arrows-to-circle"></i></div>
+        <h3>AI Integration in Your Company</h3>
+        <p>We bring AI into your real processes, not an isolated tool from someone else.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-comments"></i></div>
+        <h3>Speaks the Business Owner's Language</h3>
+        <p>Direct communication, no technical jargon: you always understand what you're deciding.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-diagram-project"></i></div>
+        <h3>Business Process Support</h3>
+        <p>We put order into the disorganized processes that currently prevent AI from working, then we automate them: same engagement, two problems solved.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-shield-halved"></i></div>
+        <h3>GDPR &amp; AI Act Expert</h3>
+        <p>Always up to date on European regulatory developments in AI compliance.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-people-group"></i></div>
+        <h3>Community &amp; Network</h3>
+        <p>Training and collaborative support, together with a network of vertical experts.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Performance Oriented</h3>
+        <p>Constant monitoring of the cost and performance of your AI agents.</p>
+      </div>
+    </div>
+
+    <div class="stat-callout">
+      <p class="result-intro">Indicative results for SMBs adopting this model:</p>
+      <div class="stat-strip">
+        <div class="stat-item">
+          <span class="stat-number">-40/60%</span>
+          <span class="stat-label">support times</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">+20/35%</span>
+          <span class="stat-label">conversions</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon"><i class="fas fa-check-circle"></i></span>
+          <span class="stat-label">guaranteed compliance</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon"><i class="fas fa-check-circle"></i></span>
+          <span class="stat-label">positive AI agent ROI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- [METODO] 4 fasi seriali e cicliche — GTA-METODO-001 (2026-07-17) -->
+  <section id="roadmap" class="light-divider">
+    <h2>The Method</h2>
+    <p class="section-intro">We don't work at random: we follow a 4-phase sequential consulting method, which we repeat continuously throughout the engagement — not just in the first few months. A hands-on consultancy that gets involved and adapts every time to your company's real needs.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+        <span class="roadmap-phase">Phase 1</span>
+        <h3>Audit - Needs and Problems Analysis</h3>
+        <p>We map the processes that currently absorb the most team time, to understand where AI can free up real hours.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-flask"></i></div>
+        <span class="roadmap-phase">Phase 2</span>
+        <h3>Pilot Before Investing</h3>
+        <p>Before investing in complex AI agents, we test with a targeted pilot: we validate functionality, costs and performance in the field, not on paper.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-graduation-cap"></i></div>
+        <span class="roadmap-phase">Phase 3</span>
+        <h3>Training and Engagement</h3>
+        <p>We put staff training and engagement first, also to comply with the AI literacy obligation (Art. 4): AI frees people from repetitive tasks, it doesn't replace them, and makes them faster, in complete safety.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-arrows-rotate"></i></div>
+        <span class="roadmap-phase">Phase 4</span>
+        <h3>Continuous Optimization</h3>
+        <p>We monitor costs and performance and integrate AI into the company's organization, freeing up resources for the next process — the cycle starts again, it doesn't stop.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- [5] AI WORKSPACE WHITELABEL (piattaforma) — GTA-CONTENT-005 -->
+  <section id="piattaforma">
+    <h2>AI Workspace Whitelabel</h2>
+    <p class="section-intro">
+      The company platform where employees manage AI resources.
+    </p>
+
+    <!-- Galleria whitelabel — GTA-WHITELABEL-GALLERY-001/002 (2026-07-17): 2x2 su desktop, colonna singola su mobile, click per ingrandire -->
+    <div class="whitelabel-gallery">
+      <img src="/assets/images/whitelabel-dashboard.png" alt="Whitelabel platform: company dashboard with AI Projects and AI Resources" class="gallery-img">
+      <img src="/assets/images/whitelabel-tasks.png" alt="Whitelabel platform: project task management in Backlog/To Do/Open/Done" class="gallery-img">
+      <img src="/assets/images/whitelabel-ai-resource.png" alt="Whitelabel platform: configuration of an AI Agent resource" class="gallery-img">
+      <img src="/assets/images/whitelabel-ai-chat.png" alt="Whitelabel platform: chat with a team AI Agent" class="gallery-img">
+    </div>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-file-shield"></i></div>
+        <h3>Compliance &amp; Contracts</h3>
+        <p>Every user accessing the platform and AI resources is covered by GDPR and AI Act compliance.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-diagram-project"></i></div>
+        <h3>AI Project</h3>
+        <p>Management of AI projects from idea to launch.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-robot"></i></div>
+        <h3>AI Resources</h3>
+        <p>Configuration of tools, data and frontend for AI resources (agents).</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-plug"></i></div>
+        <h3>AI Plugin</h3>
+        <p>Web and mobile frontend, plus API integration, with AI Act-compliant AI disclosure: your customers always know when they're interacting with an agent.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-gauge-high"></i></div>
+        <h3>Costs &amp; Performance</h3>
+        <p>Dashboard with clear data and charts on the performance and cost of each individual agent.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-users"></i></div>
+        <h3>AI Team</h3>
+        <p>Management of the relationship between company staff and AI resources.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- [DASHBOARD] AI Resource Dashboard — GTA-DASHSECTION-001/002 (feature futura, non ancora live) -->
+  <section id="ai-resource-dashboard" class="light-divider">
+    <div class="section-badge-row"><span class="section-badge">Coming soon</span></div>
+    <h2>AI Resource Dashboard</h2>
+    <p class="section-intro">
+      The private area where the Corporate client monitors in real time the work of dedicated AI
+      resources operating within the organization (connected to company systems).
+    </p>
+    <div class="dashboard-preview">
+      <img src="/assets/images/dashboard-monitoraggio-agenti-ai-pmi.png" alt="AI agent monitoring dashboard for SMBs: completed tasks, hours saved, active agents and real-time reliability" class="dashboard-img">
+    </div>
+  </section>
+
+  <!-- [6] I PIANI — GTA-CONTENT-006 -->
+  <section id="piani" class="dark-section">
+    <h2>Monthly Plans</h2>
+    <p class="section-intro">
+      Consulting and AI usage, all in one continuous, scalable monthly plan.
+    </p>
+    <div class="plans-grid">
+      <article class="plan-card">
+        <h3>Startup</h3>
+        <p class="plan-price">€866<span>/month</span></p>
+        <ul>
+          <li><strong>12</strong> consulting hours/month</li>
+          <li><strong>5,000</strong> Credits (AI Services &amp; Tokens)</li>
+          <li><strong>10%</strong> discount on Extra Hours/Credits Packages</li>
+          <li class="plan-feature"><i class="fas fa-layer-group"></i> AI Workspace</li>
+        </ul>
+      </article>
+      <article class="plan-card plan-card--highlight">
+        <h3>Business</h3>
+        <p class="plan-price">€1,268<span>/month</span></p>
+        <ul>
+          <li><strong>20</strong> consulting hours/month</li>
+          <li><strong>10,000</strong> Credits (AI Services &amp; Tokens)</li>
+          <li><strong>15%</strong> discount on Extra Hours/Credits Packages</li>
+          <li class="plan-feature"><i class="fas fa-layer-group"></i> AI Workspace (Whitelabel)</li>
+        </ul>
+      </article>
+      <article class="plan-card">
+        <h3>Corporate</h3>
+        <p class="plan-price">€2,425<span>/month</span></p>
+        <ul>
+          <li><strong>45</strong> consulting hours/month</li>
+          <li><strong>25,000</strong> Credits (AI Services &amp; Tokens)</li>
+          <li><strong>25%</strong> discount on Extra Hours/Credits Packages</li>
+          <li class="plan-feature"><i class="fas fa-layer-group"></i> AI Workspace (Whitelabel)</li>
+          <li class="plan-feature"><i class="fas fa-gauge-high"></i> AI Resource Dashboard</li>
+        </ul>
+      </article>
+    </div>
+    <div class="plans-cta">
+      <a href="/en/contact.html" id="cta-plans-all" class="btn btn-white">Request Information</a>
+    </div>
+    <p class="plans-note">Unused consulting hours don't expire: they remain cumulative for following months.</p>
+  </section>
+
+  <!-- [CASESTUDY] Caso Tipo — GTaviani Venture Builder — GTA-CASESTUDY-001 -->
+  <section id="caso-tipo" class="light-divider">
+    <h2>Success Stories</h2>
+    <div class="case-study-cards">
+      <article class="case-study-card">
+        <div class="case-study-logo-row">
+          <img src="/assets/images/gtaviani-venture-builder-logo.png" alt="GTaviani Venture Builder" class="case-study-logo case-study-logo--lg">
+        </div>
+        <div class="stat-callout">
+          <p class="result-intro">Results achieved:</p>
+          <div class="stat-strip">
+            <div class="stat-item">
+              <span class="stat-number">$5,000 → $200</span>
+              <span class="stat-label">monthly cost of the dedicated team</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">2/10</span>
+              <span class="stat-label">delivery speed vs. human team</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon"><i class="fas fa-check-circle"></i></span>
+              <span class="stat-label">Zero turnover, consistent quality</span>
+            </div>
+          </div>
+        </div>
+        <p class="section-intro">
+          GTaviani Venture Builder is GTaviani's business unit that incubates B2C and B2B AI projects through to spin-off: it invests in ideation, design and technological development, and supports the MVP of these solutions through to independent release. For the Venture Builder, a local server environment was designed and developed with a team of AI Resources coordinated by a Meta-PM, replacing external freelance human resources for web development and server management for the DrGuido Mobile App and AI Workspace.
+        </p>
+        <div class="dashboard-preview">
+          <img src="/assets/images/console-risorse-ai-venture-builder-gtaviani.png" alt="GTaviani Venture Builder AI Resources Console: team of AI agents coordinated by a Meta-PM" class="dashboard-img gallery-img">
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- [7] FAQ — da popolare: domande e risposte da definire con Gabriele -->
+  <section id="faq" class="light-divider">
+    <h2>FAQ</h2>
+
+    <div class="faq-category">
+      <h3 class="faq-category-title">Our Consultants</h3>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Are your consultants technical experts or business experts?</summary>
+          <p>Business experts first and foremost. Our consultants speak the language of the
+            business owner, not the programmer: they understand your processes, your numbers and
+            your goals before even proposing a technology solution. Artificial intelligence
+            expertise is the tool, not the starting point — the starting point is always your
+            company.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What experience do your consultants have?</summary>
+          <p>Over 30 years of experience in digital, built from traditional marketing through to
+            today's artificial intelligence. This isn't a team that recently discovered AI: it's
+            a continuous path of learning that starts from the fundamentals of digital business
+            and reaches the most recent technologies, always with the same goal — measurable
+            results for the client company.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What happens if my project requires highly specialized expertise?</summary>
+          <p>The consultant working with your company is part of the AWC (AI Workspace Club)
+            community, the network of AI consultants GTaviani belongs to. When a project requires
+            highly specialized expertise, your consultant can rely on a network specialist
+            instead of improvising — and the same community guarantees ongoing training, so
+            whoever works with you stays up to date on technologies and regulations.</p>
+          <a href="https://www.aiworkspace.club/" target="_blank" rel="noopener" class="btn btn-secondary faq-cta">Discover AWC — AI Workspace Club</a>
+        </details>
+        <details class="faq-item">
+          <summary>What method do you follow for AI consulting?</summary>
+          <p>Through AWC, we adopt a qualified, performance-oriented AI consulting method: not
+            isolated implementations, but a structured path that constantly measures the results
+            achieved against your company's business goals, with standards shared across the
+            entire consultant community.</p>
+          <a href="https://www.aiworkspace.club/" target="_blank" rel="noopener" class="btn btn-secondary faq-cta">Discover AWC — AI Workspace Club</a>
+        </details>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <h3 class="faq-category-title">AI Act &amp; GDPR</h3>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>AI Act and GDPR for SMBs: how are they interpreted and what are the risks?</summary>
+          <p>Every SMB using an AI agent — even just a chatbot — becomes a deployer under the AI
+            Act, with transparency, documentation and data management obligations that add to
+            those already required by the GDPR. The main risks for those who don't comply are
+            penalties of up to 7% of global turnover, exclusion from tenders and supply contracts
+            requiring AI Act-ready vendors, and direct legal exposure for damages caused by
+            uncontrolled AI systems.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Since when does the AI Act apply to chatbots too?</summary>
+          <p>The obligation to train staff who use AI systems (Art. 4) is already in force. From
+            December 2, 2026, transparency obligations (Art. 50) also take effect: if your
+            chatbot interacts with customers, you're a deployer with disclosure obligations to
+            meet, regardless of your SMB's size.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What happens if I'm not compliant with the AI Act?</summary>
+          <p>You risk penalties of up to 7% of global turnover, exclusion from public and
+            corporate tenders and supply contracts requiring AI Act-ready vendors, and direct
+            legal exposure for damages caused by uncontrolled AI systems.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <h3 class="faq-category-title">AI Consultant</h3>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Who are AI consultants and why are they important for SMBs?</summary>
+          <p>AI consultants are professionals who support your SMB in adopting artificial
+            intelligence: they don't sell a tool, but design, implement and monitor AI agents
+            over time, speak the language of business, and ensure GDPR and AI Act compliance.
+            For an SMB, they're important because they make it possible to adopt AI without
+            having to build internal expertise from scratch, reducing legal risk and activation
+            time.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What's the difference between an AI consultant and a software development agency?</summary>
+          <p>An agency develops software to spec and then stops. An AI consultant designs,
+            implements and monitors the agents over time, speaks the language of business,
+            manages the relationship with the platform, and ensures regulatory compliance —
+            ongoing support, not a one-off project.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do I choose a qualified AI consultant?</summary>
+          <p>Look for someone certified by the AI consultant community, with real experience in
+            your market vertical, who offers an ongoing support model with cost and performance
+            monitoring — not just the installation of a tool.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <h3 class="faq-category-title">Whitelabel Platform</h3>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What is the GTaviani AI Space whitelabel platform?</summary>
+          <p>It's your company AI Workspace: a portal where you manage AI projects, resources
+            (agents), internal team and compliance, under your own brand — without having to
+            build infrastructure from scratch.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I integrate AI agents into my existing site or app?</summary>
+          <p>Yes: the agent frontend can be integrated into any web or mobile platform, or via
+            API, without locking you into the standard interface.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do I monitor agent costs and performance?</summary>
+          <p>From the platform dashboard: clear data and charts on the cost and performance of
+            each individual agent, in real time.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <h3 class="faq-category-title">Costs and Plans</h3>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>How much does it cost to activate an AI consultant?</summary>
+          <p>Starting from €866/month (Startup plan), with 12 consulting hours included and
+            5,000 platform credits per month. Higher plans (Business, Corporate) scale up hours,
+            credits, and discounts on extras.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I cancel the plan whenever I want?</summary>
+          <p>The plan has a 12-month term, scalable directly within the platform, with
+            cancellation available on request.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What happens if I exceed the hours or credits included in my plan?</summary>
+          <p>You can purchase extra packages of consulting hours and platform credits, with a
+            dedicated discount (10/15/25% depending on the plan) off the standard price.</p>
+        </details>
+      </div>
+    </div>
+
+  </section>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "AI Act and GDPR for SMBs: what do they mean and what are the risks?", "acceptedAnswer": {"@type": "Answer", "text": "Every SMB that uses an AI agent becomes a deployer under the AI Act, with transparency and data-management obligations. Risks include penalties of up to 7% of global turnover and exclusion from tenders and supply contracts that require AI Act-ready vendors."}},
+      {"@type": "Question", "name": "Since when does the AI Act apply to chatbots too?", "acceptedAnswer": {"@type": "Answer", "text": "The obligation to train staff who use AI systems (Art. 4) is already in force. From December 2, 2026, the transparency obligations (Art. 50) also take effect for conversational systems that interact with customers."}},
+      {"@type": "Question", "name": "What happens if I'm not compliant with the AI Act?", "acceptedAnswer": {"@type": "Answer", "text": "Penalties of up to 7% of global turnover, exclusion from public and corporate tenders and supply contracts, and direct legal exposure for damages caused by uncontrolled AI systems."}},
+      {"@type": "Question", "name": "Who are AI consultants and why do they matter for SMBs?", "acceptedAnswer": {"@type": "Answer", "text": "AI consultants design, implement and monitor AI agents over time, speak the language of business, and ensure GDPR and AI Act compliance — letting the SMB adopt AI without building in-house expertise from scratch."}},
+      {"@type": "Question", "name": "What's the difference between an AI consultant and a software development agency?", "acceptedAnswer": {"@type": "Answer", "text": "An agency builds software to spec. An AI consultant designs, implements and monitors agents over time with ongoing support, not a one-off project."}},
+      {"@type": "Question", "name": "How do I choose a qualified AI consultant?", "acceptedAnswer": {"@type": "Answer", "text": "Look for someone certified by the AI consultants' community, with experience in your vertical, who offers ongoing monitoring of costs and performance."}},
+      {"@type": "Question", "name": "What is the GTaviani AI Space whitelabel platform?", "acceptedAnswer": {"@type": "Answer", "text": "A company AI Workspace to manage AI projects, resources, internal team and compliance, under your own brand."}},
+      {"@type": "Question", "name": "Can I integrate the AI agents into my existing site or app?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, the agents' frontend can be integrated into any web or mobile platform, or via API."}},
+      {"@type": "Question", "name": "How do I monitor agent costs and performance?", "acceptedAnswer": {"@type": "Answer", "text": "From the platform dashboard, with real-time data and charts on costs and performance for each agent."}},
+      {"@type": "Question", "name": "How much does it cost to activate an AI consultant?", "acceptedAnswer": {"@type": "Answer", "text": "Starting from EUR 866/month (Startup plan), including 12 hours of consulting and 5,000 platform credits."}},
+      {"@type": "Question", "name": "Can I cancel the plan whenever I want?", "acceptedAnswer": {"@type": "Answer", "text": "The plan runs for 12 months, scalable within the platform, with cancellation available on request."}},
+      {"@type": "Question", "name": "What happens if I exceed the hours or credits included in my plan?", "acceptedAnswer": {"@type": "Answer", "text": "You can purchase extra hour and credit packages with a dedicated discount (10/15/25% depending on the plan)."}},
+      {"@type": "Question", "name": "Are your consultants technical or business experts?", "acceptedAnswer": {"@type": "Answer", "text": "Business experts first: they understand the client company's processes, numbers and goals before proposing a technology solution. AI expertise is the tool, not the starting point."}},
+      {"@type": "Question", "name": "What experience do your consultants have?", "acceptedAnswer": {"@type": "Answer", "text": "Over 30 years of experience in digital, from traditional marketing to today's artificial intelligence, with continuous, results-driven professional development."}},
+      {"@type": "Question", "name": "What if my project requires very specialized expertise?", "acceptedAnswer": {"@type": "Answer", "text": "The consultant is part of the AWC (AI Workspace Club) community: they can draw on a network specialist for highly vertical expertise, and the community guarantees continuous training on technologies and regulations."}},
+      {"@type": "Question", "name": "What method do you follow for AI consulting?", "acceptedAnswer": {"@type": "Answer", "text": "Through AWC we follow a qualified, performance-oriented AI consulting method, with standards shared across the community and constant measurement of results against business goals."}}
+    ]
+  }
+  </script>
+
+  <!-- [8] FOOTER — GTA-CONTENT-008 -->
+  <section id="cta-footer" class="dark-section">
+        <footer class="site-footer">
+      <div class="footer-inner">
+        <img src="/assets/images/gtaviani-logo-orizzontale.png" alt="GTAVIANI — Retail E-Commerce Growth" class="footer-logo">
+        <div class="footer-links">
+          <a href="https://www.gtaviani.com" id="cta-footer-home">gtaviani.com</a>
+          <a href="https://venture.gtaviani.com" id="cta-footer-venture" target="_blank" rel="noopener">Venture</a>
+          <a href="https://aispace.gtaviani.com" id="cta-footer-login">Client Access</a>
+          <a href="/blog.html" id="cta-footer-blog">Blog</a>
+        </div>
+      </div>
+      <nav class="footer-landing-links" aria-label="AI solutions for your SMB">
+        <a href="/en/retail-ecommerce-ai-team.html">AI E-Commerce Team (Retail)</a>
+        <a href="/en/lp-consulente-ai.html">AI Consultant for Retail</a>
+        <a href="/en/lp-ai-act-gdpr.html">AI Act and GDPR for SMBs</a>
+        <a href="/en/lp-chatbot-aziendale.html">Corporate AI Chatbots</a>
+        <a href="/en/lp-fondi-pmi.html">Grants and Funding for AI</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 GTAVIANI — Retail E-Commerce Growth. All rights reserved.</p>
+      <p class="footer-legal-links"><a href="/sitemap.xml" id="cta-footer-sitemap">Sitemap</a> &middot; <a href="/en/privacy.html" id="cta-footer-privacy">Privacy</a></p>
+    </footer>
+  </section>
+
+  <!-- GTA-MOBILE-CTA-001: l'83% del traffico Ads e' mobile ma solo il 20%
+       scrolla fino al form in fondo — bottone CTA flottante, visibile
+       durante tutto lo scroll. Nato per mobile, esteso anche a desktop su
+       richiesta di Gabriele (pagina lunga anche li'). z-index sotto al
+       cookie banner: se coesistono alla prima visita, il banner
+       (dismissibile) resta sopra. -->
+  <a href="/en/contact.html" id="cta-sticky" class="sticky-cta">Request Your Free Consultation →</a>
+
+  <!-- Cookie banner conforme Linee Guida Garante Privacy: nessun tracker di profilazione
+       fino a consenso esplicito (Consent Mode v2 in <head>) -- GTA-LEGAL-001 -->
+  <div id="cookie-banner" class="cookie-banner">
+    <p>We use technical cookies (always active) and, only with your consent, third-party cookies
+      (Google Analytics, Google Ads, LinkedIn Ads, Meta Ads) for statistics and advertising.
+      <a href="/en/privacy.html">Learn more</a>.</p>
+    <div class="cookie-banner-actions">
+      <button type="button" id="cookie-banner-reject" class="btn btn-secondary">Reject</button>
+      <button type="button" id="cookie-banner-accept" class="btn btn-primary">Accept</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var KEY = 'gta_cookie_consent';
+      var banner = document.getElementById('cookie-banner');
+      if (!banner || localStorage.getItem(KEY)) return;
+      setTimeout(function () { banner.classList.add('show'); }, 600);
+      function setConsent(value) {
+        localStorage.setItem(KEY, value);
+        banner.classList.remove('show');
+        if (window.gtag) {
+          gtag('consent', 'update', {
+            'ad_storage': value,
+            'ad_user_data': value,
+            'ad_personalization': value,
+            'analytics_storage': value
+          });
+        }
+      }
+      document.getElementById('cookie-banner-accept').addEventListener('click', function () { setConsent('granted'); });
+      document.getElementById('cookie-banner-reject').addEventListener('click', function () { setConsent('denied'); });
+    })();
+  </script>
+
+  <!-- Popup conferma completamento form: attivato solo quando Tally reindirizza
+       alla home con ?...&utm_source=FormCompleted tra i parametri (GTA-WEB-001).
+       GTA-WEB-002 (2026-07-08): il redirect di Tally punta a un URL fisso che
+       NON porta con sé gli utm della campagna di atterraggio (persi con
+       history.replaceState alla pathname nuda) — questo rompeva l'attribuzione
+       nei sistemi di tracciamento. Ora ripristiniamo gli utm originali salvati
+       in sessionStorage dalla pagina di atterraggio (vedi script dopo il tag
+       GTM in <head>) prima di ripulire l'URL, e li pubblichiamo anche su
+       dataLayer perché GTM non dipenda dal solo parsing dell'URL. -->
+  <div id="success-modal-overlay" class="success-modal-overlay">
+    <div class="success-modal">
+      <div class="success-modal-icon"><i class="fas fa-circle-check"></i></div>
+      <h3>Request sent successfully!</h3>
+      <p>Thank you, we've received your details. We'll get back to you as soon as possible to discuss your project.</p>
+      <button type="button" id="success-modal-dismiss" class="btn btn-primary">Got it</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      if (window.location.search.indexOf('utm_source=FormCompleted') === -1) return;
+      var overlay = document.getElementById('success-modal-overlay');
+      if (!overlay) return;
+      overlay.classList.add('show');
+      document.getElementById('success-modal-dismiss').addEventListener('click', function () {
+        overlay.classList.remove('show');
+      });
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) overlay.classList.remove('show');
+      });
+
+      var savedUtm = sessionStorage.getItem('gta_lead_utm') || '';
+      var savedParams = new URLSearchParams(savedUtm || window.location.search);
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'gta_lead_completed',
+        utm_source: savedParams.get('utm_source') || '',
+        utm_medium: savedParams.get('utm_medium') || '',
+        utm_campaign: savedParams.get('utm_campaign') || '',
+        utm_content: savedParams.get('utm_content') || '',
+        utm_marketing_tactic: savedParams.get('utm_marketing_tactic') || '',
+        gclid: savedParams.get('gclid') || ''
+      });
+      // Se non c'e' nulla di salvato (es. URL aperto direttamente, non tramite
+      // il funnel landing->form), NON toccare l'URL: meglio lasciare quello
+      // che e' arrivato (marker Tally incluso) che azzerarlo/sostituirlo.
+      if (savedUtm && window.history && window.history.replaceState) {
+        window.history.replaceState({}, document.title, window.location.pathname + savedUtm + '&lead_completed=1');
+      }
+      sessionStorage.removeItem('gta_lead_utm');
+    })();
+  </script>
+
+  <!-- Lightbox galleria whitelabel — GTA-WHITELABEL-GALLERY-001 -->
+  <div id="gallery-lightbox-overlay" class="success-modal-overlay">
+    <div class="gallery-lightbox">
+      <button type="button" id="gallery-lightbox-close" class="gallery-lightbox-close" aria-label="Close">&times;</button>
+      <img id="gallery-lightbox-img" src="" alt="">
+    </div>
+  </div>
+  <script>
+    (function () {
+      var overlay = document.getElementById('gallery-lightbox-overlay');
+      var lightboxImg = document.getElementById('gallery-lightbox-img');
+      var closeBtn = document.getElementById('gallery-lightbox-close');
+      if (!overlay || !lightboxImg || !closeBtn) return;
+      document.querySelectorAll('.gallery-img').forEach(function (img) {
+        img.addEventListener('click', function () {
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+          overlay.classList.add('show');
+        });
+      });
+      function closeLightbox() {
+        overlay.classList.remove('show');
+      }
+      closeBtn.addEventListener('click', closeLightbox);
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) closeLightbox();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeLightbox();
+      });
+    })();
+  </script>
+</body>
+</html>
