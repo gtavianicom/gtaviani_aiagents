@@ -54,6 +54,12 @@ consulenza, formazione del team e accesso alla piattaforma whitelabel
   per modello di business/organizzazione/marketing/produzione, scelta del
   consulente, regole AI Act/GDPR, capitoli verticali per settore). Download
   gratuito via form.
+- [Retail E-Commerce AI TEAM — guida gratuita](https://aiagents.gtaviani.com/guida-retail-ecommerce-ai-team.html):
+  guida operativa gratuita (49 pagine A4, 13 capitoli) per l'e-commerce
+  manager che vuole costruire un AI Team di e-commerce: organigramma con
+  iCEC/iCTO/iCMO/iCFO, agenti legati a un KPI, metodo di lavoro, confronto
+  costi vs agenzia/team interno, checklist di autovalutazione e schede di
+  audit. Download gratuito via form.
 
 ## Target
 
