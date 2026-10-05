@@ -2699,6 +2699,28 @@ a.problem-card {
   margin-bottom: 0.75rem;
 }
 
+/* Variante card uguali in altezza, con l'ultimo course-fact ("Quando")
+   allineato in fondo — scheda corsi, sezione Il programma (rev. 5/10 v16,
+   richiesta esplicita). Non tocca .method-phases-grid di base, usata altrove
+   (es. retail-ecommerce-ai-team.html) con align-items:start. */
+.method-phases-grid--equal {
+  align-items: stretch;
+}
+
+.method-phases-grid--equal .org-director-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.method-phases-grid--equal .course-facts {
+  flex: 1;
+}
+
+.method-phases-grid--equal .course-fact:last-child {
+  margin-top: auto;
+}
+
 .org-topline {
   max-width: 700px;
   margin: 2rem auto 0;
