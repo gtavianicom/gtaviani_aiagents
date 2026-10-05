@@ -126,20 +126,58 @@
     </div>
   </header>
 
-  <!-- [1] HERO — GTA-EVCORSI-MAIN-001 (rev. 5/10: dropped the "GTaviani
-       Consulting's calendar:" lead-in, no more embedded calendar on this page) -->
+  <!-- [1] HERO — GTA-EVCORSI-MAIN-001, rev. 5/10: anchor buttons to Courses/Events -->
   <section id="hero" class="hero">
     <span class="hero-badge">📅 2027 Program</span>
     <h1>Events &amp; Courses</h1>
     <p class="hero-subtitle">Classroom and on-site courses for executives, managers and e-commerce teams, plus the trade fairs, congresses and meetups where you can meet us.</p>
+    <div class="hero-cta-row">
+      <a href="#corsi" class="btn btn-primary btn-lg">Courses</a>
+      <a href="#eventi" class="btn btn-secondary btn-lg">Events</a>
+    </div>
   </section>
 
-  <!-- [2] COURSES — GTA-EVCORSI-MAIN-001, graphic schema rev. 5/10: subgroups
-       "classroom" (scheduled dates) vs "on-site" (year-round), tag-based cards
-       instead of paragraphs -->
+  <!-- [2] FUNDED TRAINING — prominent section explicitly requested by Gabriele
+       (rev. 5/10): compatibility of all courses/tracks with interprofessional
+       training funds, same content already on formazione-ai-aziendale.html,
+       summarized and made prominent for the whole Events & Courses page -->
+  <section id="fondi" class="dark-section">
+    <div class="section-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+    <h2>Funded training with interprofessional funds</h2>
+    <p class="section-intro" style="color: rgba(255,255,255,0.85); text-align: center; max-width: 720px; margin: 0 auto 2rem;">Every classroom course and on-site track is compatible with Conto Formazione: GTaviani Consulting provides the contract, program, instructor CV, attendance records, certificates and invoice ready for reporting.</p>
+    <div class="card-meta" style="justify-content: center;">
+      <span class="meta-tag" style="background: rgba(255,255,255,0.14); color: #fff;"><i class="fas fa-check" style="color: #fff;"></i>No minimum amount</span>
+      <span class="meta-tag" style="background: rgba(255,255,255,0.14); color: #fff;"><i class="fas fa-check" style="color: #fff;"></i>Approval in ~1 month</span>
+      <span class="meta-tag" style="background: rgba(255,255,255,0.14); color: #fff;"><i class="fas fa-check" style="color: #fff;"></i>VAT-exempt invoice</span>
+    </div>
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="/en/lp-fondi-pmi.html" class="btn btn-primary-light">Discover AI Grants &amp; Funding</a>
+    </div>
+  </section>
+
+  <!-- [3] COURSES — GTA-EVCORSI-MAIN-001, graphic schema rev. 5/10 (v2): "on-site"
+       subgroup (year-round) on top, "classroom" (scheduled dates) below — order
+       reversed per Gabriele's explicit request. Each card now has a short intro
+       beyond the tags, to spark curiosity/interest, not just identification -->
   <section id="corsi" class="light-divider">
     <h2>Courses</h2>
     <p class="section-intro">No price online: the full price list arrives as a PDF after your request.</p>
+
+    <div class="courses-group courses-group--single">
+      <p class="courses-subheading">On-site — year-round</p>
+      <div class="problem-grid">
+        <a href="formazione-ai-aziendale.html" class="problem-card">
+          <div class="problem-icon"><i class="fas fa-building"></i></div>
+          <h3>Corporate AI Training</h3>
+          <p>Two on-site tracks, from executives to teams: it starts with strategy, it ends with agents at work.</p>
+          <div class="card-meta">
+            <span class="meta-tag"><i class="fas fa-location-dot"></i>On-site</span>
+            <span class="meta-tag"><i class="fas fa-calendar-check"></i>2 slots/month</span>
+            <span class="meta-tag"><i class="fas fa-infinity"></i>Year-round</span>
+          </div>
+        </a>
+      </div>
+    </div>
 
     <div class="courses-group">
       <p class="courses-subheading">Classroom — scheduled dates</p>
@@ -147,6 +185,7 @@
         <a href="corso-ai-dirigenti-manager.html" class="problem-card">
           <div class="problem-icon"><i class="fas fa-chalkboard-user"></i></div>
           <h3>AI for Executives and Managers</h3>
+          <p>Executives decide what to do with AI, teams learn how to use it every day.</p>
           <div class="card-meta">
             <span class="meta-tag"><i class="fas fa-calendar-days"></i>May 10–14, 2027</span>
             <span class="meta-tag"><i class="fas fa-location-dot"></i>Milan</span>
@@ -156,25 +195,11 @@
         <a href="corso-ecommerce-marketing-ai-agent-first.html" class="problem-card">
           <div class="problem-icon"><i class="fas fa-cart-shopping"></i></div>
           <h3>E-Commerce Marketing AI Agent First</h3>
+          <p>Right before Netcomm Forum: e-commerce marketing updates to AI first, then you learn to direct AI Agents and AI Team.</p>
           <div class="card-meta">
             <span class="meta-tag"><i class="fas fa-calendar-days"></i>Apr 19–20, 2027</span>
             <span class="meta-tag"><i class="fas fa-location-dot"></i>Milan</span>
             <span class="meta-tag"><i class="fas fa-clock"></i>13h</span>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div class="courses-group courses-group--single">
-      <p class="courses-subheading">On-site — year-round</p>
-      <div class="problem-grid">
-        <a href="formazione-ai-aziendale.html" class="problem-card">
-          <div class="problem-icon"><i class="fas fa-building"></i></div>
-          <h3>Corporate AI Training</h3>
-          <div class="card-meta">
-            <span class="meta-tag"><i class="fas fa-location-dot"></i>On-site</span>
-            <span class="meta-tag"><i class="fas fa-calendar-check"></i>2 slots/month</span>
-            <span class="meta-tag"><i class="fas fa-infinity"></i>Year-round</span>
           </div>
         </a>
       </div>

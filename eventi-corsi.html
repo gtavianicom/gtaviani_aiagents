@@ -126,20 +126,59 @@
     </div>
   </header>
 
-  <!-- [1] HERO — GTA-EVCORSI-MAIN-001 (rev. revisione 5/10: tolto il lead-in "Il
-       calendario di GTaviani Consulting:", niente più calendario in pagina) -->
+  <!-- [1] HERO — GTA-EVCORSI-MAIN-001, rev. 5/10: bottoni anchor verso Corsi/Eventi -->
   <section id="hero" class="hero">
     <span class="hero-badge">📅 Programma 2027</span>
     <h1>Eventi &amp; Corsi</h1>
     <p class="hero-subtitle">Corsi in aula e in azienda per dirigenti, manager e team e-commerce, più fiere, congressi e meetup dove incontrarci.</p>
+    <div class="hero-cta-row">
+      <a href="#corsi" class="btn btn-primary btn-lg">Corsi</a>
+      <a href="#eventi" class="btn btn-secondary btn-lg">Eventi</a>
+    </div>
   </section>
 
-  <!-- [2] CORSI — GTA-EVCORSI-MAIN-001, schema grafico rev. 5/10: sottogruppi
-       "in aula" (date programmate) vs "in azienda" (trasversale tutto l'anno),
-       card con tag invece di paragrafi -->
+  <!-- [2] FORMAZIONE FINANZIATA — sezione evidente richiesta esplicitamente da
+       Gabriele (rev. 5/10): compatibilità di tutti i corsi/percorsi con i fondi
+       interprofessionali, stesso contenuto gia' presente in formazione-ai-aziendale.html,
+       qui riassunto e reso prominente per l'intera pagina Eventi & Corsi -->
+  <section id="fondi" class="dark-section">
+    <div class="section-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+    <h2>Formazione finanziabile con i fondi interprofessionali</h2>
+    <p class="section-intro" style="color: rgba(255,255,255,0.85); text-align: center; max-width: 720px; margin: 0 auto 2rem;">Tutti i corsi in aula e i percorsi in azienda sono compatibili con il Conto Formazione: GTaviani Consulting fornisce contratto, programma, CV del docente, registri presenze, attestati e fattura pronti per la rendicontazione.</p>
+    <div class="card-meta" style="justify-content: center;">
+      <span class="meta-tag" style="background: rgba(255,255,255,0.14); color: #fff;"><i class="fas fa-check" style="color: #fff;"></i>Nessun importo minimo</span>
+      <span class="meta-tag" style="background: rgba(255,255,255,0.14); color: #fff;"><i class="fas fa-check" style="color: #fff;"></i>Autorizzazione in ~1 mese</span>
+      <span class="meta-tag" style="background: rgba(255,255,255,0.14); color: #fff;"><i class="fas fa-check" style="color: #fff;"></i>Fattura esente IVA</span>
+    </div>
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="/lp-fondi-pmi.html" class="btn btn-primary-light">Scopri Fondi e Finanziamenti AI</a>
+    </div>
+  </section>
+
+  <!-- [3] CORSI — GTA-EVCORSI-MAIN-001, schema grafico rev. 5/10 (v2): sottogruppo
+       "in azienda" (trasversale tutto l'anno) in alto, "in aula" (date programmate)
+       sotto — ordine invertito su richiesta esplicita di Gabriele. Ogni card ha
+       un'intro sintetica oltre ai tag, per generare curiosità/interesse, non solo
+       identificazione -->
   <section id="corsi" class="light-divider">
     <h2>Corsi</h2>
     <p class="section-intro">Nessun prezzo online: il listino arriva via PDF dopo la richiesta informazioni.</p>
+
+    <div class="courses-group courses-group--single">
+      <p class="courses-subheading">In azienda — tutto l'anno</p>
+      <div class="problem-grid">
+        <a href="formazione-ai-aziendale.html" class="problem-card">
+          <div class="problem-icon"><i class="fas fa-building"></i></div>
+          <h3>Formazione AI Aziendale</h3>
+          <p>Due percorsi in sede cliente, dal dirigente al team: si parte dalla strategia, si arriva agli agenti al lavoro.</p>
+          <div class="card-meta">
+            <span class="meta-tag"><i class="fas fa-location-dot"></i>In sede cliente</span>
+            <span class="meta-tag"><i class="fas fa-calendar-check"></i>2 slot/mese</span>
+            <span class="meta-tag"><i class="fas fa-infinity"></i>Tutto l'anno</span>
+          </div>
+        </a>
+      </div>
+    </div>
 
     <div class="courses-group">
       <p class="courses-subheading">In aula — date programmate</p>
@@ -147,6 +186,7 @@
         <a href="corso-ai-dirigenti-manager.html" class="problem-card">
           <div class="problem-icon"><i class="fas fa-chalkboard-user"></i></div>
           <h3>AI per Dirigenti e Manager</h3>
+          <p>I dirigenti decidono cosa fare con l'AI, i team imparano come usarla ogni giorno.</p>
           <div class="card-meta">
             <span class="meta-tag"><i class="fas fa-calendar-days"></i>10–14 mag 2027</span>
             <span class="meta-tag"><i class="fas fa-location-dot"></i>Milano</span>
@@ -156,25 +196,11 @@
         <a href="corso-ecommerce-marketing-ai-agent-first.html" class="problem-card">
           <div class="problem-icon"><i class="fas fa-cart-shopping"></i></div>
           <h3>E-Commerce Marketing AI Agent First</h3>
+          <p>Subito prima del Netcomm Forum: il marketing e-commerce si aggiorna AI first, poi si impara a dirigere AI Agents e AI Team.</p>
           <div class="card-meta">
             <span class="meta-tag"><i class="fas fa-calendar-days"></i>19–20 apr 2027</span>
             <span class="meta-tag"><i class="fas fa-location-dot"></i>Milano</span>
             <span class="meta-tag"><i class="fas fa-clock"></i>13h</span>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div class="courses-group courses-group--single">
-      <p class="courses-subheading">In azienda — tutto l'anno</p>
-      <div class="problem-grid">
-        <a href="formazione-ai-aziendale.html" class="problem-card">
-          <div class="problem-icon"><i class="fas fa-building"></i></div>
-          <h3>Formazione AI Aziendale</h3>
-          <div class="card-meta">
-            <span class="meta-tag"><i class="fas fa-location-dot"></i>In sede cliente</span>
-            <span class="meta-tag"><i class="fas fa-calendar-check"></i>2 slot/mese</span>
-            <span class="meta-tag"><i class="fas fa-infinity"></i>Tutto l'anno</span>
           </div>
         </a>
       </div>
