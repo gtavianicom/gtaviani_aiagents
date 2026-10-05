@@ -991,6 +991,28 @@ a.problem-card {
   color: var(--color-primary);
   flex-shrink: 0;
   min-width: 90px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.course-fact strong i {
+  font-size: 0.85em;
+}
+
+/* Icona grande in cima alla card "in azienda" solo su mobile (sostituisce
+   l'immagine a colonna, visibile solo da desktop in su) — rev. 5/10 v5 */
+.problem-icon--lg {
+  width: 72px;
+  height: 72px;
+  font-size: 2rem;
+  border-radius: 14px;
+}
+
+@media (min-width: 701px) {
+  .course-card--featured .course-card-body > .problem-icon--lg {
+    display: none;
+  }
 }
 
 /* Card "in aula": piu' larghe, meta-tag (data/location/ore) senza andare a
