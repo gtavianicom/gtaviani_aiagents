@@ -161,73 +161,20 @@
   <section id="hero" class="hero hero--split">
     <div class="hero-text">
       <span class="hero-badge">📍 Corso in aula · Milano · 19–20 aprile 2027</span>
-      <h1>Corso E-Commerce Marketing<br>AI Agent First</h1>
+      <h1>Corso E-Commerce Marketing<br><span class="hero-subline">Data Driven &amp; AI Agent First</span></h1>
       <p class="hero-subtitle">Due giornate in aula a Milano, subito prima del Netcomm Forum. Il primo giorno l'e-commerce marketing si aggiorna in versione AI first; il secondo l'e-commerce manager impara a dirigere AI Agents e AI Team.</p>
     </div>
     <div class="problem-icon hero-icon"><i class="fas fa-cart-shopping"></i></div>
   </section>
 
-  <!-- [1b] FORMAZIONE FINANZIABILE — stesso componente .funding-card di
-       eventi-corsi.html#fondi, riusato qui subito dopo l'hero
-       (GTA-EVCORSI-ECOMMERCE-002) -->
-  <section id="fondi">
-    <div class="funding-card">
-      <div class="funding-icon"><i class="fas fa-hand-holding-dollar"></i></div>
-      <h2>Formazione finanziabile</h2>
-      <p class="section-intro" style="max-width: 720px; margin: 0 auto 2rem;">Il corso è compatibile con il Conto Formazione: GTaviani Consulting fornisce contratto, programma, CV del docente, registri presenze, attestati e fattura pronti per la rendicontazione.</p>
-      <div class="card-meta" style="justify-content: center;">
-        <span class="meta-tag"><i class="fas fa-check"></i>Nessun importo minimo</span>
-        <span class="meta-tag"><i class="fas fa-check"></i>Autorizzazione in ~1 mese</span>
-        <span class="meta-tag"><i class="fas fa-check"></i>Fattura esente IVA</span>
-      </div>
-      <div style="margin-top: 2rem;">
-        <a href="/lp-fondi-pmi.html" class="btn btn-primary">Scopri Fondi e Finanziamenti AI</a>
-      </div>
-    </div>
-  </section>
+  <!-- [2] IL CORSO — rinominato da "Il corso in numeri" (tolti gli stat
+       numerici), con nuova sotto-sezione grafica "a chi è destinato"
+       (richiesta esplicita revisione 5/10) -->
+  <section id="corso">
+    <h2>Il corso</h2>
+    <p class="section-intro">Due giornate in aula a Milano (13 ore), prima del Netcomm Forum: il primo giorno l'e-commerce marketing si aggiorna in versione AI first, il secondo l'e-commerce manager impara a dirigere AI Agents e AI Team.</p>
 
-  <!-- [1c] PRENOTA ENTRO FINE 2026 — nuova card, variante blu di .funding-card
-       (.funding-card--deadline, vedi style.css), nessun prezzo/percentuale.
-       Vantaggi presi dalla scheda PDF sorgente (GTA-EVCORSI-ECOMMERCE-002) -->
-  <section id="prenota-2026">
-    <div class="funding-card funding-card--deadline">
-      <div class="funding-icon"><i class="fas fa-calendar-check"></i></div>
-      <h2>Prenota il tuo posto entro fine 2026</h2>
-      <p class="section-intro" style="max-width: 720px; margin: 0 auto 2rem;">I posti in aula sono limitati e il corso richiede un numero minimo di iscritti per partire: prenotare entro fine 2026 garantisce il posto e l'accesso anticipato al percorso di pre-formazione.</p>
-      <div class="card-meta" style="justify-content: center;">
-        <span class="meta-tag"><i class="fas fa-users"></i>Max 10 posti, si parte da almeno 5 iscritti</span>
-        <span class="meta-tag"><i class="fas fa-calendar-day"></i>Accesso anticipato ad AI Space dall'11 gennaio 2027</span>
-        <span class="meta-tag"><i class="fas fa-gift"></i>Credito omaggio AI Space senza scadenza</span>
-        <span class="meta-tag"><i class="fas fa-right-left"></i>Posto cedibile ad altra persona</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- [2] IL CORSO IN NUMERI -->
-  <section id="numeri">
-    <h2>Il corso in numeri</h2>
-    <div class="stat-callout">
-      <div class="stat-strip stat-strip-grid">
-        <div class="stat-item">
-          <span class="stat-number">2 giorni</span>
-          <span class="stat-label">lunedì 19 e martedì 20 aprile 2027, in aula a Milano</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">13 h</span>
-          <span class="stat-label">di aula: dati, CDP, agenti AI, AI Team</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">Max 10</span>
-          <span class="stat-label">e-commerce manager in aula, per lavorare davvero sugli esercizi</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">Fino a fine 2027</span>
-          <span class="stat-label">apprendimento continuo su AI Space, dal gennaio 2027</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="conclusion-grid" style="grid-template-columns: 1fr; max-width: 820px; margin-top: 2rem;">
+    <div class="conclusion-grid" style="grid-template-columns: 1fr; max-width: 820px; margin: 0 auto 2.5rem;">
       <div class="ready-box">
         <div class="alert-icon"><i class="fas fa-calendar-check"></i></div>
         <div class="alert-content">
@@ -236,45 +183,55 @@
         </div>
       </div>
     </div>
+
+    <h3 class="compare-table-title">A chi è destinato</h3>
+    <div class="card-meta" style="justify-content: center;">
+      <span class="meta-tag"><i class="fas fa-user-tie"></i>E-commerce Director e Manager</span>
+      <span class="meta-tag"><i class="fas fa-shop"></i>Aziende Retail</span>
+      <span class="meta-tag"><i class="fas fa-cart-shopping"></i>Ogni altro B2C</span>
+    </div>
   </section>
 
-  <!-- [3] IL PROGRAMMA -->
-  <section id="programma" class="light-divider">
+  <!-- [3] IL PROGRAMMA — sfondo grigio chiaro, schema a 4 colonne (richiesta
+       esplicita revisione 5/10): assorbe il Netcomm Forum e il percorso
+       continuo, prima su #percorso a parte, ora rimosso -->
+  <section id="programma" class="section-bg-soft">
     <h2>Il programma</h2>
-    <p class="section-intro">Due giornate, due obiettivi: aggiornare il metodo e imparare a dirigere l'AI Team. Lunedì 10:00–17:00, martedì 9:00–17:00, pausa pranzo 13:00–14:00.</p>
+    <p class="section-intro">Lunedì 10:00–17:00, martedì 9:00–17:00, pausa pranzo 13:00–14:00.</p>
 
-    <!-- Sintesi schematica (non prosa) dei 2 giorni — GTA-EVCORSI-ECOMMERCE-002
-         punto 9. Riusa .compare-table, stesso componente di
-         corso-ai-dirigenti-manager.html#pacchetti. -->
-    <h3 class="compare-table-title">Sintesi del programma</h3>
-    <div class="compare-table-wrap">
-      <table class="compare-table" id="tabella-sintesi-programma">
-        <thead>
-          <tr>
-            <th scope="col">Giorno</th>
-            <th scope="col">Focus</th>
-            <th scope="col">Contenuti chiave</th>
-            <th scope="col">Esce con</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Lunedì</th>
-            <td>E-Commerce Marketing AI first</td>
-            <td>Dati e performance (KPI/ROI/ROAS) · CDP su Google BigQuery · dalla CDP all'azione one-to-one · GDPR e AI Act</td>
-            <td>Cruscotto KPI di prova, workflow one-to-one sulla CDP</td>
-          </tr>
-          <tr>
-            <th scope="row">Martedì</th>
-            <td>AI Agents e AI Team</td>
-            <td>AI Agents e il Metodo · organigramma iCEC · iCTO · iCMO · iCFO · laboratorio e governo del team</td>
-            <td>Organigramma del team, report delle 8, piano primi 90 giorni</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="method-phases-grid">
+      <div class="method-phase-col">
+        <div class="org-director-card">
+          <h3>Lunedì</h3>
+          <p>E-Commerce Marketing AI first: dati e performance, CDP su Google BigQuery, dalla CDP all'azione one-to-one, GDPR e AI Act.</p>
+        </div>
+      </div>
+      <div class="method-phase-col">
+        <div class="org-director-card">
+          <h3>Martedì</h3>
+          <p>AI Agents e AI Team: il Metodo, l'organigramma, la giornata-tipo, laboratorio e governo del team.</p>
+        </div>
+      </div>
+      <div class="method-phase-col">
+        <div class="org-director-card">
+          <h3>Mercoledì–Giovedì</h3>
+          <p>Al Netcomm Forum: ingresso al Forum (21–22 aprile) e meetup serali in città, con il gruppo.</p>
+        </div>
+      </div>
+      <div class="method-phase-col">
+        <div class="org-director-card">
+          <h3>Fino a fine 2027</h3>
+          <p>Percorso continuo su AI Space: moduli ed esercitazioni su CDP, agenti, coordinamento dell'AI Team, attribuzione.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <h3 class="compare-table-title" style="margin-top: 3rem;">Il dettaglio</h3>
+  <!-- [3b] CONTENUTO DELLE LEZIONI — dettaglio dei moduli dei 2 giorni (ex
+       "Il dettaglio" dentro #programma), senza l'organigramma AI Team
+       (rimosso su richiesta esplicita revisione 5/10) -->
+  <section id="lezioni">
+    <h2>Contenuto delle lezioni</h2>
     <div class="org-directors-grid" style="grid-template-columns: repeat(2, 1fr);">
       <div class="org-director-col">
         <div class="org-director-card">
@@ -305,34 +262,7 @@
       </div>
     </div>
 
-    <!-- Organigramma AI Team e-commerce marketing (Martedì) -->
-    <h3 class="compare-table-title" style="margin-top: 3rem;">L'organigramma dell'AI Team</h3>
-    <div class="org-cec-card">
-      <h3>E-Commerce Manager</h3>
-      <p>Decide le priorità, approva, legge il report.</p>
-    </div>
-    <div class="org-connector"><i class="fas fa-arrow-down"></i></div>
-    <div class="org-cec-card" style="border-color: var(--color-primary); background: var(--color-primary); color: #fff;">
-      <h3 style="color:#fff;">iCEC · Chief E-Commerce dell'AI Team</h3>
-      <p style="color:#fff;">Scompone gli obiettivi in task e verifica.</p>
-    </div>
-    <div class="org-connector"><i class="fas fa-arrow-down"></i></div>
-    <div class="org-directors-grid">
-      <div class="org-director-card">
-        <h3>iCTO</h3>
-        <p>Sito e tecnologia: webmaster, performance &amp; UX, SEO &amp; GEO, integrazioni &amp; dati.</p>
-      </div>
-      <div class="org-director-card">
-        <h3>iCMO</h3>
-        <p>Canali, contenuti, clienti: channel manager, content, social, MA &amp; CRM, customer care.</p>
-      </div>
-      <div class="org-director-card">
-        <h3>iCFO</h3>
-        <p>Dati e valore: analisi storica, proiezioni, budget media, valore cliente, reporting.</p>
-      </div>
-    </div>
-
-    <p class="section-intro" style="margin-top: 2rem;">Esce dall'aula con: il libro stampato, il cruscotto KPI di prova, il workflow one-to-one sulla CDP di prova, la checklist GDPR, l'organigramma del proprio AI Team, il report delle 8 di prova, due agenti coordinati in AI Space, il piano dei primi 90 giorni e l'attestato.</p>
+    <p class="section-intro" style="margin-top: 2rem;">Esce dall'aula con: il libro stampato, il cruscotto KPI di prova, il workflow one-to-one sulla CDP di prova, la checklist GDPR, il report delle 8 di prova, due agenti coordinati in AI Space, il piano dei primi 90 giorni e l'attestato.</p>
   </section>
 
   <!-- [3b] OBIETTIVI E GDPR/AI ACT — GTA-EVCORSI-ECOMMERCE-002 punto 10:
@@ -391,40 +321,10 @@
     </div>
   </section>
 
-  <!-- [4] IL PERCORSO 2027 -->
-  <section id="percorso" class="light-divider">
-    <h2>Il percorso 2027</h2>
-    <p class="section-intro">Due giornate non bastano per tutti i contenuti: fissano il modello. Il resto continua al Netcomm Forum, su AI Space e nella community.</p>
-
-    <div class="method-phases-grid">
-      <div class="method-phase-col">
-        <div class="org-director-card">
-          <h3>Gen – Apr · Pre-formazione</h3>
-          <p>Accesso ad AI Space dal gennaio 2027, libro, primi moduli, supporto del docente prima dell'aula.</p>
-        </div>
-      </div>
-      <div class="method-phase-col">
-        <div class="org-director-card">
-          <h3>19–20 Apr · Aula</h3>
-          <p>Due giornate a Milano, esercitazioni su dati di prova.</p>
-        </div>
-      </div>
-      <div class="method-phase-col">
-        <div class="org-director-card">
-          <h3>21–22 Apr · Netcomm Forum</h3>
-          <p>Ingresso al Forum e meetup serali in città, con il gruppo. Edizione dedicata all'Agentic Commerce.</p>
-        </div>
-      </div>
-      <div class="method-phase-col">
-        <div class="org-director-card">
-          <h3>Mag – Dic · Percorso continuo</h3>
-          <p>Moduli ed esercitazioni su AI Space fino a fine 2027: CDP, agenti, coordinamento dell'AI Team, attribuzione.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- [5] COSA È INCLUSO -->
+  <!-- [5] COSA È INCLUSO — tolta la card Community dalla griglia, spostata
+       sotto come banner orizzontale a piena larghezza, in evidenza
+       (richiesta esplicita revisione 5/10). Sezione #community a parte
+       rimossa, confluita qui. -->
   <section id="incluso" class="light-divider">
     <h2>Cosa include il corso</h2>
     <p class="section-intro">Tutto quello che serve per arrivare in aula preparati e continuare ad applicare il metodo fino a fine 2027.</p>
@@ -451,51 +351,75 @@
         <p>Ingresso 21–22 aprile e meetup serali in città.</p>
       </div>
       <div class="problem-card">
-        <div class="problem-icon"><i class="fas fa-people-group"></i></div>
-        <h3>Community</h3>
-        <p>Ecommerce Marketing Managers Italia Group, su piattaforma e WhatsApp.</p>
-      </div>
-      <div class="problem-card">
         <div class="problem-icon"><i class="fas fa-certificate"></i></div>
         <h3>Attestato</h3>
         <p>Nominativo, valido come evidenza per l'art. 4 dell'AI Act.</p>
       </div>
     </div>
-  </section>
 
-  <!-- [6] LA COMMUNITY -->
-  <section id="community" class="light-divider">
-    <h2>La community</h2>
-    <div class="conclusion-grid" style="grid-template-columns: 1fr; max-width: 820px;">
-      <div class="ready-box">
-        <div class="alert-icon"><i class="fas fa-people-group"></i></div>
-        <div class="alert-content">
-          <strong>Ecommerce Marketing Managers Italia Group</strong>
-          <p>Il gruppo di lavoro professionale tra e-commerce manager del retail, su piattaforma e WhatsApp. Ci si confronta su strumenti, tecniche, strategie e soprattutto risultati dei rispettivi e-commerce. Accesso senza scadenza, senza quota; selezione stretta — solo e-commerce manager di aziende, nessun fornitore; GTaviani partecipa solo come moderatore.</p>
-        </div>
+    <div class="funding-card" style="max-width: var(--max-width); margin-top: 2rem; display: flex; align-items: center; gap: 1.75rem; text-align: left; background: rgba(1, 67, 116, 0.06); border-color: rgba(1, 67, 116, 0.22);">
+      <div class="funding-icon" style="flex-shrink: 0; margin: 0;"><i class="fas fa-people-group"></i></div>
+      <div>
+        <h3 style="margin: 0 0 0.5rem; color: var(--color-primary);">Community · Ecommerce Marketing Managers Italia Group</h3>
+        <p style="margin: 0; color: var(--color-secondary);">Il gruppo di lavoro professionale tra e-commerce manager del retail, su piattaforma e WhatsApp. Accesso senza scadenza, senza quota; selezione stretta — solo e-commerce manager di aziende, nessun fornitore; GTaviani partecipa solo come moderatore.</p>
       </div>
     </div>
   </section>
 
-  <!-- [7] REQUISITI PER PARTECIPARE -->
-  <section id="requisiti" class="light-divider">
-    <h2>Requisiti per partecipare</h2>
-    <div class="grid-2col">
-      <div class="org-director-card">
-        <h3>Da portare in aula</h3>
+  <!-- [7] REQUISITI PER PARTECIPARE — toni piu' sobri, 2 colonne (richiesta
+       esplicita revisione 5/10: "meno evidente"), niente .light-divider,
+       niente card bordate -->
+  <section id="requisiti">
+    <h3 class="compare-table-title">Requisiti per partecipare</h3>
+    <div class="grid-2col" style="max-width: 820px; margin: 0 auto;">
+      <div>
+        <strong style="display: block; color: var(--color-primary); margin-bottom: 0.5rem;">Da portare in aula</strong>
         <div class="org-resource-list">
           <div class="org-resource"><span>Laptop (PC o Mac) con Claude Desktop installato.</span></div>
           <div class="org-resource"><span>Account Claude attivo, minimo piano Pro.</span></div>
           <div class="org-resource"><span>Account temporaneo Relevance AI e AI Space: li fornisce GTaviani.</span></div>
         </div>
       </div>
-      <div class="org-director-card">
-        <h3>Privacy in aula</h3>
+      <div>
+        <strong style="display: block; color: var(--color-primary); margin-bottom: 0.5rem;">Privacy in aula</strong>
         <div class="org-resource-list">
           <div class="org-resource"><span>Esercitazioni su un e-commerce fittizio e dati di prova.</span></div>
           <div class="org-resource"><span>Nessun dato della propria azienda.</span></div>
           <div class="org-resource"><span>Checklist privacy firmata da ogni partecipante.</span></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- [8] FORMAZIONE FINANZIABILE + PRENOTA ENTRO FINE 2026 — spostate qui,
+       subito prima del form (richiesta esplicita revisione 5/10: prima
+       erano sotto l'hero) -->
+  <section id="fondi">
+    <div class="funding-card">
+      <div class="funding-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+      <h2>Formazione finanziabile</h2>
+      <p class="section-intro" style="max-width: 720px; margin: 0 auto 2rem;">Il corso è compatibile con il Conto Formazione: GTaviani Consulting fornisce contratto, programma, CV del docente, registri presenze, attestati e fattura pronti per la rendicontazione.</p>
+      <div class="card-meta" style="justify-content: center;">
+        <span class="meta-tag"><i class="fas fa-check"></i>Nessun importo minimo</span>
+        <span class="meta-tag"><i class="fas fa-check"></i>Autorizzazione in ~1 mese</span>
+        <span class="meta-tag"><i class="fas fa-check"></i>Fattura esente IVA</span>
+      </div>
+      <div style="margin-top: 2rem;">
+        <a href="/lp-fondi-pmi.html" class="btn btn-primary">Scopri Fondi e Finanziamenti AI</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="prenota-2026">
+    <div class="funding-card funding-card--deadline">
+      <div class="funding-icon"><i class="fas fa-calendar-check"></i></div>
+      <h2>Prenota il tuo posto entro fine 2026</h2>
+      <p class="section-intro" style="max-width: 720px; margin: 0 auto 2rem;">I posti in aula sono limitati e il corso richiede un numero minimo di iscritti per partire: prenotare entro fine 2026 garantisce il posto e l'accesso anticipato al percorso di pre-formazione.</p>
+      <div class="card-meta" style="justify-content: center;">
+        <span class="meta-tag"><i class="fas fa-users"></i>Max 10 posti, si parte da almeno 5 iscritti</span>
+        <span class="meta-tag"><i class="fas fa-calendar-day"></i>Accesso anticipato ad AI Space dall'11 gennaio 2027</span>
+        <span class="meta-tag"><i class="fas fa-gift"></i>Credito omaggio AI Space senza scadenza</span>
+        <span class="meta-tag"><i class="fas fa-right-left"></i>Posto cedibile ad altra persona</span>
       </div>
     </div>
   </section>
@@ -518,6 +442,20 @@
       <input type="hidden" name="corso" value="ecommerce-ai-agent-first" id="tally-hidden-corso">
       <p><strong>Form di richiesta informazioni in arrivo.</strong><br>Il form Tally condiviso dalle 3 schede corso non è ancora collegato (ID in attesa).</p>
     </div>
+  </section>
+
+  <!-- [9a] EGUIDE RETAIL E-COMMERCE AI TEAM — stesso componente di
+       retail-ecommerce-ai-team.html#ebook-guide-ecommerce, inserita sotto il
+       form e prima delle FAQ (richiesta esplicita revisione 5/10) -->
+  <section id="ebook-guide-ecommerce" class="ebook-mini-section">
+    <a href="/guida-retail-ecommerce-ai-team.html" id="cta-ebook-ecommerce" class="ebook-mini-card">
+      <img src="assets/images/eGuide-RetailEcommerceAiTeam-1200x1200.png" alt="Copertina guida Retail E-Commerce AI TEAM di GTaviani Consulting" class="ebook-mini-cover">
+      <span class="ebook-mini-body">
+        <span class="ebook-mini-title">Retail E-Commerce AI TEAM</span>
+        <span class="ebook-mini-text">Guida gratuita per l'e-commerce manager: come costruire l'e-commerce del futuro, AI first e performante.</span>
+        <span class="ebook-mini-cta">Scarica gratis <i class="fa-solid fa-arrow-right"></i></span>
+      </span>
+    </a>
   </section>
 
   <!-- [9b] FAQ GEO — GTA-EVCORSI-ECOMMERCE-002, sotto il form e prima del
@@ -661,6 +599,6 @@
   </script>
 
   <!-- Bottone flottante centrato — GTA-EVCORSI-ECOMMERCE-002 -->
-  <a href="#richiedi-informazioni" id="cta-sticky" class="sticky-cta sticky-cta--center cta-lead" data-cta-location="floating">Richiesta Informazioni →</a>
+  <a href="#richiedi-informazioni" id="cta-sticky" class="sticky-cta sticky-cta--center cta-lead" data-cta-location="floating">Scarica la scheda corso con prezzi</a>
 </body>
 </html>
