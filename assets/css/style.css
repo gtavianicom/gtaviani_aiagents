@@ -2807,6 +2807,42 @@ a.problem-card {
   }
 }
 
+/* Variante 3 colonne — scheda Formazione Aziendale, sezione Il programma
+   (rev. 5/10 v19). Senza questa, le 3 card restavano dentro il default a
+   4 colonne di .method-phases-grid (3 card piene + 1 vuota), senza
+   riempire la larghezza pagina ("le tre card verticali devono essere
+   allargate per riempire larghezza pagina in desktop"). */
+.method-phases-grid--cols3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+  .method-phases-grid--cols3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .method-phases-grid--cols3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Variante 3 colonne di .org-directors-grid (default 2, vedi
+   --cols2) — scheda Formazione Aziendale, "Contenuto delle lezioni" dopo
+   l'aggiunta della colonna Dirigenti (rev. 5/10 v19). Classe dedicata, non
+   inline style: stesso motivo del fix su corso-ecommerce (specificita'
+   piu' alta di un inline style blocca il collasso mobile). */
+.org-directors-grid--cols3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+  .org-directors-grid--cols3 {
+    grid-template-columns: 1fr;
+  }
+}
+
 .org-topline {
   max-width: 700px;
   margin: 2rem auto 0;
