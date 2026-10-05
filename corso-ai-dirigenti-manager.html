@@ -59,6 +59,28 @@
   }
   </script>
 
+  <!-- FAQPage structured data — sezione #faq, GTA-EVCORSI-DIRIGENTI-002.
+       Posizionata nel <head>, stesso pattern già usato da
+       GTA-EVCORSI-AZIENDALE-002 su formazione-ai-aziendale.html (index.html
+       aveva messo il blocco gemello in fondo al body, pattern più vecchio
+       superato dal sibling task — vedi VERIFICA_TASK) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Cos'è un \"deployer\" secondo l'AI Act e perché riguarda anche la mia azienda?", "acceptedAnswer": {"@type": "Answer", "text": "È deployer chi usa un sistema AI nella propria attività professionale, anche senza averlo sviluppato — basta un chatbot o un assistente AI in un reparto. L'AI Act impone a chi assume questo ruolo misure di alfabetizzazione AI per il personale coinvolto."}},
+      {"@type": "Question", "name": "Che obbligo di formazione impone l'AI Act alle aziende che usano l'AI?", "acceptedAnswer": {"@type": "Answer", "text": "Dal 2 febbraio 2025 l'art. 4 dell'AI Act chiede alle aziende misure di alfabetizzazione AI per chi usa questi strumenti, per ruolo e livello di responsabilità. Un corso con attestato nominativo e registro presenze è evidenza concreta di conformità."}},
+      {"@type": "Question", "name": "Che differenza c'è tra AI strategica e AI tecnica?", "acceptedAnswer": {"@type": "Answer", "text": "L'AI strategica riguarda le decisioni: dove investire, quali rischi evitare, quale impatto sul proprio reparto — è compito di dirigenti e direttori. L'AI tecnica riguarda l'uso quotidiano degli strumenti — è compito di manager e team operativi. Il corso dedica giornate distinte ai due livelli."}},
+      {"@type": "Question", "name": "Serve essere tecnici per capire l'AI a livello di decisione aziendale?", "acceptedAnswer": {"@type": "Answer", "text": "No. La giornata dedicata ai dirigenti tratta impatto di business, dati riservati, GDPR e AI Act senza gergo tecnico: l'obiettivo è decidere cosa fare con l'AI, non programmarla."}},
+      {"@type": "Question", "name": "A chi è rivolto il corso AI per Dirigenti e Manager?", "acceptedAnswer": {"@type": "Answer", "text": "Direzione e direttori di reparto (anche solo lunedì, visione strategica), manager e operativi (martedì–venerdì), e professionisti indipendenti sul resto della settimana. Max 10 partecipanti in aula."}},
+      {"@type": "Question", "name": "Cosa porta a casa un dirigente al termine delle 5 giornate?", "acceptedAnswer": {"@type": "Answer", "text": "Un piano a gradini per il proprio reparto, la mappa dei dati riservati da proteggere, e — con il venerdì Advanced — un primo pilota di agente AI pronto da presentare in azienda, oltre all'attestato nominativo."}},
+      {"@type": "Question", "name": "Il corso è finanziabile con i fondi interprofessionali?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, è compatibile con il Conto Formazione: GTaviani Consulting fornisce contratto, programma, CV del docente, registri presenze, attestati e fattura pronti per la rendicontazione, senza importo minimo."}},
+      {"@type": "Question", "name": "Serve già conoscere l'AI per partecipare?", "acceptedAnswer": {"@type": "Answer", "text": "No, il programma parte dai livelli base (dal prompt alla modalità agente) e sale per gradini fino al venerdì Advanced, riservato a chi ha seguito martedì–giovedì. Serve solo un laptop con Claude Desktop e un account Claude Pro o superiore."}}
+    ]
+  }
+  </script>
+
   <!-- Consent Mode v2 (default negato) -- GTA-LEGAL-001, conforme Linee Guida Cookie Garante Privacy -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -296,60 +318,43 @@
     <p class="plans-note" style="color: var(--color-secondary); font-style: italic; text-align: center; margin-top: 1.5rem;">Si esce dall'aula con: guida stampata con esercizi, libreria di prompt, assistenti del proprio ruolo, 1 compito in modalità agente; con l'Advanced, 1 workforce e un pilota pronto. Diploma di frequenza.</p>
   </section>
 
-  <!-- [7] IL DOCENTE -->
-  <section id="docente" class="light-divider">
-    <h2>Il docente · Gabriele Taviani</h2>
-    <p class="section-intro">Oltre 20 anni di digital marketing e e-commerce in Italia, UK e Brasile. Ha realizzato piattaforme di Advertising Trading Desk, Behavioral Tracking e Retargeting per l'e-commerce.</p>
-    <div class="stat-strip-grid">
-      <div class="stat-item">
-        <span class="stat-number">20+ anni</span>
-        <span class="stat-label">di digital marketing e e-commerce in Italia, UK e Brasile</span>
+  <!-- [7] FORMAZIONE FINANZIATA — stesso componente .funding-card di
+       eventi-corsi.html #fondi, GTA-EVCORSI-DIRIGENTI-002 -->
+  <section id="fondi" class="light-divider">
+    <div class="funding-card">
+      <div class="funding-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+      <h2>Formazione finanziabile</h2>
+      <p class="section-intro" style="max-width: 720px; margin: 0 auto 2rem;">Il corso è compatibile con il Conto Formazione: GTaviani Consulting fornisce contratto, programma, CV del docente, registri presenze, attestati e fattura pronti per la rendicontazione.</p>
+      <div class="card-meta" style="justify-content: center;">
+        <span class="meta-tag"><i class="fas fa-check"></i>Nessun importo minimo</span>
+        <span class="meta-tag"><i class="fas fa-check"></i>Autorizzazione in ~1 mese</span>
+        <span class="meta-tag"><i class="fas fa-check"></i>Fattura esente IVA</span>
       </div>
-      <div class="stat-item">
-        <span class="stat-number">5 libri</span>
-        <span class="stat-label">su e-commerce, marketing e AI per le aziende</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">4+ anni</span>
-        <span class="stat-label">di progetti AI applicati al retail e all'e-commerce</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">Netcomm</span>
-        <span class="stat-label">docente principale della MasterClass «Digital Marketing per l'E-Commerce e il New Retail»</span>
+      <div style="margin-top: 2rem;">
+        <a href="/lp-fondi-pmi.html" class="btn btn-primary">Scopri Fondi e Finanziamenti AI</a>
       </div>
     </div>
+  </section>
 
-    <div class="conclusion-grid" style="margin-top: 2rem;">
-      <div>
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem;">Ruoli di direzione</h3>
-        <div class="org-resource-list">
-          <div class="org-resource"><strong>E-commerce Director</strong><span>Emozione3 (Smartbox Group)</span></div>
-          <div class="org-resource"><strong>Digital Officer</strong><span>Bottega Verde</span></div>
-          <div class="org-resource"><strong>Chief E-commerce &amp; Digital Marketing</strong><span>EcorNaturaSì</span></div>
-          <div class="org-resource"><strong>Docente principale</strong><span>MasterClass Netcomm Academy</span></div>
-          <div class="org-resource"><strong>Founder</strong><span>GTAVIANI AI Consultance</span></div>
-        </div>
+  <!-- [8] PRENOTA ENTRO FINE 2026 — card SENZA prezzi (stesso componente
+       .funding-card, variante blu .funding-card--booking già introdotta da
+       GTA-EVCORSI-AZIENDALE-002 per non confondersi con la card Fondi).
+       Sostituisce la vecchia sezione "Il docente", rimossa per intero su
+       richiesta esplicita, GTA-EVCORSI-DIRIGENTI-002 -->
+  <section id="prenota" class="light-divider">
+    <div class="funding-card funding-card--booking">
+      <div class="funding-icon"><i class="fas fa-calendar-check"></i></div>
+      <h2>Prenota entro fine 2026</h2>
+      <p class="section-intro" style="max-width: 720px; margin: 0 auto 2rem;">Il corso parte con almeno 5 iscritti, posti limitati a un massimo di 10: chi prenota prima entra prima nel percorso.</p>
+      <div class="card-meta" style="justify-content: center;">
+        <span class="meta-tag"><i class="fas fa-users"></i>Max 10 posti, parte da 5 iscritti</span>
+        <span class="meta-tag"><i class="fas fa-display"></i>Piattaforma online dall'11 gennaio 2027</span>
+        <span class="meta-tag"><i class="fas fa-rotate-left"></i>Posto cedibile a un collega</span>
       </div>
-      <div>
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem;">Libri</h3>
-        <div class="org-resource-list">
-          <div class="org-resource"><strong>Retargeting Management</strong><span>Hoepli, 2017</span></div>
-          <div class="org-resource"><strong>E-Commerce Marketing Data Driven</strong><span>Slymetrix, 2021</span></div>
-          <div class="org-resource"><strong>Retail E-commerce Management</strong><span>2024</span></div>
-          <div class="org-resource"><strong>Manuale del CEO AI</strong><span>2026</span></div>
-          <div class="org-resource"><strong>Manuale del Consulente AI</strong><span>2026</span></div>
-        </div>
+      <div style="margin-top: 2rem;">
+        <a href="#richiedi-informazioni" class="btn btn-primary cta-lead" data-cta-location="booking-card">Richiedi Informazioni</a>
       </div>
     </div>
-
-    <a href="/manuale-ceo-ai.html" id="cta-ebook-corso-dirigenti" class="ebook-mini-card" style="margin-top: 2.5rem;">
-      <img src="assets/images/eBook-ManualeCeoAI1200x1200.png" alt="Copertina eBook Manuale del CEO AI di GTaviani Consulting" class="ebook-mini-cover">
-      <span class="ebook-mini-body">
-        <span class="ebook-mini-title">Il Manuale del CEO AI</span>
-        <span class="ebook-mini-text">Guida strategica gratuita del docente: come decidere sull'AI senza gergo tecnico.</span>
-        <span class="ebook-mini-cta">Scarica gratis <i class="fa-solid fa-arrow-right"></i></span>
-      </span>
-    </a>
   </section>
 
   <!-- [8] RICHIEDI INFORMAZIONI — form Tally unico condiviso dalle 3 schede corso
@@ -374,7 +379,59 @@
 
   <script>Tally.loadEmbeds();</script>
 
-  <!-- [9] FOOTER (stesso pattern di eventi-corsi.html) -->
+  <!-- [9] FAQ GEO — GTA-EVCORSI-DIRIGENTI-002, stesso pattern di index.html /
+       formazione-ai-aziendale.html (JSON-LD gemello nel <head>) -->
+  <section id="faq" class="light-divider">
+    <h2>FAQ</h2>
+
+    <div class="faq-category">
+      <h3 class="faq-category-title">Formazione AI in azienda</h3>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Cos'è un "deployer" secondo l'AI Act e perché riguarda anche la mia azienda?</summary>
+          <p>È deployer chi usa un sistema AI nella propria attività professionale, anche senza averlo sviluppato — basta un chatbot o un assistente AI in un reparto. L'AI Act impone a chi assume questo ruolo misure di alfabetizzazione AI per il personale coinvolto.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Che obbligo di formazione impone l'AI Act alle aziende che usano l'AI?</summary>
+          <p>Dal 2 febbraio 2025 l'art. 4 dell'AI Act chiede alle aziende misure di alfabetizzazione AI per chi usa questi strumenti, per ruolo e livello di responsabilità. Un attestato nominativo e un registro presenze sono evidenza concreta di conformità.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Che differenza c'è tra AI strategica e AI tecnica?</summary>
+          <p>L'AI strategica riguarda le decisioni: dove investire, quali rischi evitare, quale impatto sul proprio reparto — è compito di dirigenti e direttori. L'AI tecnica riguarda l'uso quotidiano degli strumenti — è compito di manager e team operativi.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Serve essere tecnici per capire l'AI a livello di decisione aziendale?</summary>
+          <p>No. La giornata dedicata ai dirigenti tratta impatto di business, dati riservati, GDPR e AI Act senza gergo tecnico: l'obiettivo è decidere cosa fare con l'AI, non programmarla.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <h3 class="faq-category-title">Questo corso</h3>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>A chi è rivolto il corso AI per Dirigenti e Manager?</summary>
+          <p>Direzione e direttori di reparto (anche solo il lunedì, visione strategica), manager e operativi (martedì–venerdì), e professionisti indipendenti sul resto della settimana. Max 10 partecipanti in aula.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Cosa porta a casa un dirigente al termine delle 5 giornate?</summary>
+          <p>Un piano a gradini per il proprio reparto, la mappa dei dati riservati da proteggere, e — con il venerdì Advanced — un primo pilota di agente AI pronto da presentare in azienda, oltre all'attestato nominativo.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Il corso è finanziabile con i fondi interprofessionali?</summary>
+          <p>Sì, è compatibile con il Conto Formazione: GTaviani Consulting fornisce contratto, programma, CV del docente, registri presenze, attestati e fattura pronti per la rendicontazione, senza importo minimo.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Serve già conoscere l'AI per partecipare?</summary>
+          <p>No, il programma parte dai livelli base (dal prompt alla modalità agente) e sale per gradini fino al venerdì Advanced, riservato a chi ha seguito martedì–giovedì. Serve solo un laptop con Claude Desktop e un account Claude Pro o superiore.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <a href="#richiedi-informazioni" id="cta-sticky" class="sticky-cta sticky-cta--center cta-lead" data-cta-location="floating">Richiesta Informazioni →</a>
+
+  <!-- [10] FOOTER (stesso pattern di eventi-corsi.html) -->
   <section id="cta-footer" class="dark-section">
         <footer class="site-footer">
       <div class="footer-inner">

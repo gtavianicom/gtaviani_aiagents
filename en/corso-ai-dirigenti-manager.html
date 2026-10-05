@@ -59,6 +59,26 @@
   }
   </script>
 
+  <!-- FAQPage structured data — sezione #faq, GTA-EVCORSI-DIRIGENTI-002.
+       Posizionata nel <head>, stesso pattern già usato da
+       GTA-EVCORSI-AZIENDALE-002 su formazione-ai-aziendale.html -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "What is a \"deployer\" under the AI Act, and why does it matter for my company?", "acceptedAnswer": {"@type": "Answer", "text": "A deployer is anyone who uses an AI system in their professional activity, even without building it — a single chatbot or AI assistant in one department is enough. The AI Act requires whoever takes on this role to provide AI literacy measures for the staff involved."}},
+      {"@type": "Question", "name": "What training obligation does the AI Act place on companies that use AI?", "acceptedAnswer": {"@type": "Answer", "text": "Since February 2, 2025, Article 4 of the AI Act requires companies to provide AI literacy measures for anyone using these tools, by role and level of responsibility. A course with a named certificate and attendance record is concrete evidence of compliance."}},
+      {"@type": "Question", "name": "What's the difference between strategic AI and technical AI?", "acceptedAnswer": {"@type": "Answer", "text": "Strategic AI is about decisions: where to invest, which risks to avoid, the impact on your own department — that's for executives and department heads. Technical AI is about day-to-day tool use — that's for managers and operational teams. The course dedicates separate days to each level."}},
+      {"@type": "Question", "name": "Do I need to be technical to understand AI at a business-decision level?", "acceptedAnswer": {"@type": "Answer", "text": "No. The day dedicated to executives covers business impact, confidential data, GDPR and the AI Act without technical jargon: the goal is deciding what to do with AI, not programming it."}},
+      {"@type": "Question", "name": "Who is the AI Course for Executives and Managers aimed at?", "acceptedAnswer": {"@type": "Answer", "text": "Management and department heads (even just Monday, for the strategic overview), managers and operational staff (Tuesday–Friday), and independent professionals for the rest of the week. Max 10 participants in the classroom."}},
+      {"@type": "Question", "name": "What does an executive take away after the 5 days?", "acceptedAnswer": {"@type": "Answer", "text": "A step-by-step plan for their own department, a map of the confidential data to protect, and — with Friday Advanced — a first AI agent pilot ready to present at the company, plus the named certificate."}},
+      {"@type": "Question", "name": "Is the course fundable through interprofessional training funds?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, it's compatible with Conto Formazione: GTaviani Consulting provides the contract, program, instructor CV, attendance records, certificates and invoice ready for reporting, with no minimum amount."}},
+      {"@type": "Question", "name": "Do I need to already know AI to attend?", "acceptedAnswer": {"@type": "Answer", "text": "No, the program starts from the basics (from prompting to agent mode) and builds up to Friday Advanced, reserved for those who attended Tuesday–Thursday. You only need a laptop with Claude Desktop and a Claude Pro account or above."}}
+    ]
+  }
+  </script>
+
   <!-- Consent Mode v2 (default negato) -- GTA-LEGAL-001, conforme Linee Guida Cookie Garante Privacy -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -137,14 +157,17 @@
     </div>
   </header>
 
-  <!-- [1] HERO — GTA-EVCORSI-DIRIGENTI-001 -->
-  <section id="hero" class="hero">
-    <span class="hero-badge">📍 Classroom course · Milan · May 10–14, 2027</span>
-    <h1>AI Course for Executives and Managers</h1>
-    <p class="hero-subtitle">Five classroom days in Milan, with Claude: executives decide <strong>what</strong> to do with AI, teams learn <strong>how</strong> to use it every day. A program by role, hands-on exercises, a named certificate.</p>
-    <div class="hero-cta-row">
-      <a href="#richiedi-informazioni" class="btn btn-primary btn-lg cta-lead" data-cta-location="hero">Request Information</a>
+  <!-- [1] HERO — GTA-EVCORSI-DIRIGENTI-002: 2 colonne (testo sx, icona dx),
+       bottone CTA rimosso (resta solo lo sticky-cta centrato in fondo pagina).
+       Riusa .hero--split/.hero-text/.hero-icon già introdotto da
+       GTA-EVCORSI-AZIENDALE-002 -->
+  <section id="hero" class="hero hero--split">
+    <div class="hero-text">
+      <span class="hero-badge">📍 Classroom course · Milan · May 10–14, 2027</span>
+      <h1>AI Course for Executives and Managers</h1>
+      <p class="hero-subtitle">Five classroom days in Milan, with Claude: executives decide <strong>what</strong> to do with AI, teams learn <strong>how</strong> to use it every day. A program by role, hands-on exercises, a named certificate.</p>
     </div>
+    <div class="problem-icon hero-icon"><i class="fas fa-chalkboard-user"></i></div>
   </section>
 
   <!-- [2] THE COURSE IN NUMBERS -->
@@ -292,60 +315,43 @@
     <p class="plans-note" style="color: var(--color-secondary); font-style: italic; text-align: center; margin-top: 1.5rem;">You leave the classroom with: a printed guide with exercises, a prompt library, assistants for your own role, 1 working agent-mode task; with Advanced, 1 workforce and a ready pilot. Certificate of attendance.</p>
   </section>
 
-  <!-- [7] THE INSTRUCTOR -->
-  <section id="docente" class="light-divider">
-    <h2>The instructor · Gabriele Taviani</h2>
-    <p class="section-intro">Over 20 years of digital marketing and e-commerce in Italy, the UK and Brazil. Built Advertising Trading Desk, Behavioral Tracking and Retargeting platforms for e-commerce.</p>
-    <div class="stat-strip-grid">
-      <div class="stat-item">
-        <span class="stat-number">20+ years</span>
-        <span class="stat-label">of digital marketing and e-commerce in Italy, the UK and Brazil</span>
+  <!-- [7] FUNDED TRAINING — stesso componente .funding-card di
+       en/eventi-corsi.html #fondi, GTA-EVCORSI-DIRIGENTI-002 -->
+  <section id="fondi" class="light-divider">
+    <div class="funding-card">
+      <div class="funding-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+      <h2>Funded training</h2>
+      <p class="section-intro" style="max-width: 720px; margin: 0 auto 2rem;">The course is compatible with Conto Formazione: GTaviani Consulting provides the contract, program, instructor CV, attendance records, certificates and invoice ready for reporting.</p>
+      <div class="card-meta" style="justify-content: center;">
+        <span class="meta-tag"><i class="fas fa-check"></i>No minimum amount</span>
+        <span class="meta-tag"><i class="fas fa-check"></i>Approval in ~1 month</span>
+        <span class="meta-tag"><i class="fas fa-check"></i>VAT-exempt invoice</span>
       </div>
-      <div class="stat-item">
-        <span class="stat-number">5 books</span>
-        <span class="stat-label">on e-commerce, marketing and AI for companies</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">4+ years</span>
-        <span class="stat-label">of AI projects applied to retail and e-commerce</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">Netcomm</span>
-        <span class="stat-label">lead instructor of the «Digital Marketing for E-Commerce and New Retail» MasterClass</span>
+      <div style="margin-top: 2rem;">
+        <a href="/en/lp-fondi-pmi.html" class="btn btn-primary">Discover AI Grants &amp; Funding</a>
       </div>
     </div>
+  </section>
 
-    <div class="conclusion-grid" style="margin-top: 2rem;">
-      <div>
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem;">Management roles</h3>
-        <div class="org-resource-list">
-          <div class="org-resource"><strong>E-commerce Director</strong><span>Emozione3 (Smartbox Group)</span></div>
-          <div class="org-resource"><strong>Digital Officer</strong><span>Bottega Verde</span></div>
-          <div class="org-resource"><strong>Chief E-commerce &amp; Digital Marketing</strong><span>EcorNaturaSì</span></div>
-          <div class="org-resource"><strong>Lead instructor</strong><span>Netcomm Academy MasterClass</span></div>
-          <div class="org-resource"><strong>Founder</strong><span>GTAVIANI AI Consultance</span></div>
-        </div>
+  <!-- [8] BOOK BY END OF 2026 — card SENZA prezzi (stesso componente
+       .funding-card, variante blu .funding-card--booking già introdotta da
+       GTA-EVCORSI-AZIENDALE-002). Sostituisce la vecchia sezione "The
+       instructor", rimossa per intero su richiesta esplicita,
+       GTA-EVCORSI-DIRIGENTI-002 -->
+  <section id="prenota" class="light-divider">
+    <div class="funding-card funding-card--booking">
+      <div class="funding-icon"><i class="fas fa-calendar-check"></i></div>
+      <h2>Book by end of 2026</h2>
+      <p class="section-intro" style="max-width: 720px; margin: 0 auto 2rem;">The course runs with a minimum of 5 enrolled, seats limited to a maximum of 10: whoever books first gets in first.</p>
+      <div class="card-meta" style="justify-content: center;">
+        <span class="meta-tag"><i class="fas fa-users"></i>Max 10 seats, runs from 5 enrolled</span>
+        <span class="meta-tag"><i class="fas fa-display"></i>Online platform from January 11, 2027</span>
+        <span class="meta-tag"><i class="fas fa-rotate-left"></i>Seat transferable to a colleague</span>
       </div>
-      <div>
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem;">Books</h3>
-        <div class="org-resource-list">
-          <div class="org-resource"><strong>Retargeting Management</strong><span>Hoepli, 2017</span></div>
-          <div class="org-resource"><strong>E-Commerce Marketing Data Driven</strong><span>Slymetrix, 2021</span></div>
-          <div class="org-resource"><strong>Retail E-commerce Management</strong><span>2024</span></div>
-          <div class="org-resource"><strong>The AI Manual for CEOs</strong><span>2026</span></div>
-          <div class="org-resource"><strong>The AI Manual for Consultants</strong><span>2026</span></div>
-        </div>
+      <div style="margin-top: 2rem;">
+        <a href="#richiedi-informazioni" class="btn btn-primary cta-lead" data-cta-location="booking-card">Request Information</a>
       </div>
     </div>
-
-    <a href="/en/index.html#ebook-ceo-ai" id="cta-ebook-corso-dirigenti" class="ebook-mini-card" style="margin-top: 2.5rem;">
-      <img src="/assets/images/eBook-CeoAiManual-EN-1200x1200.png" alt="Cover of The AI Manual for CEOs, 2026 Edition, by Gabriele Taviani" class="ebook-mini-cover">
-      <span class="ebook-mini-body">
-        <span class="ebook-mini-title">The AI Manual for CEOs</span>
-        <span class="ebook-mini-text">The instructor's free strategic guide: how to decide on AI without technical jargon.</span>
-        <span class="ebook-mini-cta">Download free <i class="fa-solid fa-arrow-right"></i></span>
-      </span>
-    </a>
   </section>
 
   <!-- [8] REQUEST INFORMATION — form Tally unico condiviso dalle 3 schede corso
@@ -370,7 +376,59 @@
 
   <script>Tally.loadEmbeds();</script>
 
-  <!-- [9] FOOTER (stesso pattern di en/eventi-corsi.html) -->
+  <!-- [9] FAQ GEO — GTA-EVCORSI-DIRIGENTI-002, stesso pattern di index.html /
+       formazione-ai-aziendale.html (JSON-LD gemello nel <head>) -->
+  <section id="faq" class="light-divider">
+    <h2>FAQ</h2>
+
+    <div class="faq-category">
+      <h3 class="faq-category-title">AI training in companies</h3>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What is a "deployer" under the AI Act, and why does it matter for my company?</summary>
+          <p>A deployer is anyone who uses an AI system in their professional activity, even without building it — a single chatbot or AI assistant in one department is enough. The AI Act requires whoever takes on this role to provide AI literacy measures for the staff involved.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What training obligation does the AI Act place on companies that use AI?</summary>
+          <p>Since February 2, 2025, Article 4 of the AI Act requires companies to provide AI literacy measures for anyone using these tools, by role and level of responsibility. A named certificate and attendance record are concrete evidence of compliance.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What's the difference between strategic AI and technical AI?</summary>
+          <p>Strategic AI is about decisions: where to invest, which risks to avoid, the impact on your own department — that's for executives and department heads. Technical AI is about day-to-day tool use — that's for managers and operational teams.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do I need to be technical to understand AI at a business-decision level?</summary>
+          <p>No. The day dedicated to executives covers business impact, confidential data, GDPR and the AI Act without technical jargon: the goal is deciding what to do with AI, not programming it.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <h3 class="faq-category-title">This course</h3>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Who is the AI Course for Executives and Managers aimed at?</summary>
+          <p>Management and department heads (even just Monday, for the strategic overview), managers and operational staff (Tuesday–Friday), and independent professionals for the rest of the week. Max 10 participants in the classroom.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What does an executive take away after the 5 days?</summary>
+          <p>A step-by-step plan for their own department, a map of the confidential data to protect, and — with Friday Advanced — a first AI agent pilot ready to present at the company, plus the named certificate.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is the course fundable through interprofessional training funds?</summary>
+          <p>Yes, it's compatible with Conto Formazione: GTaviani Consulting provides the contract, program, instructor CV, attendance records, certificates and invoice ready for reporting, with no minimum amount.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do I need to already know AI to attend?</summary>
+          <p>No, the program starts from the basics (from prompting to agent mode) and builds up to Friday Advanced, reserved for those who attended Tuesday–Thursday. You only need a laptop with Claude Desktop and a Claude Pro account or above.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <a href="#richiedi-informazioni" id="cta-sticky" class="sticky-cta sticky-cta--center cta-lead" data-cta-location="floating">Request Information →</a>
+
+  <!-- [10] FOOTER (stesso pattern di en/eventi-corsi.html) -->
   <section id="cta-footer" class="dark-section">
         <footer class="site-footer">
       <div class="footer-inner">
