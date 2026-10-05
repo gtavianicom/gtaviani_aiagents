@@ -915,10 +915,99 @@ a.problem-card {
   margin-bottom: 1rem;
 }
 
-/* Sezione Corsi su sfondo scuro brand (richiesta esplicita revisione 5/10 —
-   prima era la sezione Fondi ad avere il dark-section) */
 .dark-section .courses-subheading {
   color: #ffffff;
+}
+
+/* Sezione a banda piena grigio chiaro (Corsi, rev. 5/10 v3: niente più
+   dark-section, un grigio distinto dal bianco di pagina) */
+.section-bg-soft {
+  background: #f7f9fb;
+  max-width: none;
+  padding: 4rem 1.5rem;
+}
+
+/* Card "Formazione in azienda" — immagine a sinistra solo desktop (rev. 5/10 v4) */
+.problem-card.course-card--featured {
+  padding: 0;
+  overflow: hidden;
+}
+
+.course-card-image {
+  display: none;
+}
+
+@media (min-width: 701px) {
+  .problem-card.course-card--featured {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+  }
+  .course-card-image {
+    display: block;
+  }
+}
+
+.course-card-image-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  background: linear-gradient(135deg, rgba(1, 67, 116, 0.12), rgba(1, 67, 116, 0.24));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  font-size: 2.6rem;
+}
+
+.course-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.course-card-body {
+  padding: 1.75rem 1.75rem;
+}
+
+/* Righe fatto-corso: destinatari / durata / obiettivo (rev. 5/10 v4) */
+.course-facts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0.85rem 0;
+}
+
+.course-fact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.6rem;
+  font-size: 0.88rem;
+  color: var(--color-text);
+  line-height: 1.45;
+}
+
+.course-fact strong {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  min-width: 90px;
+}
+
+/* Card "in aula": piu' larghe, meta-tag (data/location/ore) senza andare a
+   capo e allineate in fondo alla card (rev. 5/10 v4) */
+.courses-group:not(.courses-group--single) .problem-grid {
+  grid-template-columns: repeat(auto-fit, minmax(340px, 460px));
+}
+
+.courses-group:not(.courses-group--single) .problem-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.courses-group:not(.courses-group--single) .card-meta {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  flex-wrap: nowrap;
 }
 
 /* Statistica evidenziata */

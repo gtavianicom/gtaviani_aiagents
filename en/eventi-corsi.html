@@ -157,27 +157,39 @@
     </div>
   </section>
 
-  <!-- [3] COURSES — GTA-EVCORSI-MAIN-001, rev. 5/10 (v2): dark brand background
-       (previously on the Funded section), no more divider line (light-divider
-       removed). "On-site" subgroup (year-round, full-width card) on top,
-       "classroom" (scheduled dates, centered card group) below — order reversed
-       per Gabriele's explicit request. Each card now has a short intro beyond
-       the tags, to spark curiosity/interest, not just identification -->
-  <section id="corsi" class="dark-section">
+  <!-- [3] COURSES — GTA-EVCORSI-MAIN-001, rev. 5/10 (v4): light gray background
+       (v2 put dark-section here, v3 drops it per explicit request — "distinct
+       from the background, not dark"). "On-site" card restructured to 2
+       columns with image on the left (desktop only, PLACEHOLDER — needs the
+       real photo from Gabriele), audience row with multiple tags for the 2
+       tracks. Classroom cards widened, date/location/hours tags no longer wrap
+       and are bottom-aligned. Both now have Audience and Goal rows in addition
+       to the intro (intro not rewritten yet, explicitly deferred) -->
+  <section id="corsi" class="section-bg-soft">
     <h2>Courses</h2>
     <p class="section-intro">No price online: the full price list arrives as a PDF after your request.</p>
 
     <div class="courses-group courses-group--single">
       <p class="courses-subheading">On-site — year-round</p>
       <div class="problem-grid">
-        <a href="formazione-ai-aziendale.html" class="problem-card">
-          <div class="problem-icon"><i class="fas fa-building"></i></div>
-          <h3>Corporate AI Training</h3>
-          <p>Two on-site tracks, from executives to teams: it starts with strategy, it ends with agents at work.</p>
-          <div class="card-meta">
-            <span class="meta-tag"><i class="fas fa-location-dot"></i>On-site</span>
-            <span class="meta-tag"><i class="fas fa-calendar-check"></i>2 slots/month</span>
-            <span class="meta-tag"><i class="fas fa-infinity"></i>Year-round</span>
+        <a href="formazione-ai-aziendale.html" class="problem-card course-card--featured">
+          <div class="course-card-image">
+            <!-- TODO: real photo from Gabriele (on-site corporate training) — graphic placeholder meanwhile -->
+            <div class="course-card-image-placeholder"><i class="fas fa-building"></i></div>
+          </div>
+          <div class="course-card-body">
+            <h3>Corporate AI Training</h3>
+            <p>Two on-site tracks, from executives to teams: it starts with strategy, it ends with agents at work.</p>
+            <div class="course-facts">
+              <div class="course-fact"><strong>Audience</strong><span><span class="meta-tag">Executives</span> <span class="meta-tag">Managers and teams</span></span></div>
+              <div class="course-fact"><strong>Duration</strong><span>36h over 9 half-days</span></div>
+              <div class="course-fact"><strong>Goal</strong><span>Give executives the method to decide, give teams the tools to use AI every day.</span></div>
+            </div>
+            <div class="card-meta">
+              <span class="meta-tag"><i class="fas fa-location-dot"></i>On-site</span>
+              <span class="meta-tag"><i class="fas fa-calendar-check"></i>2 slots/month</span>
+              <span class="meta-tag"><i class="fas fa-infinity"></i>Year-round</span>
+            </div>
           </div>
         </a>
       </div>
@@ -190,6 +202,10 @@
           <div class="problem-icon"><i class="fas fa-chalkboard-user"></i></div>
           <h3>AI for Executives and Managers</h3>
           <p>Executives decide what to do with AI, teams learn how to use it every day.</p>
+          <div class="course-facts">
+            <div class="course-fact"><strong>Audience</strong><span>Executives, department heads and managers</span></div>
+            <div class="course-fact"><strong>Goal</strong><span>Guide AI adoption in your company with method, from strategy to agents at work.</span></div>
+          </div>
           <div class="card-meta">
             <span class="meta-tag"><i class="fas fa-calendar-days"></i>May 10–14, 2027</span>
             <span class="meta-tag"><i class="fas fa-location-dot"></i>Milan</span>
@@ -200,6 +216,10 @@
           <div class="problem-icon"><i class="fas fa-cart-shopping"></i></div>
           <h3>E-Commerce Marketing AI Agent First</h3>
           <p>Right before Netcomm Forum: e-commerce marketing updates to AI first, then you learn to direct AI Agents and AI Team.</p>
+          <div class="course-facts">
+            <div class="course-fact"><strong>Audience</strong><span>E-commerce managers and marketing teams</span></div>
+            <div class="course-fact"><strong>Goal</strong><span>Update the Data Driven method to AI first and learn to direct AI Agents and AI Team.</span></div>
+          </div>
           <div class="card-meta">
             <span class="meta-tag"><i class="fas fa-calendar-days"></i>Apr 19–20, 2027</span>
             <span class="meta-tag"><i class="fas fa-location-dot"></i>Milan</span>

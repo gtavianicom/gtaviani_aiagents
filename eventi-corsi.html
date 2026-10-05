@@ -158,28 +158,40 @@
     </div>
   </section>
 
-  <!-- [3] CORSI — GTA-EVCORSI-MAIN-001, rev. 5/10 (v2): sfondo scuro brand
-       (prima era la sezione Fondi ad averlo), niente più linea divisoria
-       (tolto light-divider). Sottogruppo "in azienda" (trasversale tutto
-       l'anno, card a piena larghezza) in alto, "in aula" (date programmate,
-       card centrate come gruppo) sotto — ordine invertito su richiesta
-       esplicita di Gabriele. Ogni card ha un'intro sintetica oltre ai tag,
-       per generare curiosità/interesse, non solo identificazione -->
-  <section id="corsi" class="dark-section">
+  <!-- [3] CORSI — GTA-EVCORSI-MAIN-001, rev. 5/10 (v4): sfondo grigio chiaro
+       (v2 aveva messo il dark-section qui, v3 lo toglie su richiesta esplicita
+       — "distintivo dal background, non scuro"). Card "in azienda" ristrutturata
+       a 2 colonne con immagine a sx (solo desktop, PLACEHOLDER — serve
+       l'immagine reale da Gabriele), riga destinatari con piu' tag per i 2
+       percorsi. Card "in aula" allargate, meta-tag data/location/ore senza
+       andare a capo e allineate in fondo. Entrambe ora hanno righe Destinatari
+       e Obiettivo oltre all'intro (intro non ancora riscritta, richiesta
+       esplicita di rimandare) -->
+  <section id="corsi" class="section-bg-soft">
     <h2>Corsi</h2>
     <p class="section-intro">Nessun prezzo online: il listino arriva via PDF dopo la richiesta informazioni.</p>
 
     <div class="courses-group courses-group--single">
       <p class="courses-subheading">In azienda — tutto l'anno</p>
       <div class="problem-grid">
-        <a href="formazione-ai-aziendale.html" class="problem-card">
-          <div class="problem-icon"><i class="fas fa-building"></i></div>
-          <h3>Formazione AI Aziendale</h3>
-          <p>Due percorsi in sede cliente, dal dirigente al team: si parte dalla strategia, si arriva agli agenti al lavoro.</p>
-          <div class="card-meta">
-            <span class="meta-tag"><i class="fas fa-location-dot"></i>In sede cliente</span>
-            <span class="meta-tag"><i class="fas fa-calendar-check"></i>2 slot/mese</span>
-            <span class="meta-tag"><i class="fas fa-infinity"></i>Tutto l'anno</span>
+        <a href="formazione-ai-aziendale.html" class="problem-card course-card--featured">
+          <div class="course-card-image">
+            <!-- TODO: immagine reale da Gabriele (formazione in sede cliente) — placeholder grafico nel frattempo -->
+            <div class="course-card-image-placeholder"><i class="fas fa-building"></i></div>
+          </div>
+          <div class="course-card-body">
+            <h3>Formazione AI Aziendale</h3>
+            <p>Due percorsi in sede cliente, dal dirigente al team: si parte dalla strategia, si arriva agli agenti al lavoro.</p>
+            <div class="course-facts">
+              <div class="course-fact"><strong>Destinatari</strong><span><span class="meta-tag">Dirigenti</span> <span class="meta-tag">Manager e team</span></span></div>
+              <div class="course-fact"><strong>Durata</strong><span>36h in 9 mezze giornate</span></div>
+              <div class="course-fact"><strong>Obiettivo</strong><span>Dare ai dirigenti il metodo per decidere, ai team gli strumenti per usare l'AI ogni giorno.</span></div>
+            </div>
+            <div class="card-meta">
+              <span class="meta-tag"><i class="fas fa-location-dot"></i>In sede cliente</span>
+              <span class="meta-tag"><i class="fas fa-calendar-check"></i>2 slot/mese</span>
+              <span class="meta-tag"><i class="fas fa-infinity"></i>Tutto l'anno</span>
+            </div>
           </div>
         </a>
       </div>
@@ -192,6 +204,10 @@
           <div class="problem-icon"><i class="fas fa-chalkboard-user"></i></div>
           <h3>AI per Dirigenti e Manager</h3>
           <p>I dirigenti decidono cosa fare con l'AI, i team imparano come usarla ogni giorno.</p>
+          <div class="course-facts">
+            <div class="course-fact"><strong>Destinatari</strong><span>Dirigenti, direttori di reparto e manager</span></div>
+            <div class="course-fact"><strong>Obiettivo</strong><span>Guidare l'adozione dell'AI in azienda con un metodo, dalla strategia agli agenti al lavoro.</span></div>
+          </div>
           <div class="card-meta">
             <span class="meta-tag"><i class="fas fa-calendar-days"></i>10–14 mag 2027</span>
             <span class="meta-tag"><i class="fas fa-location-dot"></i>Milano</span>
@@ -202,6 +218,10 @@
           <div class="problem-icon"><i class="fas fa-cart-shopping"></i></div>
           <h3>E-Commerce Marketing AI Agent First</h3>
           <p>Subito prima del Netcomm Forum: il marketing e-commerce si aggiorna AI first, poi si impara a dirigere AI Agents e AI Team.</p>
+          <div class="course-facts">
+            <div class="course-fact"><strong>Destinatari</strong><span>E-commerce manager e team marketing</span></div>
+            <div class="course-fact"><strong>Obiettivo</strong><span>Aggiornare il metodo Data Driven in versione AI first e imparare a dirigere AI Agents e AI Team.</span></div>
+          </div>
           <div class="card-meta">
             <span class="meta-tag"><i class="fas fa-calendar-days"></i>19–20 apr 2027</span>
             <span class="meta-tag"><i class="fas fa-location-dot"></i>Milano</span>
