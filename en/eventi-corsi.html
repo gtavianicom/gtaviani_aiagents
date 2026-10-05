@@ -126,58 +126,64 @@
     </div>
   </header>
 
-  <!-- [1] HERO — GTA-EVCORSI-MAIN-001 -->
+  <!-- [1] HERO — GTA-EVCORSI-MAIN-001 (rev. 5/10: dropped the "GTaviani
+       Consulting's calendar:" lead-in, no more embedded calendar on this page) -->
   <section id="hero" class="hero">
-    <span class="hero-badge">📅 2027 Calendar</span>
+    <span class="hero-badge">📅 2027 Program</span>
     <h1>Events &amp; Courses</h1>
-    <p class="hero-subtitle">GTaviani Consulting's calendar: classroom and on-site courses for executives, managers and e-commerce teams, plus the trade fairs, congresses and meetups where you can meet us.</p>
+    <p class="hero-subtitle">Classroom and on-site courses for executives, managers and e-commerce teams, plus the trade fairs, congresses and meetups where you can meet us.</p>
   </section>
 
-  <!-- [2] LUMA CALENDAR — GTA-EVCORSI-MAIN-001 -->
-  <section id="calendario" class="light-divider">
-    <h2>Calendar</h2>
-    <p class="section-intro">Every appointment with a confirmed public date: classroom courses and events. On-site training at the client's premises (no fixed date) is described in the Courses section below.</p>
-    <div class="luma-calendar-wrap">
-      <iframe
-        src="https://luma.com/embed/calendar/cal-ojJxdIjBmRzqPeH/events?lt=light"
-        width="600"
-        height="450"
-        frameborder="0"
-        style="border: 1px solid #bfcbda88; border-radius: 4px;"
-        allowfullscreen=""
-        aria-hidden="false"
-        tabindex="0"
-      ></iframe>
-    </div>
-  </section>
-
-  <!-- [3] COURSES — GTA-EVCORSI-MAIN-001 -->
+  <!-- [2] COURSES — GTA-EVCORSI-MAIN-001, graphic schema rev. 5/10: subgroups
+       "classroom" (scheduled dates) vs "on-site" (year-round), tag-based cards
+       instead of paragraphs -->
   <section id="corsi" class="light-divider">
     <h2>Courses</h2>
-    <p class="section-intro">AI training programs for executives, managers and e-commerce teams. Each page lists the program, audience and how to request information — no price online: the full price list arrives as a PDF after your request.</p>
-    <div class="problem-grid">
-      <a href="corso-ai-dirigenti-manager.html" class="problem-card">
-        <div class="problem-icon"><i class="fas fa-chalkboard-user"></i></div>
-        <h3>AI for Executives and Managers</h3>
-        <p>A 5-day classroom course (31h) in Milan, to guide AI adoption in your company with method.</p>
-        <p class="plans-note" style="color: var(--color-secondary); font-style: italic; margin-top: 0.75rem;">May 10–14, 2027 · Milan</p>
-      </a>
-      <a href="corso-ecommerce-marketing-ai-agent-first.html" class="problem-card">
-        <div class="problem-icon"><i class="fas fa-cart-shopping"></i></div>
-        <h3>E-Commerce Marketing AI Agent First</h3>
-        <p>2 classroom days (13h) in Milan, right before Netcomm Forum: e-commerce marketing rethought AI agent first.</p>
-        <p class="plans-note" style="color: var(--color-secondary); font-style: italic; margin-top: 0.75rem;">April 19–20, 2027 · Milan</p>
-      </a>
-      <a href="formazione-ai-aziendale.html" class="problem-card">
-        <div class="problem-icon"><i class="fas fa-building"></i></div>
-        <h3>Corporate AI Training</h3>
-        <p>Executive or Base+Advanced tracks, delivered on-site at the client's premises. Limited availability, on request.</p>
-        <p class="plans-note" style="color: var(--color-secondary); font-style: italic; margin-top: 0.75rem;">On-site · 2 slots per month</p>
-      </a>
+    <p class="section-intro">No price online: the full price list arrives as a PDF after your request.</p>
+
+    <div class="courses-group">
+      <p class="courses-subheading">Classroom — scheduled dates</p>
+      <div class="problem-grid">
+        <a href="corso-ai-dirigenti-manager.html" class="problem-card">
+          <div class="problem-icon"><i class="fas fa-chalkboard-user"></i></div>
+          <h3>AI for Executives and Managers</h3>
+          <div class="card-meta">
+            <span class="meta-tag"><i class="fas fa-calendar-days"></i>May 10–14, 2027</span>
+            <span class="meta-tag"><i class="fas fa-location-dot"></i>Milan</span>
+            <span class="meta-tag"><i class="fas fa-clock"></i>31h</span>
+          </div>
+        </a>
+        <a href="corso-ecommerce-marketing-ai-agent-first.html" class="problem-card">
+          <div class="problem-icon"><i class="fas fa-cart-shopping"></i></div>
+          <h3>E-Commerce Marketing AI Agent First</h3>
+          <div class="card-meta">
+            <span class="meta-tag"><i class="fas fa-calendar-days"></i>Apr 19–20, 2027</span>
+            <span class="meta-tag"><i class="fas fa-location-dot"></i>Milan</span>
+            <span class="meta-tag"><i class="fas fa-clock"></i>13h</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="courses-group courses-group--single">
+      <p class="courses-subheading">On-site — year-round</p>
+      <div class="problem-grid">
+        <a href="formazione-ai-aziendale.html" class="problem-card">
+          <div class="problem-icon"><i class="fas fa-building"></i></div>
+          <h3>Corporate AI Training</h3>
+          <div class="card-meta">
+            <span class="meta-tag"><i class="fas fa-location-dot"></i>On-site</span>
+            <span class="meta-tag"><i class="fas fa-calendar-check"></i>2 slots/month</span>
+            <span class="meta-tag"><i class="fas fa-infinity"></i>Year-round</span>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- [4] EVENTS — GTA-EVCORSI-MAIN-001 -->
+  <!-- [3] EVENTS — GTA-EVCORSI-MAIN-001, schematic card rev. 5/10: date/location
+       as tags, short intro apart, button (internal=same tab, external=new tab)
+       only once a real destination exists -->
   <section id="eventi" class="light-divider">
     <h2>Events</h2>
     <p class="section-intro">Where to meet GTaviani Consulting: trade fairs, congresses and meetups.</p>
@@ -185,13 +191,19 @@
     <div class="events-category">
       <h3>Trade Fairs &amp; Congresses</h3>
       <div class="problem-grid">
-        <!-- Netcomm Forum 2027: participation still under negotiation, GTA-EVCORSI-NETCOMM-001 -->
+        <!-- Netcomm Forum 2027: participation still under negotiation, GTA-EVCORSI-NETCOMM-001.
+             No button yet: no dedicated internal page and no official external URL
+             confirmed by Gabriele. Pattern ready for when it arrives:
+             internal (same tab) -> <a href="internal-page.html" class="btn btn-secondary">Learn more</a>
+             external (new tab)  -> <a href="https://..." target="_blank" rel="noopener" class="btn btn-secondary">Official site <i class="fas fa-arrow-up-right-from-square"></i></a> -->
         <div class="problem-card">
-          <div class="problem-icon"><i class="fas fa-store"></i></div>
           <span class="section-badge" style="display: inline-block; margin-bottom: 0.75rem;">To be confirmed</span>
           <h3>Netcomm Forum 2027</h3>
-          <p>April 21–22, 2027 · Allianz MiCo, Milan. GTaviani Consulting's participation is still being finalized with the organizers.</p>
-          <p class="plans-note" style="color: var(--color-secondary); font-style: italic; margin-top: 0.75rem;">Among the Forum's internal events: a short mini-course, "E-Commerce Marketing AI Team", for Forum attendees — program still being defined. This is a separate initiative from the classroom course "E-Commerce Marketing AI Agent First".</p>
+          <div class="card-meta">
+            <span class="meta-tag"><i class="fas fa-calendar-days"></i>Apr 21–22, 2027</span>
+            <span class="meta-tag"><i class="fas fa-location-dot"></i>Allianz MiCo, Milan</span>
+          </div>
+          <p class="event-card-intro">GTaviani Consulting's participation is still being finalized. Among the Forum's internal events: a short mini-course, "E-Commerce Marketing AI Team" (program still being defined, a separate initiative from the classroom course "E-Commerce Marketing AI Agent First").</p>
         </div>
       </div>
     </div>

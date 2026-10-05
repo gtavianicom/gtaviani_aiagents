@@ -821,6 +821,61 @@ a.problem-card {
   line-height: 1.5;
 }
 
+/* Schema grafico card corsi/eventi — tag compatti al posto di paragrafi
+   lunghi (revisione eventi-corsi.html, richiesta esplicita di Gabriele:
+   "meno testi e più schema grafico") */
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.meta-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  background: rgba(1, 67, 116, 0.06);
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+}
+
+.meta-tag i {
+  color: var(--color-primary);
+  font-size: 0.8rem;
+}
+
+/* Sezione Corsi — sottogruppi "in aula" vs "in azienda" */
+.courses-group {
+  max-width: var(--max-width);
+  margin: 0 auto 2.5rem;
+}
+
+.courses-subheading {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-primary);
+  text-align: center;
+  margin: 0 0 1.25rem;
+}
+
+.courses-group--single .problem-grid {
+  grid-template-columns: minmax(0, 360px);
+  justify-content: center;
+}
+
+.event-card-intro {
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0.75rem 0 1rem;
+}
+
 /* Statistica evidenziata */
 .stat-strip {
   display: flex;
