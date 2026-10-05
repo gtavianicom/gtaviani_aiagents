@@ -864,8 +864,18 @@ a.problem-card {
   margin: 0 0 1.25rem;
 }
 
+/* "Formazione in azienda": card unica a piena larghezza (richiesta esplicita
+   revisione 5/10 — prima era stretta/centrata) */
 .courses-group--single .problem-grid {
-  grid-template-columns: minmax(0, 360px);
+  grid-template-columns: 1fr;
+}
+
+/* Gruppi con meno di 3 card (corsi in aula, categorie eventi): centrati come
+   gruppo invece di restare incollati a sinistra nella griglia a 3 colonne
+   (richiesta esplicita revisione 5/10) */
+.courses-group:not(.courses-group--single) .problem-grid,
+.events-category .problem-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 340px));
   justify-content: center;
 }
 
@@ -874,6 +884,41 @@ a.problem-card {
   font-size: 0.9rem;
   line-height: 1.5;
   margin: 0.75rem 0 1rem;
+}
+
+/* Sezione Fondi — card a sfondo giallino tenue in trasparenza, non più un
+   dark-section pieno (richiesta esplicita revisione 5/10) */
+.funding-card {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  background: rgba(255, 193, 7, 0.12);
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  border-radius: 14px;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.funding-icon {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: rgba(255, 193, 7, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  font-size: 2.2rem;
+  color: #8a6400;
+}
+
+.funding-card h2 {
+  margin-bottom: 1rem;
+}
+
+/* Sezione Corsi su sfondo scuro brand (richiesta esplicita revisione 5/10 —
+   prima era la sezione Fondi ad avere il dark-section) */
+.dark-section .courses-subheading {
+  color: #ffffff;
 }
 
 /* Statistica evidenziata */
