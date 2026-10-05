@@ -76,7 +76,7 @@
       {"@type": "Question", "name": "Si può fare solo il percorso Dirigenti senza il resto?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, ogni percorso è autonomo. Il metodo consigliato è partire dai dirigenti e poi estendere ai team, ma un'azienda può richiedere anche solo il percorso 1."}},
       {"@type": "Question", "name": "Quanto dura l'intero percorso formativo?", "acceptedAnswer": {"@type": "Answer", "text": "36 ore complessive in 9 mezze giornate in sede cliente: 2 per i dirigenti, 4 per la Base e 3 per l'Advanced, più 12 mesi di piattaforma online con registrazioni e docente."}},
       {"@type": "Question", "name": "Che differenza c'è tra formazione pubblica in aula e formazione in sede?", "acceptedAnswer": {"@type": "Answer", "text": "La formazione in aula ha date fisse e si condivide con altre aziende; la formazione in sede si svolge negli uffici del cliente, con contenuti adattati ai reparti reali e date assegnate in ordine di prenotazione."}},
-      {"@type": "Question", "name": "Come funziona il Conto Formazione per finanziare il corso?", "acceptedAnswer": {"@type": "Answer", "text": "Usa i contributi che l'azienda già versa all'INPS (0,30%) tramite il fondo interprofessionale a cui aderisce. Nessun importo minimo, fornitore a scelta libera, autorizzazione di norma entro circa un mese."}},
+      {"@type": "Question", "name": "Come funziona il Conto Formazione per finanziare il corso?", "acceptedAnswer": {"@type": "Answer", "text": "Usa i contributi che l'azienda già versa all'INPS tramite il fondo interprofessionale a cui aderisce. Nessun importo minimo, fornitore a scelta libera, autorizzazione di norma entro circa un mese."}},
       {"@type": "Question", "name": "La formazione AI in azienda è obbligatoria per l'AI Act?", "acceptedAnswer": {"@type": "Answer", "text": "L'art. 4 dell'AI Act chiede alle aziende misure di alfabetizzazione AI per il personale che usa questi strumenti, in vigore dal 2 febbraio 2025. I corsi formano per ruolo e lasciano registri e attestati come evidenza di conformità."}},
       {"@type": "Question", "name": "Cosa include il prezzo del corso in sede?", "acceptedAnswer": {"@type": "Answer", "text": "Guida stampata, 12 mesi di piattaforma online con registrazioni e area discussione con il docente, e attestato nominativo per ogni partecipante — incluso in tutti e tre i percorsi."}}
     ]
@@ -169,9 +169,12 @@
     <div class="problem-icon hero-icon"><i class="fas fa-building"></i></div>
   </section>
 
-  <!-- [2] IL PROGRAMMA IN NUMERI -->
-  <section id="numeri" class="light-divider">
-    <h2>Il programma in numeri</h2>
+  <!-- [2] IL CORSO — GTA-EVCORSI-AZIENDALE-003: rinominata da "Il programma
+       in numeri" (#numeri), stesso ordine della scheda e-commerce: statistiche,
+       poi "A chi è destinato" (.audience-card), poi ready-box "Perché ora" -->
+  <section id="corso">
+    <h2>Il corso</h2>
+
     <div class="stat-callout">
       <div class="stat-strip stat-strip-grid">
         <div class="stat-item">
@@ -192,123 +195,111 @@
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- [3] I PERCORSI -->
-  <section id="percorsi">
-    <h2>I percorsi</h2>
-    <p class="section-intro">Tre moduli, pensati per ruolo: la direzione decide la strategia, i team imparano gli strumenti, chi ha completato la Base passa agli agenti AI sui processi reali del reparto.</p>
-    <div class="compare-table-wrap">
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th scope="col">Percorso</th>
-            <th scope="col">Per chi</th>
-            <th scope="col">Focus</th>
-            <th scope="col">Durata</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1 · AI Strategica Dirigenti</th>
-            <td>Direzione e responsabili di reparto</td>
-            <td>Strategia, organizzazione, dati, GDPR e AI Act</td>
-            <td>2 mezze giornate · max 8</td>
-          </tr>
-          <tr>
-            <th scope="row">2 · AI al lavoro — Base</th>
-            <td>Manager e operator</td>
-            <td>L'AI come strumento nel lavoro quotidiano</td>
-            <td>4 mezze giornate · max 12</td>
-          </tr>
-          <tr>
-            <th scope="row">2A · AI al lavoro — Advanced</th>
-            <td>Chi ha completato la Base</td>
-            <td>Agenti AI su processi reali del reparto</td>
-            <td>3 mezze giornate · max 10</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3 class="compare-table-title">Il percorso consigliato</h3>
-    <div class="stat-callout">
-      <div class="stat-strip stat-strip-grid">
-        <div class="stat-item">
-          <span class="stat-number">1 · Dirigenti</span>
-          <span class="stat-label">strategia e regole</span>
+    <div class="audience-card">
+      <h3>A chi è destinato</h3>
+      <div class="audience-grid">
+        <div class="audience-item">
+          <div class="problem-icon"><i class="fas fa-user-tie"></i></div>
+          <strong>Direzione e responsabili di reparto</strong>
         </div>
-        <div class="stat-item">
-          <span class="stat-number">2 · Base</span>
-          <span class="stat-label">strumenti ogni giorno</span>
+        <div class="audience-item">
+          <div class="problem-icon"><i class="fas fa-users"></i></div>
+          <strong>Manager e operator</strong>
         </div>
-        <div class="stat-item">
-          <span class="stat-number">2A · Advanced</span>
-          <span class="stat-label">agenti al lavoro</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">Pilota</span>
-          <span class="stat-label">presentato alla direzione</span>
+        <div class="audience-item">
+          <div class="problem-icon"><i class="fas fa-building"></i></div>
+          <strong>PMI di ogni settore</strong>
         </div>
       </div>
-      <p class="plans-note" style="color: var(--color-secondary); font-style: italic;">Prima i dirigenti, poi i team: strategia, organizzazione, agenti, formazione. È il metodo del <a href="/manuale-ceo-ai.html">Manuale del CEO AI</a>.</p>
+    </div>
+
+    <div class="conclusion-grid" style="grid-template-columns: 1fr; max-width: 820px; margin: 2.5rem auto 0;">
+      <div class="ready-box">
+        <div class="alert-icon"><i class="fas fa-scale-balanced"></i></div>
+        <div class="alert-content">
+          <strong>Perché ora</strong>
+          <p>Dal 2 febbraio 2025 l'AI Act (art. 4) chiede alle aziende misure di alfabetizzazione AI per chi usa questi strumenti. I corsi formano per ruolo, in sede cliente, e lasciano registri e attestati come evidenza di conformità.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- [3b] SINTESI SCHEMATICA DEI CONTENUTI — GTA-EVCORSI-AZIENDALE-002
-       pt.9: riassunto grafico/tabellare dei moduli dei 2 percorsi (non
-       prosa), contenuto dal PDF sorgente adattato in chip compatti -->
-  <section id="sintesi-moduli" class="light-divider">
-    <h2>Sintesi dei contenuti, modulo per modulo</h2>
-    <p class="section-intro">Cosa si fa in ogni mezza giornata, in sintesi grafica — il programma minuto per minuto è nella scheda PDF.</p>
+  <!-- [3] IL PROGRAMMA — GTA-EVCORSI-AZIENDALE-003: stesso template a card
+       della scheda e-commerce (.method-phases-grid--equal), ma le 3 colonne
+       rappresentano i 3 percorsi reali (niente giorni della settimana: corso
+       in sede cliente, nessuna data pubblica fissa). Sotto, stessa sezione,
+       sub-sessione "Contenuto delle lezioni" sui moduli di Base e Advanced —
+       il percorso Dirigenti (2 mezze giornate) resta sintetizzato nella sua
+       card qui sopra, senza una terza colonna propria nella griglia lezioni
+       (scelta documentata in VERIFICA_TASK). -->
+  <section id="programma" class="section-bg-soft">
+    <h2>Il programma</h2>
 
-    <h3 class="compare-table-title">1 · AI Strategica Dirigenti — 2 mezze giornate</h3>
-    <div class="problem-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-      <div class="problem-card">
-        <div class="problem-icon"><i class="fas fa-compass"></i></div>
-        <h3>Giornata 1 · Strategia, organizzazione, dati</h3>
-        <div class="card-meta">
-          <span class="meta-tag">Cavalcare o inseguire</span>
-          <span class="meta-tag">AI strategica vs tecnica</span>
-          <span class="meta-tag">AI reparto per reparto</span>
-          <span class="meta-tag">Dati riservati</span>
-          <span class="meta-tag">GDPR e AI Act</span>
-          <span class="meta-tag">Workshop: piano di reparto</span>
+    <div class="method-phases-grid method-phases-grid--equal">
+      <div class="method-phase-col">
+        <div class="org-director-card">
+          <h3>1 · AI Strategica Dirigenti</h3>
+          <p>Per CEO, direzione e responsabili di reparto: ognuno lavora sul proprio reparto.</p>
+          <div class="course-facts">
+            <div class="course-fact"><strong><i class="fas fa-location-dot"></i>Dove</strong><span>In sede cliente</span></div>
+            <div class="course-fact"><strong><i class="fas fa-bullseye"></i>Obiettivi</strong><span>AI strategica vs tecnica, impatto reparto per reparto, dati riservati, GDPR e AI Act.</span></div>
+            <div class="course-fact"><strong><i class="fas fa-clock"></i>Quando</strong><span>2 mezze giornate</span></div>
+          </div>
         </div>
       </div>
-      <div class="problem-card">
-        <div class="problem-icon"><i class="fas fa-user-tie"></i></div>
-        <h3>Giornata 2 · L'AI nelle mani dei dirigenti</h3>
-        <div class="card-meta">
-          <span class="meta-tag">Assistente e ricerca</span>
-          <span class="meta-tag">Posta e riunioni</span>
-          <span class="meta-tag">Documenti</span>
-          <span class="meta-tag">Conoscenza</span>
-          <span class="meta-tag">Modalità agente</span>
-          <span class="meta-tag">Piano personale</span>
+      <div class="method-phase-col">
+        <div class="org-director-card">
+          <h3>2 · AI al lavoro — Base</h3>
+          <p>Non strategia: uno strumento che aiuta ogni giorno, su documenti reali.</p>
+          <div class="course-facts">
+            <div class="course-fact"><strong><i class="fas fa-location-dot"></i>Dove</strong><span>In sede cliente</span></div>
+            <div class="course-fact"><strong><i class="fas fa-bullseye"></i>Obiettivi</strong><span>Le regole d'uso e la checklist privacy, cosa delegare in comunicazione, verificare i documenti, primo compito in modalità agente.</span></div>
+            <div class="course-fact"><strong><i class="fas fa-clock"></i>Quando</strong><span>4 mezze giornate</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="method-phase-col">
+        <div class="org-director-card">
+          <h3>2A · AI al lavoro — Advanced</h3>
+          <p>Per chi ha completato la Base: dal primo agente al pilota per la direzione.</p>
+          <div class="course-facts">
+            <div class="course-fact"><strong><i class="fas fa-location-dot"></i>Dove</strong><span>In sede cliente</span></div>
+            <div class="course-fact"><strong><i class="fas fa-bullseye"></i>Obiettivi</strong><span>Primo agente o mini-app, agente con escalation o Workforce coordinato, pilota con Condizioni di Soddisfazione.</span></div>
+            <div class="course-fact"><strong><i class="fas fa-clock"></i>Quando</strong><span>3 mezze giornate</span></div>
+          </div>
         </div>
       </div>
     </div>
 
-    <h3 class="compare-table-title">2 / 2A · AI al lavoro — Base + Advanced</h3>
-    <div class="problem-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-      <div class="problem-card">
-        <div class="problem-icon"><i class="fas fa-layer-group"></i></div>
-        <h3>Base · 4 mezze giornate</h3>
-        <div class="card-meta">
-          <span class="meta-tag">1 · Le regole</span>
-          <span class="meta-tag">2 · Comunicazione</span>
-          <span class="meta-tag">3 · Documenti</span>
-          <span class="meta-tag">4 · Agente</span>
+    <h3 class="compare-table-title" style="margin-top: 3rem;">Contenuto delle lezioni</h3>
+    <div class="org-directors-grid" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="org-director-col">
+        <div class="org-director-card">
+          <div class="problem-icon"><i class="fas fa-layer-group"></i></div>
+          <h3>2 · AI al lavoro — Base</h3>
+          <p>La scala dell'AI, dal prompt alla modalità agente: 4 mezze giornate di esercitazioni sui documenti reali.</p>
+        </div>
+        <div class="org-connector org-connector-sm"><i class="fas fa-arrow-down"></i></div>
+        <div class="org-resource-list">
+          <div class="org-resource"><strong>1 · Le regole</strong><span>I 4 livelli dell'AI, il prompt, la checklist privacy. Esercizio: due assistenti del proprio ruolo.</span></div>
+          <div class="org-resource"><strong>2 · Comunicazione</strong><span>Cosa delegare in posta e riunioni. Esercizio: 20 thread riassunti, verbale con azioni.</span></div>
+          <div class="org-resource"><strong>3 · Documenti</strong><span>Verificare numeri, nomi, fonti. Esercizio: da un report a un'analisi, poi una presentazione.</span></div>
+          <div class="org-resource"><strong>4 · Agente</strong><span>Quando l'AI lavora da sola e dove si ferma. Esercizio: base di conoscenza più un compito in modalità agente.</span></div>
         </div>
       </div>
-      <div class="problem-card">
-        <div class="problem-icon"><i class="fas fa-robot"></i></div>
-        <h3>Advanced · 3 mezze giornate</h3>
-        <div class="card-meta">
-          <span class="meta-tag">A1 · Primo agente o mini-app</span>
-          <span class="meta-tag">A2 · Agente con escalation / Workforce</span>
-          <span class="meta-tag">A3 · Pilota con Condizioni di Soddisfazione</span>
+
+      <div class="org-director-col">
+        <div class="org-director-card">
+          <div class="problem-icon"><i class="fas fa-robot"></i></div>
+          <h3>2A · AI al lavoro — Advanced</h3>
+          <p>Dal primo agente al Workforce coordinato, fino al pilota presentato alla direzione.</p>
+        </div>
+        <div class="org-connector org-connector-sm"><i class="fas fa-arrow-down"></i></div>
+        <div class="org-resource-list">
+          <div class="org-resource"><strong>A1</strong><span>Primo agente o mini-app: Google AI Studio su Sheets/Drive, oppure Relevance AI da descrizione.</span></div>
+          <div class="org-resource"><strong>A2</strong><span>Agente con escalation o Workforce: Relevance AI con 2–3 agenti coordinati.</span></div>
+          <div class="org-resource"><strong>A3</strong><span>Pilota con Condizioni di Soddisfazione, punto di stop e metriche (ore liberate, errori, costo agente), presentato alla direzione.</span></div>
         </div>
       </div>
     </div>
@@ -385,71 +376,6 @@
     </div>
   </section>
 
-  <!-- [5b] CONFORMITÀ GDPR E AI ACT — GTA-EVCORSI-AZIENDALE-002 pt.10:
-       sezione evidente (banda a sfondo grigio, non in fondo pagina, non
-       un accenno), contenuto reale dalla scheda PDF: tabella "cosa
-       sapere/cosa fare" (pag. 2) + checklist privacy 10 punti (pag. 3) -->
-  <section id="compliance" class="section-bg-soft">
-    <span class="section-badge-row"><span class="section-badge">Conformità normativa</span></span>
-    <h2>GDPR e AI Act: cosa sapere, cosa fare</h2>
-    <p class="section-intro">Ogni corso lascia registri e attestati come evidenza di conformità. Questo è ciò che dirigenti e team imparano a gestire fin dalla prima giornata.</p>
-
-    <div class="compare-table-wrap">
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th scope="col">Cosa sapere</th>
-            <th scope="col">Cosa fare</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Chi usa l'AI è <strong>deployer</strong>, anche con strumenti di terzi</td>
-            <td>Inventario degli strumenti AI in uso</td>
-          </tr>
-          <tr>
-            <td><strong>Art. 4</strong> · alfabetizzazione AI, dal 2 febbraio 2025</td>
-            <td>Formare per ruolo, conservare attestati</td>
-          </tr>
-          <tr>
-            <td><strong>Art. 50</strong> · dal 2 agosto 2026 chatbot e contenuti AI vanno dichiarati</td>
-            <td>Dichiarare i chatbot, etichettare i contenuti</td>
-          </tr>
-          <tr>
-            <td>Alto rischio (selezione, credito) · dal 2 dicembre 2027</td>
-            <td>Verificare ogni uso prima di avviarlo</td>
-          </tr>
-          <tr>
-            <td>GDPR · base giuridica, informativa, DPIA se serve</td>
-            <td>Accordo sul trattamento con ogni fornitore</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3 class="compare-table-title">Checklist privacy e dati — firmata da ogni partecipante</h3>
-    <div class="problem-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
-      <div class="problem-card">
-        <div class="card-meta" style="flex-direction: column; align-items: flex-start; gap: 0.6rem;">
-          <span class="meta-tag"><i class="fas fa-check"></i>01 · Solo account aziendale, mai personale</span>
-          <span class="meta-tag"><i class="fas fa-check"></i>02 · Prima di incollare: pubblico, interno, riservato o personale?</span>
-          <span class="meta-tag"><i class="fas fa-check"></i>03 · Dati personali solo in strumenti autorizzati, anonimizzati se possibile</span>
-          <span class="meta-tag"><i class="fas fa-check"></i>04 · Mai password, IBAN, carte o documenti d'identità</span>
-          <span class="meta-tag"><i class="fas fa-check"></i>05 · Prezzi, contratti e piani solo in strumenti approvati</span>
-        </div>
-      </div>
-      <div class="problem-card">
-        <div class="card-meta" style="flex-direction: column; align-items: flex-start; gap: 0.6rem;">
-          <span class="meta-tag"><i class="fas fa-check"></i>06 · Controllo sempre numeri, nomi, date, citazioni</span>
-          <span class="meta-tag"><i class="fas fa-check"></i>07 · Contenuto AI a un cliente: lo dichiaro</span>
-          <span class="meta-tag"><i class="fas fa-check"></i>08 · Condivido solo con chi deve vedere quei dati</span>
-          <span class="meta-tag"><i class="fas fa-check"></i>09 · Attivo solo i collegamenti che servono</span>
-          <span class="meta-tag"><i class="fas fa-check"></i>10 · Nel dubbio chiedo; un dato uscito per errore lo segnalo subito</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- [6] FORMAZIONE FINANZIATA — card compatta .funding-card (stesso
        componente di eventi-corsi.html) in testa, dettaglio Conto
        Formazione/Avvisi a bando mantenuto sotto ma abbreviato (info
@@ -472,7 +398,7 @@
       <div class="problem-card">
         <div class="problem-icon"><i class="fas fa-piggy-bank"></i></div>
         <h3>Conto Formazione <span style="font-weight: 400; font-size: 0.75em; color: var(--color-primary);">(consigliato)</span></h3>
-        <p>I contributi già versati dall'azienda (0,30% INPS). Nessun minimo, fornitore libero, autorizzazione rapida.</p>
+        <p>I contributi già versati dall'azienda all'INPS. Nessun minimo, fornitore libero, autorizzazione rapida.</p>
       </div>
       <div class="problem-card">
         <div class="problem-icon"><i class="fas fa-handshake"></i></div>
@@ -543,6 +469,20 @@
     </div>
   </section>
 
+  <!-- [9a] EGUIDE RETAIL E-COMMERCE AI TEAM — GTA-EVCORSI-AZIENDALE-003,
+       stesso componente di retail-ecommerce-ai-team.html#ebook-guide-ecommerce
+       e della scheda e-commerce, sotto il form e prima della FAQ -->
+  <section id="ebook-guide-ecommerce" class="ebook-mini-section">
+    <a href="/guida-retail-ecommerce-ai-team.html" id="cta-ebook-ecommerce" class="ebook-mini-card">
+      <img src="assets/images/eGuide-RetailEcommerceAiTeam-1200x1200.png" alt="Copertina guida Retail E-Commerce AI TEAM di GTaviani Consulting" class="ebook-mini-cover">
+      <span class="ebook-mini-body">
+        <span class="ebook-mini-title">Retail E-Commerce AI TEAM</span>
+        <span class="ebook-mini-text">Guida gratuita per l'e-commerce manager: come costruire l'e-commerce del futuro, AI first e performante.</span>
+        <span class="ebook-mini-cta">Scarica gratis <i class="fa-solid fa-arrow-right"></i></span>
+      </span>
+    </a>
+  </section>
+
   <!-- [10] FAQ GEO — GTA-EVCORSI-AZIENDALE-002, stesso pattern di index.html -->
   <section id="faq" class="light-divider">
     <h2>FAQ</h2>
@@ -556,7 +496,7 @@
         </details>
         <details class="faq-item">
           <summary>Come funziona il Conto Formazione per finanziare il corso?</summary>
-          <p>Usa i contributi che l'azienda già versa all'INPS (0,30%) tramite il fondo interprofessionale a cui aderisce. Nessun importo minimo, fornitore a scelta libera, autorizzazione di norma entro circa un mese.</p>
+          <p>Usa i contributi che l'azienda già versa all'INPS tramite il fondo interprofessionale a cui aderisce. Nessun importo minimo, fornitore a scelta libera, autorizzazione di norma entro circa un mese.</p>
         </details>
         <details class="faq-item">
           <summary>La formazione AI in azienda è obbligatoria per l'AI Act?</summary>

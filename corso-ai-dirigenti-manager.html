@@ -32,7 +32,6 @@
   <link rel="apple-touch-icon" href="assets/images/gtaviani-marca.png">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="https://tally.so/widgets/embed.js"></script>
 
   <script type="application/ld+json">
   {
@@ -173,29 +172,53 @@
     <div class="problem-icon hero-icon"><i class="fas fa-chalkboard-user"></i></div>
   </section>
 
-  <!-- [2] IL CORSO IN NUMERI -->
-  <section id="numeri" class="light-divider">
-    <h2>Il corso in numeri</h2>
-    <div class="stat-strip-grid">
-      <div class="stat-item">
-        <span class="stat-number">5 giorni</span>
-        <span class="stat-label">da lunedì 10 a venerdì 14 maggio 2027, a Milano</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">31h</span>
-        <span class="stat-label">di aula: strategia, strumenti ogni giorno, agenti AI</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">Max 10</span>
-        <span class="stat-label">partecipanti in aula, per lavorare davvero sugli esercizi</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">12 mesi</span>
-        <span class="stat-label">di piattaforma online, con pre-formazione dall'11 gennaio 2027</span>
+  <!-- [2] IL CORSO — template finale GTA-EVCORSI-ECOMMERCE-002 (brief §13):
+       stat-strip (stats riusate da "Il corso in numeri") → .audience-card "A
+       chi è destinato" (nuova) → .ready-box "Perché ora" (riusato), in
+       quest'ordine. GTA-EVCORSI-DIRIGENTI-003. -->
+  <section id="corso">
+    <h2>Il corso</h2>
+
+    <div class="stat-callout">
+      <div class="stat-strip stat-strip-grid">
+        <div class="stat-item">
+          <span class="stat-number">5 giorni</span>
+          <span class="stat-label">da lunedì 10 a venerdì 14 maggio 2027, a Milano</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">31h</span>
+          <span class="stat-label">di aula: strategia, strumenti ogni giorno, agenti AI</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">Max 10</span>
+          <span class="stat-label">partecipanti in aula, per lavorare davvero sugli esercizi</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">12 mesi</span>
+          <span class="stat-label">di piattaforma online, con pre-formazione dall'11 gennaio 2027</span>
+        </div>
       </div>
     </div>
 
-    <div class="conclusion-grid" style="grid-template-columns: 1fr; max-width: 780px;">
+    <div class="audience-card">
+      <h3>A chi è destinato</h3>
+      <div class="audience-grid">
+        <div class="audience-item">
+          <div class="problem-icon"><i class="fas fa-user-tie"></i></div>
+          <strong>Direzione e direttori di reparto</strong>
+        </div>
+        <div class="audience-item">
+          <div class="problem-icon"><i class="fas fa-users-gear"></i></div>
+          <strong>Manager e team operativi</strong>
+        </div>
+        <div class="audience-item">
+          <div class="problem-icon"><i class="fas fa-briefcase"></i></div>
+          <strong>Professionisti indipendenti</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="conclusion-grid" style="grid-template-columns: 1fr; max-width: 820px; margin: 2.5rem auto 0;">
       <div class="ready-box">
         <div class="alert-icon"><i class="fas fa-circle-info"></i></div>
         <div class="alert-content">
@@ -206,93 +229,156 @@
     </div>
   </section>
 
-  <!-- [3] LA SETTIMANA — resa schematica (tag invece di prosa) per brief §12.9,
-       GTA-EVCORSI-DIRIGENTI-002 round 2: riuso .course-facts/.meta-tag già
-       stabili sul sito (eventi-corsi.html), nessun CSS nuovo -->
-  <section id="settimana" class="light-divider">
-    <h2>La settimana</h2>
+  <!-- [3] IL PROGRAMMA — template finale GTA-EVCORSI-ECOMMERCE-002 (brief §13):
+       griglia a 5 colonne (Lun–Ven, un giorno reale per colonna, non 4 come
+       sul corso e-commerce) + sub-sessione "Contenuto delle lezioni" nello
+       stesso <section>. Contenuto GDPR/AI Act NON più sezione a parte
+       (rimossa #obiettivi-conformita): resta solo nell'"Obiettivi" della card
+       di lunedì. GTA-EVCORSI-DIRIGENTI-003. -->
+  <section id="programma" class="section-bg-soft">
+    <h2>Il programma</h2>
     <p class="section-intro">Lunedì e martedì 10:00–17:00 · mercoledì e giovedì 9:00–17:00 · venerdì 9:00–15:00. Pausa pranzo 13:00–14:00.</p>
-    <div class="course-facts" style="max-width: 780px; margin: 0 auto;">
-      <div class="course-fact course-fact--stacked"><strong><i class="fas fa-calendar-day"></i>Lun · Strategia</strong><span><span class="meta-tag">Solo dirigenti</span><span class="meta-tag">Strategica vs tecnica</span><span class="meta-tag">Dati riservati</span><span class="meta-tag">GDPR &amp; AI Act</span></span></div>
-      <div class="course-fact course-fact--stacked"><strong><i class="fas fa-calendar-day"></i>Mar · Regole</strong><span><span class="meta-tag">Dirigenti + manager</span><span class="meta-tag">4 livelli: prompt → agente</span><span class="meta-tag">Assistenti di ruolo</span><span class="meta-tag">Posta e riunioni</span></span></div>
-      <div class="course-fact course-fact--stacked"><strong><i class="fas fa-calendar-day"></i>Mer · Documenti</strong><span><span class="meta-tag">Word, Excel, slide</span><span class="meta-tag">Report → analisi → slide</span><span class="meta-tag">Verifica numeri e fonti</span></span></div>
-      <div class="course-fact course-fact--stacked"><strong><i class="fas fa-calendar-day"></i>Gio · Agente</strong><span><span class="meta-tag">Base di conoscenza</span><span class="meta-tag">Plugin e skills</span><span class="meta-tag">1 compito in modalità agente</span></span></div>
-      <div class="course-fact course-fact--stacked"><strong><i class="fas fa-calendar-day"></i>Ven · Advanced</strong><span><span class="meta-tag">Riservato mar–gio</span><span class="meta-tag">1 agente → Workforce 2–3</span><span class="meta-tag">Pilota con metriche</span></span></div>
+
+    <div class="method-phases-grid method-phases-grid--equal method-phases-grid--cols5">
+      <div class="method-phase-col">
+        <div class="org-director-card">
+          <h3>Lunedì · Strategia</h3>
+          <p>Solo per direzione e direttori di reparto: ognuno lavora sul proprio reparto.</p>
+          <div class="course-facts">
+            <div class="course-fact"><strong><i class="fas fa-location-dot"></i>Dove</strong><span>Aula, Milano</span></div>
+            <div class="course-fact"><strong><i class="fas fa-bullseye"></i>Obiettivi</strong><span>Distinguere AI strategica da tecnica, dati riservati, piano a gradini per il reparto, GDPR e AI Act.</span></div>
+            <div class="course-fact"><strong><i class="fas fa-clock"></i>Quando</strong><span>10:00–17:00</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="method-phase-col">
+        <div class="org-director-card">
+          <h3>Martedì · Regole</h3>
+          <p>Dirigenti e manager insieme: i 4 livelli dal prompt alla modalità agente, poi posta e riunioni.</p>
+          <div class="course-facts">
+            <div class="course-fact"><strong><i class="fas fa-location-dot"></i>Dove</strong><span>Aula, Milano</span></div>
+            <div class="course-fact"><strong><i class="fas fa-bullseye"></i>Obiettivi</strong><span>4 livelli dal prompt all'agente, 2 assistenti del proprio ruolo, posta e riunioni con azioni.</span></div>
+            <div class="course-fact"><strong><i class="fas fa-clock"></i>Quando</strong><span>10:00–17:00</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="method-phase-col">
+        <div class="org-director-card">
+          <h3>Mercoledì · Documenti</h3>
+          <p>Word, Excel e PowerPoint creati con Claude: dal dato grezzo alla presentazione pronta.</p>
+          <div class="course-facts">
+            <div class="course-fact"><strong><i class="fas fa-location-dot"></i>Dove</strong><span>Aula, Milano</span></div>
+            <div class="course-fact"><strong><i class="fas fa-bullseye"></i>Obiettivi</strong><span>Documenti aziendali con Claude, verifica numeri e fonti, da report a presentazione.</span></div>
+            <div class="course-fact"><strong><i class="fas fa-clock"></i>Quando</strong><span>9:00–17:00</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="method-phase-col">
+        <div class="org-director-card">
+          <h3>Giovedì · Agente</h3>
+          <p>Base di conoscenza, plugin e skills: il primo compito in modalità agente.</p>
+          <div class="course-facts">
+            <div class="course-fact"><strong><i class="fas fa-location-dot"></i>Dove</strong><span>Aula, Milano</span></div>
+            <div class="course-fact"><strong><i class="fas fa-bullseye"></i>Obiettivi</strong><span>Base di conoscenza, plugin e skills, 1 compito in modalità agente funzionante.</span></div>
+            <div class="course-fact"><strong><i class="fas fa-clock"></i>Quando</strong><span>9:00–17:00</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="method-phase-col">
+        <div class="org-director-card">
+          <h3>Venerdì · Advanced</h3>
+          <p>Riservato a chi segue martedì–giovedì: da un agente a un primo pilota con metriche.</p>
+          <div class="course-facts">
+            <div class="course-fact"><strong><i class="fas fa-location-dot"></i>Dove</strong><span>Aula, Milano</span></div>
+            <div class="course-fact"><strong><i class="fas fa-bullseye"></i>Obiettivi</strong><span>Da 1 agente a un Workforce coordinato, pilota con Condizioni di Soddisfazione e metriche.</span></div>
+            <div class="course-fact"><strong><i class="fas fa-clock"></i>Quando</strong><span>9:00–15:00</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-sessione "Contenuto delle lezioni" dentro Il programma (brief §13,
+         stesso pattern del corso e-commerce: non una sezione a parte) -->
+    <h3 class="compare-table-title" style="margin-top: 3rem;">Contenuto delle lezioni</h3>
+    <div class="org-directors-grid" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="org-director-col">
+        <div class="org-director-card">
+          <div class="problem-icon"><i class="fas fa-compass"></i></div>
+          <h3>Lunedì · AI Strategica per Dirigenti</h3>
+          <p>Mattina: strategia e organizzazione. Pomeriggio: dati riservati, regole e piano d'azione.</p>
+        </div>
+        <div class="org-connector org-connector-sm"><i class="fas fa-arrow-down"></i></div>
+        <div class="org-resource-list">
+          <div class="org-resource"><strong>Cavalcare o inseguire</strong><span>Dove si colloca l'azienda rispetto all'AI: il primo bivio strategico della giornata.</span></div>
+          <div class="org-resource"><strong>AI strategica e tecnica</strong><span>Chatbot, agente, AI Team: quando coinvolgere l'IT e quando decide la direzione.</span></div>
+          <div class="org-resource"><strong>L'AI reparto per reparto</strong><span>Il piano a gradini dal primo agente all'organizzazione mista, con dati riservati e GDPR/AI Act.</span></div>
+        </div>
+      </div>
+
+      <div class="org-director-col">
+        <div class="org-director-card">
+          <div class="problem-icon"><i class="fas fa-list-check"></i></div>
+          <h3>Martedì · Le Regole e la Comunicazione</h3>
+          <p>Mattina: i 4 livelli dal prompt alla modalità agente. Pomeriggio: posta, agenda e riunioni.</p>
+        </div>
+        <div class="org-connector org-connector-sm"><i class="fas fa-arrow-down"></i></div>
+        <div class="org-resource-list">
+          <div class="org-resource"><strong>I 4 livelli dell'AI</strong><span>Prompt, assistente, AI sui documenti, modalità agente: esercizio su 2 assistenti del proprio ruolo.</span></div>
+          <div class="org-resource"><strong>Posta e riunioni</strong><span>Integrazioni su posta e calendario: esercizio su 20 thread riassunti e un verbale con azioni.</span></div>
+          <div class="org-resource"><strong>Checklist privacy</strong><span>Cosa si lavora in aula e cosa resta fuori, prima di iniziare gli esercizi.</span></div>
+        </div>
+      </div>
+
+      <div class="org-director-col">
+        <div class="org-director-card">
+          <div class="problem-icon"><i class="fas fa-file-lines"></i></div>
+          <h3>Mercoledì · Documenti</h3>
+          <p>Word, Excel e PowerPoint creati e verificati con Claude, dal dato grezzo alla presentazione.</p>
+        </div>
+        <div class="org-connector org-connector-sm"><i class="fas fa-arrow-down"></i></div>
+        <div class="org-resource-list">
+          <div class="org-resource"><strong>Documenti con Claude</strong><span>Costruire e rivedere documenti direttamente con l'AI, mantenendo il controllo editoriale.</span></div>
+          <div class="org-resource"><strong>Verifica numeri e fonti</strong><span>Il metodo per controllare che l'AI non abbia inventato numeri o citazioni.</span></div>
+          <div class="org-resource"><strong>Report → analisi → presentazione</strong><span>Esercizio sul flusso completo, da un report reale a una presentazione pronta.</span></div>
+        </div>
+      </div>
+
+      <div class="org-director-col">
+        <div class="org-director-card">
+          <div class="problem-icon"><i class="fas fa-robot"></i></div>
+          <h3>Giovedì · Agente</h3>
+          <p>Base di conoscenza, plugin e skills: il primo compito in modalità agente, in più passi.</p>
+        </div>
+        <div class="org-connector org-connector-sm"><i class="fas fa-arrow-down"></i></div>
+        <div class="org-resource-list">
+          <div class="org-resource"><strong>Base di conoscenza</strong><span>Collegare documenti e dati perché l'agente risponda con informazioni corrette.</span></div>
+          <div class="org-resource"><strong>Plugin e skills</strong><span>Estendere le capacità dell'agente con strumenti esterni e competenze specifiche.</span></div>
+          <div class="org-resource"><strong>1 compito in modalità agente</strong><span>Dalla configurazione all'esecuzione autonoma, su un caso reale.</span></div>
+        </div>
+      </div>
+
+      <div class="org-director-col">
+        <div class="org-director-card">
+          <div class="problem-icon"><i class="fas fa-rocket"></i></div>
+          <h3>Venerdì · Advanced</h3>
+          <p>Riservato a chi segue martedì–giovedì: da Relevance AI a un pilota pronto per l'azienda.</p>
+        </div>
+        <div class="org-connector org-connector-sm"><i class="fas fa-arrow-down"></i></div>
+        <div class="org-resource-list">
+          <div class="org-resource"><strong>A1 · Primo agente</strong><span>Da descrizione, tool e base di conoscenza a un agente su un processo d'esempio, con trigger da posta e file.</span></div>
+          <div class="org-resource"><strong>A2 · Workforce</strong><span>2–3 agenti coordinati, passaggi di consegna, approvazioni sopra soglia, costi sotto controllo.</span></div>
+          <div class="org-resource"><strong>A3 · Pilota</strong><span>Condizioni di Soddisfazione, punto di stop e metriche (ore liberate, errori, costo agente) da portare in azienda.</span></div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- [3bis] OBIETTIVI + CONFORMITÀ GDPR/AI ACT — sezione dedicata e visibile
-       (brief §12.10, GTA-EVCORSI-DIRIGENTI-002 round 2), subito dopo "La
-       settimana" e prima dei pacchetti (non in fondo pagina). Contenuto reale
-       dal PDF sorgente: box "Obiettivi" di lunedì, esercizi/risultati dei
-       moduli mar–ven, tabella "GDPR e AI Act · cosa sapere, cosa fare". -->
-  <section id="obiettivi-conformita" class="light-divider">
-    <h2>Obiettivi per giornata &amp; conformità GDPR/AI Act</h2>
-    <p class="section-intro">Cosa porti a casa ogni giorno — e come il corso tiene la tua azienda in regola.</p>
-    <div class="problem-grid">
-      <div class="problem-card">
-        <div class="problem-icon"><i class="fas fa-compass"></i></div>
-        <h3>Lunedì · Obiettivi</h3>
-        <p>Distinguere AI strategica (decide il dirigente) da AI tecnica (realizza l'IT), vedere l'impatto sul proprio reparto, proteggere i dati riservati, essere in regola con GDPR e AI Act.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon"><i class="fas fa-user-check"></i></div>
-        <h3>Martedì · Risultato</h3>
-        <p>2 assistenti del proprio ruolo pronti all'uso, con i 4 livelli dal prompt alla modalità agente già chiari.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon"><i class="fas fa-file-lines"></i></div>
-        <h3>Mercoledì · Risultato</h3>
-        <p>Un report trasformato in analisi e presentazione con Claude, numeri e fonti verificati.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon"><i class="fas fa-robot"></i></div>
-        <h3>Giovedì · Risultato</h3>
-        <p>Un compito funzionante in modalità agente, con base di conoscenza e plugin collegati.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon"><i class="fas fa-rocket"></i></div>
-        <h3>Venerdì Advanced · Risultato</h3>
-        <p>Un primo agente, poi un Workforce di 2–3 agenti coordinati, poi un pilota con metriche (ore liberate, errori, costo agente) da presentare in azienda.</p>
-      </div>
-    </div>
-
-    <h3 style="text-align: center; margin: 2.5rem 0 1rem;">GDPR e AI Act · cosa sapere, cosa fare</h3>
-    <div class="compare-table-wrap">
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th scope="col">Cosa sapere</th>
-            <th scope="col">Cosa fare</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="text-align: left;">Chi usa l'AI è <strong>deployer</strong>, anche con strumenti di terzi</td>
-            <td style="text-align: left;">Inventario degli strumenti AI in uso</td>
-          </tr>
-          <tr>
-            <td style="text-align: left;"><strong>Art. 4</strong> · alfabetizzazione AI, dal 2 febbraio 2025</td>
-            <td style="text-align: left;">Formare per ruolo, conservare attestati</td>
-          </tr>
-          <tr>
-            <td style="text-align: left;"><strong>Art. 50</strong> · dal 2 agosto 2026 chatbot e contenuti AI vanno dichiarati</td>
-            <td style="text-align: left;">Dichiarare i chatbot, etichettare i contenuti</td>
-          </tr>
-          <tr>
-            <td style="text-align: left;"><strong>Alto rischio</strong> (selezione, credito) · dal 2 dicembre 2027</td>
-            <td style="text-align: left;">Verificare ogni uso prima di avviarlo</td>
-          </tr>
-          <tr>
-            <td style="text-align: left;"><strong>GDPR</strong> · base giuridica, informativa, DPIA se serve</td>
-            <td style="text-align: left;">Accordo sul trattamento con ogni fornitore</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- [4] PACCHETTI — NESSUN PREZZO (brief §5, CoS GTA-EVCORSI-DIRIGENTI-001) -->
+  <!-- [4] PACCHETTI — NESSUN PREZZO (brief §5, CoS GTA-EVCORSI-DIRIGENTI-001).
+       Non presente nel template canonico e-commerce (quel corso non ha
+       pacchetti differenziati): posizionata qui, subito DOPO #programma,
+       scelta documentata in VERIFICA_TASK (alternativa valutata: dentro
+       #incluso, scartata perché la tabella confronta percorsi diversi, non
+       contenuti inclusi uguali per tutti). -->
   <section id="pacchetti" class="light-divider">
     <h2>Scegli il tuo percorso</h2>
     <p class="section-intro">Il programma è lo stesso per tutti: cambia solo quante giornate frequenti. Il listino completo arriva via PDF dopo la richiesta informazioni, nessun prezzo pubblicato online.</p>
@@ -340,8 +426,8 @@
     <p class="plans-note" style="color: var(--color-secondary); font-style: italic; text-align: center;">Il venerdì Advanced è riservato a chi frequenta martedì–giovedì. Aperto anche a professionisti indipendenti.</p>
   </section>
 
-  <!-- [5] INCLUSO -->
-  <section id="incluso" class="light-divider">
+  <!-- [5] INCLUSO — tolto light-divider (template finale, brief §13) -->
+  <section id="incluso">
     <h2>Incluso per ogni partecipante</h2>
     <div class="problem-grid">
       <div class="problem-card">
@@ -367,33 +453,9 @@
     </div>
   </section>
 
-  <!-- [6] REQUISITI PER PARTECIPARE -->
-  <section id="requisiti" class="light-divider">
-    <h2>Requisiti per partecipare</h2>
-    <div class="conclusion-grid">
-      <div>
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem;">Da portare in aula</h3>
-        <div class="org-resource-list">
-          <div class="org-resource"><span>Laptop (PC o Mac) con Claude Desktop installato</span></div>
-          <div class="org-resource"><span>Account Claude attivo, minimo piano Pro</span></div>
-          <div class="org-resource"><span>Account Relevance AI gratuito per il venerdì Advanced</span></div>
-        </div>
-      </div>
-      <div>
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem;">Privacy in aula</h3>
-        <div class="org-resource-list">
-          <div class="org-resource"><span>Esercitazioni su casi e dati di prova generici</span></div>
-          <div class="org-resource"><span>Nessun dato della propria azienda</span></div>
-          <div class="org-resource"><span>Checklist privacy firmata da ogni partecipante</span></div>
-        </div>
-      </div>
-    </div>
-    <p class="plans-note" style="color: var(--color-secondary); font-style: italic; text-align: center; margin-top: 1.5rem;">Si esce dall'aula con: guida stampata con esercizi, libreria di prompt, assistenti del proprio ruolo, 1 compito in modalità agente; con l'Advanced, 1 workforce e un pilota pronto. Diploma di frequenza.</p>
-  </section>
-
-  <!-- [7] FORMAZIONE FINANZIATA — stesso componente .funding-card di
-       eventi-corsi.html #fondi, GTA-EVCORSI-DIRIGENTI-002 -->
-  <section id="fondi" class="light-divider">
+  <!-- [6] FORMAZIONE FINANZIATA — tolto light-divider (template finale, brief
+       §13), stesso componente .funding-card di eventi-corsi.html #fondi -->
+  <section id="fondi">
     <div class="funding-card">
       <div class="funding-icon"><i class="fas fa-hand-holding-dollar"></i></div>
       <h2>Formazione finanziabile</h2>
@@ -409,13 +471,14 @@
     </div>
   </section>
 
-  <!-- [8] PRENOTA ENTRO FINE 2026 — card SENZA prezzi (stesso componente
-       .funding-card, variante blu .funding-card--booking già introdotta da
-       GTA-EVCORSI-AZIENDALE-002 per non confondersi con la card Fondi).
-       Sostituisce la vecchia sezione "Il docente", rimossa per intero su
-       richiesta esplicita, GTA-EVCORSI-DIRIGENTI-002 -->
-  <section id="prenota" class="light-divider">
-    <div class="funding-card funding-card--booking">
+  <!-- [7] PRENOTA ENTRO FINE 2026 — card SENZA prezzi, id e modificatore
+       allineati al template canonico (#prenota-2026 / .funding-card--deadline,
+       brief §13), al posto di #prenota/.funding-card--booking introdotta da
+       GTA-EVCORSI-AZIENDALE-002: stesso box, stesso colore, solo nome
+       allineato alla scheda e-commerce (nota non bloccante in VERIFICA_TASK,
+       Aziendale resta su --booking finché non viene riallineata a sua volta) -->
+  <section id="prenota-2026">
+    <div class="funding-card funding-card--deadline">
       <div class="funding-icon"><i class="fas fa-calendar-check"></i></div>
       <h2>Prenota entro fine 2026</h2>
       <p class="section-intro" style="max-width: 720px; margin: 0 auto 2rem;">Il corso parte con almeno 5 iscritti, posti limitati a un massimo di 10: chi prenota prima entra prima nel percorso.</p>
@@ -430,27 +493,35 @@
     </div>
   </section>
 
-  <!-- [8] RICHIEDI INFORMAZIONI — form Tally unico condiviso dalle 3 schede corso
-       (brief §7/§5). ID Tally reale non ancora disponibile: task gemello
-       GTA-EVCORSI-TALLY-001 bloccato in attesa di Gabriele. Placeholder con
-       campo nascosto "corso" valorizzato via query string, pronto per quando
-       arriva l'ID reale (vedi VERIFICA_TASK per la nota tecnica completa). -->
+  <!-- [8] RICHIEDI INFORMAZIONI — allineato al template finale (brief §13):
+       niente iframe Tally con ID placeholder (rimosso insieme allo script
+       embed.js in <head> e a Tally.loadEmbeds() sotto), stesso placeholder
+       testuale minimale della scheda e-commerce canonica — niente link/email
+       extra. ID Tally reale non ancora disponibile (GTA-EVCORSI-TALLY-001,
+       bloccato su Gabriele): quando arriva, stesso meccanismo di query string
+       "corso" descritto nel brief §7 per smistare il PDF corretto. -->
   <section id="richiedi-informazioni" class="dark-section">
-    <h2>Richiedi Informazioni</h2>
+    <h2>Richiedi informazioni</h2>
     <p class="section-intro">Scrivici: ricevi il programma completo con il listino via PDF e un contatto per parlarne insieme.</p>
     <div class="lp-form-card" style="max-width: 560px; margin: 0 auto;">
-      <h2>Corso AI per Dirigenti e Manager</h2>
-      <p class="lp-form-intro">Risposta entro 48 ore.</p>
-      <!-- TODO: sostituire con iframe Tally reale, ID in arrivo da GTA-EVCORSI-TALLY-001.
-           Il parametro "corso" nella query string prefilla il campo nascosto
-           del form unico condiviso dalle 3 schede (da confermare il nome
-           esatto del campo lato Tally quando l'ID reale sarà configurato). -->
-      <iframe data-tally-src="https://tally.so/embed/TALLY_ID_PLACEHOLDER?corso=ai-dirigenti-manager&alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1" loading="lazy" width="100%" height="516" frameborder="0" marginheight="0" marginwidth="0" title="Richiesta informazioni — Corso AI per Dirigenti e Manager"></iframe>
-      <input type="hidden" name="corso" value="ai-dirigenti-manager">
+      <input type="hidden" name="corso" value="ai-dirigenti-manager" id="tally-hidden-corso">
+      <p><strong>Form di richiesta informazioni in arrivo.</strong><br>Il form Tally condiviso dalle 3 schede corso non è ancora collegato (ID in attesa).</p>
     </div>
   </section>
 
-  <script>Tally.loadEmbeds();</script>
+  <!-- [8a] EGUIDE RETAIL E-COMMERCE AI TEAM — stesso componente di
+       retail-ecommerce-ai-team.html#ebook-guide-ecommerce, sotto il form e
+       prima della FAQ (brief §13 punto 10). GTA-EVCORSI-DIRIGENTI-003. -->
+  <section id="ebook-guide-ecommerce" class="ebook-mini-section">
+    <a href="/guida-retail-ecommerce-ai-team.html" id="cta-ebook-ecommerce" class="ebook-mini-card">
+      <img src="assets/images/eGuide-RetailEcommerceAiTeam-1200x1200.png" alt="Copertina guida Retail E-Commerce AI TEAM di GTaviani Consulting" class="ebook-mini-cover">
+      <span class="ebook-mini-body">
+        <span class="ebook-mini-title">Retail E-Commerce AI TEAM</span>
+        <span class="ebook-mini-text">Guida gratuita per l'e-commerce manager: come costruire l'e-commerce del futuro, AI first e performante.</span>
+        <span class="ebook-mini-cta">Scarica gratis <i class="fa-solid fa-arrow-right"></i></span>
+      </span>
+    </a>
+  </section>
 
   <!-- [9] FAQ GEO — GTA-EVCORSI-DIRIGENTI-002, stesso pattern di index.html /
        formazione-ai-aziendale.html (JSON-LD gemello nel <head>) -->
@@ -560,6 +631,22 @@
       }
       document.getElementById('cookie-banner-accept').addEventListener('click', function () { setConsent('granted'); });
       document.getElementById('cookie-banner-reject').addEventListener('click', function () { setConsent('denied'); });
+    })();
+  </script>
+
+  <!-- GTM dataLayer: click CTA (stesso pattern del corso e-commerce) -->
+  <script>
+    (function () {
+      window.dataLayer = window.dataLayer || [];
+      document.querySelectorAll('.cta-lead').forEach(function (el) {
+        el.addEventListener('click', function () {
+          window.dataLayer.push({
+            event: 'gta_corso_lead_cta_click',
+            cta_location: el.getAttribute('data-cta-location') || 'unknown',
+            corso: 'ai-dirigenti-manager'
+          });
+        });
+      });
     })();
   </script>
 </body>
