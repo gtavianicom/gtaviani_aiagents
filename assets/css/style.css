@@ -899,6 +899,53 @@ a.problem-card {
   padding-top: 1rem;
 }
 
+/* Meno spazio tra hero e la sezione successiva sulle schede corso
+   ristrutturate (rev. 5/10 v15, richiesta esplicita) */
+#corso {
+  padding-top: 1.5rem;
+}
+
+/* "A chi è destinato" — resa piu' evidente/grafica: card con icone grandi
+   dentro un riquadro tinto, non piu' semplici tag in riga (rev. 5/10 v15) */
+.audience-card {
+  background: rgba(1, 67, 116, 0.04);
+  border: 1px solid rgba(1, 67, 116, 0.15);
+  border-radius: 14px;
+  padding: 2rem 1.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.audience-card h3 {
+  margin-bottom: 1.5rem;
+}
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 700px) {
+  .audience-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.audience-item .problem-icon {
+  margin: 0 auto 0.85rem;
+  width: 60px;
+  height: 60px;
+  font-size: 1.6rem;
+}
+
+.audience-item strong {
+  display: block;
+  color: var(--color-primary);
+  font-size: 1rem;
+}
+
 .funding-card {
   max-width: var(--max-width);
   margin: 0 auto;
