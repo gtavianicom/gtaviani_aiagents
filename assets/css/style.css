@@ -2486,6 +2486,16 @@ a.problem-card {
   align-items: stretch;
 }
 
+/* 2 colonne (il default di .org-directors-grid e' 3, per l'organigramma):
+   prima era uno style="grid-template-columns:repeat(2,1fr)" inline, con
+   specificita' piu' alta della media query mobile sotto — motivo reale del
+   bug "mobile confusione" (il collasso a 1 colonna non scattava mai).
+   Classe dedicata invece dell'inline style, cosi' la regola mobile qui
+   sotto può sempre vincere. */
+.org-directors-grid--cols2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 /* Su mobile .org-directors-grid collassa a 1 colonna (regola base, vedi
    sopra): senza un riordino esplicito i 10 figli diretti (card, card,
    connettore, connettore, poi 3 coppie di .org-resource per riga) si
@@ -2495,6 +2505,9 @@ a.problem-card {
    conn-lun, conn-mar, res1-lun, res1-mar, res2-lun, res2-mar, res3-lun,
    res3-mar — funziona anche nei layout grid auto-posizionati). */
 @media (max-width: 900px) {
+  .org-directors-grid--cols2 {
+    grid-template-columns: 1fr;
+  }
   .org-directors-grid--rows > *:nth-child(1) { order: 1; }
   .org-directors-grid--rows > *:nth-child(3) { order: 2; }
   .org-directors-grid--rows > *:nth-child(5) { order: 3; }
