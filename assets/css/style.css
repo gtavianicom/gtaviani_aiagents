@@ -1203,6 +1203,22 @@ a.problem-card {
   align-items: center;
 }
 
+/* Lista puntata compatta dentro un course-fact (es. Obiettivi a punti
+   invece di una frase unica) — rev. 5/10 v17 */
+.course-fact ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: block;
+}
+
+.course-fact li {
+  margin-bottom: 0.2rem;
+}
+
+.course-fact li:last-child {
+  margin-bottom: 0;
+}
+
 /* Campo "Destinatari": valore sempre a capo sotto l'etichetta, non in linea
    (rev. 5/10 v9, richiesta esplicita) */
 .course-fact--stacked {
