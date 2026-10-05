@@ -879,6 +879,12 @@ a.problem-card {
   justify-content: center;
 }
 
+/* Card eventi piu' larghe, stessa misura delle card corso "in aula"
+   (rev. 5/10 v13, richiesta esplicita) */
+.events-category .problem-grid {
+  grid-template-columns: repeat(auto-fit, minmax(340px, 460px));
+}
+
 .event-card-intro {
   color: var(--color-secondary);
   font-size: 0.9rem;
