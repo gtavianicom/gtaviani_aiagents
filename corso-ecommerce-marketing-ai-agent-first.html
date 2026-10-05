@@ -120,6 +120,7 @@
       }
     })();
   </script>
+  <script src="https://tally.so/widgets/embed.js"></script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -408,20 +409,15 @@
     <h2>Richiedi informazioni</h2>
     <p class="section-intro">Lasciamo i dettagli organizzativi e la scheda completa via email: compila il form, nessun impegno.</p>
 
-    <!-- TODO: sostituire con iframe Tally reale (ID non ancora disponibile — form unico
-         condiviso dalle 3 schede corso, task gemello GTA-EVCORSI-TALLY-001 bloccato).
-         Quando l'ID arriva: sostituire questo placeholder con
-         <iframe data-tally-src="https://tally.so/embed/<ID>?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&corso=ecommerce-ai-agent-first" ...>
-         mantenendo il parametro "corso" in query string: è il meccanismo con cui Tally
-         prefilla il campo nascosto "corso" del form condiviso, usato poi dalla pagina
-         "grazie" per sapere quale PDF sbloccare (vedi nota tecnica §7 del brief).
-         GTA-EVCORSI-ECOMMERCE-002: rimosso il bottone mailto di fallback — nessun
-         link extra oltre al form in questa sezione, per istruzione esplicita del task. -->
+    <!-- Form Tally reale "2027 Courses Leads - CEM" (GTA-EVCORSI-TALLY-001
+         sbloccato per questo corso, ID 44g2OA). Redirect on completion da
+         impostare su Tally: grazie-corso-ecommerce-ai-agent-first-53b0c684.html?utm_source=FormCompleted -->
     <div class="lp-form-card" style="max-width: 560px; margin: 0 auto;">
-      <input type="hidden" name="corso" value="ecommerce-ai-agent-first" id="tally-hidden-corso">
-      <p><strong>Form di richiesta informazioni in arrivo.</strong><br>Il form Tally condiviso dalle 3 schede corso non è ancora collegato (ID in attesa).</p>
+      <iframe data-tally-src="https://tally.so/embed/44g2OA?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="2281" frameborder="0" marginheight="0" marginwidth="0" title="2027 Courses Leads - CEM"></iframe>
     </div>
   </section>
+
+  <script>Tally.loadEmbeds();</script>
 
   <!-- [9a] EGUIDE RETAIL E-COMMERCE AI TEAM — stesso componente di
        retail-ecommerce-ai-team.html#ebook-guide-ecommerce, inserita sotto il

@@ -120,6 +120,7 @@
       }
     })();
   </script>
+  <script src="https://tally.so/widgets/embed.js"></script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -405,20 +406,15 @@
     <h2>Request information</h2>
     <p class="section-intro">We'll send the organizational details and the full course sheet by email: fill in the form, no commitment.</p>
 
-    <!-- TODO: replace with the real Tally iframe (ID not yet available — single shared
-         form used by the 3 course pages, sibling task GTA-EVCORSI-TALLY-001 blocked).
-         When the ID arrives, replace this placeholder with
-         <iframe data-tally-src="https://tally.so/embed/<ID>?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&corso=ecommerce-ai-agent-first" ...>
-         keeping the "corso" query parameter: that's the mechanism Tally uses to prefill
-         the shared form's hidden "corso" field, later read by the thank-you page to
-         know which PDF to unlock (see brief technical note §7).
-         GTA-EVCORSI-ECOMMERCE-002: removed the mailto fallback button — no extra
-         link besides the form in this section, per explicit task instruction. -->
+    <!-- Real Tally form "2027 Courses Leads - CEM" (GTA-EVCORSI-TALLY-001
+         unblocked for this course, ID 44g2OA). Redirect on completion to set
+         on Tally: grazie-corso-ecommerce-ai-agent-first-53b0c684.html?utm_source=FormCompleted -->
     <div class="lp-form-card" style="max-width: 560px; margin: 0 auto;">
-      <input type="hidden" name="corso" value="ecommerce-ai-agent-first" id="tally-hidden-corso">
-      <p><strong>Request form coming soon.</strong><br>The Tally form shared by the 3 course pages isn't connected yet (ID pending).</p>
+      <iframe data-tally-src="https://tally.so/embed/44g2OA?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="2281" frameborder="0" marginheight="0" marginwidth="0" title="2027 Courses Leads - CEM"></iframe>
     </div>
   </section>
+
+  <script>Tally.loadEmbeds();</script>
 
   <!-- [9a] EGUIDE RETAIL E-COMMERCE AI TEAM — same component as
        retail-ecommerce-ai-team.html#ebook-guide-ecommerce, under the form and
