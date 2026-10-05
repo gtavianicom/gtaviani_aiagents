@@ -65,6 +65,24 @@
   }
   </script>
 
+  <!-- FAQPage structured data — sezione #faq, GTA-EVCORSI-AZIENDALE-002 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Meglio la versione Google Workspace o Claude Enterprise?", "acceptedAnswer": {"@type": "Answer", "text": "Dipende dall'ecosistema già in uso in azienda: stesso programma, stesso prezzo, cambia solo l'assistente (Gemini vs Claude) e gli strumenti collegati. Si decide insieme in fase di richiesta, prima di fissare la data."}},
+      {"@type": "Question", "name": "Quante persone possono partecipare?", "acceptedAnswer": {"@type": "Answer", "text": "Il percorso 1 (AI Strategica Dirigenti) ha un massimo di 8 partecipanti, il percorso 2 Base un massimo di 12, il 2A Advanced un massimo di 10 — numeri pensati per restare operativi, non lezioni frontali."}},
+      {"@type": "Question", "name": "Si può fare solo il percorso Dirigenti senza il resto?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, ogni percorso è autonomo. Il metodo consigliato è partire dai dirigenti e poi estendere ai team, ma un'azienda può richiedere anche solo il percorso 1."}},
+      {"@type": "Question", "name": "Quanto dura l'intero percorso formativo?", "acceptedAnswer": {"@type": "Answer", "text": "36 ore complessive in 9 mezze giornate in sede cliente: 2 per i dirigenti, 4 per la Base e 3 per l'Advanced, più 12 mesi di piattaforma online con registrazioni e docente."}},
+      {"@type": "Question", "name": "Che differenza c'è tra formazione pubblica in aula e formazione in sede?", "acceptedAnswer": {"@type": "Answer", "text": "La formazione in aula ha date fisse e si condivide con altre aziende; la formazione in sede si svolge negli uffici del cliente, con contenuti adattati ai reparti reali e date assegnate in ordine di prenotazione."}},
+      {"@type": "Question", "name": "Come funziona il Conto Formazione per finanziare il corso?", "acceptedAnswer": {"@type": "Answer", "text": "Usa i contributi che l'azienda già versa all'INPS (0,30%) tramite il fondo interprofessionale a cui aderisce. Nessun importo minimo, fornitore a scelta libera, autorizzazione di norma entro circa un mese."}},
+      {"@type": "Question", "name": "La formazione AI in azienda è obbligatoria per l'AI Act?", "acceptedAnswer": {"@type": "Answer", "text": "L'art. 4 dell'AI Act chiede alle aziende misure di alfabetizzazione AI per il personale che usa questi strumenti, in vigore dal 2 febbraio 2025. I corsi formano per ruolo e lasciano registri e attestati come evidenza di conformità."}},
+      {"@type": "Question", "name": "Cosa include il prezzo del corso in sede?", "acceptedAnswer": {"@type": "Answer", "text": "Guida stampata, 12 mesi di piattaforma online con registrazioni e area discussione con il docente, e attestato nominativo per ogni partecipante — incluso in tutti e tre i percorsi."}}
+    ]
+  }
+  </script>
+
   <!-- Consent Mode v2 (default negato) -- GTA-LEGAL-001, conforme Linee Guida Cookie Garante Privacy -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -140,14 +158,15 @@
     </div>
   </header>
 
-  <!-- [1] HERO -->
-  <section id="hero" class="hero">
-    <span class="hero-badge">🏢 Formazione in sede</span>
-    <h1>Formazione AI per l'azienda</h1>
-    <p class="hero-subtitle">Due percorsi in sede cliente. I dirigenti decidono cosa fare con l'AI, i team imparano come usarla ogni giorno. Dal 2 febbraio 2025 l'AI Act chiede alle aziende misure di alfabetizzazione AI per chi usa questi strumenti: i corsi formano per ruolo e lasciano registri e attestati come evidenza.</p>
-    <div class="hero-cta-row">
-      <a href="#richiedi-form" id="cta-hero-scroll" class="btn btn-primary btn-lg cta-lead" data-cta-location="hero">Richiedi disponibilità</a>
+  <!-- [1] HERO — GTA-EVCORSI-AZIENDALE-002: 2 colonne (testo sx, icona dx),
+       bottone CTA rimosso (resta solo lo sticky-cta centrato in fondo pagina) -->
+  <section id="hero" class="hero hero--split">
+    <div class="hero-text">
+      <span class="hero-badge">🏢 Formazione in sede</span>
+      <h1>Formazione AI per l'azienda</h1>
+      <p class="hero-subtitle">Due percorsi in sede cliente. I dirigenti decidono cosa fare con l'AI, i team imparano come usarla ogni giorno. Dal 2 febbraio 2025 l'AI Act chiede alle aziende misure di alfabetizzazione AI per chi usa questi strumenti: i corsi formano per ruolo e lasciano registri e attestati come evidenza.</p>
     </div>
+    <div class="problem-icon hero-icon"><i class="fas fa-building"></i></div>
   </section>
 
   <!-- [2] IL PROGRAMMA IN NUMERI -->
@@ -307,24 +326,37 @@
     </div>
   </section>
 
-  <!-- [6] FORMAZIONE FINANZIATA -->
+  <!-- [6] FORMAZIONE FINANZIATA — card compatta .funding-card (stesso
+       componente di eventi-corsi.html) in testa, dettaglio Conto
+       Formazione/Avvisi a bando mantenuto sotto ma abbreviato (info
+       ritenute preziose, non eliminate — solo alleggerite nel testo,
+       GTA-EVCORSI-AZIENDALE-002) -->
   <section id="fondi" class="light-divider">
-    <h2>Formazione finanziata con i fondi interprofessionali</h2>
-    <p class="section-intro">Nessun prezzo qui: le condizioni economiche sono nella scheda PDF, inviata dopo la richiesta. Questa sezione spiega solo come funziona il finanziamento.</p>
+    <div class="funding-card">
+      <div class="funding-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+      <h2>Formazione finanziabile</h2>
+      <p class="section-intro" style="max-width: 720px; margin: 0 auto 2rem;">Nessun prezzo qui: le condizioni economiche sono nella scheda PDF, inviata dopo la richiesta. Compatibile con il Conto Formazione dei fondi interprofessionali.</p>
+      <div class="card-meta" style="justify-content: center;">
+        <span class="meta-tag"><i class="fas fa-check"></i>Nessun importo minimo</span>
+        <span class="meta-tag"><i class="fas fa-check"></i>Autorizzazione in ~1 mese</span>
+        <span class="meta-tag"><i class="fas fa-check"></i>Fornitore a scelta dell'azienda</span>
+      </div>
+    </div>
+
+    <h3 class="compare-table-title">I due canali, in sintesi</h3>
     <div class="problem-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
       <div class="problem-card">
         <div class="problem-icon"><i class="fas fa-piggy-bank"></i></div>
         <h3>Conto Formazione <span style="font-weight: 400; font-size: 0.75em; color: var(--color-primary);">(consigliato)</span></h3>
-        <p>Usa i contributi già versati dall'azienda (lo 0,30% INPS). Il fornitore della formazione resta a scelta dell'azienda, senza importo minimo richiesto e con un'autorizzazione di norma rapida.</p>
+        <p>I contributi già versati dall'azienda (0,30% INPS). Nessun minimo, fornitore libero, autorizzazione rapida.</p>
       </div>
       <div class="problem-card">
         <div class="problem-icon"><i class="fas fa-handshake"></i></div>
         <h3>Avvisi a bando <span style="font-weight: 400; font-size: 0.75em; color: var(--color-secondary);">(progetti grandi)</span></h3>
-        <p>Fondo comune, in graduatoria, presentato solo da enti qualificati dal fondo. Utile quando il progetto coinvolge più aziende o un numero ampio di partecipanti — da valutare caso per caso con un ente partner.</p>
+        <p>Fondo comune a bando, presentato da enti qualificati — utile per progetti multi-azienda, da valutare con un partner.</p>
       </div>
     </div>
 
-    <h3 class="compare-table-title">Come funziona, in 4 passi</h3>
     <div class="stat-callout">
       <div class="stat-strip stat-strip-grid">
         <div class="stat-item">
@@ -344,27 +376,30 @@
           <span class="stat-label">fatture, registri, attestati</span>
         </div>
       </div>
-      <p class="plans-note" style="color: var(--color-secondary); font-style: italic;">GTaviani Consulting fornisce programma, CV del docente, registri presenze, attestati e fatture pronte per la rendicontazione. Per i corsi finanziati, i tempi di fattura si concordano con il fondo.</p>
+      <p class="plans-note" style="color: var(--color-secondary); font-style: italic;">GTaviani Consulting fornisce programma, CV del docente, registri presenze, attestati e fatture pronte per la rendicontazione.</p>
     </div>
   </section>
 
-  <!-- [7] 2 SLOT AL MESE — callout esplicita, nessuna data Luma su questa pagina -->
-  <section id="slot" class="light-divider">
-    <div class="conclusion-grid" style="grid-template-columns: 1fr; max-width: 780px;">
-      <div class="ready-box">
-        <div class="alert-icon"><i class="fas fa-calendar-days"></i></div>
-        <div class="alert-content">
-          <strong>Solo 2 slot al mese per la formazione in sede</strong>
-          <p>La formazione in sede non ha una data pubblica fissa come i corsi in aula: nel 2027 abbiamo solo <strong>2 slot al mese</strong> per questo tipo di formazione, uno nella prima metà del mese e uno nella seconda. Le date si assegnano in ordine di prenotazione — prima si richiede la disponibilità, prima si fissa la data.</p>
-        </div>
+  <!-- [7] PRENOTA ENTRO FINE 2026 — card SENZA prezzi (stesso componente
+       .funding-card, variante blu .funding-card--booking per non
+       confondersi con la sezione Fondi). Sostituisce il vecchio box
+       .ready-box "Solo 2 slot al mese": stesso messaggio di scarsità,
+       ora nel contesto esplicito "prenota entro fine 2026",
+       GTA-EVCORSI-AZIENDALE-002 -->
+  <section id="prenota" class="light-divider">
+    <div class="funding-card funding-card--booking">
+      <div class="funding-icon"><i class="fas fa-calendar-check"></i></div>
+      <h2>Prenota entro fine 2026</h2>
+      <p class="section-intro" style="max-width: 720px; margin: 0 auto 2rem;">La formazione in sede non ha una data pubblica fissa come i corsi in aula: le date si assegnano in ordine di prenotazione.</p>
+      <div class="card-meta" style="justify-content: center;">
+        <span class="meta-tag"><i class="fas fa-calendar-days"></i>Solo 2 slot al mese nel 2027</span>
+        <span class="meta-tag"><i class="fas fa-list-ol"></i>Assegnati per ordine di prenotazione</span>
+        <span class="meta-tag"><i class="fas fa-rotate-left"></i>Cessione del posto a un collega possibile</span>
+      </div>
+      <div style="margin-top: 2rem;">
+        <a href="#richiedi-form" class="btn btn-primary cta-lead" data-cta-location="booking-card">Richiedi il tuo slot</a>
       </div>
     </div>
-  </section>
-
-  <!-- [8] IL DOCENTE (breve, senza importi) -->
-  <section id="docente">
-    <h2>Il docente</h2>
-    <p class="section-intro">Gabriele Taviani — oltre 20 anni di Digital Marketing in Italia, UK e Brasile, ruoli di direzione in e-commerce e digital, autore di 5 libri su e-commerce, marketing e AI per le aziende, docente principale della MasterClass Netcomm Academy «Digital Marketing per l'E-commerce e il New Retail».</p>
   </section>
 
   <!-- [9] RICHIEDI DISPONIBILITÀ — form Tally unico condiviso tra le 3 schede corso -->
@@ -379,12 +414,61 @@
       <form class="lp-form-placeholder" aria-label="Richiesta disponibilità — Formazione AI per l'azienda (placeholder in attesa dell'ID Tally)" style="border: 1px dashed var(--color-border); border-radius: 8px; padding: 2rem; text-align: center; color: var(--color-secondary);">
         <input type="hidden" name="corso" value="formazione-aziendale">
         <i class="fas fa-hourglass-half" style="font-size: 1.5rem; margin-bottom: 0.75rem; display: block;"></i>
-        <p style="margin: 0;">Form di richiesta disponibilità in arrivo.<br>Nel frattempo scrivi a <a href="mailto:gabriele@gtaviani.com">gabriele@gtaviani.com</a> o vai alla <a href="contact.html">pagina contatti</a>.</p>
+        <p style="margin: 0;">Form di richiesta disponibilità in arrivo.</p>
       </form>
     </div>
   </section>
 
-  <a href="#richiedi-form" id="cta-sticky" class="sticky-cta cta-lead" data-cta-location="floating">Richiedi disponibilità →</a>
+  <!-- [10] FAQ GEO — GTA-EVCORSI-AZIENDALE-002, stesso pattern di index.html -->
+  <section id="faq" class="light-divider">
+    <h2>FAQ</h2>
+
+    <div class="faq-category">
+      <h3 class="faq-category-title">Formazione AI aziendale e fondi</h3>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Che differenza c'è tra formazione pubblica in aula e formazione in sede?</summary>
+          <p>La formazione in aula ha date fisse e si condivide con altre aziende; la formazione in sede si svolge negli uffici del cliente, con contenuti adattati ai reparti reali e date assegnate in ordine di prenotazione.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Come funziona il Conto Formazione per finanziare il corso?</summary>
+          <p>Usa i contributi che l'azienda già versa all'INPS (0,30%) tramite il fondo interprofessionale a cui aderisce. Nessun importo minimo, fornitore a scelta libera, autorizzazione di norma entro circa un mese.</p>
+        </details>
+        <details class="faq-item">
+          <summary>La formazione AI in azienda è obbligatoria per l'AI Act?</summary>
+          <p>L'art. 4 dell'AI Act chiede alle aziende misure di alfabetizzazione AI per il personale che usa questi strumenti, in vigore dal 2 febbraio 2025. I corsi formano per ruolo e lasciano registri e attestati come evidenza di conformità.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Cosa include il prezzo del corso in sede?</summary>
+          <p>Guida stampata, 12 mesi di piattaforma online con registrazioni e area discussione con il docente, e attestato nominativo per ogni partecipante — incluso in tutti e tre i percorsi.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <h3 class="faq-category-title">Questo corso</h3>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Meglio la versione Google Workspace o Claude Enterprise?</summary>
+          <p>Dipende dall'ecosistema già in uso in azienda: stesso programma, stesso prezzo, cambia solo l'assistente (Gemini vs Claude) e gli strumenti collegati. Si decide insieme in fase di richiesta, prima di fissare la data.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Quante persone possono partecipare?</summary>
+          <p>Il percorso 1 (AI Strategica Dirigenti) ha un massimo di 8 partecipanti, il percorso 2 Base un massimo di 12, il 2A Advanced un massimo di 10 — numeri pensati per restare operativi, non lezioni frontali.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Si può fare solo il percorso Dirigenti senza il resto?</summary>
+          <p>Sì, ogni percorso è autonomo. Il metodo consigliato è partire dai dirigenti e poi estendere ai team, ma un'azienda può richiedere anche solo il percorso 1.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Quanto dura l'intero percorso formativo?</summary>
+          <p>36 ore complessive in 9 mezze giornate in sede cliente: 2 per i dirigenti, 4 per la Base e 3 per l'Advanced, più 12 mesi di piattaforma online con registrazioni e docente.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <a href="#richiedi-form" id="cta-sticky" class="sticky-cta sticky-cta--center cta-lead" data-cta-location="floating">Richiesta Informazioni →</a>
 
   <!-- [10] FOOTER (stesso pattern di index.html) -->
   <section id="cta-footer" class="dark-section">

@@ -137,14 +137,18 @@
     </div>
   </header>
 
-  <!-- [1] HERO — GTA-EVCORSI-DIRIGENTI-001 -->
-  <section id="hero" class="hero">
-    <span class="hero-badge">📍 Corso in aula · Milano · 10–14 maggio 2027</span>
-    <h1>Corso AI per Dirigenti e Manager</h1>
-    <p class="hero-subtitle">Cinque giornate in aula a Milano, con Claude: i dirigenti decidono <strong>cosa</strong> fare con l'AI, i team imparano <strong>come</strong> usarla ogni giorno. Programma per ruolo, esercizi pratici, attestato nominativo.</p>
-    <div class="hero-cta-row">
-      <a href="#richiedi-informazioni" class="btn btn-primary btn-lg cta-lead" data-cta-location="hero">Richiedi Informazioni</a>
+  <!-- [1] HERO — GTA-EVCORSI-DIRIGENTI-002: 2 colonne (testo sx, icona dx),
+       bottone CTA rimosso (resta solo lo sticky-cta centrato in fondo pagina).
+       Riusa .hero--split/.hero-text/.hero-icon già introdotto da
+       GTA-EVCORSI-AZIENDALE-002 (pattern riusabile verificato prima di
+       scrivere nuovo CSS, vedi VERIFICA_TASK) -->
+  <section id="hero" class="hero hero--split">
+    <div class="hero-text">
+      <span class="hero-badge">📍 Corso in aula · Milano · 10–14 maggio 2027</span>
+      <h1>Corso AI per Dirigenti e Manager</h1>
+      <p class="hero-subtitle">Cinque giornate in aula a Milano, con Claude: i dirigenti decidono <strong>cosa</strong> fare con l'AI, i team imparano <strong>come</strong> usarla ogni giorno. Programma per ruolo, esercizi pratici, attestato nominativo.</p>
     </div>
+    <div class="problem-icon hero-icon"><i class="fas fa-chalkboard-user"></i></div>
   </section>
 
   <!-- [2] IL CORSO IN NUMERI -->

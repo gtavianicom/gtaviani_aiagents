@@ -57,6 +57,29 @@
   }
   </script>
 
+  <!-- GEO FAQ — GTA-EVCORSI-ECOMMERCE-002. Placed in <head> as explicitly
+       requested by the task; note: the real pattern on index.html places this
+       block at the end of the body, right after the FAQ section (not in
+       head) — following the task's explicit instruction here, not
+       index.html's actual placement. Same questions/answers as the #faq
+       section further down. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "What is Agentic Commerce?", "acceptedAnswer": {"@type": "Answer", "text": "It's e-commerce where AI agents, not only people, take actions on behalf of the customer or the merchant: searching, comparing, buying, handling after-sales. Netcomm Forum 2027 dedicates its entire edition to this shift."}},
+      {"@type": "Question", "name": "What's the difference between a chatbot and an AI Agent?", "acceptedAnswer": {"@type": "Answer", "text": "A chatbot answers questions. An AI Agent has a goal, Conditions of Satisfaction to verify, and can act autonomously across multiple steps, not just converse: this is the distinction at the center of the course's second day."}},
+      {"@type": "Question", "name": "What is a CDP and why does it matter for AI-first e-commerce?", "acceptedAnswer": {"@type": "Answer", "text": "A Customer Data Platform unifies customer data from multiple sources into a single profile. Without this foundation, AI agents have no consistent data to decide on: it's the starting point of the course's first day."}},
+      {"@type": "Question", "name": "What changes with the AI Act for e-commerce marketing?", "acceptedAnswer": {"@type": "Answer", "text": "Anyone using AI agents for profiling or automated decisions becomes a deployer under the AI Act, with obligations on transparency (Art. 50) and staff training (Art. 4). The course dedicates a specific module to this."}},
+      {"@type": "Question", "name": "Who is the E-Commerce Marketing AI Agent First Course for?", "acceptedAnswer": {"@type": "Answer", "text": "Only for e-commerce managers: a maximum of 10 in the classroom, to actually work through the exercises with test data rather than just listen to a lecture."}},
+      {"@type": "Question", "name": "What does the Netcomm Forum participation included in the course cover?", "acceptedAnswer": {"@type": "Answer", "text": "Entry to the Forum on April 21-22 and the evening meetups in the city with the group. It is distinct from the short «E-Commerce Marketing AI Team» mini-course Netcomm offers in its own calendar, which is not part of this course."}},
+      {"@type": "Question", "name": "Do I already need an active CDP in my company to attend?", "acceptedAnswer": {"@type": "Answer", "text": "No: the classroom work uses a test CDP with fictional data. The course explains how to evaluate, set up or improve your own CDP once back at work; it does not require having one already."}},
+      {"@type": "Question", "name": "What does a participant take home after the two days?", "acceptedAnswer": {"@type": "Answer", "text": "The printed book, a test KPI dashboard, the one-to-one workflow on the test CDP, their own AI Team org chart, a first-90-days plan and a certificate, plus access to AI Space through end of 2027."}}
+    ]
+  }
+  </script>
+
   <!-- Consent Mode v2 (default negato) -- GTA-LEGAL-001, conforme Linee Guida Cookie Garante Privacy -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -132,13 +155,51 @@
     </div>
   </header>
 
-  <!-- [1] HERO -->
-  <section id="hero" class="hero">
-    <span class="hero-badge">📍 Classroom course · Milan · April 19–20, 2027</span>
-    <h1>E-Commerce Marketing<br>AI Agent First Course</h1>
-    <p class="hero-subtitle">Two days of classroom training in Milan, right before Netcomm Forum. The first day, e-commerce marketing is updated to an AI-first approach; the second day, the e-commerce manager learns to direct AI Agents and an AI Team.</p>
-    <div class="hero-cta-row">
-      <a href="#request-info" class="btn btn-primary btn-lg cta-lead" data-cta-location="hero">Request Information</a>
+  <!-- [1] HERO — restructured to 2 columns (text left, icon right), CTA
+       button removed: conversion now goes through the floating .sticky-cta
+       button (GTA-EVCORSI-ECOMMERCE-002) -->
+  <section id="hero" class="hero hero--split">
+    <div class="hero-text">
+      <span class="hero-badge">📍 Classroom course · Milan · April 19–20, 2027</span>
+      <h1>E-Commerce Marketing<br>AI Agent First Course</h1>
+      <p class="hero-subtitle">Two days of classroom training in Milan, right before Netcomm Forum. The first day, e-commerce marketing is updated to an AI-first approach; the second day, the e-commerce manager learns to direct AI Agents and an AI Team.</p>
+    </div>
+    <div class="problem-icon hero-icon"><i class="fas fa-cart-shopping"></i></div>
+  </section>
+
+  <!-- [1b] TRAINING IS FUNDABLE — same .funding-card component as
+       eventi-corsi.html#fondi, reused here right after the hero
+       (GTA-EVCORSI-ECOMMERCE-002) -->
+  <section id="fondi">
+    <div class="funding-card">
+      <div class="funding-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+      <h2>Fundable training</h2>
+      <p class="section-intro" style="max-width: 720px; margin: 0 auto 2rem;">The course is compatible with the Conto Formazione fund: GTaviani Consulting provides the contract, program, instructor CV, attendance records, certificates and invoice ready for reporting.</p>
+      <div class="card-meta" style="justify-content: center;">
+        <span class="meta-tag"><i class="fas fa-check"></i>No minimum amount</span>
+        <span class="meta-tag"><i class="fas fa-check"></i>Approval in ~1 month</span>
+        <span class="meta-tag"><i class="fas fa-check"></i>VAT-exempt invoice</span>
+      </div>
+      <div style="margin-top: 2rem;">
+        <a href="/en/lp-fondi-pmi.html" class="btn btn-primary">Discover AI Funding and Grants</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- [1c] BOOK BY END OF 2026 — new card, blue variant of .funding-card
+       (.funding-card--deadline, see style.css), no prices/percentages.
+       Benefits taken from the source PDF sheet (GTA-EVCORSI-ECOMMERCE-002) -->
+  <section id="prenota-2026">
+    <div class="funding-card funding-card--deadline">
+      <div class="funding-icon"><i class="fas fa-calendar-check"></i></div>
+      <h2>Book your seat by end of 2026</h2>
+      <p class="section-intro" style="max-width: 720px; margin: 0 auto 2rem;">Classroom seats are limited and the course needs a minimum number of enrollments to run: booking by end of 2026 secures your seat and early access to the pre-training path.</p>
+      <div class="card-meta" style="justify-content: center;">
+        <span class="meta-tag"><i class="fas fa-users"></i>Max 10 seats, runs with at least 5 enrolled</span>
+        <span class="meta-tag"><i class="fas fa-calendar-day"></i>Early access to AI Space from January 11, 2027</span>
+        <span class="meta-tag"><i class="fas fa-gift"></i>Non-expiring complimentary AI Space credit</span>
+        <span class="meta-tag"><i class="fas fa-right-left"></i>Seat transferable to another person</span>
+      </div>
     </div>
   </section>
 
@@ -351,32 +412,6 @@
     </div>
   </section>
 
-  <!-- [8] THE INSTRUCTOR -->
-  <section id="docente" class="light-divider">
-    <h2>The instructor · Gabriele Taviani</h2>
-    <p class="section-intro">Over 20 years of digital marketing and e-commerce experience in Italy, the UK and Brazil. Built Advertising Trading Desk, Behavioral Tracking and Retargeting platforms for e-commerce.</p>
-    <div class="stat-callout">
-      <div class="stat-strip stat-strip-grid">
-        <div class="stat-item">
-          <span class="stat-number">20+ years</span>
-          <span class="stat-label">digital marketing and e-commerce in Italy, UK and Brazil</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">5 books</span>
-          <span class="stat-label">on e-commerce, marketing and AI for companies</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">Leadership roles</span>
-          <span class="stat-label">E-commerce Director, Digital Officer, Chief E-commerce &amp; Digital Marketing</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">Netcomm</span>
-          <span class="stat-label">lead instructor, MasterClass «Digital Marketing for E-commerce and New Retail»</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- [9] REQUEST INFO -->
   <section id="request-info" class="dark-section">
     <h2>Request information</h2>
@@ -388,13 +423,78 @@
          <iframe data-tally-src="https://tally.so/embed/<ID>?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&corso=ecommerce-ai-agent-first" ...>
          keeping the "corso" query parameter: that's the mechanism Tally uses to prefill
          the shared form's hidden "corso" field, later read by the thank-you page to
-         know which PDF to unlock (see brief technical note §7). -->
+         know which PDF to unlock (see brief technical note §7).
+         GTA-EVCORSI-ECOMMERCE-002: removed the mailto fallback button — no extra
+         link besides the form in this section, per explicit task instruction. -->
     <div class="lp-form-card" style="max-width: 560px; margin: 0 auto;">
       <input type="hidden" name="corso" value="ecommerce-ai-agent-first" id="tally-hidden-corso">
-      <p><strong>Request form coming soon.</strong><br>The Tally form shared by the 3 course pages isn't connected yet (ID pending). In the meantime, write directly to the instructor.</p>
-      <p style="margin-top: 1rem;">
-        <a href="mailto:gabriele@gtaviani.com?subject=Information%20request%20-%20E-Commerce%20Marketing%20AI%20Agent%20First%20Course" class="btn btn-primary">Write to Gabriele Taviani</a>
-      </p>
+      <p><strong>Request form coming soon.</strong><br>The Tally form shared by the 3 course pages isn't connected yet (ID pending).</p>
+    </div>
+  </section>
+
+  <!-- [9b] GEO FAQ — GTA-EVCORSI-ECOMMERCE-002, below the form and before the
+       footer. Same pattern as index.html#faq. Questions/answers identical to
+       the FAQPage JSON-LD block in <head>. -->
+  <section id="faq" class="light-divider">
+    <h2>FAQ</h2>
+
+    <div class="faq-category">
+      <h3 class="faq-category-title">E-commerce and AI: the basics</h3>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What is Agentic Commerce?</summary>
+          <p>It's e-commerce where AI agents, not only people, take actions on behalf of the
+            customer or the merchant: searching, comparing, buying, handling after-sales.
+            Netcomm Forum 2027 dedicates its entire edition to this shift.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What's the difference between a chatbot and an AI Agent?</summary>
+          <p>A chatbot answers questions. An AI Agent has a goal, Conditions of Satisfaction to
+            verify, and can act autonomously across multiple steps, not just converse: this is
+            the distinction at the center of the course's second day.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What is a CDP and why does it matter for AI-first e-commerce?</summary>
+          <p>A Customer Data Platform unifies customer data from multiple sources into a single
+            profile. Without this foundation, AI agents have no consistent data to decide on:
+            it's the starting point of the course's first day.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What changes with the AI Act for e-commerce marketing?</summary>
+          <p>Anyone using AI agents for profiling or automated decisions becomes a deployer
+            under the AI Act, with obligations on transparency (Art. 50) and staff training
+            (Art. 4). The course dedicates a specific module to this.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <h3 class="faq-category-title">The E-Commerce Marketing AI Agent First Course</h3>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Who is this course for?</summary>
+          <p>Only for e-commerce managers: a maximum of 10 in the classroom, to actually work
+            through the exercises with test data rather than just listen to a lecture.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What does the Netcomm Forum participation included in the course cover?</summary>
+          <p>Entry to the Forum on April 21-22 and the evening meetups in the city with the
+            group. It is distinct from the short «E-Commerce Marketing AI Team» mini-course
+            Netcomm offers in its own calendar, which is not part of this course.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do I already need an active CDP in my company to attend?</summary>
+          <p>No: the classroom work uses a test CDP with fictional data. The course explains
+            how to evaluate, set up or improve your own CDP once back at work; it does not
+            require having one already.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What does a participant take home after the two days?</summary>
+          <p>The printed book, a test KPI dashboard, the one-to-one workflow on the test CDP,
+            their own AI Team org chart, a first-90-days plan and a certificate, plus access to
+            AI Space through end of 2027.</p>
+        </details>
+      </div>
     </div>
   </section>
 
@@ -471,5 +571,8 @@
       });
     })();
   </script>
+
+  <!-- Centered floating button — GTA-EVCORSI-ECOMMERCE-002 -->
+  <a href="#request-info" id="cta-sticky" class="sticky-cta sticky-cta--center cta-lead" data-cta-location="floating">Request Information →</a>
 </body>
 </html>

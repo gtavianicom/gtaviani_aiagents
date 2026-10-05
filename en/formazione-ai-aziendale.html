@@ -64,6 +64,24 @@
   }
   </script>
 
+  <!-- FAQPage structured data — #faq section, GTA-EVCORSI-AZIENDALE-002 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Is the Google Workspace or Claude Enterprise version better for us?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the ecosystem already in use at your company: same program, same price, only the assistant (Gemini vs Claude) and the connected tools change. We decide together during the request, before fixing a date."}},
+      {"@type": "Question", "name": "How many people can attend?", "acceptedAnswer": {"@type": "Answer", "text": "Path 1 (AI Strategy for Executives) has a maximum of 8 participants, path 2 Base a maximum of 12, path 2A Advanced a maximum of 10 — group sizes designed to stay hands-on, not a lecture."}},
+      {"@type": "Question", "name": "Can we book only the Executives path without the rest?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, each path stands on its own. The recommended method is to start with executives and then extend to teams, but a company can request just path 1."}},
+      {"@type": "Question", "name": "How long does the full training path take?", "acceptedAnswer": {"@type": "Answer", "text": "36 hours in total across 9 half-days delivered on-site: 2 for executives, 4 for Base and 3 for Advanced, plus 12 months of online platform with recordings and instructor access."}},
+      {"@type": "Question", "name": "What's the difference between public classroom training and on-site training?", "acceptedAnswer": {"@type": "Answer", "text": "Classroom training has fixed dates and is shared with other companies; on-site training is delivered at the client's offices, with content adapted to real departments and dates assigned in order of booking."}},
+      {"@type": "Question", "name": "How does Conto Formazione funding work for this course?", "acceptedAnswer": {"@type": "Answer", "text": "It uses the contributions the company already pays to INPS (0.30%) through the interprofessional fund it belongs to. No minimum amount, free choice of provider, authorization generally within about a month."}},
+      {"@type": "Question", "name": "Is corporate AI training mandatory under the AI Act?", "acceptedAnswer": {"@type": "Answer", "text": "Article 4 of the AI Act requires companies to provide AI literacy measures for staff using these tools, in force since 2 February 2025. The courses train by role and leave attendance records and certificates as evidence of compliance."}},
+      {"@type": "Question", "name": "What does the on-site course price include?", "acceptedAnswer": {"@type": "Answer", "text": "A printed guide, 12 months of online platform with recordings and a discussion area with the instructor, and a named certificate for every participant — included in all three paths."}}
+    ]
+  }
+  </script>
+
   <!-- Consent Mode v2 (default negato) -- GTA-LEGAL-001, conforme Linee Guida Cookie Garante Privacy -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -139,14 +157,16 @@
     </div>
   </header>
 
-  <!-- [1] HERO -->
-  <section id="hero" class="hero">
-    <span class="hero-badge">🏢 On-site training</span>
-    <h1>Corporate AI Training</h1>
-    <p class="hero-subtitle">Two paths delivered on-site. Executives decide what to do with AI, teams learn how to use it every day. Since 2 February 2025 the AI Act requires companies to provide AI literacy measures for staff using these tools: the courses train by role and leave attendance records and certificates as evidence.</p>
-    <div class="hero-cta-row">
-      <a href="#richiedi-form" id="cta-hero-scroll" class="btn btn-primary btn-lg cta-lead" data-cta-location="hero">Request availability</a>
+  <!-- [1] HERO — GTA-EVCORSI-AZIENDALE-002: 2-column layout (text left,
+       icon right), CTA button removed (only the centered sticky-cta
+       remains at the bottom of the page) -->
+  <section id="hero" class="hero hero--split">
+    <div class="hero-text">
+      <span class="hero-badge">🏢 On-site training</span>
+      <h1>Corporate AI Training</h1>
+      <p class="hero-subtitle">Two paths delivered on-site. Executives decide what to do with AI, teams learn how to use it every day. Since 2 February 2025 the AI Act requires companies to provide AI literacy measures for staff using these tools: the courses train by role and leave attendance records and certificates as evidence.</p>
     </div>
+    <div class="problem-icon hero-icon"><i class="fas fa-building"></i></div>
   </section>
 
   <!-- [2] THE PROGRAM IN NUMBERS -->
@@ -306,24 +326,36 @@
     </div>
   </section>
 
-  <!-- [6] FUNDED TRAINING -->
+  <!-- [6] FUNDED TRAINING — compact .funding-card (same component as
+       eventi-corsi.html) up top, Conto Formazione / Open calls detail
+       kept below but trimmed (info judged worth keeping, not removed —
+       just lighter text, GTA-EVCORSI-AZIENDALE-002) -->
   <section id="fondi" class="light-divider">
-    <h2>Training funded through interprofessional funds</h2>
-    <p class="section-intro">No pricing here: the economic terms are in the PDF datasheet, sent after the request. This section only explains how the funding works.</p>
+    <div class="funding-card">
+      <div class="funding-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+      <h2>Financeable training</h2>
+      <p class="section-intro" style="max-width: 720px; margin: 0 auto 2rem;">No pricing here: the economic terms are in the PDF datasheet, sent after the request. Compatible with Conto Formazione funding through interprofessional funds.</p>
+      <div class="card-meta" style="justify-content: center;">
+        <span class="meta-tag"><i class="fas fa-check"></i>No minimum amount</span>
+        <span class="meta-tag"><i class="fas fa-check"></i>Authorization in ~1 month</span>
+        <span class="meta-tag"><i class="fas fa-check"></i>Provider of the company's choice</span>
+      </div>
+    </div>
+
+    <h3 class="compare-table-title">The two channels, in short</h3>
     <div class="problem-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
       <div class="problem-card">
         <div class="problem-icon"><i class="fas fa-piggy-bank"></i></div>
         <h3>Conto Formazione <span style="font-weight: 400; font-size: 0.75em; color: var(--color-primary);">(recommended)</span></h3>
-        <p>Uses the contributions the company has already paid in (the 0.30% INPS levy). The training provider remains the company's choice, with no minimum amount required and generally fast authorization.</p>
+        <p>The contributions the company has already paid in (0.30% INPS). No minimum, free choice of provider, fast authorization.</p>
       </div>
       <div class="problem-card">
         <div class="problem-icon"><i class="fas fa-handshake"></i></div>
         <h3>Open calls <span style="font-weight: 400; font-size: 0.75em; color: var(--color-secondary);">(larger projects)</span></h3>
-        <p>A shared fund, ranked by priority, submitted only by entities qualified by the fund. Useful when the project involves several companies or a large number of participants — to be assessed case by case with a partner entity.</p>
+        <p>A shared fund submitted by qualified entities — useful for multi-company projects, to be assessed with a partner entity.</p>
       </div>
     </div>
 
-    <h3 class="compare-table-title">How it works, in 4 steps</h3>
     <div class="stat-callout">
       <div class="stat-strip stat-strip-grid">
         <div class="stat-item">
@@ -343,27 +375,29 @@
           <span class="stat-label">invoices, attendance records, certificates</span>
         </div>
       </div>
-      <p class="plans-note" style="color: var(--color-secondary); font-style: italic;">GTaviani Consulting provides the program, instructor CV, attendance records, certificates, and invoices ready for reporting. For funded courses, invoicing timing is agreed with the fund.</p>
+      <p class="plans-note" style="color: var(--color-secondary); font-style: italic;">GTaviani Consulting provides the program, instructor CV, attendance records, certificates, and invoices ready for reporting.</p>
     </div>
   </section>
 
-  <!-- [7] 2 SLOTS A MONTH — explicit callout, no Luma date on this page -->
-  <section id="slot" class="light-divider">
-    <div class="conclusion-grid" style="grid-template-columns: 1fr; max-width: 780px;">
-      <div class="ready-box">
-        <div class="alert-icon"><i class="fas fa-calendar-days"></i></div>
-        <div class="alert-content">
-          <strong>Only 2 slots a month for on-site training</strong>
-          <p>On-site training doesn't have a fixed public date like our classroom courses: in 2027 we only have <strong>2 slots a month</strong> for this kind of training, one in the first half of the month and one in the second. Dates are assigned in order of booking — the sooner you request availability, the sooner the date is set.</p>
-        </div>
+  <!-- [7] BOOK BY THE END OF 2026 — card with NO pricing (same .funding-card
+       component, blue variant .funding-card--booking to avoid confusion
+       with the Fondi section). Replaces the old .ready-box "Only 2 slots
+       a month" box: same scarcity message, now framed explicitly as
+       "book by end of 2026", GTA-EVCORSI-AZIENDALE-002 -->
+  <section id="prenota" class="light-divider">
+    <div class="funding-card funding-card--booking">
+      <div class="funding-icon"><i class="fas fa-calendar-check"></i></div>
+      <h2>Book by the end of 2026</h2>
+      <p class="section-intro" style="max-width: 720px; margin: 0 auto 2rem;">On-site training doesn't have a fixed public date like our classroom courses: dates are assigned in order of booking.</p>
+      <div class="card-meta" style="justify-content: center;">
+        <span class="meta-tag"><i class="fas fa-calendar-days"></i>Only 2 slots a month in 2027</span>
+        <span class="meta-tag"><i class="fas fa-list-ol"></i>Assigned in order of booking</span>
+        <span class="meta-tag"><i class="fas fa-rotate-left"></i>Seat transfer to a colleague possible</span>
+      </div>
+      <div style="margin-top: 2rem;">
+        <a href="#richiedi-form" class="btn btn-primary cta-lead" data-cta-location="booking-card">Request your slot</a>
       </div>
     </div>
-  </section>
-
-  <!-- [8] THE INSTRUCTOR (brief, no pricing) -->
-  <section id="docente">
-    <h2>The instructor</h2>
-    <p class="section-intro">Gabriele Taviani — over 20 years of digital marketing in Italy, the UK and Brazil, leadership roles in e-commerce and digital, author of 5 books on e-commerce, marketing and AI for companies, lead instructor of the Netcomm Academy MasterClass «Digital Marketing for E-commerce and New Retail».</p>
   </section>
 
   <!-- [9] REQUEST AVAILABILITY — shared Tally form across the 3 course pages -->
@@ -378,12 +412,61 @@
       <form class="lp-form-placeholder" aria-label="Availability request — Corporate AI Training (placeholder pending the Tally ID)" style="border: 1px dashed var(--color-border); border-radius: 8px; padding: 2rem; text-align: center; color: var(--color-secondary);">
         <input type="hidden" name="corso" value="formazione-aziendale">
         <i class="fas fa-hourglass-half" style="font-size: 1.5rem; margin-bottom: 0.75rem; display: block;"></i>
-        <p style="margin: 0;">The request form is on its way.<br>In the meantime write to <a href="mailto:gabriele@gtaviani.com">gabriele@gtaviani.com</a> or go to the <a href="/en/contact.html">contact page</a>.</p>
+        <p style="margin: 0;">The request form is on its way.</p>
       </form>
     </div>
   </section>
 
-  <a href="#richiedi-form" id="cta-sticky" class="sticky-cta cta-lead" data-cta-location="floating">Request availability →</a>
+  <!-- [10] FAQ GEO — GTA-EVCORSI-AZIENDALE-002, same pattern as index.html -->
+  <section id="faq" class="light-divider">
+    <h2>FAQ</h2>
+
+    <div class="faq-category">
+      <h3 class="faq-category-title">Corporate AI training and funding</h3>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What's the difference between public classroom training and on-site training?</summary>
+          <p>Classroom training has fixed dates and is shared with other companies; on-site training is delivered at the client's offices, with content adapted to real departments and dates assigned in order of booking.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How does Conto Formazione funding work for this course?</summary>
+          <p>It uses the contributions the company already pays to INPS (0.30%) through the interprofessional fund it belongs to. No minimum amount, free choice of provider, authorization generally within about a month.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is corporate AI training mandatory under the AI Act?</summary>
+          <p>Article 4 of the AI Act requires companies to provide AI literacy measures for staff using these tools, in force since 2 February 2025. The courses train by role and leave attendance records and certificates as evidence of compliance.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What does the on-site course price include?</summary>
+          <p>A printed guide, 12 months of online platform with recordings and a discussion area with the instructor, and a named certificate for every participant — included in all three paths.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <h3 class="faq-category-title">This course</h3>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Is the Google Workspace or Claude Enterprise version better for us?</summary>
+          <p>It depends on the ecosystem already in use at your company: same program, same price, only the assistant (Gemini vs Claude) and the connected tools change. We decide together during the request, before fixing a date.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How many people can attend?</summary>
+          <p>Path 1 (AI Strategy for Executives) has a maximum of 8 participants, path 2 Base a maximum of 12, path 2A Advanced a maximum of 10 — group sizes designed to stay hands-on, not a lecture.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can we book only the Executives path without the rest?</summary>
+          <p>Yes, each path stands on its own. The recommended method is to start with executives and then extend to teams, but a company can request just path 1.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How long does the full training path take?</summary>
+          <p>36 hours in total across 9 half-days delivered on-site: 2 for executives, 4 for Base and 3 for Advanced, plus 12 months of online platform with recordings and instructor access.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <a href="#richiedi-form" id="cta-sticky" class="sticky-cta sticky-cta--center cta-lead" data-cta-location="floating">Request Information →</a>
 
   <!-- [10] FOOTER (stesso pattern di index.html) -->
   <section id="cta-footer" class="dark-section">

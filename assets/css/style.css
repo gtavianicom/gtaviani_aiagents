@@ -926,6 +926,93 @@ a.problem-card {
   margin-bottom: 1rem;
 }
 
+/* Variante blu (non finanziamento) dello stesso box .funding-card — card
+   "Prenota entro fine anno" sulle schede corso, GTA-EVCORSI-AZIENDALE-002.
+   Stessa struttura, palette brand invece del giallo (riservato alla
+   sezione Fondi, per non confondere i due messaggi). */
+.funding-card--booking {
+  background: rgba(1, 67, 116, 0.06);
+  border-color: rgba(1, 67, 116, 0.18);
+}
+
+.funding-card--booking .funding-icon {
+  background: rgba(1, 67, 116, 0.14);
+  color: var(--color-primary);
+}
+
+/* Hero a 2 colonne (testo sx, icona dx) — redesign schede corso,
+   GTA-EVCORSI-AZIENDALE-002. Modificatore su .hero, non lo sostituisce:
+   le pagine che usano .hero da sola restano centrate (index.html,
+   eventi-corsi.html, ecc.). */
+.hero--split {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  text-align: left;
+}
+
+.hero--split .hero-text {
+  flex: 1 1 auto;
+}
+
+.hero--split .hero-text h1,
+.hero--split .hero-subtitle {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.hero--split .hero-cta-row {
+  justify-content: flex-start;
+}
+
+.hero--split .hero-icon {
+  flex-shrink: 0;
+  width: 140px;
+  height: 140px;
+  border-radius: 28px;
+  font-size: 3.5rem;
+  margin-bottom: 0;
+}
+
+@media (max-width: 800px) {
+  .hero--split {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  .hero--split .hero-text h1,
+  .hero--split .hero-subtitle {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero--split .hero-cta-row {
+    justify-content: center;
+  }
+  .hero--split .hero-icon {
+    width: 100px;
+    height: 100px;
+    font-size: 2.4rem;
+  }
+}
+
+/* Card "prenota/acquista entro fine 2026" — stesso box di .funding-card,
+   variante blu brand (invece del giallo "Fondi") cosi' le due card non si
+   confondono quando compaiono vicine sulle schede corso ristrutturate
+   (GTA-EVCORSI-ECOMMERCE-002). Nessun prezzo/percentuale al suo interno. */
+.funding-card--deadline {
+  background: rgba(1, 67, 116, 0.06);
+  border: 1px solid rgba(1, 67, 116, 0.25);
+}
+
+.funding-card--deadline .funding-icon {
+  background: rgba(1, 67, 116, 0.14);
+  color: var(--color-primary);
+}
+
 .dark-section .courses-subheading {
   color: #ffffff;
 }
@@ -2152,6 +2239,15 @@ a.problem-card {
     right: 1rem;
     text-align: center;
   }
+}
+
+/* Variante centrata (non in basso a destra) — pagine schede corso/evento,
+   richiesta esplicita 5/10 v14. Non tocca .sticky-cta base, usata altrove
+   (index.html, retail-ecommerce-ai-team.html) con l'allineamento originale. */
+.sticky-cta--center {
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
 }
 
 /* ai-team-ecommerce.html — nav badge "Solo 10 posti" sulla voce di menu */
