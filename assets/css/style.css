@@ -1053,6 +1053,77 @@ a.problem-card {
   align-items: center;
 }
 
+/* Funnel orizzontale (Definizione strategica -> Training -> Produzione
+   scalare), sezione Corsi — richiesta esplicita 5/10 */
+.funnel-row {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  max-width: var(--max-width);
+  margin: 0 auto 2.5rem;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.funnel-step {
+  flex: 1 1 220px;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+}
+
+.funnel-step strong {
+  display: block;
+  color: var(--color-primary);
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.funnel-step p {
+  color: var(--color-secondary);
+  font-size: 0.85rem;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.funnel-step--highlight {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  transform: scale(1.06);
+  z-index: 1;
+  box-shadow: 0 14px 28px rgba(1, 67, 116, 0.22);
+}
+
+.funnel-step--highlight strong,
+.funnel-step--highlight p {
+  color: #ffffff;
+}
+
+.funnel-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-border);
+  font-size: 1.3rem;
+  padding: 0 0.5rem;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 700px) {
+  .funnel-row {
+    flex-direction: column;
+  }
+  .funnel-arrow {
+    transform: rotate(90deg);
+    padding: 0.25rem 0;
+  }
+  .funnel-step--highlight {
+    transform: none;
+  }
+}
+
 /* Statistica evidenziata */
 .stat-strip {
   display: flex;
