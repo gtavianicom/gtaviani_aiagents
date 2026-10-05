@@ -2476,6 +2476,37 @@ a.problem-card {
   text-align: left;
 }
 
+/* Variante "per righe": card, connettore e lista come righe separate dello
+   stesso grid (non colonne indipendenti) — le card della stessa riga si
+   equalizzano in altezza via CSS Grid stretch, senza bisogno di flex/JS
+   (rev. 5/10 v18, richiesta esplicita: "sub card tutte uguali in altezza").
+   Non tocca .org-directors-grid di base (align-items:start, usata altrove
+   es. organigramma 3 Direttori su retail-ecommerce-ai-team.html). */
+.org-directors-grid--rows {
+  align-items: stretch;
+}
+
+/* Su mobile .org-directors-grid collassa a 1 colonna (regola base, vedi
+   sopra): senza un riordino esplicito i 10 figli diretti (card, card,
+   connettore, connettore, poi 3 coppie di .org-resource per riga) si
+   impilerebbero mescolati (entrambe le card, poi entrambe le frecce, poi
+   le coppie riga per riga) invece di restare raggruppati per giorno.
+   `order` ripristina il raggruppamento logico (DOM: card-lun, card-mar,
+   conn-lun, conn-mar, res1-lun, res1-mar, res2-lun, res2-mar, res3-lun,
+   res3-mar — funziona anche nei layout grid auto-posizionati). */
+@media (max-width: 900px) {
+  .org-directors-grid--rows > *:nth-child(1) { order: 1; }
+  .org-directors-grid--rows > *:nth-child(3) { order: 2; }
+  .org-directors-grid--rows > *:nth-child(5) { order: 3; }
+  .org-directors-grid--rows > *:nth-child(7) { order: 4; }
+  .org-directors-grid--rows > *:nth-child(9) { order: 5; }
+  .org-directors-grid--rows > *:nth-child(2) { order: 6; }
+  .org-directors-grid--rows > *:nth-child(4) { order: 7; }
+  .org-directors-grid--rows > *:nth-child(6) { order: 8; }
+  .org-directors-grid--rows > *:nth-child(8) { order: 9; }
+  .org-directors-grid--rows > *:nth-child(10) { order: 10; }
+}
+
 .org-director-card h3 {
   font-size: 1.1rem;
   margin: 0 0 0.5rem;

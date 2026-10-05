@@ -279,34 +279,28 @@
     <!-- Sub-sessione "Contenuto delle lezioni" dentro Il programma (richiesta
          esplicita revisione 5/10: prima era sezione #lezioni a parte) -->
     <h3 class="compare-table-title" style="margin-top: 3rem;">Contenuto delle lezioni</h3>
-    <div class="org-directors-grid" style="grid-template-columns: repeat(2, 1fr);">
-      <div class="org-director-col">
-        <div class="org-director-card">
-          <div class="problem-icon"><i class="fas fa-chart-line"></i></div>
-          <h3>Lunedì · E-Commerce Marketing Data Driven</h3>
-          <p>Il metodo Data Driven aggiornato al 2027. BigQuery come CDP collegata a GA4, CRM e Marketing Automation. Dati BigQuery come Knowledge per AI Agents.</p>
-        </div>
-        <div class="org-connector org-connector-sm"><i class="fas fa-arrow-down"></i></div>
-        <div class="org-resource-list">
-          <div class="org-resource"><strong>BigQuery come CDP</strong><span>GA4, CRM e Marketing Automation collegati in un'unica piattaforma dati.</span></div>
-          <div class="org-resource"><strong>Dati come Knowledge per gli agenti</strong><span>La CDP su BigQuery diventa base di conoscenza per le decisioni one-to-one degli AI Agents.</span></div>
-          <div class="org-resource"><strong>Intro e casi di Agentic Commerce</strong><span>Cos'è l'Agentic Commerce e i primi casi reali applicati al retail e all'e-commerce.</span></div>
-        </div>
+    <!-- Griglia per righe (non per colonna): card/connettore/lista come righe
+         separate, cosi' le 2 card si equalizzano in altezza via CSS Grid
+         (richiesta esplicita: "sub card tutte uguali in altezza") -->
+    <div class="org-directors-grid org-directors-grid--rows" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="org-director-card">
+        <div class="problem-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Lunedì · E-Commerce Marketing Data Driven</h3>
+        <p>Il metodo Data Driven aggiornato al 2027. BigQuery come CDP collegata a GA4, CRM e Marketing Automation. Dati BigQuery come Knowledge per AI Agents.</p>
       </div>
-
-      <div class="org-director-col">
-        <div class="org-director-card">
-          <div class="problem-icon"><i class="fas fa-sitemap"></i></div>
-          <h3>Martedì · AI Agents e AI Team</h3>
-          <p>Dall'agente singolo all'AI Team di e-commerce marketing, diretto e coordinato dall'e-commerce manager.</p>
-        </div>
-        <div class="org-connector org-connector-sm"><i class="fas fa-arrow-down"></i></div>
-        <div class="org-resource-list">
-          <div class="org-resource"><strong>AI Agents e Metodo Loop Agentico</strong><span>Cosa sono e come funzionano gli agenti AI, come progettarli e configurarli.</span></div>
-          <div class="org-resource"><strong>AI Agents Marketing</strong><span>Configuriamo insieme i primi agenti operativi di e-commerce marketing: dalle ricerche di mercato alla gestione di campagne e dati CDP.</span></div>
-          <div class="org-resource"><strong>AI Team Orchestrato</strong><span>Cosa è e come funziona, come si integra con le risorse umane, come progettarlo e configurarlo.</span></div>
-        </div>
+      <div class="org-director-card">
+        <div class="problem-icon"><i class="fas fa-sitemap"></i></div>
+        <h3>Martedì · AI Agents e AI Team</h3>
+        <p>Dall'agente singolo all'AI Team di e-commerce marketing, diretto e coordinato dall'e-commerce manager.</p>
       </div>
+      <div class="org-connector org-connector-sm"><i class="fas fa-arrow-down"></i></div>
+      <div class="org-connector org-connector-sm"><i class="fas fa-arrow-down"></i></div>
+      <div class="org-resource"><strong>BigQuery come CDP</strong><span>GA4, CRM e Marketing Automation collegati in un'unica piattaforma dati.</span></div>
+      <div class="org-resource"><strong>AI Agents e Metodo Loop Agentico</strong><span>Cosa sono e come funzionano gli agenti AI, come progettarli e configurarli.</span></div>
+      <div class="org-resource"><strong>Dati come Knowledge per gli agenti</strong><span>La CDP su BigQuery diventa base di conoscenza per le decisioni one-to-one degli AI Agents.</span></div>
+      <div class="org-resource"><strong>AI Agents Marketing</strong><span>Configuriamo insieme i primi agenti operativi di e-commerce marketing: dalle ricerche di mercato alla gestione di campagne e dati CDP.</span></div>
+      <div class="org-resource"><strong>Intro e casi di Agentic Commerce</strong><span>Cos'è l'Agentic Commerce e i primi casi reali applicati al retail e all'e-commerce.</span></div>
+      <div class="org-resource"><strong>AI Team Orchestrato</strong><span>Cosa è e come funziona, come si integra con le risorse umane, come progettarlo e configurarlo.</span></div>
     </div>
 
     <!-- GDPR e AI Act trasversale a entrambe le giornate, non piu' un punto

@@ -278,34 +278,28 @@
     <!-- "Lesson content" sub-section inside The Program (explicit request:
          previously a separate #lezioni section) -->
     <h3 class="compare-table-title" style="margin-top: 3rem;">Lesson content</h3>
-    <div class="org-directors-grid" style="grid-template-columns: repeat(2, 1fr);">
-      <div class="org-director-col">
-        <div class="org-director-card">
-          <div class="problem-icon"><i class="fas fa-chart-line"></i></div>
-          <h3>Monday · E-Commerce Marketing Data Driven</h3>
-          <p>The Data Driven method updated to 2027. BigQuery as a CDP connected to GA4, CRM and Marketing Automation. BigQuery data as Knowledge for AI Agents.</p>
-        </div>
-        <div class="org-connector org-connector-sm"><i class="fas fa-arrow-down"></i></div>
-        <div class="org-resource-list">
-          <div class="org-resource"><strong>BigQuery as a CDP</strong><span>GA4, CRM and Marketing Automation connected in a single data platform.</span></div>
-          <div class="org-resource"><strong>Data as Knowledge for agents</strong><span>The CDP on BigQuery becomes the knowledge base for AI Agents' one-to-one decisions.</span></div>
-          <div class="org-resource"><strong>Intro and Agentic Commerce use cases</strong><span>What Agentic Commerce is and the first real cases applied to retail and e-commerce.</span></div>
-        </div>
+    <!-- Row-based grid (not per-column): card/connector/list as separate
+         rows, so the 2 cards equalize height via CSS Grid (explicit
+         request: "sub cards all equal in height") -->
+    <div class="org-directors-grid org-directors-grid--rows" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="org-director-card">
+        <div class="problem-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Monday · E-Commerce Marketing Data Driven</h3>
+        <p>The Data Driven method updated to 2027. BigQuery as a CDP connected to GA4, CRM and Marketing Automation. BigQuery data as Knowledge for AI Agents.</p>
       </div>
-
-      <div class="org-director-col">
-        <div class="org-director-card">
-          <div class="problem-icon"><i class="fas fa-sitemap"></i></div>
-          <h3>Tuesday · AI Agents and AI Team</h3>
-          <p>From a single agent to an e-commerce marketing AI Team, directed and coordinated by the e-commerce manager.</p>
-        </div>
-        <div class="org-connector org-connector-sm"><i class="fas fa-arrow-down"></i></div>
-        <div class="org-resource-list">
-          <div class="org-resource"><strong>AI Agents and the Agentic Loop Method</strong><span>What AI agents are and how they work, how to design and configure them.</span></div>
-          <div class="org-resource"><strong>AI Agents Marketing</strong><span>Together, we configure the first operational e-commerce marketing agents: from market research to campaign management and CDP data.</span></div>
-          <div class="org-resource"><strong>Orchestrated AI Team</strong><span>What it is and how it works, how it integrates with human resources, how to design and configure it.</span></div>
-        </div>
+      <div class="org-director-card">
+        <div class="problem-icon"><i class="fas fa-sitemap"></i></div>
+        <h3>Tuesday · AI Agents and AI Team</h3>
+        <p>From a single agent to an e-commerce marketing AI Team, directed and coordinated by the e-commerce manager.</p>
       </div>
+      <div class="org-connector org-connector-sm"><i class="fas fa-arrow-down"></i></div>
+      <div class="org-connector org-connector-sm"><i class="fas fa-arrow-down"></i></div>
+      <div class="org-resource"><strong>BigQuery as a CDP</strong><span>GA4, CRM and Marketing Automation connected in a single data platform.</span></div>
+      <div class="org-resource"><strong>AI Agents and the Agentic Loop Method</strong><span>What AI agents are and how they work, how to design and configure them.</span></div>
+      <div class="org-resource"><strong>Data as Knowledge for agents</strong><span>The CDP on BigQuery becomes the knowledge base for AI Agents' one-to-one decisions.</span></div>
+      <div class="org-resource"><strong>AI Agents Marketing</strong><span>Together, we configure the first operational e-commerce marketing agents: from market research to campaign management and CDP data.</span></div>
+      <div class="org-resource"><strong>Intro and Agentic Commerce use cases</strong><span>What Agentic Commerce is and the first real cases applied to retail and e-commerce.</span></div>
+      <div class="org-resource"><strong>Orchestrated AI Team</strong><span>What it is and how it works, how it integrates with human resources, how to design and configure it.</span></div>
     </div>
 
     <!-- GDPR and AI Act, transversal across both days, no longer a single
