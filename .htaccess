@@ -31,11 +31,3 @@ RewriteRule .* - [E=HTTP_AUTHORIZATION:%1]
 # retail-ecommerce-ai-team.html. Redirect 301 invece di lasciarla 404 per
 # recuperare eventuale link equity/traffico residuo.
 RewriteRule ^e-commerce-ai-team/?$ /retail-ecommerce-ai-team.html [L,R=301]
-
-# GTA-EVCORSI-SEO-002 (2026-10-05) — slug EN delle 3 schede corsi tradotti
-# in inglese (erano identici allo slug IT, solo con prefisso /en/). Redirect
-# 301 dai vecchi path per sicurezza, anche se pagine pubblicate lo stesso
-# giorno (rischio indicizzazione/condivisione già avvenuta basso ma non nullo).
-RewriteRule ^en/corso-ai-dirigenti-manager\.html?$ /en/ai-course-executives-managers.html [L,R=301]
-RewriteRule ^en/corso-ecommerce-marketing-ai-agent-first\.html?$ /en/ecommerce-marketing-ai-agent-first-course.html [L,R=301]
-RewriteRule ^en/formazione-ai-aziendale\.html?$ /en/corporate-ai-training.html [L,R=301]
