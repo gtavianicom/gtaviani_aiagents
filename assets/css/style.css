@@ -1034,8 +1034,13 @@ a.problem-card {
   flex-direction: column;
 }
 
+/* Bottone CTA sempre in fondo alla card (rev. 5/10 v9: era margin-top fisso,
+   non spingeva in basso le card con meno testo — ora le card nella stessa
+   riga della griglia hanno gia' altezza uguale per default di CSS Grid,
+   margin-top:auto spinge il bottone a toccare il fondo in tutte) */
 .card-cta {
-  margin-top: 1.25rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
   text-align: center;
 }
 
@@ -1053,10 +1058,17 @@ a.problem-card {
   align-items: center;
 }
 
-/* Funnel orizzontale (Strategia AI -> Formazione interna -> Risorse AI),
-   sezione Corsi — rev. 5/10 v8: SOLO desktop (nascosto su mobile), tono
-   sobrio/meno evidente, nessun riquadro evidenziato sugli altri (nessun
-   .funnel-step--highlight, tutti e 3 uguali) */
+/* Campo "Destinatari": valore sempre a capo sotto l'etichetta, non in linea
+   (rev. 5/10 v9, richiesta esplicita) */
+.course-fact--stacked {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Funnel orizzontale (Strategia AI -> Strumenti AI -> Risorse AI), sezione
+   Corsi — rev. 5/10 v9: forma a freccia/chevron che si incastra (si legge
+   davvero come un funnel, non solo 3 box separati da icone), SOLO desktop,
+   intensita' di colore crescente invece di un riquadro isolato evidenziato */
 .funnel-row {
   display: none;
 }
@@ -1064,27 +1076,40 @@ a.problem-card {
 @media (min-width: 701px) {
   .funnel-row {
     display: flex;
-    align-items: stretch;
-    justify-content: center;
     max-width: var(--max-width);
     margin: 0 auto 2.5rem;
-    gap: 0;
   }
 }
 
 .funnel-step {
-  flex: 1 1 220px;
-  background: transparent;
-  border: 1px solid var(--color-border);
-  padding: 1.1rem 1.1rem;
+  flex: 1 1 0;
+  background: rgba(1, 67, 116, 0.06);
+  padding: 1.25rem 2rem;
   text-align: center;
+  clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 50%, calc(100% - 22px) 100%, 0 100%, 22px 50%);
+  margin-left: -22px;
 }
+
+.funnel-step:first-child {
+  clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 50%, calc(100% - 22px) 100%, 0 100%);
+  margin-left: 0;
+  padding-left: 1.5rem;
+}
+
+.funnel-step:last-child {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 22px 50%);
+  padding-right: 1.5rem;
+}
+
+.funnel-step:nth-child(1) { background: rgba(1, 67, 116, 0.07); }
+.funnel-step:nth-child(2) { background: rgba(1, 67, 116, 0.14); }
+.funnel-step:nth-child(3) { background: rgba(1, 67, 116, 0.22); }
 
 .funnel-step strong {
   display: block;
   color: var(--color-primary);
   font-size: 0.9rem;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.35rem;
 }
 
 .funnel-step p {
@@ -1092,16 +1117,6 @@ a.problem-card {
   font-size: 0.78rem;
   margin: 0;
   line-height: 1.4;
-}
-
-.funnel-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-border);
-  font-size: 1rem;
-  padding: 0 0.4rem;
-  flex: 0 0 auto;
 }
 
 /* Statistica evidenziata */
