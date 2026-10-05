@@ -203,16 +203,88 @@
     </div>
   </section>
 
-  <!-- [3] THE WEEK -->
+  <!-- [3] THE WEEK — resa schematica (tag invece di prosa) per brief §12.9,
+       GTA-EVCORSI-DIRIGENTI-002 round 2: riuso .course-facts/.meta-tag già
+       stabili sul sito, nessun CSS nuovo -->
   <section id="settimana" class="light-divider">
     <h2>The week</h2>
     <p class="section-intro">Monday and Tuesday 10:00–17:00 · Wednesday and Thursday 9:00–17:00 · Friday 9:00–15:00. Lunch break 13:00–14:00.</p>
-    <div class="org-resource-list" style="max-width: 780px; margin: 0 auto;">
-      <div class="org-resource"><strong>Monday · Strategy</strong><span>Executives and department heads only: strategic vs. technical AI, impact on your department, confidential data, GDPR and AI Act.</span></div>
-      <div class="org-resource"><strong>Tuesday · Rules</strong><span>Executives and managers together: the 4 levels from prompt to agent mode, assistants for your own role, email and meetings.</span></div>
-      <div class="org-resource"><strong>Wednesday · Documents</strong><span>Word, Excel and slides created by Claude: from report to analysis to presentation, checking numbers and sources.</span></div>
-      <div class="org-resource"><strong>Thursday · Agent</strong><span>Knowledge base, plugins and skills: a working agent-mode task by the end of the day.</span></div>
-      <div class="org-resource"><strong>Friday · Advanced</strong><span>Reserved for those attending Tuesday–Thursday (also open to independent professionals): a first agent, then a workforce of 2–3 coordinated agents, then a pilot with metrics to bring back to the company.</span></div>
+    <div class="course-facts" style="max-width: 780px; margin: 0 auto;">
+      <div class="course-fact course-fact--stacked"><strong><i class="fas fa-calendar-day"></i>Mon · Strategy</strong><span><span class="meta-tag">Executives only</span><span class="meta-tag">Strategic vs. technical</span><span class="meta-tag">Confidential data</span><span class="meta-tag">GDPR &amp; AI Act</span></span></div>
+      <div class="course-fact course-fact--stacked"><strong><i class="fas fa-calendar-day"></i>Tue · Rules</strong><span><span class="meta-tag">Executives + managers</span><span class="meta-tag">4 levels: prompt → agent</span><span class="meta-tag">Role assistants</span><span class="meta-tag">Email &amp; meetings</span></span></div>
+      <div class="course-fact course-fact--stacked"><strong><i class="fas fa-calendar-day"></i>Wed · Documents</strong><span><span class="meta-tag">Word, Excel, slides</span><span class="meta-tag">Report → analysis → slides</span><span class="meta-tag">Checking numbers &amp; sources</span></span></div>
+      <div class="course-fact course-fact--stacked"><strong><i class="fas fa-calendar-day"></i>Thu · Agent</strong><span><span class="meta-tag">Knowledge base</span><span class="meta-tag">Plugins &amp; skills</span><span class="meta-tag">1 agent-mode task</span></span></div>
+      <div class="course-fact course-fact--stacked"><strong><i class="fas fa-calendar-day"></i>Fri · Advanced</strong><span><span class="meta-tag">Reserved Tue–Thu</span><span class="meta-tag">1 agent → 2–3 Workforce</span><span class="meta-tag">Pilot with metrics</span></span></div>
+    </div>
+  </section>
+
+  <!-- [3bis] OBJECTIVES + GDPR/AI ACT COMPLIANCE — dedicated, visible section
+       (brief §12.10, GTA-EVCORSI-DIRIGENTI-002 round 2), right after "The
+       week" and before the packages (not buried at the bottom). Real content
+       from the source PDF. -->
+  <section id="obiettivi-conformita" class="light-divider">
+    <h2>Objectives by day &amp; GDPR/AI Act compliance</h2>
+    <p class="section-intro">What you take home each day — and how the course keeps your company compliant.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-compass"></i></div>
+        <h3>Monday · Objectives</h3>
+        <p>Distinguish strategic AI (the executive decides) from technical AI (IT builds it), see the impact on your own department, protect confidential data, stay compliant with GDPR and the AI Act.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-user-check"></i></div>
+        <h3>Tuesday · Outcome</h3>
+        <p>2 assistants for your own role ready to use, with the 4 levels from prompt to agent mode already clear.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-file-lines"></i></div>
+        <h3>Wednesday · Outcome</h3>
+        <p>A report turned into analysis and presentation with Claude, numbers and sources checked.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-robot"></i></div>
+        <h3>Thursday · Outcome</h3>
+        <p>A working agent-mode task, with a connected knowledge base and plugins.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><i class="fas fa-rocket"></i></div>
+        <h3>Friday Advanced · Outcome</h3>
+        <p>A first agent, then a Workforce of 2–3 coordinated agents, then a pilot with metrics (hours freed, errors, agent cost) to present at the company.</p>
+      </div>
+    </div>
+
+    <h3 style="text-align: center; margin: 2.5rem 0 1rem;">GDPR and AI Act · what to know, what to do</h3>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col">What to know</th>
+            <th scope="col">What to do</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: left;">Anyone using AI is a <strong>deployer</strong>, even with third-party tools</td>
+            <td style="text-align: left;">Take inventory of the AI tools in use</td>
+          </tr>
+          <tr>
+            <td style="text-align: left;"><strong>Art. 4</strong> · AI literacy, since February 2, 2025</td>
+            <td style="text-align: left;">Train by role, keep certificates on file</td>
+          </tr>
+          <tr>
+            <td style="text-align: left;"><strong>Art. 50</strong> · from August 2, 2026 chatbots and AI content must be disclosed</td>
+            <td style="text-align: left;">Disclose chatbots, label AI content</td>
+          </tr>
+          <tr>
+            <td style="text-align: left;"><strong>High-risk</strong> (screening, credit) · from December 2, 2027</td>
+            <td style="text-align: left;">Review every use before rollout</td>
+          </tr>
+          <tr>
+            <td style="text-align: left;"><strong>GDPR</strong> · legal basis, privacy notice, DPIA if needed</td>
+            <td style="text-align: left;">Processing agreement with every vendor</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
