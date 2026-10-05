@@ -887,7 +887,12 @@ a.problem-card {
 }
 
 /* Sezione Fondi — card a sfondo giallino tenue in trasparenza, non più un
-   dark-section pieno (richiesta esplicita revisione 5/10) */
+   dark-section pieno (richiesta esplicita revisione 5/10). Meno spazio sopra,
+   piu' vicina all'hero (rev. 5/10 v11) */
+#fondi {
+  padding-top: 1rem;
+}
+
 .funding-card {
   max-width: var(--max-width);
   margin: 0 auto;
