@@ -1015,21 +1015,42 @@ a.problem-card {
   }
 }
 
-/* Card "in aula": piu' larghe, meta-tag (data/location/ore) senza andare a
-   capo e allineate in fondo alla card (rev. 5/10 v4) */
+/* Card "in aula": piu' larghe (rev. 5/10 v4) */
 .courses-group:not(.courses-group--single) .problem-grid {
   grid-template-columns: repeat(auto-fit, minmax(340px, 460px));
 }
 
-.courses-group:not(.courses-group--single) .problem-card {
+/* Template unico per card corso: titolo e ogni valore (destinatari, obiettivo,
+   quando/dove/durata, incluso) impilati uno per riga, bottone CTA sempre
+   allineato in fondo alla card (rev. 5/10 v6, richiesta esplicita: "stesso
+   template titolo e valori a capo" + "manca un bottone CTA") */
+.problem-card--cta {
   display: flex;
   flex-direction: column;
 }
 
-.courses-group:not(.courses-group--single) .card-meta {
-  margin-top: auto;
-  padding-top: 0.75rem;
-  flex-wrap: nowrap;
+.course-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-cta {
+  margin-top: 1.25rem;
+  text-align: center;
+}
+
+/* Riga "Incluso": chip piu' piccoli, possono andare a capo (lista, non riga
+   singola) — rev. 5/10 v6 */
+.course-fact .meta-tag {
+  font-size: 0.78rem;
+  padding: 0.22rem 0.55rem;
+}
+
+.course-fact > span {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
 }
 
 /* Statistica evidenziata */
