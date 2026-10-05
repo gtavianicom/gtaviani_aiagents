@@ -60,6 +60,11 @@ consulenza, formazione del team e accesso alla piattaforma whitelabel
   iCEC/iCTO/iCMO/iCFO, agenti legati a un KPI, metodo di lavoro, confronto
   costi vs agenzia/team interno, checklist di autovalutazione e schede di
   audit. Download gratuito via form.
+- [Eventi & Corsi](https://aiagents.gtaviani.com/eventi-corsi.html): calendario
+  eventi e corsi di formazione AI per PMI retail ed e-commerce italiane —
+  calendario Luma, 3 corsi (AI per Dirigenti e Manager, E-Commerce Marketing
+  AI Agent First, Formazione AI Aziendale in sede) e sezione eventi
+  (fiere/congressi, meetup).
 
 ## Target
 

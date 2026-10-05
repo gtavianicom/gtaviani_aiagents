@@ -737,6 +737,41 @@ section > h2 {
   margin: 0 0 0.5rem;
 }
 
+/* .problem-card usato anche come <a> (card corso cliccabile, GTA-EVCORSI-MAIN-001) */
+a.problem-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Embed calendario Luma — contenitore responsive, iframe (codice fornito da
+   Luma) non modificato: solo la larghezza visuale si adatta via CSS,
+   GTA-EVCORSI-MAIN-001 */
+.luma-calendar-wrap {
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+}
+
+.luma-calendar-wrap iframe {
+  width: 100%;
+  max-width: 600px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Sezione Eventi — sottosezioni per categoria (Fiere/Congressi, Meetup),
+   GTA-EVCORSI-MAIN-001 */
+.events-category {
+  max-width: var(--max-width);
+  margin: 0 auto 2.5rem;
+}
+
+.events-category h3 {
+  font-size: 1.15rem;
+  margin: 0 0 1rem;
+  color: var(--color-primary);
+}
+
 .roadmap-phase {
   display: block;
   color: var(--color-primary);
