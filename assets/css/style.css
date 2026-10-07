@@ -6,6 +6,7 @@
   --color-primary: #014374;
   --color-primary-light: #025a9c;
   --color-secondary: #545454;
+  --color-luma: #157347;
   --color-bg: #ffffff;
   --color-text: #1a1a1a;
   --color-border: #e2e2e2;
@@ -92,6 +93,30 @@ section > h2 {
 .btn-black {
   background-color: #000000;
   color: #ffffff;
+}
+
+.btn-luma {
+  background-color: var(--color-luma);
+  color: #ffffff;
+}
+
+/* Card istruzioni colonna sinistra pagina preventivo-formazione-aziendale.html
+   (GTA-EVCORSI-PREVENTIVO-AZIENDALE-001) — stack verticale, riusa lo stile
+   .problem-card/.problem-icon già esistente ma senza il grid a 3 colonne
+   (.problem-grid è pensato per sezioni full-width, qui la colonna è stretta). */
+.lp-instruction-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.lp-instruction-cards .problem-card {
+  padding: 1.25rem 1.5rem;
+}
+
+.lp-instruction-cards .problem-icon {
+  margin-bottom: 0.75rem;
 }
 
 /* Header */
@@ -1024,6 +1049,19 @@ a.problem-card {
   margin-bottom: 0;
 }
 
+/* Immagine quadrata promo corso (sostituisce l'icona .hero-icon sulle
+   schede corso in aula Milano, GTA-EVCORSI-LUMA-ECOM-001/DIRIGENTI-001) —
+   stesso box dell'icona ma più grande, l'immagine ha già testo integrato. */
+.hero--split .hero-icon-img {
+  flex-shrink: 0;
+  width: 280px;
+  height: 280px;
+  border-radius: 28px;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  margin-bottom: 0;
+}
+
 @media (max-width: 800px) {
   .hero--split {
     flex-direction: column-reverse;
@@ -1038,6 +1076,10 @@ a.problem-card {
   }
   .hero--split .hero-cta-row {
     justify-content: center;
+  }
+  .hero--split .hero-icon-img {
+    width: 220px;
+    height: 220px;
   }
   .hero--split .hero-icon {
     width: 100px;
@@ -2167,6 +2209,19 @@ a.problem-card {
   .lp-form-col {
     position: static;
   }
+
+  .lp-mobile-form-cta {
+    display: inline-block;
+  }
+}
+
+/* Bottone "vai al form" — solo mobile/tablet, dove il form .lp-form-col
+   finisce in fondo pagina (segue l'ordine DOM, dopo le card istruzioni).
+   Nascosto su desktop dove il form è già visibile nella colonna destra. */
+.lp-mobile-form-cta {
+  display: none;
+  text-align: center;
+  margin-bottom: 0.5rem;
 }
 
 @media (max-width: 600px) {
@@ -2311,6 +2366,58 @@ a.problem-card {
   left: 50%;
   right: auto;
   transform: translateX(-50%);
+}
+
+/* GTA-EVCORSI-LUMA — coppia di bottoni flottanti (scheda + prenota su Luma)
+   sulle pagine schede corso. Sostituisce il singolo .sticky-cta--center con
+   un contenitore flex centrato; i due bottoni interni non sono più
+   position:fixed individualmente (lo è solo il contenitore). */
+.sticky-cta-row {
+  position: fixed;
+  z-index: 900;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+  box-shadow: none;
+}
+
+.sticky-cta-row .sticky-cta-item {
+  display: block;
+  text-decoration: none;
+  font-weight: 700;
+  white-space: nowrap;
+  padding: 0.9rem 1.5rem;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+.sticky-cta-row .sticky-cta-item--luma {
+  background: var(--color-luma);
+}
+
+.sticky-cta-row .sticky-cta-item--quote {
+  background: var(--color-luma);
+}
+
+@media (max-width: 800px) {
+  .sticky-cta-row {
+    bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+    left: 1rem;
+    right: 1rem;
+    transform: none;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .sticky-cta-row .sticky-cta-item {
+    text-align: center;
+    padding: 0.8rem 1rem;
+    font-size: 0.92rem;
+  }
 }
 
 /* ai-team-ecommerce.html — nav badge "Solo 10 posti" sulla voce di menu */
