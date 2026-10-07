@@ -583,6 +583,55 @@
     })();
   </script>
 
+  <!-- Confirmation popup for the "Project/Quote Request" form (preventivo-formazione-aziendale.html):
+       shown only when Tally redirects here with ?...&utm_source=FormCompleted among the params
+       (GTA-EVCORSI-PREVENTIVO-AZIENDALE-002), same pattern as index.html (GTA-WEB-001/002). -->
+  <div id="success-modal-overlay" class="success-modal-overlay">
+    <div class="success-modal">
+      <div class="success-modal-icon"><i class="fas fa-circle-check"></i></div>
+      <h3 id="success-modal-title">Request sent successfully!</h3>
+      <p>Your Project/Quote request will be reviewed within the next 72 hours: we will get in touch with you for any additional information.</p>
+      <button type="button" id="success-modal-dismiss" class="btn btn-primary">Got it</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      if (window.location.search.indexOf('utm_source=FormCompleted') === -1) return;
+      var overlay = document.getElementById('success-modal-overlay');
+      if (!overlay) return;
+
+      var savedUtm = sessionStorage.getItem('gta_lead_utm') || '';
+      var savedParams = new URLSearchParams(savedUtm || window.location.search);
+      var name = savedParams.get('name');
+      if (name) {
+        document.getElementById('success-modal-title').textContent = 'Thank you, ' + name + '!';
+      }
+
+      overlay.classList.add('show');
+      document.getElementById('success-modal-dismiss').addEventListener('click', function () {
+        overlay.classList.remove('show');
+      });
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) overlay.classList.remove('show');
+      });
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'gta_lead_completed',
+        utm_source: savedParams.get('utm_source') || '',
+        utm_medium: savedParams.get('utm_medium') || '',
+        utm_campaign: savedParams.get('utm_campaign') || '',
+        utm_source_platform: savedParams.get('utm_source_platform') || '',
+        submission: savedParams.get('submission') || ''
+      });
+
+      if (savedUtm && window.history && window.history.replaceState) {
+        window.history.replaceState({}, document.title, window.location.pathname + savedUtm + '&lead_completed=1');
+      }
+      sessionStorage.removeItem('gta_lead_utm');
+    })();
+  </script>
+
   <!-- GTM dataLayer eventi pagina (click CTA) -->
   <script>
     (function () {

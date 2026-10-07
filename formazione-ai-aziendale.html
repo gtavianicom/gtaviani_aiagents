@@ -585,6 +585,55 @@
     })();
   </script>
 
+  <!-- Popup conferma invio form "Richiesta Progetto/Preventivo" (preventivo-formazione-aziendale.html):
+       attivato solo quando Tally reindirizza qui con ?...&utm_source=FormCompleted tra i parametri
+       (GTA-EVCORSI-PREVENTIVO-AZIENDALE-002), stesso pattern di index.html (GTA-WEB-001/002). -->
+  <div id="success-modal-overlay" class="success-modal-overlay">
+    <div class="success-modal">
+      <div class="success-modal-icon"><i class="fas fa-circle-check"></i></div>
+      <h3 id="success-modal-title">Richiesta inviata con successo!</h3>
+      <p>La tua richiesta di Progetto con Preventivo verrà presa in esame entro le prossime 72 ore: sarà nostra cura contattarti per eventuali informazioni aggiuntive.</p>
+      <button type="button" id="success-modal-dismiss" class="btn btn-primary">Ho capito</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      if (window.location.search.indexOf('utm_source=FormCompleted') === -1) return;
+      var overlay = document.getElementById('success-modal-overlay');
+      if (!overlay) return;
+
+      var savedUtm = sessionStorage.getItem('gta_lead_utm') || '';
+      var savedParams = new URLSearchParams(savedUtm || window.location.search);
+      var name = savedParams.get('name');
+      if (name) {
+        document.getElementById('success-modal-title').textContent = 'Grazie, ' + name + '!';
+      }
+
+      overlay.classList.add('show');
+      document.getElementById('success-modal-dismiss').addEventListener('click', function () {
+        overlay.classList.remove('show');
+      });
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) overlay.classList.remove('show');
+      });
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'gta_lead_completed',
+        utm_source: savedParams.get('utm_source') || '',
+        utm_medium: savedParams.get('utm_medium') || '',
+        utm_campaign: savedParams.get('utm_campaign') || '',
+        utm_source_platform: savedParams.get('utm_source_platform') || '',
+        submission: savedParams.get('submission') || ''
+      });
+
+      if (savedUtm && window.history && window.history.replaceState) {
+        window.history.replaceState({}, document.title, window.location.pathname + savedUtm + '&lead_completed=1');
+      }
+      sessionStorage.removeItem('gta_lead_utm');
+    })();
+  </script>
+
   <!-- GTM dataLayer eventi pagina (click CTA) -->
   <script>
     (function () {
